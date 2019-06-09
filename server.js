@@ -10,6 +10,7 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
+
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true}, (err)=>{
   if(err) return console.log(err)
   console.log("> DB connection opened 🎉")
@@ -20,8 +21,6 @@ app
   .then(() => {
     const server = express()
 
-
-
     server.use(require('forest-express-mongoose').init({
       modelsDir: __dirname + '/models',
       envSecret: process.env.FOREST_ENV_SECRET,
@@ -30,8 +29,6 @@ app
     }));
 
 
-
-    
     // Basic list endpoint
     server.get("/services", (req, res)=>{
       Service.find().limit(10)

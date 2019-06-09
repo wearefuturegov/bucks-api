@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const Service = new mongoose.Schema({
-    asset_id: Number,
+    assetId: Number,
 
     name: String,
     parentOrganisation: String,
@@ -33,6 +33,7 @@ const Service = new mongoose.Schema({
     lastUpdated: Date,
     reviewDate: Date,
 
+    reviewStatus: String,
     reviewNotes: String,
     cloNotes: String,
     reviewNumber: Number,
