@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js -p $PORT"
+    "start": "NODE_ENV=production node server.js -p $PORT",
+    "seed": "node lib/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csvtojson": "^2.0.8",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "mongoose": "^5.5.14",
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

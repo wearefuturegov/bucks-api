@@ -1,5 +1,18 @@
 const express = require('express')
 const next = require('next')
+const mongoose = require('mongoose')
+
+require('dotenv').config()
+
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true}, (err)=>{
+  if(err) return console.log(err)
+  console.log("> DB connection opened")
+})
+
+
+
+
+
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
