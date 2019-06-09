@@ -7,12 +7,14 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js -p $PORT",
-    "seed": "node lib/seed.js"
+    "seed": "node lib/seed.js",
+    "storybook": "start-storybook"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "core-js": "^2.6.9",
     "csvtojson": "^2.0.8",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
@@ -21,5 +23,10 @@
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@storybook/react": "^5.1.3",
+    "babel-loader": "^8.0.6"
   }
 }
