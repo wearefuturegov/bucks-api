@@ -21,9 +21,10 @@ const Hero = ({
         <img src={triangle} alt="" className="hero__triangle"/>
     </section>
 
-export default Hero
-
 Hero.propTypes = {
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
+    menuItems: PropTypes.array
 }
+
+export default Hero

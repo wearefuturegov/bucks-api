@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchForm from '../SearchForm'
-import MobileMenu from './MobileMenu/index'
+import MobileMenu from '../MobileMenu'
 import MenuItem from './MenuItem'
 import Link from 'next/link'
 import './style.scss'
@@ -30,8 +30,8 @@ const Header = ({menuItems}) =>
         </div>
     </header>
 
-export default Header
-
 Header.propTypes = {
     menuItems: PropTypes.array.isRequired
 }
+
+export default Header

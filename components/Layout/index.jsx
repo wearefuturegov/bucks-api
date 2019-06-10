@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { Provider } from 'reakit'
 import './style.scss'
@@ -12,5 +13,9 @@ const Layout = ({children})=>
         {children}
     </Provider>
 </>
+
+Layout.propTypes = {
+    children: PropTypes.node
+}
 
 export default Layout

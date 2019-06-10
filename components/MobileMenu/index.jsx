@@ -1,10 +1,8 @@
 import React from 'react'
-import {
-    useMenuState,
-    Menu,
-    MenuDisclosure
-} from "reakit/Menu";
+import PropTypes from 'prop-types'
+import { useMenuState, Menu, MenuDisclosure } from "reakit/Menu";
 import Link from 'next/link'
+
 
 const MobileMenuItem = ({href, text}) =>
     <li className="mobile-menu__item">
@@ -33,6 +31,10 @@ const MobileMenu = ({menuItems}) => {
             </Menu>
         </>
     )
+}
+
+MobileMenu.propTypes = {
+    menuItems: PropTypes.array.isRequired
 }
 
 export default MobileMenu

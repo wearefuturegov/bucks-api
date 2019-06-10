@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '../Card'
 import './style.scss'
 
@@ -19,5 +20,11 @@ const CardGrid = ({title, cards, afterHero}) =>
             </div>
         </div>
     </section>
+
+CardGrid.propTypes = {
+    title: PropTypes.string,
+    cards: PropTypes.array.isRequired,
+    afterHero: PropTypes.bool
+}
 
 export default CardGrid

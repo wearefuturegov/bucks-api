@@ -11,5 +11,4 @@ const SearchForm = () =>
         </button>
     </form>
 
-
 export default SearchForm
