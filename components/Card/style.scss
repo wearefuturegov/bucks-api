@@ -1,0 +1,40 @@
+@import '../vars';
+
+.card{
+
+    width: 300px;
+}
+
+.card__body{
+    padding: 25px;
+}
+
+.card__image{
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    // TODO: object-fit: cover if supported?
+}
+
+.card__link{
+    display: block;
+    text-decoration: none;
+    background: $white;
+    box-shadow: 0px 4px 0px $shadow;
+    &:active{
+        transform: translateY(2px);
+        background: $activeCard;
+    }
+}
+
+.card__title{
+    font-size: 1.3em;
+    color: $darkText;
+    margin-bottom: 10px;
+}
+
+.card__description{
+    font-size: 0.95em;
+    color: $lightText;
+}

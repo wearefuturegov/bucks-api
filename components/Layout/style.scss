@@ -1,0 +1,12 @@
+@import '../vars';
+
+*{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+*:focus{
+    box-shadow: 0 0 0 4px $focus !important;
+}
