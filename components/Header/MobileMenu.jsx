@@ -4,7 +4,14 @@ import {
     Menu,
     MenuDisclosure
 } from "reakit/Menu";
-import MenuItem from './MenuItem'
+import Link from 'next/link'
+
+const MobileMenuItem = ({href, text}) =>
+    <li className="mobile-menu__item">
+        <Link href={href}>
+            <a className="mobile-menu__link">{text}</a>
+        </Link>
+    </li>
 
 const MobileMenu = ({menuItems}) => {
     const menu = useMenuState();
@@ -15,7 +22,7 @@ const MobileMenu = ({menuItems}) => {
             <Menu {...menu} aria-label="Menu" className="mobile-menu">
                 <ul className="mobile-menu__items" >
                     {(menuItems.map((menuItem, i)=>
-                        <MenuItem 
+                        <MobileMenuItem 
                             href={menuItem.href} 
                             text={menuItem.text} 
                             key={i} 
