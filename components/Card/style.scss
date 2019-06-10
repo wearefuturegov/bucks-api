@@ -1,5 +1,12 @@
 @import '../vars';
 
+.card{
+    margin-bottom: 20px;
+    @media screen and (min-width: $tablet){
+        margin-bottom: 30px
+    }
+}
+
 .card__body{
     padding: 25px;
     flex: 1;

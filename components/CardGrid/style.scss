@@ -9,30 +9,22 @@
     padding-top: 80px;
 }
 
-.card-grid{
-    .card{
-        margin-bottom: 20px;
-        @media screen and (min-width: $tablet){
-            margin-bottom: 30px
-        }
-    }
-}
-
 .card-grid__cards{
-    @supports(display: grid){
-        @media screen and (min-width: 500px){
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 20px;
-        }
-        @media screen and (min-width: $tablet){
-            grid-column-gap: 30px;
-        }
-        @media screen and (min-width: $desktop){
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-column-gap: 30px;
-        }
+
+
+
+    @media screen and (min-width: 500px){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
+    }
+    @media screen and (min-width: $tablet){
+        grid-column-gap: 30px;
+    }
+    @media screen and (min-width: $desktop){
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 30px;
     }
 }
 
