@@ -10,7 +10,7 @@ const Card = ({
     <div className="card">
         <Link href={href}>
             <a className="card__link">
-                {image && <img src={image} alt={imageAlt} className="card__image"/>}
+                {image && <img src={image} alt={imageAlt} className="card__image" loading="lazy"/>}
                 <div className="card__body">
                     <h3 className="card__title">{title}</h3>
                     <p className="card__description">{description}</p>
@@ -19,6 +19,10 @@ const Card = ({
         </Link>
     </div>
 
+Card.defaultProps = {
+    imageAlt: ""
+}
+  
 Card.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
