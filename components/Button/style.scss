@@ -10,8 +10,12 @@
     padding: 10px 20px;
     font-weight: bold;
     text-decoration: none;
+    transition: 0.1s ease-in-out;
     &:hover{
-        filter: brightness(0.9)
+        filter: brightness(0.95);
+        &:after{
+            transform: translateX(3px)
+        }
     }
     &:after{
         content: "";
@@ -23,8 +27,8 @@
         background-size: contain;
         width: 10px;
         margin-left: 10px;
-        // border: 1px solid red;
         opacity: 0.75;
+        transition: 0.1s ease-in-out;
     }
     @media screen and (min-width: $desktop){
         font-size: 1.2em;
