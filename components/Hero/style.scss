@@ -1,0 +1,13 @@
+@import '../vars';
+
+.hero{
+    background: $darkText;
+    color: $white;
+}
+
+.hero__inner{
+    max-width: $maxWidth;
+    margin-left: auto;
+    margin-right: auto;
+}
+
