@@ -1,11 +1,8 @@
 @import '../vars';
 
-.card{
-    max-width: 400px;
-}
-
 .card__body{
     padding: 25px;
+    flex: 1;
 }
 
 .card__image{
@@ -15,13 +12,19 @@
 }
 
 .card__link{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     text-decoration: none;
     background: $white;
     box-shadow: 0px 4px 0px $shadow;
     &:active{
         transform: translateY(4px);
         background: $activeCard;
+    }
+    &:focus{
+        outline: none;
+        box-shadow: 0 0 0 3px $focus;
     }
 }
 

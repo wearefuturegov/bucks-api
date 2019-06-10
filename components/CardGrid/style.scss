@@ -1,0 +1,47 @@
+@import '../vars';
+
+.card-grid{
+    background: $background;
+    padding: 40px 0px;
+}
+
+.card-grid--extra-top-padding{
+    padding-top: 80px;
+}
+
+.card-grid{
+    .card{
+        margin-bottom: 20px;
+        @media screen and (min-width: $tablet){
+            margin-bottom: 30px
+        }
+    }
+}
+
+.card-grid__cards{
+    @supports(display: grid){
+        @media screen and (min-width: 500px){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 20px;
+        }
+        @media screen and (min-width: $tablet){
+            grid-column-gap: 30px;
+        }
+        @media screen and (min-width: $desktop){
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-column-gap: 30px;
+        }
+    }
+}
+
+.section-title{
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: $darkText;
+    @media screen and (min-width: $tablet){
+        font-size: 2.6em;
+        margin-bottom: 25px;
+    }
+}
