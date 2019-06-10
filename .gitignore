@@ -1,4 +1,13 @@
 node_modules
+
+# ignore next build dir
 .next
+
+# ignore data files
 *.csv
+
+# no config vars please, we're version control
 .env
+
+# Ignore storybook build output dir
+.out

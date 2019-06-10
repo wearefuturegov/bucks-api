@@ -14,8 +14,8 @@ storiesOf('Card', module)
   ))
   .add('without image', () => (
     <Card
-      title="Getting equipment"
-      description="You may be able to adapt your home or get special equipment to make life easier."
+      title="Give feedback"
+      description="You can give feedback by completing this form."
       href="#"
       />
   ))

@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js -p $PORT",
     "seed": "node lib/seed.js",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook -o .out"
   },
   "keywords": [],
   "author": "",
