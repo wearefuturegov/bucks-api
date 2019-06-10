@@ -3,6 +3,22 @@
 .hero{
     background: $darkText;
     color: $white;
+    position: relative;
+    @media screen and (min-width: $tablet){
+        &:before{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./hero.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.075;
+        }
+    }
 }
 
 .hero__inner{
@@ -11,13 +27,47 @@
     margin-right: auto;
     padding-top: 20px;
     padding-bottom: 40px;
+    position: relative;
+    @media screen and (min-width: $tablet){
+        padding-top: 40px;
+    }
+    @media screen and (min-width: $desktop){
+        padding-top: 60px;
+    }
 }
 
 .hero__title{
     margin-bottom: 10px;
     font-size: 2em;
+    @media screen and (min-width: $tablet){
+        font-size: 2.5em;
+        max-width: 45%;
+    }
 }
 
 .hero__description{
     font-size: 1.1em;
+    margin-bottom: 40px;
+    @media screen and (min-width: $tablet){
+        margin-bottom: 60px;
+        font-size: 1.5em;
+        max-width: 45%;
+    }
+    @media screen and (min-width: $desktop){
+        margin-bottom: 80px;
+    }
+    @media screen and (min-width: $largeDesktop){
+        margin-bottom: 120px;
+    }
+}
+
+.hero__triangle{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 0px;
+    height: 80px;
+    @media screen and (min-width: $tablet){
+        height: 100px;
+    }
 }
