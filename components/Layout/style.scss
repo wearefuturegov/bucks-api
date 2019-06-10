@@ -7,6 +7,14 @@
     box-sizing: border-box;
 }
 
-*:focus{
+a:focus, button:focus, input:focus{
     box-shadow: 0 0 0 4px $focus !important;
+}
+
+.container{
+    max-width: $maxWidth;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }

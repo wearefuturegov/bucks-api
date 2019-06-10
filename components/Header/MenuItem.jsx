@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const MenuItem = ({href, text}) =>
     <li className="site-menu__item">

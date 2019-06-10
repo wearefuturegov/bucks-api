@@ -3,6 +3,7 @@
 .hero{
     background: $darkText;
     color: $white;
+    padding-bottom: 40px;
 }
 
 .hero__inner{
@@ -11,3 +12,11 @@
     margin-right: auto;
 }
 
+.hero__title{
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.hero__description{
+    font-size: 1.1em;
+}

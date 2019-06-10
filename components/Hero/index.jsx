@@ -6,10 +6,12 @@ import Header from '../Header'
 
 const Hero = ({
     title,
-    description
+    description,
+    menuItems
 }) => 
     <section className="hero">
-        <div className="hero__inner">
+        <Header menuItems={menuItems}/>
+        <div className="hero__inner container">
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">{description}</p>
         </div>
