@@ -1,15 +1,15 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import Header from './index'
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import MobileMenu from './index'
 
-storiesOf('Header', module)
+storiesOf('MobileMenu', module)
     .addParameters({
         backgrounds: [
-        { name: 'dark', value: '#1E2428', default: true },
+            { name: 'dark', value: '#1E2428', default: true },
         ],
     })
     .add('default', () => (
-        <Header
+        <MobileMenu
             menuItems={[
             {
                 href: "#",
@@ -29,4 +29,7 @@ storiesOf('Header', module)
             },
             ]}
             />
-    ))
+    ), {
+        notes: 'The mobile menu component. Make the screen smaller to see it',
+      })
+

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SearchForm from '../SearchForm'
-import MobileMenu from './MobileMenu'
+import MobileMenu from './MobileMenu/index'
 import MenuItem from './MenuItem'
 import Link from 'next/link'
 import './style.scss'

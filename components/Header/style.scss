@@ -2,6 +2,8 @@
 
 .site-header{
     padding: 20px 0px;
+    position: relative;
+    z-index: 2;
 }
 .site-header__inner{
     max-width: $maxWidth;
@@ -16,7 +18,7 @@
     @media screen and (min-width: $tablet){
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
     }
 }
@@ -70,7 +72,6 @@
 }
 
 // DESKTOP NAVIGATION
-
 .site-header__navigation{
     display: none;
     @media screen and (min-width: $tablet){
@@ -83,12 +84,10 @@
     margin-top: 20px;
     list-style-type: none;
 }
-
 .site-menu__item{
     display: inline-block;
     margin-left: 25px;
 }
-
 .site-menu__link{
     color: $white;
     text-decoration: none;

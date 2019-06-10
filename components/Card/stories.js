@@ -11,11 +11,15 @@ storiesOf('Card', module)
       imageAlt=""
       href="#"
       />
-  ))
+  ),{
+    notes: "A flexible, clickable card component intended to send a user onto sub-pages",
+  })
   .add('without image', () => (
     <Card
       title="Give feedback"
       description="You can give feedback by completing this form."
       href="#"
       />
-  ))
+  ),{
+    notes: "In some situations, it may make sense to use text-only cards",
+  })
