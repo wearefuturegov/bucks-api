@@ -1,3 +1,4 @@
+import React from 'react'
 import {
     useMenuState,
     Menu,
@@ -14,7 +15,12 @@ const MobileMenu = ({menuItems}) => {
             <Menu {...menu} aria-label="Menu" className="mobile-menu">
                 <ul className="mobile-menu__items" >
                     {(menuItems.map((menuItem, i)=>
-                        <MenuItem href={menuItem.href} text={menuItem.text} key={i}/>    
+                        <MenuItem 
+                            href={menuItem.href} 
+                            text={menuItem.text} 
+                            key={i} 
+                            mobile
+                            />    
                     ))}
                 </ul>
             </Menu>

@@ -7,7 +7,8 @@
     box-sizing: border-box;
 }
 
-a:focus, button:focus, input:focus{
+*:focus{
+    outline: none;
     box-shadow: 0 0 0 4px $focus !important;
 }
 
@@ -17,4 +18,10 @@ a:focus, button:focus, input:focus{
     margin-right: auto;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.visually-hidden{
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
 }

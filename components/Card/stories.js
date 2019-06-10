@@ -7,7 +7,7 @@ storiesOf('Card', module)
     <Card
       title="Getting equipment"
       description="You may be able to adapt your home or get special equipment to make life easier."
-      image="http://placehold.it/300x200"
+      image="http://placehold.it/600x400"
       imageAlt=""
       href="#"
       />

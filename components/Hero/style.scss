@@ -3,13 +3,14 @@
 .hero{
     background: $darkText;
     color: $white;
-    padding-bottom: 40px;
 }
 
 .hero__inner{
     max-width: $maxWidth;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .hero__title{

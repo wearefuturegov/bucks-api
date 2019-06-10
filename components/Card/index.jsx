@@ -10,7 +10,7 @@ const Card = ({
     <div className="card">
         <Link href={href}>
             <a className="card__link">
-                {image && <img src={image} alt={imageAlt}/>}
+                {image && <img src={image} alt={imageAlt} className="card__image"/>}
                 <div className="card__body">
                     <h3 className="card__title">{title}</h3>
                     <p className="card__description">{description}</p>
