@@ -15,9 +15,6 @@
 }
 
 .card-grid__cards{
-
-
-
     @media screen and (min-width: 500px){
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -27,9 +24,7 @@
         grid-column-gap: 30px;
     }
     @media screen and (min-width: $desktop){
-        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 30px;
     }
 }
 

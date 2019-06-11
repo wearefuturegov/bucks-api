@@ -1,0 +1,20 @@
+@import '../vars';
+
+.promo-grid{
+    padding: 60px 0px 40px 0px;
+}
+
+.promo-grid__promos{
+    list-style: none;
+    @media screen and (min-width: 500px){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 40px;
+    }
+    @media screen and (min-width: $tablet){
+        grid-column-gap: 50px;
+    }
+    @media screen and (min-width: $desktop){
+        grid-column-gap: 70px;
+    }
+}

@@ -1,0 +1,27 @@
+@import '../vars';
+
+.promo__link{
+    display: block;
+    text-decoration: none;
+    margin-bottom: 30px;
+    @media screen and (min-width: $tablet){
+        // margin-bottom: 50px
+    }
+}
+
+.promo__title{
+    color: $darkText;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    text-decoration: underline;
+    @media screen and (min-width: $desktop){
+        font-size: 1.5em;
+    }
+}
+
+.promo__description{
+    color: $lightText;
+    @media screen and (min-width: $desktop){
+        font-size: 1.1em;
+    }
+}

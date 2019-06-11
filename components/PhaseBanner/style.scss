@@ -1,0 +1,23 @@
+@import '../vars';
+
+.phase-banner{
+    background: $focus;
+    color: $darkText;
+    padding: 10px 0px;
+
+    a{
+        color: $darkText;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+.phase-banner__tag{
+    background: $darkText;
+    color: $focus;
+    padding: 2px 7px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-right: 15px;
+}
