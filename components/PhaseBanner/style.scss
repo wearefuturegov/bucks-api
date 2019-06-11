@@ -13,6 +13,12 @@
     }
 }
 
+.phase-banner__inner{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
 .phase-banner__tag{
     background: $darkText;
     color: $focus;
