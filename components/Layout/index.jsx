@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import PhaseBanner from '../PhaseBanner'
+import IsPageUseful from '../IsPageUseful'
 import './style.scss'
 
 const Layout = ({children})=>
@@ -11,6 +12,7 @@ const Layout = ({children})=>
     </Head>
     <PhaseBanner href="#"/>
     {children}
+    <IsPageUseful/>
 </>
 
 Layout.propTypes = {

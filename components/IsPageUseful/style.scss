@@ -1,0 +1,23 @@
+@import '../vars';
+
+.is-page-useful{
+    border-bottom: 3px solid $bright;
+}
+
+.is-page-useful__panel{
+    background: $bright;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: row;
+    max-width: 250px;
+    justify-content: space-between;
+}
+
+.is-page-useful__button{
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
