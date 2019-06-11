@@ -3,13 +3,15 @@
 .promo{
     list-style: none;
 }
-;
+
 .promo__link{
     display: block;
     text-decoration: none;
     margin-bottom: 30px;
-    @media screen and (min-width: $tablet){
-        // margin-bottom: 50px
+    &:hover{
+        .promo__title{
+            text-decoration: none;
+        }
     }
 }
 
@@ -25,6 +27,10 @@
 
 .promo__description{
     color: $lightText;
+    font-size: 0.95em;
+    @media screen and (min-width: $tablet){
+        font-size: 1em;
+    }
     @media screen and (min-width: $desktop){
         font-size: 1.1em;
     }

@@ -21,6 +21,7 @@ It consists of:
     * `FOREST_AUTH_SECRET`
 3. `npm install`
 4. `npm run dev`
+5. Optionally, [seed the database](#database-seeds)
 
 The app will be available on port 3000.
 
@@ -28,8 +29,9 @@ The app will be available on port 3000.
 
 The app is intended to run on Heroku.
 
-1. Push master to a new heroku app
-2. Provision a mongodb database add-on
+1. Push master to a new Heroku app
+2. Provision a mongodb database add-on. [mLab](https://elements.heroku.com/addons/mongolab) works well
+3. Optionally, [seed the database](#database-seeds)
 
 ## Database seeds
 

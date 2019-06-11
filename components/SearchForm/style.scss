@@ -8,18 +8,19 @@
 
 .search{
     position: relative;
-    &.search__form--desktop-only{
-        display: none;
-        @media screen and (min-width: 600px) {
-            display: block;
-        }
+    &.search--large{
         .search__input{
-            padding: 7px 40px 7px 17px;
+            font-size: 1.1em;
+            padding: 12px 50px 12px 25px;
         }
         .search__submit{
-            top: 7px
+            right: 0px;
+            bottom: 0px;
+            width: 55px;
+            border-radius: 0px 20px 20px 0px;
         }
     }
+
 }
 
 .search__input{
@@ -35,7 +36,6 @@
 .search__submit{
     position: absolute;
     right: 0px;
-    top: 10px;
     border: none;
     background: none;
     cursor: pointer;

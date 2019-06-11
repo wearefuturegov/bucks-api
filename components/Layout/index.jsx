@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 import PhaseBanner from '../PhaseBanner'
 import IsPageUseful from '../IsPageUseful'
+import FullWidthSearch from '../FullWidthSearchPanel'
+import Footer from '../Footer'
 import './style.scss'
 
 const Layout = ({children})=>
@@ -13,6 +15,23 @@ const Layout = ({children})=>
     <PhaseBanner href="#"/>
     {children}
     <IsPageUseful/>
+    <FullWidthSearch
+        popularPages={[
+            {
+                title: "Getting equipment",
+                href: "#"
+            },
+            {
+                title: "Keeping yourself safe",
+                href: "#"
+            },
+            {
+                title: "Getting help at home",
+                href: "#"
+            },
+        ]}
+        />
+    <Footer/>
 </>
 
 Layout.propTypes = {

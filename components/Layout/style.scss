@@ -29,3 +29,13 @@
     top: -9999px !important;
     left: -9999px !important;
 }
+
+.section-title{
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: $darkText;
+    @media screen and (min-width: $tablet){
+        font-size: 2.6em;
+        margin-bottom: 25px;
+    }
+}
