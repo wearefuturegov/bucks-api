@@ -9,14 +9,23 @@ import CallToAction from './CallToAction'
 const Hero = ({
     title,
     description,
-    menuItems
+    menuItems,
+    ctaTitle,
+    ctaDescription,
+    ctaHref,
+    ctaLinkText
 }) => 
     <section className="hero">
         <Header menuItems={menuItems}/>
         <div className="hero__inner container">
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">{description}</p>
-            <CallToAction/>
+            <CallToAction
+                title={ctaTitle}
+                description={ctaDescription}
+                href={ctaHref}
+                linkText={ctaLinkText}
+            />
         </div>
         <img src={triangle} alt="" className="hero__triangle"/>
     </section>

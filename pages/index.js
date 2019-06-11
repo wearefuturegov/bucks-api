@@ -25,6 +25,10 @@ const Home = () =>
                     text: "Sign up"
                 },
             ]}
+            ctaTitle="Find services in your area"
+            ctaDescription="Get an idea of what help is available by answering these questions."
+            ctaHref="/explore-your-needs"
+            ctaLinkText="Explore your needs"
             />
         <CardGrid
             afterHero
