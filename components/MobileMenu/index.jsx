@@ -19,7 +19,7 @@ const MobileMenu = ({menuItems}) => {
                         <MenuButton className="site-header__button">{(isOpen)? "Close menu": "Menu"}</MenuButton>
                         <MenuList className="mobile-menu">
                             {(menuItems.map((menuItem, i)=>
-                                <MenuItem className="mobile-menu__link" onSelect={() => Router.push(menuItem.href)}>{menuItem.text}</MenuItem>
+                                <MenuItem key={i} className="mobile-menu__link" onSelect={() => Router.push(menuItem.href)}>{menuItem.text}</MenuItem>
                             ))}
                         </MenuList>
                     </>

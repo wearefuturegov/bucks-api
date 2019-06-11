@@ -1,6 +1,6 @@
 const Liana = require('forest-express-mongoose');
 
-Liana.collection('services', {
+Liana.collection('Service', {
   fields: [{
     field: 'Keywords',
     type: 'String',
