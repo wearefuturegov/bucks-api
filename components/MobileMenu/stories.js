@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import MobileMenu from './index'
 
-storiesOf('MobileMenu', module)
+storiesOf('Mobile menu', module)
     .addParameters({
         backgrounds: [
             { name: 'dark', value: '#1E2428', default: true },

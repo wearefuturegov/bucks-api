@@ -6,3 +6,6 @@ storiesOf('Button', module)
   .add('default', () => (
     <Button href="#">Get started</Button>
   ))
+  .add('inverted', () => (
+    <Button href="#" background="white">Get started</Button>
+  ))

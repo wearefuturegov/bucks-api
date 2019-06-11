@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import CardGrid from './index'
 
-storiesOf('CardGrid', module)
-  .add('with title', () => (
+storiesOf('Grid of cards', module)
+  .add('with title, six cards, without images', () => (
     <CardGrid
         title="Information and advice"
         cards={[
@@ -38,7 +38,7 @@ storiesOf('CardGrid', module)
             }
         ]}/>
   ))
-  .add('without title', () => (
+  .add('without title, three cards, with images', () => (
     <CardGrid
         cards={[
             {

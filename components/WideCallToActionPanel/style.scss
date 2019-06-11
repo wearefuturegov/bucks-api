@@ -1,0 +1,34 @@
+@import '../vars';
+
+.wide-call-to-action{
+    background: $darkText;
+    color: $white;
+    padding: 30px;
+    text-align: center;
+    @media screen and (min-width: $tablet) {
+        padding: 40px;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+}
+
+.wide-call-to-action__title{
+    margin-bottom: 10px;
+    @media screen and (min-width: $tablet) {
+        max-width: 350px;
+    }
+}
+
+.wide-call-to-action__description{
+    margin-bottom: 20px;
+    @media screen and (min-width: $tablet) {
+        max-width: 350px;
+        margin-bottom: 0px;
+        font-size: 1.1em;
+    }
+}
+

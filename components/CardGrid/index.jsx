@@ -4,7 +4,7 @@ import Card from '../Card'
 import './style.scss'
 
 const CardGrid = ({title, cards, afterHero}) =>
-    <section className={(afterHero)? "card-grid card-grid--extra-top-padding": "card-grid"}>
+    <section className={(afterHero)? "card-grid card-grid--extra-top-padding card-grid--with-bottom-overlap": "card-grid"}>
         <div className="container">
             {title && <h2 className="section-title">{title}</h2>}
             <div className="card-grid__cards">

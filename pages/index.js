@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import CardGrid from '../components/CardGrid'
+import WideCallToActionPanel from '../components/WideCallToActionPanel'
 
 const Home = () =>
     <Layout>
@@ -72,6 +73,7 @@ const Home = () =>
                 }
             ]}
             />
+        <WideCallToActionPanel/>
     </Layout>
 
 export default Home

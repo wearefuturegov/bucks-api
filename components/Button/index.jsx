@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import './style.scss'
 
-const Button = ({href, children}) =>
+const Button = ({href, children, background}) =>
     <Link href={href}>
-        <a className="button">
+        <a className={`button button--${background}`}>
             {children}
         </a>
     </Link>
