@@ -1,8 +1,10 @@
 @import '../vars';
 
 .mobile-menu{
+    position: absolute;
+    right: 0px;
+    z-index: 3;
     margin: 10px 0px;
-
     background: $white;
     overflow: hidden;
     border-radius: 10px;
