@@ -1,6 +1,6 @@
 # Buckinghamshire adult social care
 
-An app for the Buckinghamshire adult social care project. 
+An app for the Buckinghamshire adult social care project. It provides a needs explorer interface leading to a personalised list of advice articles and local community services.
 
 It consists of:
 
@@ -23,6 +23,20 @@ It consists of:
 4. `npm run dev`
 
 The app will be available on port 3000.
+
+## Deploying to the web
+
+The app is intended to run on Heroku.
+
+1. Push master to a new heroku app
+2. Provision a mongodb database add-on
+
+## Database seeds
+
+The app has a seed script to populate the database of services from a CSV data file.
+
+1. Put `data.csv` in the /lib folder
+2. Run `npm run seed`
 
 ## Style guide
 
