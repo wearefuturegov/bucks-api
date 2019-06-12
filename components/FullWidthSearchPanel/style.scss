@@ -34,9 +34,15 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-column-gap: 60px;
+        aside:first-of-type{
+            margin-bottom: 0px;
+        }
     }
     @media screen and (min-width: $desktop){
         grid-column-gap: 80px;
+    }
+    aside:first-of-type{
+        margin-bottom: 35px;
     }
 }
 
@@ -45,11 +51,14 @@
 }
 
 .popular-pages__title{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .popular-pages__item{
     margin-bottom: 5px;
+    @media screen and (min-width:$desktop) {
+        font-size: 1.1em;
+    }
 }
 
 .popular-pages__link{
