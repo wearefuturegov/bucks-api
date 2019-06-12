@@ -17,7 +17,7 @@ const Header = ({menuItems, inverted}) =>
                 </a>
             </Link>
 
-            {/* <MobileMenu menuItems={menuItems}/> */}
+            <MobileMenu menuItems={menuItems}/>
 
             <nav className="site-header__navigation" >
                 <SearchForm/>

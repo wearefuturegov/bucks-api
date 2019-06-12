@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import './style.scss'
 
 const MobileMenu = ({menuItems}) => {
+
+    const [isOpen, open] = useState(false)
+
     return (
         <>
-            {/* <Menu>
-                {({ isOpen }) => (
-                    <>
-                        <MenuButton className="site-header__button">{(isOpen)? "Close menu": "Menu"}</MenuButton>
-                        <MenuList className="mobile-menu">
-                            {(menuItems.map((menuItem, i)=>
-                                <MenuItem key={i} className="mobile-menu__link" onSelect={() => Router.push(menuItem.href)}>{menuItem.text}</MenuItem>
-                            ))}
-                        </MenuList>
-                    </>
-                )}
-            </Menu> */}
+            <button className="site-header__button" onClick={()=>{open(!isOpen)}}>{(isOpen)? "Close menu": "Menu"}</button>
+            {isOpen && 
+                <ul className="mobile-menu">
+                    {(menuItems.map((menuItem, i)=>
+                        <li>
+                            <Link href={menuItem.href}>
+                                <a className="mobile-menu__link">{menuItem.text}</a>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            }
         </>
     )
 }
