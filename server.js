@@ -2,8 +2,8 @@ const express = require('express')
 const next = require('next')
 const mongoose = require('mongoose')
 
-const Service = require('./models/Service')
-const Snippet = require('./models/Snippet')
+const services = require('./controllers/services')
+const snippets = require('./controllers/snippets')
 
 require('dotenv').config()
 
@@ -27,31 +27,11 @@ app
       envSecret: process.env.FOREST_ENV_SECRET,
       authSecret: process.env.FOREST_AUTH_SECRET,
       mongoose: require('mongoose'),
-    }));
+    }))
 
-
-    // Basic list endpoint
-    server.get("/services", (req, res)=>{
-      Service.find().limit(10)
-      .exec((err, services)=>{
-        res.json(services)
-      })
-    })
-
-    // Basic single endpoint
-    server.get("/services/:id", (req, res)=>{
-      Service.findOne({assetId: req.params.id}, (err, service)=>{
-        res.json(service)
-      })
-    })
-
-    // Snippets
-    server.get("/snippets", (req, res)=>{
-      Snippet.find((err, snippets)=>{
-        res.json(snippets)
-      })
-    })
-
+    server.get("/services", services.list)
+    server.get("/services/:id", services.getServiceById)
+    server.get("/snippets", services.list)
 
     server.get('*', (req, res) => {
       return handle(req, res)
@@ -61,6 +41,7 @@ app
       if (err) throw err
       console.log(`> Ready on port ${port} 🎁`)
     })
+
   })
   .catch(ex => {
     console.error(ex.stack)
