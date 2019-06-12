@@ -1,0 +1,37 @@
+@import '../vars';
+
+.service-card{
+    margin-bottom: 20px;
+    padding: 25px;
+    @media screen and (min-width: $tablet){
+        margin-bottom: 30px
+    }
+
+}
+
+.card__link{
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    background: $white;
+    box-shadow: 0px 4px 0px $shadow;
+    &:active{
+        transform: translateY(4px);
+        background: $activeCard;
+    }
+    &:focus{
+        outline: none;
+        box-shadow: 0 0 0 3px $focus;
+    }
+}
+
+.service-card__title{
+    font-size: 1.3em;
+    color: $darkText;
+    margin-bottom: 10px;
+}
+
+.service-card__description{
+    font-size: 0.95em;
+    color: $lightText;
+}

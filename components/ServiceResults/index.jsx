@@ -11,7 +11,7 @@ const ServiceResults = ({services}) =>
                 {services.map((service, i)=>
                     <ServiceCard
                         assetId={service.assetId}
-                        title={service.title}
+                        title={service.name}
                         description={service.description}
                         />
                 )}
