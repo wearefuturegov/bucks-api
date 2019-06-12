@@ -24,7 +24,7 @@ const Footer = () =>
                 </li>
 
             </ul>
-            <p className="site-footer__text">Built and maintained by <a href="buckscc.gov.uk">Buckinghamshire County Council</a></p>
+            <p className="site-footer__text">Built and maintained by <a href="http://buckscc.gov.uk">Buckinghamshire County Council</a></p>
         </div>
     </footer>
 
