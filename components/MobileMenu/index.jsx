@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import './style.scss'
 
-const MobileMenu = ({menuItems}) => {
+const MobileMenu = ({menuItems, inverted}) => {
 
     const [isOpen, open] = useState(false)
 
     return (
         <nav role="navigation">
             <button 
-                className="site-header__button" 
+                className={(inverted)? "site-header__button site-header__button--inverted" : "site-header__button"} 
                 onClick={()=>{
                     open(!isOpen)
 
@@ -47,7 +47,8 @@ const MobileMenu = ({menuItems}) => {
 }
 
 MobileMenu.propTypes = {
-    menuItems: PropTypes.array.isRequired
+    menuItems: PropTypes.array.isRequired,
+    inverted: PropTypes.bool
 }
 
 export default MobileMenu
