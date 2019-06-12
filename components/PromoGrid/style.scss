@@ -7,14 +7,37 @@
 .promo-grid__promos{
     list-style: none;
     @media screen and (min-width: 500px){
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 40px;
+        // IE
+        .promo{
+            vertical-align: top;
+            display: inline-block;
+            width: calc(50% - 20px);
+            margin-right: 40px;
+            &:nth-of-type(even){
+                margin-right: 0px;
+            }
+        }
+        // Rest of world
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;
+        // grid-column-gap: 40px;
     }
     @media screen and (min-width: $tablet){
-        grid-column-gap: 50px;
+        // IE
+        .promo{
+            width: calc(50% - 25px);
+            margin-right: 50px;
+        }
+        // Rest of world
+        // grid-column-gap: 50px;
     }
     @media screen and (min-width: $desktop){
-        grid-column-gap: 70px;
+        // IE
+        .promo{
+            width: calc(50% - 35px);
+            margin-right: 70px;
+        }
+        // Rest of world
+        // grid-column-gap: 70px;
     }
 }
