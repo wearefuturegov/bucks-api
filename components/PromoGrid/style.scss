@@ -7,7 +7,6 @@
 .promo-grid__promos{
     list-style: none;
     @media screen and (min-width: 500px){
-        // IE
         .promo{
             vertical-align: top;
             display: inline-block;
@@ -17,27 +16,17 @@
                 margin-right: 0px;
             }
         }
-        // Rest of world
-        // display: grid;
-        // grid-template-columns: 1fr 1fr;
-        // grid-column-gap: 40px;
     }
     @media screen and (min-width: $tablet){
-        // IE
         .promo{
             width: calc(50% - 25px);
             margin-right: 50px;
         }
-        // Rest of world
-        // grid-column-gap: 50px;
     }
     @media screen and (min-width: $desktop){
-        // IE
         .promo{
             width: calc(50% - 35px);
             margin-right: 70px;
         }
-        // Rest of world
-        // grid-column-gap: 70px;
     }
 }

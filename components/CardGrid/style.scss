@@ -27,9 +27,15 @@
             }
         }
         // Rest of world
-        // display: grid;
-        // grid-template-columns: 1fr 1fr;
-        // grid-column-gap: 20px;
+        @supports (display: grid){
+            .card{
+                display: block;
+                width: 100%;
+            }
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 20px;
+        }
     }
     @media screen and (min-width: $tablet){
         // IE
@@ -38,7 +44,12 @@
             margin-right: 30px;
         }
         // Rest of world
-        // grid-column-gap: 30px;
+        @supports (display: grid){
+            .card{
+                width: 100%;
+            }
+            grid-column-gap: 30px;
+        }
     }
     @media screen and (min-width: $desktop){
         // IE
@@ -53,6 +64,11 @@
             }
         }
         // Rest of world
-        // grid-template-columns: 1fr 1fr 1fr;
+        @supports (display: grid){
+            .card{
+                width: 100%;
+            }
+        grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 }
