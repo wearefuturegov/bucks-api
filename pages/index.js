@@ -18,7 +18,7 @@ const Home = () =>
             description="Helping you find the right information and support in Buckinghamshire."
             menuItems={[
                 {
-                    href: "#",
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1228",
                     text: "Information and advice"
                 },
                 {
