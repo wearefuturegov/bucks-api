@@ -26,12 +26,12 @@ app
       modelsDir: __dirname + '/models',
       envSecret: process.env.FOREST_ENV_SECRET,
       authSecret: process.env.FOREST_AUTH_SECRET,
-      mongoose: require('mongoose'),
+      mongoose: mongoose,
     }))
 
-    server.get("/services", services.list)
-    server.get("/services/:id", services.getServiceById)
-    server.get("/snippets", services.list)
+    server.get("/api/services", services.list)
+    server.get("/api/services/:id", services.getServiceById)
+    server.get("/api/snippets", services.list)
 
     server.get('*', (req, res) => {
       return handle(req, res)
