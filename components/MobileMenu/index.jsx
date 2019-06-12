@@ -1,12 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import {
-//     Menu,
-//     MenuList,
-//     MenuButton,
-//     MenuItem,
-//   } from "@reach/menu-button"
-import "@reach/menu-button/styles.css"
 import Router from 'next/router'
 import './style.scss'
 
