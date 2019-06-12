@@ -3,6 +3,7 @@ const next = require('next')
 const mongoose = require('mongoose')
 
 const Service = require('./models/Service')
+const Snippet = require('./models/Snippet')
 
 require('dotenv').config()
 

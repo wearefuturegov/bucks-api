@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
+import AdviceSnippetGrid from '../components/AdviceSnippetGrid'
 
 const Home = () =>
     <Layout withHeader>
@@ -14,8 +15,8 @@ const Home = () =>
                 },
             ]}
             title="Your recommendations"
-            lede="If you, or someone you know, struggles with everyday tasks, there might be gadgets or equipment to help make life easier: pendant alarms, railings, wheelchairs..."
             />
+            {/* <AdviceSnippetGrid/> */}
     </Layout>
 
 export default Home

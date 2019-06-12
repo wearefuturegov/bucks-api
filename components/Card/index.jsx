@@ -4,10 +4,10 @@ import Link from 'next/link'
 import './style.scss'
 
 const Card = ({
-    title, description, image, imageAlt, href
+    title, description, image, imageAlt, href, green
 }) =>
 
-    <div className="card">
+    <div className={(green? "card card--with-green-background" : "card")}>
         <Link href={href}>
             <a className="card__link">
                 {image && <img src={image} alt={imageAlt} className="card__image" loading="lazy"/>}

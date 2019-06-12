@@ -5,6 +5,11 @@
     @media screen and (min-width: $tablet){
         margin-bottom: 30px
     }
+    &.card--with-green-background{
+        .card__link{
+            background: $background;
+        }
+    }
 }
 
 .card__body{
