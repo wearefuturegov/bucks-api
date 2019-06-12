@@ -45,6 +45,13 @@ app
       })
     })
 
+    // Snippets
+    server.get("/snippets", (req, res)=>{
+      Snippet.find((err, snippets)=>{
+        res.json(snippets)
+      })
+    })
+
 
     server.get('*', (req, res) => {
       return handle(req, res)
