@@ -1,2 +1,51 @@
 @import '../vars';
 
+.advice-grid{
+    padding-bottom: 20px;
+    @media screen and (min-width: $desktop){
+        padding-bottom: 40px;
+    }
+    @media screen and (min-width: $largeDesktop){
+        padding-bottom: 60px;
+    }
+}
+
+.advice-grid__inner{
+    @media screen and (min-width: $tablet){
+        .card{
+            display: inline-block;
+            vertical-align: top;
+            width: calc(50% - 10px);
+            margin-right: 20px;
+            &:nth-of-type(even){
+                margin-right: 0px;
+            }
+        }
+        @supports (display: grid){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 20px;
+            .card{
+                display: block;
+                width: 100%;
+            }
+
+        }
+    }
+    @media screen and (min-width: $desktop){
+        .card{
+            width: calc(50% - 15px);
+            margin-right: 30px;
+        }
+        @supports (display: grid){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 30px;
+            .card{
+                display: block;
+                width: 100%;
+            }
+
+        }
+    }
+}

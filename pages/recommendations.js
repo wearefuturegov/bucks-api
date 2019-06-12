@@ -1,8 +1,9 @@
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import AdviceSnippetGrid from '../components/AdviceSnippetGrid'
+import fetch from 'isomorphic-unfetch'
 
-const Home = () =>
+const Recommendations = ({snippets}) =>
     <Layout withHeader>
         <PageHeader 
             breadcrumbs={[
@@ -16,7 +17,16 @@ const Home = () =>
             ]}
             title="Your recommendations"
             />
-            {/* <AdviceSnippetGrid/> */}
+            <AdviceSnippetGrid snippets={snippets}/>
     </Layout>
 
-export default Home
+Recommendations.getInitialProps = async function({req}) {
+    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
+    const res = await fetch(`${baseUrl}/api/snippets`);
+    const data = await res.json();
+    return {
+        snippets: data
+    }
+}
+
+export default Recommendations

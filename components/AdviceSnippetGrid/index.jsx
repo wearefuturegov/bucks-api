@@ -12,6 +12,7 @@ const AdviceSnippetGrid = ({snippets}) =>
                     title={snippet.title}
                     description={snippet.description}
                     href={snippet.href}
+                    key={i}
                     />
             )}
         </div>

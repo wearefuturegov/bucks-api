@@ -31,7 +31,7 @@ app
 
     server.get("/api/services", services.list)
     server.get("/api/services/:id", services.getServiceById)
-    server.get("/api/snippets", services.list)
+    server.get("/api/snippets", snippets.list)
 
     server.get('*', (req, res) => {
       return handle(req, res)
