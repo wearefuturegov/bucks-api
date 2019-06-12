@@ -40,37 +40,37 @@ const Home = () =>
                     title: "Getting equipment",
                     description: "You may be able to adapt your home or get special equipment to make life easier.",
                     image: "https://picsum.photos/300/200?random=1",
-                    href: "#"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1156"
                 },
                 {
                     title: "Keeping yourself safe",
                     description: "Get help with concerns around abuse or neglect, and how to identify and report it.",
                     image: "https://picsum.photos/300/200?random=2",
-                    href: "#"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1566"
                 },
                 {
                     title: "Getting help at home",
                     description: "You could be able to get help with everyday tasks like washing, dressing or making dinner.",
                     image: "https://picsum.photos/300/200?random=3",
-                    href: "#"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1237"
                 },
                 {
                     title: "Who pays?",
                     description: "Understand what different kinds of care cost, and the level of financial help available",
                     image: "https://picsum.photos/300/200?random=4",
-                    href: "#"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1545"
                 },
                 {
                     title: "Worried about someone else?",
                     description: "Get practical tips to help out a neighbour or loved one, or, if it’s an emergency, tell us about someone in immediate need",
                     image: "https://picsum.photos/300/200?random=5",
-                    href: "#"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1569"
                 },
                 {
                     title: "Coping with loneliness",
                     description: "Most people will feel lonely at some point in their lives. It’s a deeply personal experience that - in most cases - will thankfully pass.",
                     image: "https://picsum.photos/300/200?random=6",
-                    href: "#"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1134"
                 }
             ]}
             />
