@@ -31,6 +31,10 @@
     @media screen and (min-width: $desktop){
         padding-top: 60px;
     }
+    // IE11 fix
+    &:focus{
+        box-shadow: none;
+    }
 }
 
 .hero__title{

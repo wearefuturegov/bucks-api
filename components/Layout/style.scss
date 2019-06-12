@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-*:focus{
+a:focus, input:focus, button:focus{
     outline: none;
     box-shadow: 0 0 0 3px $focus;
 }
