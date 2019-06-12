@@ -19,7 +19,7 @@ const Header = ({menuItems, inverted}) =>
 
             <MobileMenu menuItems={menuItems}/>
 
-            <nav className="site-header__navigation" >
+            <nav className="site-header__navigation" role="navigation">
                 <SearchForm/>
                 <ul className="site-header__menu site-menu" >
                     {(menuItems.map((menuItem, i)=>
