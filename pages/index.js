@@ -4,6 +4,13 @@ import CardGrid from '../components/CardGrid'
 import PromoGrid from '../components/PromoGrid'
 import WideCallToActionPanel from '../components/WideCallToActionPanel'
 
+import i1 from '../images/1.jpg'
+import i2 from '../images/2.jpg'
+import i3 from '../images/3.jpg'
+import i4 from '../images/4.jpg'
+import i5 from '../images/5.jpg'
+import i6 from '../images/6.jpg'
+
 const Home = () =>
     <Layout>
         <Hero
@@ -19,18 +26,18 @@ const Home = () =>
                     text: "All services"
                 },
                 {
-                    href: "#",
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/Auth",
                     text: "Log in"
                 },
                 {
-                    href: "#",
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1636",
                     text: "Sign up"
                 },
             ]}
             ctaTitle="Find services in your area"
-            ctaDescription="Get an idea of what help is available by answering these questions."
+            ctaDescription="Answer a few questions to find clubs, activities and support groups in your area"
             ctaHref="/explore-your-needs"
-            ctaLinkText="Explore your needs"
+            ctaLinkText="Get started"
             />
         <CardGrid
             afterHero
@@ -38,38 +45,38 @@ const Home = () =>
             cards={[
                 {
                     title: "Getting equipment",
-                    description: "You may be able to adapt your home or get special equipment to make life easier.",
-                    image: "https://picsum.photos/300/200?random=1",
+                    description: "You may be able to adapt your home or get special equipment to make life easier: pendant alarms, railings, wheelchairs...",
+                    image: i1,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1156"
                 },
                 {
-                    title: "Keeping yourself safe",
-                    description: "Get help with concerns around abuse or neglect, and how to identify and report it.",
-                    image: "https://picsum.photos/300/200?random=2",
+                    title: "Remaining independent at home",
+                    description: "You could be able to get help with everyday tasks like washing, dressing, getting hot meals delivered.",
+                    image: i2,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1566"
                 },
                 {
-                    title: "Getting help at home",
-                    description: "You could be able to get help with everyday tasks like washing, dressing or making dinner.",
-                    image: "https://picsum.photos/300/200?random=3",
+                    title: "Considering your care and support options",
+                    description: "Understand care and support options that are relevant in your situation.",
+                    image: i3,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1237"
                 },
                 {
                     title: "Who pays?",
                     description: "Understand what different kinds of care cost, and the level of financial help available",
-                    image: "https://picsum.photos/300/200?random=4",
+                    image: i4,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1545"
                 },
                 {
                     title: "Worried about someone else?",
                     description: "Get practical tips to help out a neighbour or loved one, or, if it’s an emergency, tell us about someone in immediate need",
-                    image: "https://picsum.photos/300/200?random=5",
+                    image: i5,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1569"
                 },
                 {
                     title: "Coping with loneliness",
                     description: "Most people will feel lonely at some point in their lives. It’s a deeply personal experience that - in most cases - will thankfully pass.",
-                    image: "https://picsum.photos/300/200?random=6",
+                    image: i6,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1134"
                 }
             ]}
@@ -78,7 +85,7 @@ const Home = () =>
             title="In an emergency"
             description="If you need to speak to someone urgently about a vulnerable adult, call us."
             linkText="Get emergency help"
-            href="#"
+            href="https://www.buckscc.gov.uk/services/care-for-adults/advice-for-vulnerable-adults/"
             />
         <PromoGrid
             title="Life events"

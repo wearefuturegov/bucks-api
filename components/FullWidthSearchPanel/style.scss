@@ -30,12 +30,14 @@
 }
 
 .full-width-search__inner{
+    aside:first-of-type{
+        margin-bottom: 35px;
+    }
     @media screen and (min-width:$tablet) {
         aside{
             vertical-align: top;
             display: inline-block;
             &:first-of-type{
-                margin-bottom: 35px;
                 width: calc(66.66% - 30px);
                 margin-right: 60px;
             }
@@ -46,7 +48,6 @@
     }
     @media screen and (min-width: $desktop){
         aside:first-of-type{
-            margin-bottom: 0px;
             width: calc(66.66% - 40px);
             margin-right: 80px;
         }
