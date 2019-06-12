@@ -8,30 +8,31 @@ import FullWidthSearch from '../FullWidthSearchPanel'
 import Footer from '../Footer'
 import './style.scss'
 
-const Layout = ({children})=>
+const Layout = ({children, withHeader})=>
 <>
     <Head>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap" rel="stylesheet"/> 
     </Head>
     <PhaseBanner href="#"/>
-    <Header menuItems={[
-        {
-            href: "#",
-            text: "Information and advice"
-        },
-        {
-            href: "/recommendations",
-            text: "All services"
-        },
-        {
-            href: "#",
-            text: "Log in"
-        },
-        {
-            href: "#",
-            text: "Sign up"
-        },
-    ]}/>
+    {withHeader && <Header menuItems={[
+            {
+                href: "#",
+                text: "Information and advice"
+            },
+            {
+                href: "/recommendations",
+                text: "All services"
+            },
+            {
+                href: "#",
+                text: "Log in"
+            },
+            {
+                href: "#",
+                text: "Sign up"
+            },
+        ]}/>
+    }
     {children}
     <IsPageUseful/>
     <FullWidthSearch

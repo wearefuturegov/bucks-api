@@ -4,11 +4,13 @@
     padding: 20px 0px;
     position: relative;
     z-index: 2;
+    &.site-header--inverted{
+        .site-menu__link{
+            color: $white;
+        }
+    }
 }
 .site-header__inner{
-    max-width: $maxWidth;
-    margin-left: auto;
-    margin-right: auto;
     @media screen and (min-width: $smartphone){
         display: flex;
         flex-direction: row;
@@ -61,9 +63,10 @@
     margin-left: 25px;
 }
 .site-menu__link{
-    color: $white;
+    color: $darkText;
     text-decoration: none;
     font-size: 1.1em;
+    font-weight: bold;
     &:hover{
         text-decoration: underline
     }

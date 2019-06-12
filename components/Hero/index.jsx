@@ -16,7 +16,7 @@ const Hero = ({
     ctaLinkText
 }) => 
     <section className="hero">
-        <Header menuItems={menuItems}/>
+        <Header menuItems={menuItems} inverted/>
         <div className="hero__inner container">
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">{description}</p>

@@ -6,13 +6,14 @@ import MenuItem from './MenuItem'
 import Link from 'next/link'
 import './style.scss'
 import logo from './logo.svg'
+import invertedLogo from './logo-inverted.svg'
 
-const Header = ({menuItems}) => 
-    <header className="site-header">
+const Header = ({menuItems, inverted}) => 
+    <header className={(inverted)? "site-header site-header--inverted": "site-header"}>
         <div className="site-header__inner container">
             <Link href="/">
                 <a>
-                    <img className="site-header__logo" src={logo} alt="Buckinghamshire County Council"/>
+                    <img className="site-header__logo" src={(inverted)? invertedLogo : logo} alt="Buckinghamshire County Council"/>
                 </a>
             </Link>
 
