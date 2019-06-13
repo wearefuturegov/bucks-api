@@ -10,6 +10,7 @@ const ServiceResults = ({services}) =>
             <ol>
                 {services.map((service, i)=>
                     <ServiceCard
+                        key={i}
                         assetId={service.assetId}
                         title={service.name}
                         description={service.description}
