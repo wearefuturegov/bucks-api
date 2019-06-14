@@ -49,3 +49,18 @@ The app has a living style guide of React components built with Storybook.
 To spin it up in dev mode, run `npm run storybook`.
 
 Pushes to master are built to [this static HTML site](http://bucks-care-style-guide.netlify.com/).
+
+## API endpoints
+
+The services API at `/api/services` can be filtered and sorted:
+
+* `category[]=`... will provide services that match *any* of the supplied categories
+* `keywords[]=`... will provide services that have *any* of the supplied keywords
+* `page=` plus an integer will skip through the results, 10 at a time
+* `ages=`, plus either `Young people`, `Young adults` or `Older adults` will filter to services matching *only* the given value
+* `near=`, plus a location string will attempt to convert the string into a lat/long and sort results by distance from that, unless...
+* `lat=` and `long=` are explicitly provided, then they will be used directly instead
+
+* `accessibility[]=`... will provide services that match only *all* of the supplied values
+* `days[]=`... will provide services that match *any* of the supplied days
+* `evening=true` will restrict results to those happening at evenings and weekends only

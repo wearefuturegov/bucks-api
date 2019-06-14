@@ -1,9 +1,11 @@
 const express = require('express')
 const next = require('next')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
 const services = require('./controllers/services')
 const snippets = require('./controllers/snippets')
+const geocode = require('./controllers/geocode')
 
 require('dotenv').config()
 
@@ -29,6 +31,9 @@ app
       mongoose: mongoose,
     }))
 
+    server.use(bodyParser.urlencoded({extended: false}))
+
+    server.post("/api/geocode", geocode)
     server.get("/api/services", services.list)
     server.get("/api/services/:id", services.getServiceById)
     server.get("/api/snippets", snippets.list)
