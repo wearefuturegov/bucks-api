@@ -1,11 +1,11 @@
 @import '../vars';
 
 .is-page-useful{
-    border-bottom: 4px solid $bright;
+    border-bottom: 4px solid $shadow;
 }
 
 .is-page-useful__panel{
-    background: $bright;
+    background: $shadow;
     padding: 10px 15px;
     display: flex;
     flex-direction: row;
