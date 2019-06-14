@@ -17,12 +17,22 @@ module.exports = {
             query.ageGroups = req.query.age
         }
 
+        query.geo = { 
+            $near: {
+                $geometry: {
+                    type: "Point" ,
+                    coordinates: [ 0 , 0 ]
+                }
+            }
+        }
+
         let perPage = 10
 
         Service.find(query, "name")
             .skip((req.query.page - 1) * perPage)
             .limit(perPage)
             .exec((err, services)=>{
+                if(err) console.log(err)
                 res.json(services)
             })
     },

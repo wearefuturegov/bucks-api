@@ -21,6 +21,8 @@ const Service = new mongoose.Schema({
     latitude: Number,
     longitude: Number,
 
+    geo: Object,
+
     daytime: Boolean,
     frequency: String,
     days: Array,
