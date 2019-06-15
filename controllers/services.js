@@ -28,7 +28,7 @@ module.exports = {
 
         let perPage = 10
 
-        Service.find(query, "name")
+        Service.find(query)
             .skip((req.query.page - 1) * perPage)
             .limit(perPage)
             .exec((err, services)=>{
