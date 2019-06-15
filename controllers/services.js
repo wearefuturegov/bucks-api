@@ -17,11 +17,14 @@ module.exports = {
             query.ageGroups = req.query.age
         }
 
-        query.geo = { 
-            $near: {
-                $geometry: {
-                    type: "Point" ,
-                    coordinates: [ 0 , 0 ]
+        if(req.query.lat && req.query.long){
+            console.log(req.query)
+            query.geo = { 
+                $nearSphere: {
+                    $geometry: {
+                        type: "Point" ,
+                        coordinates: [ parseFloat(req.query.lat) , parseFloat(req.query.long) ]
+                    }
                 }
             }
         }
