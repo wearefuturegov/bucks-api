@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 
 const Service = new mongoose.Schema({
-    assetId: Number,
+    assetId: {
+        type: Number,
+        required: [true, "All services need a unique asset ID"]
+    },
 
     name: String,
     parentOrganisation: String,

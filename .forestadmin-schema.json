@@ -87,12 +87,16 @@
       "integration": null,
       "isFilterable": true,
       "isReadOnly": false,
-      "isRequired": false,
+      "isRequired": true,
       "isSortable": true,
       "isVirtual": false,
       "reference": null,
       "inverseOf": null,
-      "validations": []
+      "validations": [{
+        "message": null,
+        "type": "is present",
+        "value": null
+      }]
     }, {
       "field": "assignedTo",
       "type": "String",
