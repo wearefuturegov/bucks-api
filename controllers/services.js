@@ -40,9 +40,12 @@ module.exports = {
             })
     },
 
-    getServiceById: (req, res)=>{
-        Service.findOne({assetId: req.params.id}, (err, service)=>{
-          res.json(service)
-        })
+    getServiceById: async (req, res)=>{
+        let service = await Service.findOne({
+            assetId: req.params.id
+          }, (err, service)=>{
+              if(err) console.log(err)
+              res.json(service)
+          })
     }
 } 

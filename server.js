@@ -14,6 +14,7 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
 
+mongoose.set('debug', true)
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, (err)=>{
   if(err) return console.log(err)
   console.log("> DB connection opened 🎉")
