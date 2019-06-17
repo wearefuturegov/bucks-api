@@ -2,11 +2,13 @@ const express = require('express')
 const Snippet = require('../models/Snippet')
 
 module.exports = {
-    list: (req, res)=>{
-        Snippet.find((err, snippets)=>{
-            if (err) return next(err);
-            if (snippets === null) return next(new Error("ZERO_RESULTS"))
+    list: async (req, res, next)=>{
+        try{
+            const snippets = await Snippet.find().lean()
+            if (snippets.length === 0) return next(new Error("ZERO_RESULTS"))
             res.json(snippets)
-        })
+        } catch(err){
+            return next(err)
+        }
     }
 } 
