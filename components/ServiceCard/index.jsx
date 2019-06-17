@@ -23,7 +23,7 @@ const ServiceCard = ({
                 <h3 className="service-card__title">{title}</h3>
             </a>
         </Link>
-        <p className="service-card__description">{truncate(description, 15)}</p>
+        {description && <p className="service-card__description">{truncate(description, 15)}</p>}
         <div className="service-card__footer">
             {/* <SaveForLater/> */}
             <p className="service-card__distance"><em>Less than a mile away</em></p>
