@@ -34,7 +34,43 @@ class ServiceResults extends React.Component{
                         checked: false
                     }
                 ],
-                keywords: [],
+                keywords: [
+                    {
+                        label: "Caring for someone",
+                        value: "carers",
+                        checked: false
+                    },
+                    {
+                        label: "Money matters",
+                        value: "money",
+                        checked: false
+                    },
+                    {
+                        label: "Housework",
+                        value: "housework",
+                        checked: false
+                    },
+                    {
+                        label: "Hygiene and continence",
+                        value: "hygiene",
+                        checked: false
+                    },
+                    {
+                        label: "Getting out and about",
+                        value: "transport",
+                        checked: false
+                    },
+                    {
+                        label: "Equipment and gadgets",
+                        value: "equipment",
+                        checked: false
+                    },
+                    {
+                        label: "Meals",
+                        value: "meals",
+                        checked: false
+                    }
+                ],
                 ages: [],
                 near: false,
                 lat: false,
@@ -47,15 +83,16 @@ class ServiceResults extends React.Component{
     componentDidMount(){
         // Can this be made reusable/iterable?
         if(this.props.query.category){
-            let newCategories = this.state.filters.category.map((cat, i)=>{
+            let newCategories = this.state.filters.category.map((el, i)=>{
                 return {
-                    label: cat.label,
-                    value: cat.value,
-                    checked: this.props.query.category.includes(cat.value)
+                    label: el.label,
+                    value: el.value,
+                    checked: this.props.query.category.includes(el.value)
                 }
             })
             this.setState({
                 filters: {
+                    // ...this.state.filters,
                     category: newCategories
                 }
             })
@@ -69,6 +106,7 @@ class ServiceResults extends React.Component{
             let {value, checked, name} = e.target
             this.setState(prevState => ({
                 filters: {
+                    ...this.state.filters,
                     [name]: prevState.filters[name].map(
                         el => el.value === value? { ...el, checked: checked }: el
                       )
@@ -90,10 +128,16 @@ class ServiceResults extends React.Component{
             applyChanges()
         }
 
+        const activeFilter = (name) => {
+            return this.state.filters[name].filter((el)=>{
+                return el.checked
+            }).length > 0
+        }
+
         const applyChanges = () => {
             let newQuery = {}
-            newQuery.category = this.state.filters.category.map((cat, i)=>{
-                if(cat.checked) return cat.value
+            newQuery.category = this.state.filters.category.map((el, i)=>{
+                if(el.checked) return el.value
             })
             Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         }
@@ -111,7 +155,19 @@ class ServiceResults extends React.Component{
                             handleChange={handleChange}
                             applyChanges={applyChanges}
                             showAll={showAll}
+                            active={activeFilter("category")}
                             />
+
+                        <Filter
+                            title="Kinds of support"
+                            name="keywords"
+                            options={this.state.filters.keywords}
+                            handleChange={handleChange}
+                            applyChanges={applyChanges}
+                            showAll={showAll}
+                            // active={activeFilter("keywords")}
+                            />
+
                     </div>
                     
                     <ol className="service-results__list">

@@ -5,9 +5,9 @@ import "@reach/dialog/styles.css"
 import './style.scss'
 import CheckboxItem from './CheckboxItem'
 
-const Filter = ({title, name, options, handleChange, applyChanges, showAll}) => {
+const Filter = ({title, name, options, handleChange, applyChanges, showAll, active}) => {
 
-    const [dialogIsOpen, showDialog] = useState(true)
+    const [dialogIsOpen, showDialog] = useState(false)
 
     const applyAndDismiss = () => {
         showDialog(false)
@@ -21,23 +21,23 @@ const Filter = ({title, name, options, handleChange, applyChanges, showAll}) => 
 
     return (
         <>
-            <button className="filter-button" onClick={() => {showDialog(true)}}>Your interests</button>
+            <button className={(active)? "filter-button filter-button--active": "filter-button"} onClick={() => {showDialog(true)}}>{title}</button>
             <Dialog
                 className="filter-dialog"
                 isOpen={dialogIsOpen}
                 onDismiss={applyAndDismiss}
                 >
                     <main className="filter-dialog__body">
-                        <h2 className="filter-dialog__title">Your interests</h2>
+                        <h2 className="filter-dialog__title">{title}</h2>
                         {options.map((option, i)=>
                             <CheckboxItem 
                                 label={option.label}
-                                name="category"
+                                name={name}
                                 value={option.value}
                                 checked={option.checked}
                                 handleChange={handleChange}
                                 key={i}
-                                id={`category-${i}`}
+                                id={`${name}-${i}`}
                                 />
                         )}
                     </main>

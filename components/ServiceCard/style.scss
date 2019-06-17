@@ -1,5 +1,14 @@
 @import '../vars';
 
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
 .service-card{
     margin-bottom: 20px;
     background: $white;
