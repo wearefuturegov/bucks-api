@@ -11,33 +11,7 @@ class Recommendations extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            category: [
-                {
-                    label: "Active",
-                    value: "active",
-                    checked: false
-                },
-                {
-                    label: "Learning",
-                    value: "learning",
-                    checked: false
-                },
-                {
-                    label: "Cultural",
-                    value: "cultural",
-                    checked: false
-                },
-                {
-                    label: "Social",
-                    value: "social",
-                    checked: false
-                },
-                {
-                    label: "Support",
-                    value: "support",
-                    checked: false
-                }
-            ]
+            category: []
         }
     }
 
@@ -52,32 +26,18 @@ class Recommendations extends React.Component{
     }
 
     componentDidMount(){
-
-
-        if(this.props.query.category){
-            let newcats = this.state.category.map((cat, i)=>{
-
-                return {
-                    label: cat.label,
-                    value: cat.value,
-                    checked: this.props.query.category.includes(cat.value)
-                }
-
-                
-            })
-
-            console.log(newcats)
-        }
-
-
-
+        this.setState({
+            category: this.state.category.concat(this.props.query.category)
+        })
     }
 
-
     render(){
-
-
         let {services, snippets } = this.props
+
+        const changeSelection = (e) => {
+            // NO IDEA
+            // LITERALLY NONE
+        } 
 
         return(
             <Layout withHeader>
@@ -93,7 +53,36 @@ class Recommendations extends React.Component{
                 ]}
                 title="Your recommendations"
                 />
+
+                <Filter 
+                    currentSelection={this.state.category}
+                    changeSelection={changeSelection}
+                    options={[
+                        {
+                            label: "Active",
+                            value: "active"
+                        },
+                        {
+                            label: "Learning",
+                            value: "learning"
+                        },
+                        {
+                            label: "Cultural",
+                            value: "cultural"
+                        },
+                        {
+                            label: "Social",
+                            value: "social"
+                        },
+                        {
+                            label: "Support",
+                            value: "support"
+                        }
+                    ]}
+                    />
+
                 {snippets && <AdviceSnippetGrid snippets={snippets}/>}
+                {services && <ServiceResults services={services}/>}
 
                 <CentredText/>
         </Layout>
