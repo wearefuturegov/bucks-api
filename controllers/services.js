@@ -2,7 +2,7 @@ const express = require('express')
 const Service = require('../models/Service')
 
 module.exports = {
-    list: (req, res)=>{
+    list: (req, res, next)=>{
         let query = {}
         
         if(req.query.category){
@@ -35,17 +35,25 @@ module.exports = {
             .skip((req.query.page - 1) * perPage)
             .limit(perPage)
             .exec((err, services)=>{
-                if(err) console.log(err)
-                res.json(services)
+                if (err) return next(err)
+                if (services.length === 0) return next(new Error("ZERO_RESULTS"))
+                res.json({
+                    status: "OK",
+                    services: services
+                })
             })
     },
 
-    getServiceById: async (req, res)=>{
-        let service = await Service.findOne({
+    getServiceById: (req, res, next)=>{
+        Service.findOne({
             assetId: req.params.id
-          }, (err, service)=>{
-              if(err) console.log(err)
-              res.json(service)
-          })
+        }, (err, service)=>{
+            if (err) return next(err)
+            if (!service) return next(new Error("ZERO_RESULTS"))
+            res.json({
+                status: "OK",
+                service: service
+            })
+        })
     }
 } 

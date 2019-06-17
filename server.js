@@ -2,10 +2,7 @@ const express = require('express')
 const next = require('next')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-
-const services = require('./controllers/services')
-const snippets = require('./controllers/snippets')
-const geocode = require('./controllers/geocode')
+const apiRouter = require('./routes/api')
 
 require('dotenv').config()
 
@@ -14,7 +11,6 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
 
-mongoose.set('debug', true)
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, (err)=>{
   if(err) return console.log(err)
   console.log("> DB connection opened 🎉")
@@ -34,10 +30,8 @@ app
 
     server.use(bodyParser.urlencoded({extended: false}))
 
-    server.post("/api/geocode", geocode)
-    server.get("/api/services", services.list)
-    server.get("/api/services/:id", services.getServiceById)
-    server.get("/api/snippets", snippets.list)
+    // API routes
+    server.use("/api", apiRouter)
 
     server.get('*', (req, res) => {
       return handle(req, res)
