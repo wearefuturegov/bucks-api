@@ -12,6 +12,7 @@
     position: relative;
     color: $darkText;
     margin-right: 20px;
+    padding: 10px 0px;
     &:after{
         content: "";
         height: 12px;
@@ -32,7 +33,7 @@
     z-index: 5;
     border-radius: 10px;
     padding: 0px;
-    overflow: hidden;
+    // overflow: hidden;
     box-shadow: 0px 2px 6px transparentize($darkText, 0.8);
 }
 
@@ -45,14 +46,34 @@
 
 .filter-dialog__footer{
     background-color: $shadow;
-    padding: 20px;
-    @media screen and (min-width: $tablet){
-        padding: 20px 30px;
-    }
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .filter-dialog__title{
     margin-bottom: 20px;
+}
+
+.filter-dialog__action{
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1em;
+    color: $darkText;
+    padding: 20px;
+    border: none;
+    border-bottom-right-radius: 10px;
+    background: none;
+    @media screen and (min-width: $tablet){
+        padding: 20px 30px;
+    }
+    &.filter-dialog__action--secondary{
+        font-weight: normal;
+        color: $lightText;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 10px;
+    }
 }
 
 .checkbox-item{

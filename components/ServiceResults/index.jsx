@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import './style.scss'
 import ServiceCard from '../ServiceCard'
 import Filter from '../Filter'
+import queryString from 'query-string'
+import Router from 'next/router'
 
 class ServiceResults extends React.Component{
     constructor(props){
@@ -43,6 +45,7 @@ class ServiceResults extends React.Component{
     }
 
     componentDidMount(){
+        // Can this be made reusable/iterable?
         if(this.props.query.category){
             let newCategories = this.state.filters.category.map((cat, i)=>{
                 return {
@@ -62,7 +65,38 @@ class ServiceResults extends React.Component{
     render(){
         let {services, location} = this.props
 
-        console.log(this.state)
+        const handleChange = (e) => {
+            let {value, checked, name} = e.target
+            this.setState(prevState => ({
+                filters: {
+                    [name]: prevState.filters[name].map(
+                        el => el.value === value? { ...el, checked: checked }: el
+                      )
+                }
+            }))
+        }
+
+        const showAll = async (name) => {
+            await this.setState(prevState => ({
+                filters: {
+                    [name]: prevState.filters[name].map((el) => {
+                        return {
+                            ...el,
+                            checked: false
+                        }
+                    })
+                },
+            }))
+            applyChanges()
+        }
+
+        const applyChanges = () => {
+            let newQuery = {}
+            newQuery.category = this.state.filters.category.map((cat, i)=>{
+                if(cat.checked) return cat.value
+            })
+            Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+        }
 
         return(
             <section className="service-results">
@@ -74,6 +108,9 @@ class ServiceResults extends React.Component{
                             title="Your interests"
                             name="category"
                             options={this.state.filters.category}
+                            handleChange={handleChange}
+                            applyChanges={applyChanges}
+                            showAll={showAll}
                             />
                     </div>
                     
