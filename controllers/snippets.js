@@ -5,8 +5,10 @@ module.exports = {
     list: async (req, res, next)=>{
         try{
             const snippets = await Snippet.find().lean()
-            if (snippets.length === 0) return next(new Error("ZERO_RESULTS"))
-            res.json(snippets)
+            res.json({
+                status: "OK",
+                results: snippets
+            })
         } catch(err){
             return next(err)
         }

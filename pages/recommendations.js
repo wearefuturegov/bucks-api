@@ -19,7 +19,7 @@ const Recommendations = ({snippets, services}) =>
             ]}
             title="Your recommendations"
             />
-            <AdviceSnippetGrid snippets={snippets}/>
+            {snippets && <AdviceSnippetGrid snippets={snippets}/>}
             <ServiceResults services={services}/>
             <CentredText/>
     </Layout>
@@ -31,8 +31,8 @@ Recommendations.getInitialProps = async function({req}) {
     const snippets = await res1.json();
     const services = await res2.json();
     return {
-        snippets: snippets,
-        services: services
+        snippets: snippets.results,
+        services: services.results
     }
 }
 

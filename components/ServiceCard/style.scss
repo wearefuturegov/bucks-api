@@ -2,26 +2,55 @@
 
 .service-card{
     margin-bottom: 20px;
+    background: $white;
     padding: 25px;
+    position: relative;
+    box-shadow: 0 4px 0 $shadow;
+    border-top: 10px solid;
     @media screen and (min-width: $tablet){
         margin-bottom: 30px
     }
-
-}
-
-.card__link{
-    display: block;
-    height: 100%;
-    text-decoration: none;
-    background: $white;
-    box-shadow: 0px 4px 0px $shadow;
+    &:focus-within{
+        outline: none;
+        box-shadow: 0 0 0 3px $focus;
+    }
     &:active{
         transform: translateY(4px);
         background: $activeCard;
     }
+
+    &.service-card--active{
+        border-color: $active;
+    }
+    &.service-card--social{
+        border-color: $social;
+    }
+    &.service-card--learning{
+        border-color: $learning;
+    }
+    &.service-card--support{
+        border-color: $support;
+    }
+    &.service-card--cultural{
+        border-color: $cultural;
+    }
+}
+
+.service-card__link{
+    text-decoration: none;
+    display: block;
+    &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
     &:focus{
         outline: none;
-        box-shadow: 0 0 0 3px $focus;
+        box-shadow: none;
     }
 }
 
@@ -33,5 +62,14 @@
 
 .service-card__description{
     font-size: 0.95em;
+    color: $lightText;
+}
+
+.service-card__footer{
+    padding-top: 20px;
+}
+
+.service-card__distance{
+    font-size: 0.9em;
     color: $lightText;
 }

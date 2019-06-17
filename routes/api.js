@@ -12,10 +12,10 @@ router.get("/snippets", snippets.list)
 // Error handler
 router.use((err, req, res, next)=>{
     console.error(err)
-    if(err.message === "ZERO_RESULTS"){
+    if(err.message === "NOT_FOUND"){
         res.status(404).json({
-            status: "NO_RESULTS",
-            message: "No results matched your query"
+            status: "NOT_FOUND",
+            message: "No result matched your query"
         })
     } else if (err.codeName === "BadValue" || err.name === "CastError") {
         res.status(500).json({

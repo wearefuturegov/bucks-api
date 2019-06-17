@@ -7,12 +7,13 @@ const ServiceResults = ({services}) =>
     <section className="service-results">
         <div className="container">
             <h2 className="section-title">Services near you</h2>
-            <ol>
+            <ol className="service-results__list">
                 {services.map((service, i)=>
                     <ServiceCard
                         key={i}
                         assetId={service.assetId}
-                        title={service.name}
+                        category={service.category}
+                        title={service.name || service.parentOrganisation}
                         description={service.description}
                         />
                 )}

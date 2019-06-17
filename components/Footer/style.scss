@@ -19,9 +19,15 @@
 .site-footer__menu-item{
     display: inline-block;
     margin-right: 20px;
-    font-size: 0.95em;
+    font-size: 0.9em;
+    @media screen and (min-width: $tablet){
+        font-size: 0.95em;
+    }
 }
 
 .site-footer__text{
-    font-size: 0.95em;
+    font-size: 0.9em;
+    @media screen and (min-width: $tablet){
+        font-size: 0.95em;
+    }
 }

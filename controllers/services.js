@@ -33,13 +33,13 @@ module.exports = {
 
         try{
             let services = await Service.find(query)
-                .lean()
+                // .lean()
                 .limit(perPage)
                 .skip((req.query.page - 1) * perPage)
-            if (services.length === 0) return next(new Error("ZERO_RESULTS"))
+            // if (services.length === 0) return next(new Error("ZERO_RESULTS"))
             res.json({
                 status: "OK",
-                services: services
+                results: services
             })
         } catch(err){
             return next(err)
@@ -51,10 +51,10 @@ module.exports = {
             let service = await Service.findOne({
                 assetId: req.params.id
             }).lean()
-            if (!service) return next(new Error("ZERO_RESULTS"))
+            if (!service) return next(new Error("NOT_FOUND"))
             res.json({
                 status: "OK",
-                service: service
+                result: service
             })
         } catch(err){
             return next(err)
