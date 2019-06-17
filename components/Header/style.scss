@@ -2,8 +2,8 @@
 
 .site-header{
     padding: 20px 0px;
+    position: relative;
     &.site-header--inverted{
-        position: relative;
         z-index: 2;
         .site-menu__link{
             color: $white;

@@ -8,16 +8,16 @@ const CheckboxItem = ({
     checked,
     handleChange
 }) =>
-    <>
-        <input type="checkbox" 
+    <div className="checkbox-item">
+        <input className="checkbox-item__input visually-hidden" type="checkbox" 
             name={name} 
             value={value} 
             id={id} 
-            checked={checked} 
+            defaultChecked={checked} 
             onChange={handleChange}
             />
-        <label htmlFor={id}>{label}</label>
+        <label className="checkbox-item__label" htmlFor={id}>{label}</label>
         <br/>
-    </>
+    </div>
 
 export default CheckboxItem

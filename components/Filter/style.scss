@@ -1,5 +1,9 @@
 @import '../vars';
 
+[data-reach-dialog-overlay]{
+    background: transparentize($darkText, 0.15)
+}
+
 .filter-button{
     border: none;
     background: none;
@@ -24,6 +28,7 @@
 
 .filter-dialog{
     position: relative;
+    max-width: 350px;
     z-index: 5;
     border-radius: 10px;
     padding: 0px;
@@ -48,4 +53,37 @@
 
 .filter-dialog__title{
     margin-bottom: 20px;
+}
+
+.checkbox-item{
+    margin-bottom: 10px;
+    &:focus-within{
+        .checkbox-item__label:before{
+            outline: none;
+            box-shadow: 0 0 0 3px $focus;
+        }
+    }
+}
+
+.checkbox-item__input:checked + .checkbox-item__label:before{
+    background-image: url('./tick.svg');
+    background-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.checkbox-item__label{
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    &:before{
+        content: "";
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        background: $activeCard;
+        border-radius: 4px;
+        border: 2px solid $darkText;
+        margin-right: 15px;
+    }
 }
