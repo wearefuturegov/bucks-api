@@ -4,7 +4,6 @@ import fetch from 'isomorphic-unfetch'
 
 const Detail = ({service}) =>
     <Layout withHeader>
-        {console.log(service)}
         <PageHeader 
             breadcrumbs={[
                 {
@@ -15,7 +14,8 @@ const Detail = ({service}) =>
                     title: "Service detail"
                 },
             ]}
-            title={service.name}
+            title={service.name || service.parentOrganisation}
+            lede={service.description}
             />  
     </Layout>
 
@@ -23,7 +23,6 @@ Detail.getInitialProps = async ({req}) => {
     const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
     let res = await fetch(`${baseUrl}/api/services/${req.params.id}`)
     let service = await res.json()
-    console.log(service)
     return {
         service: service.result
     }
