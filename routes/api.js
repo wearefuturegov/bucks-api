@@ -24,7 +24,6 @@ router.use((err, req, res, next)=>{
         })
     } else {
         res.status(500).json({
-            err: err,
             status: "UNKNOWN_ERROR",
             message: "Your request could not be fulfilled, try again later"
         })

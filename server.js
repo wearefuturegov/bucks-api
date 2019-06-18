@@ -28,7 +28,7 @@ app
       mongoose: mongoose,
     }))
 
-    server.use(bodyParser.urlencoded({extended: false}))
+    server.use(express.json())
 
     // API routes
     server.use("/api", apiRouter)

@@ -15,24 +15,24 @@ class ServiceResults extends React.Component{
                 category: [],
                 keywords: [],
                 ages: [],
-                near: false,
-                lat: false,
-                long: false
+                near: null,
+                lat: null,
+                lng: null
             },
             map: false
         }
     }
 
     componentDidMount(){
-        let {ages, keywords, category, near, lat, long} = this.props.query
+        let {ages, keywords, category, near, lat, lng} = this.props.query
         this.setState({
             filters: {
                 ages: [].concat(ages) || [],
                 keywords: [].concat(keywords) || [],
                 category: [].concat(category) || [],
-                near: near || false,
-                lat: lat || false,
-                long: long || false
+                near: near || null,
+                lat: lat || null,
+                lng: lng || null
             }
         })
     }
@@ -93,6 +93,7 @@ class ServiceResults extends React.Component{
                                 category={service.category}
                                 title={service.name || service.parentOrganisation}
                                 description={service.description}
+                                distance={service.distance}
                                 />
                         )}
                     </ol>

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import './style.scss'
+import { SSL_OP_MSIE_SSLV2_RSA_PADDING } from 'constants';
 
 const truncate = (str, noWords) => {
     if(str.split(" ").length > noWords){
@@ -11,11 +12,19 @@ const truncate = (str, noWords) => {
     }
 }
 
+const prettyDistance = (meters)=>{
+    let miles = Math.round(meters/1609.44)
+    if(miles < 1) return "Less than one mile away"
+    if(miles === 1) return "About a mile away"
+    return `About ${miles} miles away`
+}
+
 const ServiceCard = ({
     assetId,
     category,
     title,
-    description
+    description,
+    distance
 }) => 
     <li className={`service-card service-card--${category}`}>
         <Link href={`/service/${assetId}`}>
@@ -26,7 +35,7 @@ const ServiceCard = ({
         {description && <p className="service-card__description">{truncate(description, 15)}</p>}
         <div className="service-card__footer">
             {/* <SaveForLater/> */}
-            <p className="service-card__distance"><em>Less than a mile away</em></p>
+            <p className="service-card__distance"><em>{distance && prettyDistance(distance)}</em></p>
         </div>
     </li>
 

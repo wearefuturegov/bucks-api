@@ -6,40 +6,59 @@ module.exports = {
         let query = {}
         
         if(req.query.category){
-            query.category = { $in: req.query.category }
+            query.category = { $in: [].concat(req.query.category) }
         }
 
         if(req.query.keywords){
-            query.keywords = { $elemMatch: { $in: req.query.keywords } }
+            query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
         }
 
         if(req.query.age){
             query.ageGroups = req.query.age
         }
 
-        // TODO: Refactor to use aggregations and a distance field
-        if(req.query.lat && req.query.long){
-            query.geo = { 
-                $nearSphere: {
-                    $geometry: {
-                        type: "Point" ,
-                        coordinates: [ parseFloat(req.query.lat) , parseFloat(req.query.long) ]
-                    }
-                }
-            }
-        }
-
         let perPage = 10
 
         try{
-            let services = await Service.find(query)
-                .lean()
-                .limit(perPage)
-                .skip((req.query.page - 1) * perPage)
-            res.json({
-                status: "OK",
-                results: services
-            })
+            if(req.query.lat && req.query.lng){
+                // Aggregation
+
+                let services = await Service.aggregate([
+                    {
+                        $geoNear: {
+                            spherical: true,
+                            // limit: perPage,
+                            query: query,
+                            distanceField: "distance",
+                            explain: true,
+                            near: {
+                                type: "Point" ,
+                                // REMEMBER: reverse lng and lat from usual order here
+                                coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]
+                            }
+                        }
+                    },
+                    { $sort: {distance: 1}},
+                    { $skip: (req.query.perPage > 1)? ((req.query.page - 1) * perPage) : 0},
+                    { $limit: perPage },
+                ])
+                res.json({
+                    status: "OK",
+                    results: services
+                })
+    
+            } else {
+                // Normal find query
+                let services = await Service.find(query)
+                    .lean()
+                    .limit(perPage)
+                    .skip((req.query.page - 1) * perPage)
+                res.json({
+                    status: "OK",
+                    results: services
+                })
+            }
+
         } catch(err){
             return next(err)
         }
