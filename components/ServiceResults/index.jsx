@@ -10,7 +10,7 @@ const ServiceResults = ({services, query}) =>
     <section className="service-results">
         <div className="container">
 
-            <h2 className="section-title service-results__title">{query.formattedLocation ? `Services near ${query.formattedLocation}` : "Services near you" }</h2>
+            <h2 className="section-title service-results__title">{query.formattedLocation ? `Services near ${query.formattedLocation}` : "All services" }</h2>
             
             <div className="service-results__filters">
                 <InterestsFilter query={query} />

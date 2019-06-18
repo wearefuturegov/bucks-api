@@ -9,7 +9,7 @@ import Router from 'next/router'
 const InterestsFilter = ({query}) => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [categorySelection, changeCategorySelection] = useState([].concat(query.category))
+    const [categorySelection, changeCategorySelection] = useState((query.category)? [].concat(query.category) : [])
 
     // Add and remove checked and unchecked items from array
     const handleCategoryChange = (e) => {
@@ -34,7 +34,7 @@ const InterestsFilter = ({query}) => {
         toggleDialog(false)
     }
 
-    const clearFilter = (e) =>{
+    const clearFilter = (e) => {
         if(e) e.preventDefault()
         changeCategorySelection([])
         let newQuery = {
