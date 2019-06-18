@@ -10,6 +10,8 @@
     padding: 10px 20px;
     font-weight: bold;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
     &:hover{
         filter: brightness(0.95);
         &:after{

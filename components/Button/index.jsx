@@ -4,14 +4,25 @@ import Link from 'next/link'
 import './style.scss'
 
 const Button = ({href, children, background}) =>
-    <Link href={href}>
-        <a className={`button button--${background}`}>
-            {children}
-        </a>
-    </Link>
+    <>
+        {href ? 
+            <Link href={href}>
+                <a className={`button button--${background}`}>
+                    {children}
+                </a>
+            </Link>
+        :
+            <button className={`button button--${background}`}>
+                {children}
+            </button>
+        }
+    </>
+    
+
+
 
 Button.propTypes = {
-    href: PropTypes.string.isRequired,
+    href: PropTypes.string,
     children: PropTypes.node.isRequired
 }
 

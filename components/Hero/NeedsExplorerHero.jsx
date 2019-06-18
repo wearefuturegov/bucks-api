@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import './style.scss'
-// import triangle from './triangle.svg'
+import './style.scss'
+import triangle from './triangle.svg'
 import Header from '../Header'
 
 const Hero = ({
@@ -15,7 +15,7 @@ const Hero = ({
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">{description}</p>
         </div>
-        {/* <img src={triangle} alt="" className="hero__triangle"/> */}
+        <img src={triangle} alt="" className="hero__triangle"/>
     </section>
 
 Hero.propTypes = {

@@ -19,6 +19,19 @@
             opacity: 0.075;
         }
     }
+    &.hero--needs{
+        text-align: center;
+        .hero__inner{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media screen and (min-width: $tablet){
+            &:before{
+                background-image: url('./needs-hero.jpg');
+            }
+        }
+    }
     
 }
 

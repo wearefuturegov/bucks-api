@@ -1,0 +1,42 @@
+@import '../vars';
+
+.checkbox-bubble{
+    margin: 5px;
+    width: 100%;
+    height: 60px;
+    &:focus-within{
+        .checkbox-bubble__label{
+            outline: none;
+            box-shadow: 0 0 0 3px $focus;
+        }
+    }
+    @media screen and (min-width: $tablet){
+        width: 30%;
+    }
+}
+
+.checkbox-bubble__input:checked + .checkbox-bubble__label{
+    background-color: $darkText;
+    color: $white;
+}
+
+.checkbox-bubble__label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: $shadow;
+    border-radius: 30px;
+    font-size: 1em;
+    color: $darkText;
+    padding: 0px 25px;
+    height: 100%;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    &:hover{
+        filter: brightness(0.95);
+    }
+}
