@@ -30,18 +30,33 @@
 
     &.service-card--active{
         border-color: $active;
+        .service-card__parent-org{
+            color: $active;
+        }
     }
     &.service-card--social{
         border-color: $social;
+        .service-card__parent-org{
+            color: $social;
+        }
     }
     &.service-card--learning{
         border-color: $learning;
+        .service-card__parent-org{
+            color: $learning;
+        }
     }
     &.service-card--support{
         border-color: $support;
+        .service-card__parent-org{
+            color: $support;
+        }
     }
     &.service-card--cultural{
         border-color: $cultural;
+        .service-card__parent-org{
+            color: $support;
+        }
     }
 }
 

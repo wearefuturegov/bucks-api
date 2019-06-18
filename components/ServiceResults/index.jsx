@@ -27,9 +27,9 @@ class ServiceResults extends React.Component{
         let {ages, keywords, category, near, lat, lng} = this.props.query
         this.setState({
             filters: {
-                ages: [].concat(ages) || [],
-                keywords: [].concat(keywords) || [],
-                category: [].concat(category) || [],
+                ages: ages ? [].concat(ages) : [],
+                keywords: keywords ? [].concat(keywords) : [],
+                category: category ? [].concat(category) : [],
                 near: near || null,
                 lat: lat || null,
                 lng: lng || null
@@ -82,7 +82,6 @@ class ServiceResults extends React.Component{
                             showAll={showAll}
                             />
 
-                        <button onClick={()=>{showAll('category')}}>Clear all categories</button>
                     </div>
                     
                     <ol className="service-results__list">
@@ -94,6 +93,7 @@ class ServiceResults extends React.Component{
                                 title={service.name || service.parentOrganisation}
                                 description={service.description}
                                 distance={service.distance}
+                                parentOrganisation={service.parentOrganisation}
                                 />
                         )}
                     </ol>

@@ -23,6 +23,7 @@ const ServiceCard = ({
     assetId,
     category,
     title,
+    parentOrganisation,
     description,
     distance
 }) => 
