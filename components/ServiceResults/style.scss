@@ -5,8 +5,19 @@
     padding: 40px 0px 85px 0px;
 }
 
+.service-results__title{
+    @media screen and (min-width: $tablet){
+        font-size: 2em;
+    }
+}
+
 .service-results__filters{
     margin-bottom: 15px;
+}
+
+.service-results__formatted-location{
+    font-weight: normal;
+    text-decoration: underline;
 }
 
 .service-results__list{

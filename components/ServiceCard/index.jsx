@@ -14,7 +14,7 @@ const truncate = (str, noWords) => {
 
 const prettyDistance = (meters)=>{
     let miles = Math.round(meters/1609.44)
-    if(miles < 1) return "Less than one mile away"
+    if(miles < 1) return "Less than a mile away"
     if(miles === 1) return "About a mile away"
     return `About ${miles} miles away`
 }

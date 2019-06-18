@@ -15,7 +15,7 @@ class ServiceResults extends React.Component{
                 category: [],
                 keywords: [],
                 ages: [],
-                near: null,
+                formattedLocation: null,
                 lat: null,
                 lng: null
             },
@@ -24,13 +24,15 @@ class ServiceResults extends React.Component{
     }
 
     componentDidMount(){
-        let {ages, keywords, category, near, lat, lng} = this.props.query
+        let {ages, keywords, category, formattedLocation, lat, lng} = this.props.query
+        
+            console.log(formattedLocation)
         this.setState({
             filters: {
                 ages: ages ? [].concat(ages) : [],
                 keywords: keywords ? [].concat(keywords) : [],
                 category: category ? [].concat(category) : [],
-                near: near || null,
+                formattedLocation: formattedLocation || null,
                 lat: lat || null,
                 lng: lng || null
             }
@@ -71,7 +73,8 @@ class ServiceResults extends React.Component{
         return(
             <section className="service-results">
                 <div className="container">
-                    <h2 className="section-title">Services near you</h2>
+
+                    <h2 className="section-title service-results__title">{this.state.filters.formattedLocation ? `Services near ${this.state.filters.formattedLocation}` : "Browse services" }</h2>
                     
                     <div className="service-results__filters">
 
