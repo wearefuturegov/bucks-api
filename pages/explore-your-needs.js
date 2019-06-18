@@ -12,7 +12,7 @@ const Home = () => {
 
     const getLatLong = async (e) => {
         e.preventDefault()
-        const res = await fetch('http://localhost:3000/api/geocode', {
+        const res = await fetch('/api/geocode', {
             method: 'post',    
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ location: rawLocation })
