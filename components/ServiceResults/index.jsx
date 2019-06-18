@@ -4,15 +4,17 @@ import './style.scss'
 import ServiceCard from '../ServiceCard'
 
 import InterestsFilter from '../Filter/InterestsFilter'
+import LocationFilter from '../Filter/LocationFilter'
 
 const ServiceResults = ({services, query}) => 
     <section className="service-results">
         <div className="container">
 
-            <h2 className="section-title service-results__title">{query.formattedLocation ? `Services near ${query.formattedLocation}` : "Browse services" }</h2>
+            <h2 className="section-title service-results__title">{query.formattedLocation ? `Services near ${query.formattedLocation}` : "Services near you" }</h2>
             
             <div className="service-results__filters">
                 <InterestsFilter query={query} />
+                <LocationFilter query={query}/>
             </div>
 
             <ol className="service-results__list">
