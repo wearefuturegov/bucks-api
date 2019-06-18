@@ -4,17 +4,18 @@ const CheckboxItem = ({
     label,
     value,
     name,
-    id,
-    selectionArray
+    selectionState,
+    onChange
 }) =>
     <div className="checkbox-item">
         <input className="checkbox-item__input visually-hidden" type="checkbox" 
             name={name} 
             value={value} 
-            id={id} 
-            defaultChecked={selectionArray.includes(value)} 
+            id={`${name}-${value}`} 
+            checked={selectionState.includes(value)}
+            onChange={onChange}
             />
-        <label className="checkbox-item__label" htmlFor={id}>{label}</label>
+        <label className="checkbox-item__label" htmlFor={`${name}-${value}`}>{label}</label>
         <br/>
     </div>
 

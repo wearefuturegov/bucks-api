@@ -1,36 +1,54 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { Dialog } from "@reach/dialog"
 import "@reach/dialog/styles.css"
 import './style.scss'
 import CheckboxItem from './CheckboxItem'
+import queryString from 'query-string'
+import Router from 'next/router'
 
-const InterestsFilter = ({categoryFilter, keywordsFilter, updateFilters, showAll}) => {
+const InterestsFilter = ({query}) => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
+    const [categorySelection, changeCategorySelection] = useState([].concat(query.category))
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const data = new FormData(e.target);
-        updateFilters({
-            category: data.getAll('category'),
-            keywords: data.getAll('keywords')
-        })
+    // Add and remove checked and unchecked items from array
+    const handleCategoryChange = (e) => {
+        let {checked, value} = e.target
+        if(checked){
+            changeCategorySelection([...categorySelection, value]  )
+        } else {
+            changeCategorySelection(categorySelection.filter(selection=>{
+                return selection != value
+            }))
+        }
+    }
+
+    // Create new query from state and push new route
+    const updateResults = (e) => {
+        if(e) e.preventDefault()
+        let newQuery = {
+            ...query,
+            category: categorySelection
+        }
+        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         toggleDialog(false)
     }
 
-    const showAllAndDismiss = async () => {
-        await showAll("category")
-        await showAll("keywords")
+    const clearFilter = (e) =>{
+        if(e) e.preventDefault()
+        changeCategorySelection([])
+        let newQuery = {
+            ...query,
+            category: []
+        }
+        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         toggleDialog(false)
     }
 
     return (
         <>
-
-        {console.log(categoryFilter)}
-
             <button 
-                className={(categoryFilter.length > 0 || keywordsFilter.length > 0)? "filter-button filter-button--active" : "filter-button"}
+                className={(categorySelection.length > 0)? "filter-button filter-button--active" : "filter-button"}
                 onClick={() => {toggleDialog(true)}}
                 >
                 Your interests
@@ -39,10 +57,10 @@ const InterestsFilter = ({categoryFilter, keywordsFilter, updateFilters, showAll
             <Dialog
                 className="filter-dialog"
                 isOpen={dialogIsOpen}
-                onDismiss={()=>{toggleDialog(false)}}
+                onDismiss={updateResults}
                 >
 
-                <form method="get" action="/recommendations" onSubmit={(e)=>{handleSubmit(e)}}>
+                <form method="get" action="/recommendations" onSubmit={updateResults}>
                     <main className="filter-dialog__body">
                         <h2 className="filter-dialog__title">Your interests</h2>
 
@@ -51,80 +69,47 @@ const InterestsFilter = ({categoryFilter, keywordsFilter, updateFilters, showAll
                                 label="Support"
                                 name="category"
                                 value="support"
-                                selectionArray={categoryFilter}
-                                id={`category-1`}
+                                selectionState={categorySelection}
+                                onChange={handleCategoryChange}
                                 />
 
                             <CheckboxItem 
                                 label="Social"
                                 name="category"
                                 value="social"
-                                selectionArray={categoryFilter}
-                                id={`category-2`}
+                                selectionState={categorySelection}
+                                onChange={handleCategoryChange}
                                 />
 
                             <CheckboxItem 
                                 label="Learning new things"
                                 name="category"
                                 value="learning"
-                                selectionArray={categoryFilter}
-                                id={`category-3`}
+                                selectionState={categorySelection}
+                                onChange={handleCategoryChange}
                                 />
 
                             <CheckboxItem 
                                 label="Staying active"
                                 name="category"
                                 value="active"
-                                selectionArray={categoryFilter}
-                                id={`category-4`}
+                                selectionState={categorySelection}
+                                onChange={handleCategoryChange}
                                 />
 
                             <CheckboxItem 
                                 label="Cultural"
                                 name="category"
                                 value="cultural"
-                                selectionArray={categoryFilter}
-                                id={`category-5`}
+                                selectionState={categorySelection}
+                                onChange={handleCategoryChange}
                                 />
                         </div>
-                        <hr/>
-
-                            <CheckboxItem 
-                                label="Money matters"
-                                name="keywords"
-                                value="money"
-                                selectionArray={keywordsFilter}
-                                id={`keyword-1`}
-                                />
-
-                            <CheckboxItem 
-                                label="Getting out and about"
-                                name="keywords"
-                                value="transport"
-                                selectionArray={keywordsFilter}
-                                id={`keyword-2`}
-                                />
-
-                            <CheckboxItem 
-                                label="Meals and nutrition"
-                                name="keywords"
-                                value="meals"
-                                selectionArray={keywordsFilter}
-                                id={`keyword-3`}
-                                />
-                            
-                            <CheckboxItem 
-                                label="Equipment and gadgets"
-                                name="keywords"
-                                value="equipment"
-                                selectionArray={keywordsFilter}
-                                id={`keyword-4`}
-                                />
 
                     </main>
 
                     <footer className="filter-dialog__footer">
-                        <button className="filter-dialog__action filter-dialog__action--secondary" onClick={showAllAndDismiss}>Show all</button>
+                        <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Show all</button>
                         
                         <button className="filter-dialog__action" 
                             type="submit" 
