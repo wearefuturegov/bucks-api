@@ -18,16 +18,16 @@ module.exports = {
         }
 
         // TODO: Refactor to use aggregations and a distance field
-        if(req.query.lat && req.query.long){
-            query.geo = { 
-                $nearSphere: {
-                    $geometry: {
-                        type: "Point" ,
-                        coordinates: [ parseFloat(req.query.lat) , parseFloat(req.query.long) ]
-                    }
-                }
-            }
-        }
+        // if(req.query.lat && req.query.long){
+        //     query.geo = { 
+        //         $nearSphere: {
+        //             $geometry: {
+        //                 type: "Point" ,
+        //                 coordinates: [ parseFloat(req.query.lat) , parseFloat(req.query.long) ]
+        //             }
+        //         }
+        //     }
+        // }
 
         let perPage = 10
 
