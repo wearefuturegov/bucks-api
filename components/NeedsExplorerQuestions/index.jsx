@@ -38,9 +38,11 @@ const NeedsExplorerQuestions = () => {
         let geocoded = await geocode(rawLocation)
         let query = {
             category: categorySelection,
-            ...geocoded
+            location: rawLocation,
+            lat: geocoded.lat,
+            lng: geocoded.lng
+            // ...geocoded
         }
-        console.log(query)
         Router.replace(`/recommendations?${queryString.stringify(query)}`).then(() => window.scrollTo(0, 0))
     }
 

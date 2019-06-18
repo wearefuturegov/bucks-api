@@ -10,7 +10,7 @@ const LocationFilter = ({query}) => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
 
-    const [location, changeLocation] = useState(query.formattedLocation || "")
+    const [location, changeLocation] = useState(query.location || "")
 
     const updateResults = async (e) => {
         if(e) e.preventDefault()
@@ -18,7 +18,9 @@ const LocationFilter = ({query}) => {
             let newLocation = await geocode(location)
             let newQuery = {
                 ...query,
-                ...newLocation
+                location: location,
+                lat: newLocation.lat,
+                lng: newLocation.lng
             }
             Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         }
@@ -30,7 +32,7 @@ const LocationFilter = ({query}) => {
         changeLocation("")
         let newQuery = {
             ...query,
-            formattedLocation: null,
+            location: null,
             lat: null,
             lng: null
         }
@@ -44,7 +46,7 @@ const LocationFilter = ({query}) => {
                 className={(location)? "filter-button filter-button--active" : "filter-button"}
                 onClick={() => {toggleDialog(true)}}
                 >
-                Near you
+                Location
             </button>
 
             <Dialog
