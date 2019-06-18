@@ -61,7 +61,7 @@ const InterestsFilter = ({query}) => {
                 >
 
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
-                    <main className="filter-dialog__body">
+                    <div className="filter-dialog__body">
                         <h2 className="filter-dialog__title">Your interests</h2>
 
                         <div className="filter-dialog__options">
@@ -106,7 +106,7 @@ const InterestsFilter = ({query}) => {
                                 />
                         </div>
 
-                    </main>
+                    </div>
 
                     <footer className="filter-dialog__footer">
                         <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Show all</button>
