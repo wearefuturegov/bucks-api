@@ -40,3 +40,10 @@ a:focus, input:focus, button:focus{
         margin-bottom: 25px;
     }
 }
+
+hr{
+    border: none;
+    border-top: 2px solid $shadow;
+    margin: 25px 0px;
+    display: block;
+}

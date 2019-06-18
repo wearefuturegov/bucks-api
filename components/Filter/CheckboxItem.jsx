@@ -5,16 +5,14 @@ const CheckboxItem = ({
     value,
     name,
     id,
-    checked,
-    handleChange
+    selectionArray
 }) =>
     <div className="checkbox-item">
         <input className="checkbox-item__input visually-hidden" type="checkbox" 
             name={name} 
             value={value} 
             id={id} 
-            defaultChecked={checked} 
-            onChange={handleChange}
+            defaultChecked={selectionArray.includes(value)} 
             />
         <label className="checkbox-item__label" htmlFor={id}>{label}</label>
         <br/>

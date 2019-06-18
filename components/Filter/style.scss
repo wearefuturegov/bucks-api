@@ -32,7 +32,7 @@
 
 .filter-dialog{
     position: relative;
-    max-width: 350px;
+    max-width: 450px;
     z-index: 5;
     border-radius: 10px;
     padding: 0px;
@@ -44,6 +44,21 @@
     padding: 20px;
     @media screen and (min-width: $tablet){
         padding: 30px;
+    }
+}
+
+@supports (display: grid){
+    .filter-dialog__options{
+        @media screen and (min-width: $tablet){
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 20px;
+            grid-row-gap: 10px;
+            .checkbox-item{
+                margin-bottom: 0px;
+            }
+
+        }
     }
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import ServiceCard from '../ServiceCard'
-import Filter from '../Filter'
+import InterestsFilter from '../Filter'
 import queryString from 'query-string'
 import Router from 'next/router'
 
@@ -11,66 +11,9 @@ class ServiceResults extends React.Component{
         super(props)
         this.state = {
             filters: {
-                category: [
-                    {
-                        label: "Active",
-                        value: "active",
-                        checked: false
-                    },{
-                        label: "Support",
-                        value: "support",
-                        checked: false
-                    },{
-                        label: "Cultural",
-                        value: "cultural",
-                        checked: false
-                    },{
-                        label: "Learning",
-                        value: "learning",
-                        checked: false
-                    },{
-                        label: "Social",
-                        value: "social",
-                        checked: false
-                    }
-                ],
-                keywords: [
-                    {
-                        label: "Caring for someone",
-                        value: "carers",
-                        checked: false
-                    },
-                    {
-                        label: "Money matters",
-                        value: "money",
-                        checked: false
-                    },
-                    {
-                        label: "Housework",
-                        value: "housework",
-                        checked: false
-                    },
-                    {
-                        label: "Hygiene and continence",
-                        value: "hygiene",
-                        checked: false
-                    },
-                    {
-                        label: "Getting out and about",
-                        value: "transport",
-                        checked: false
-                    },
-                    {
-                        label: "Equipment and gadgets",
-                        value: "equipment",
-                        checked: false
-                    },
-                    {
-                        label: "Meals",
-                        value: "meals",
-                        checked: false
-                    }
-                ],
+                // Are explicit keys necessary?
+                category: [],
+                keywords: [],
                 ages: [],
                 near: false,
                 lat: false,
@@ -81,93 +24,65 @@ class ServiceResults extends React.Component{
     }
 
     componentDidMount(){
-        // Can this be made reusable/iterable?
-        if(this.props.query.category){
-            let newCategories = this.state.filters.category.map((el, i)=>{
-                return {
-                    label: el.label,
-                    value: el.value,
-                    checked: this.props.query.category.includes(el.value)
-                }
-            })
-            this.setState({
-                filters: {
-                    // ...this.state.filters,
-                    category: newCategories
-                }
-            })
-        }
+        let {ages, keywords, category, near, lat, long} = this.props.query
+        this.setState({
+            filters: {
+                ages: [].concat(ages) || [],
+                keywords: [].concat(keywords) || [],
+                category: [].concat(category) || [],
+                near: near || false,
+                lat: lat || false,
+                long: long || false
+            }
+        })
     }
 
     render(){
-        let {services, location} = this.props
+        let {services} = this.props
 
-        const handleChange = (e) => {
-            let {value, checked, name} = e.target
-            this.setState(prevState => ({
+        // Take a new filter object and do stuff
+        const updateFilters = async (newFilters) =>{
+            await this.setState({
+                ...this.state,
                 filters: {
                     ...this.state.filters,
-                    [name]: prevState.filters[name].map(
-                        el => el.value === value? { ...el, checked: checked }: el
-                      )
+                    ...newFilters
                 }
-            }))
+            })
+            applyChanges()
         }
 
+        // Clear out a named filter
         const showAll = async (name) => {
             await this.setState(prevState => ({
                 filters: {
-                    [name]: prevState.filters[name].map((el) => {
-                        return {
-                            ...el,
-                            checked: false
-                        }
-                    })
+                    ...this.state.filters,
+                    [name]: []
                 },
             }))
             applyChanges()
         }
 
-        const activeFilter = (name) => {
-            return this.state.filters[name].filter((el)=>{
-                return el.checked
-            }).length > 0
-        }
-
+        // Set new querystring from state and fetch new results
         const applyChanges = () => {
-            let newQuery = {}
-            newQuery.category = this.state.filters.category.map((el, i)=>{
-                if(el.checked) return el.value
-            })
-            Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+            Router.push(`/recommendations?${queryString.stringify(this.state.filters)}`)
         }
 
         return(
             <section className="service-results">
                 <div className="container">
-                    <h2 className="section-title">Services near {location ? <span>{location}</span> : "you" }</h2>
+                    <h2 className="section-title">Services near you</h2>
                     
                     <div className="service-results__filters">
-                        <Filter
-                            title="Your interests"
-                            name="category"
-                            options={this.state.filters.category}
-                            handleChange={handleChange}
-                            applyChanges={applyChanges}
+
+                        <InterestsFilter
+                            categoryFilter={this.state.filters.category}
+                            keywordsFilter={this.state.filters.keywords}
+                            updateFilters={updateFilters}
                             showAll={showAll}
-                            active={activeFilter("category")}
                             />
 
-                        <Filter
-                            title="Kinds of support"
-                            name="keywords"
-                            options={this.state.filters.keywords}
-                            handleChange={handleChange}
-                            applyChanges={applyChanges}
-                            showAll={showAll}
-                            // active={activeFilter("keywords")}
-                            />
-
+                        <button onClick={()=>{showAll('category')}}>Clear all categories</button>
                     </div>
                     
                     <ol className="service-results__list">

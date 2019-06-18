@@ -9,25 +9,25 @@ module.exports = {
             query.category = { $in: req.query.category }
         }
 
-        // if(req.query.keywords){
-        //     query.keywords = { $elemMatch: { $in: req.query.keywords } }
-        // }
+        if(req.query.keywords){
+            query.keywords = { $elemMatch: { $in: req.query.keywords } }
+        }
 
-        // if(req.query.age){
-        //     query.ageGroups = req.query.age
-        // }
+        if(req.query.age){
+            query.ageGroups = req.query.age
+        }
 
-        // if(req.query.lat && req.query.long){
-        //     console.log(req.query)
-        //     query.geo = { 
-        //         $nearSphere: {
-        //             $geometry: {
-        //                 type: "Point" ,
-        //                 coordinates: [ parseFloat(req.query.lat) , parseFloat(req.query.long) ]
-        //             }
-        //         }
-        //     }
-        // }
+        // TODO: Refactor to use aggregations and a distance field
+        if(req.query.lat && req.query.long){
+            query.geo = { 
+                $nearSphere: {
+                    $geometry: {
+                        type: "Point" ,
+                        coordinates: [ parseFloat(req.query.lat) , parseFloat(req.query.long) ]
+                    }
+                }
+            }
+        }
 
         let perPage = 10
 
