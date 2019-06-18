@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import ServiceCard from '../ServiceCard'
-import InterestsFilter from '../Filter'
+import InterestsFilter from '../Filter/InterestsFilter'
 import queryString from 'query-string'
 import Router from 'next/router'
 

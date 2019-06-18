@@ -80,11 +80,14 @@
     font-size: 1em;
     color: $darkText;
     padding: 20px;
+    background: none;
     border: none;
     border-bottom-right-radius: 10px;
-    background: none;
     @media screen and (min-width: $tablet){
         padding: 20px 30px;
+    }
+    &:hover{
+        background: transparentize($darkText, 0.95);
     }
     &.filter-dialog__action--secondary{
         font-weight: normal;
@@ -108,7 +111,6 @@
     background-image: url('./tick.svg');
     background-size: 18px;
     background-position: center;
-    background-repeat: no-repeat
 }
 
 .checkbox-item__label{
@@ -121,8 +123,10 @@
         height: 25px;
         width: 25px;
         background: $activeCard;
+        background-repeat: no-repeat;
         border-radius: 4px;
         border: 2px solid $darkText;
         margin-right: 15px;
+        transition: 0.1s ease-out;
     }
 }

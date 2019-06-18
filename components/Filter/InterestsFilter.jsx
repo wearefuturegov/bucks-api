@@ -28,7 +28,7 @@ const InterestsFilter = ({categoryFilter, keywordsFilter, updateFilters, showAll
         <>
 
             <button 
-                className="filter-button"
+                className={(categoryFilter.length > 0 || keywordsFilter.length > 0)? "filter-button filter-button--active" : "filter-button"}
                 onClick={() => {toggleDialog(true)}}
                 >
                 Your interests
