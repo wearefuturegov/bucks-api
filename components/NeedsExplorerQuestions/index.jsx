@@ -26,13 +26,13 @@ const NeedsExplorerQuestions = () => {
         }
     }
 
-    
+
 
     return(
         <main className="questions">
         <div className="questions__inner">
 
-            <form method="get" action="/recommendations" onSubmit={handleSubmit}>
+            <form method="get" action="/recommendations">
 
                 <section className="question">
                     <h2 className="question__title">What are you interested in?</h2>
