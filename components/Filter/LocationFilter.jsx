@@ -15,6 +15,7 @@ const LocationFilter = ({query}) => {
 
     const updateResults = async (e) => {
         if(e) e.preventDefault()
+        toggleDialog(false)
         if(location){
             let newLocation = await geocode(location)
             let newQuery = {
@@ -25,7 +26,6 @@ const LocationFilter = ({query}) => {
             }
             Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         }
-        toggleDialog(false)
     }
 
     const clearFilter = (e) =>{
