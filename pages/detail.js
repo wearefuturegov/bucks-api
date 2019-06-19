@@ -1,6 +1,8 @@
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import fetch from 'isomorphic-unfetch'
+import {ColumnsWithDivider, Column} from '../components/ColumnsWithDivider'
+import Button from '../components/Button'
 
 const DetailPage = ({service}) =>
     <Layout withHeader>
@@ -17,6 +19,17 @@ const DetailPage = ({service}) =>
             title={service.name || service.parentOrganisation}
             lede={service.description}
             />  
+
+        <ColumnsWithDivider>
+            <Column>
+                {service.url && <Button href={service.url}>Visit website</Button>}
+            </Column>
+            <Column>
+                map goes here
+                {service.geo.coordinates}
+            </Column>
+        </ColumnsWithDivider>
+
     </Layout>
 
 DetailPage.getInitialProps = async ({req}) => {

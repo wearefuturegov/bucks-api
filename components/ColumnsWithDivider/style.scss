@@ -1,0 +1,26 @@
+@import '../vars';
+
+.columns-with-divider{
+    padding-bottom: 40px;
+    @media screen and (min-width: $tablet) {
+        padding-bottom: 60px;
+    }
+    @media screen and (min-width: $desktop) {
+        padding-bottom: 80px;
+    }
+}
+
+.columns-with-divider__column{
+    @media screen and (min-width: $tablet){
+        display: inline-block;
+        width: calc(50% - 10px);
+        margin-right: 20px;
+        vertical-align: top;
+        &:nth-of-type(even){
+            padding-left: 20px;
+            margin-right: 0px;
+            border-left: 1px solid $shadow;
+        }
+    }
+
+}
