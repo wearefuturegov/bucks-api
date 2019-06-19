@@ -1,25 +1,25 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { Dialog } from "@reach/dialog"
-import "@reach/dialog/styles.css"
-import './style.scss'
 import CheckboxItem from './CheckboxItem'
 import queryString from 'query-string'
 import Router from 'next/router'
+import "@reach/dialog/styles.css"
+import './style.scss'
 
 const InterestsFilter = ({query}) => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [categorySelection, changeCategorySelection] = useState((query.category)? [].concat(query.category) : [])
+    const [selection, changeSelection] = useState((query.category)? [].concat(query.category) : [])
 
     // Add and remove checked and unchecked items from array
-    const handleCategoryChange = (e) => {
+    const handleChange = (e) => {
         let {checked, value} = e.target
         if(checked){
-            changeCategorySelection([...categorySelection, value]  )
+            changeSelection([...selection, value]  )
         } else {
-            changeCategorySelection(categorySelection.filter(selection=>{
-                return selection != value
+            changeSelection(selection.filter(el=>{
+                return el != value
             }))
         }
     }
@@ -29,15 +29,16 @@ const InterestsFilter = ({query}) => {
         if(e) e.preventDefault()
         let newQuery = {
             ...query,
-            category: categorySelection
+            category: selection
         }
         Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         toggleDialog(false)
     }
 
+    // Create new query, clear state and push new route
     const clearFilter = (e) => {
         if(e) e.preventDefault()
-        changeCategorySelection([])
+        changeSelection([])
         let newQuery = {
             ...query,
             category: []
@@ -49,7 +50,7 @@ const InterestsFilter = ({query}) => {
     return (
         <>
             <button 
-                className={(categorySelection.length > 0)? "filter-button filter-button--active" : "filter-button"}
+                className={(selection.length > 0)? "filter-button filter-button--active" : "filter-button"}
                 onClick={() => {toggleDialog(true)}}
                 >
                 Your interests
@@ -70,40 +71,40 @@ const InterestsFilter = ({query}) => {
                                 label="Support"
                                 name="category"
                                 value="support"
-                                selectionState={categorySelection}
-                                onChange={handleCategoryChange}
+                                selectionState={selection}
+                                onChange={handleChange}
                                 />
 
                             <CheckboxItem 
                                 label="Social"
                                 name="category"
                                 value="social"
-                                selectionState={categorySelection}
-                                onChange={handleCategoryChange}
+                                selectionState={selection}
+                                onChange={handleChange}
                                 />
 
                             <CheckboxItem 
                                 label="Learning new things"
                                 name="category"
                                 value="learning"
-                                selectionState={categorySelection}
-                                onChange={handleCategoryChange}
+                                selectionState={selection}
+                                onChange={handleChange}
                                 />
 
                             <CheckboxItem 
                                 label="Staying active"
                                 name="category"
                                 value="active"
-                                selectionState={categorySelection}
-                                onChange={handleCategoryChange}
+                                selectionState={selection}
+                                onChange={handleChange}
                                 />
 
                             <CheckboxItem 
                                 label="Cultural"
                                 name="category"
                                 value="cultural"
-                                selectionState={categorySelection}
-                                onChange={handleCategoryChange}
+                                selectionState={selection}
+                                onChange={handleChange}
                                 />
                         </div>
 
