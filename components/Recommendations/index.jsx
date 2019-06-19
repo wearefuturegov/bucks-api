@@ -8,35 +8,36 @@ import LocationFilter from '../Filter/LocationFilter'
 import KeywordsFilter from '../Filter/KeywordsFilter'
 
 const Recommendations = ({services, snippets, query}) => 
-    <section className="service-results">
-        <div className="container">
-
-            <h2 className="section-title service-results__title">{query.location ? `Services near you` : "All services" }</h2>
-            
-            <div className="service-results__filters">
-                <CategoryFilter query={query} />
-                <LocationFilter query={query}/>
-                <KeywordsFilter query={query}/>
-            </div>
-            
-            <AdviceSnippetGrid snippets={snippets}/>
-
-
-            <ol className="service-results__list">
-                {services.map((service, i)=>
-                    <ServiceCard
-                        key={i}
-                        assetId={service.assetId}
-                        category={service.category}
-                        title={service.name || service.parentOrganisation}
-                        description={service.description}
-                        distance={service.distance}
-                        parentOrganisation={service.parentOrganisation}
-                        />
-                )}
-            </ol>
+    <>
+        <div className="service-results__filters container">
+            <CategoryFilter query={query} />
+            <LocationFilter query={query}/>
+            <KeywordsFilter query={query}/>
         </div>
-    </section>
+
+        <section className="service-results">
+            <div className="container">
+
+                <AdviceSnippetGrid snippets={snippets}/>
+
+                <h2 className="section-title service-results__title">{query.location ? `Services near you` : "All services" }</h2>
+                <ol className="service-results__list">
+                    {services.map((service, i)=>
+                        <ServiceCard
+                            key={i}
+                            assetId={service.assetId}
+                            category={service.category}
+                            title={service.name || service.parentOrganisation}
+                            description={service.description}
+                            distance={service.distance}
+                            parentOrganisation={service.parentOrganisation}
+                            />
+                    )}
+                </ol>
+            </div>
+        </section>
+    </>
+
 
 Recommendations.propTypes = {
     services: PropTypes.array.isRequired,

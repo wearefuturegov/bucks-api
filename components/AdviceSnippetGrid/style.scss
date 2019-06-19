@@ -1,16 +1,7 @@
 @import '../vars';
 
-.advice-grid{
-    padding-bottom: 20px;
-    @media screen and (min-width: $desktop){
-        padding-bottom: 40px;
-    }
-    @media screen and (min-width: $largeDesktop){
-        padding-bottom: 60px;
-    }
-}
 
-.advice-grid__inner{
+.advice-grid{
     @media screen and (min-width: $tablet){
         .card{
             display: inline-block;

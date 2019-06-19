@@ -5,16 +5,14 @@ import './style.scss'
 
 const AdviceSnippetGrid = ({snippets}) =>
     <section className="advice-grid">
-        <div className="container advice-grid__inner">
-            {snippets.map((snippet, i)=>
-                <Card 
-                    title={snippet.title}
-                    description={snippet.description}
-                    href={snippet.href}
-                    key={i}
-                    />
-            )}
-        </div>
+        {snippets.map((snippet, i)=>
+            <Card 
+                title={snippet.title}
+                description={snippet.description}
+                href={snippet.href}
+                key={i}
+                />
+        )}
     </section>
 
 AdviceSnippetGrid.propTypes = {
