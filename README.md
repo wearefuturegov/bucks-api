@@ -19,6 +19,7 @@ It consists of:
     * `MONGODB_URI`
     * `FOREST_ENV_SECRET`
     * `FOREST_AUTH_SECRET`
+    * `GOOGLE_API_KEY` with the geocoding API enabled
 3. `npm install`
 4. `npm run dev`
 5. Optionally, [seed the database](#database-seeds)
