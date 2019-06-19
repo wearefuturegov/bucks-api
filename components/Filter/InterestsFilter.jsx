@@ -109,14 +109,12 @@ const InterestsFilter = ({query}) => {
                     </div>
 
                     <footer className="filter-dialog__footer">
-                        <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Show all</button>
-                        
                         <button className="filter-dialog__action" 
                             type="submit" 
                             >
                             Apply
                         </button>
-
+                        <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Show all</button>
                     </footer>
                 </form>
             </Dialog>

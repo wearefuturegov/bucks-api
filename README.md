@@ -38,7 +38,7 @@ The app is intended to run on Heroku.
 
 The app has a seed script to populate the database of services from a CSV data file.
 
-1. Put `data.csv` in the /lib folder
+1. Put a `data.csv` in the /lib folder
 2. Run `npm run seed`
 
 ## Style guide
