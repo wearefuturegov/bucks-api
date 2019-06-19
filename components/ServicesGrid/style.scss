@@ -39,3 +39,21 @@
         }
     }
 }
+
+.services-grid__no-results{
+    text-align: center;
+    padding: 40px 10px;
+    background: lighten($background, 3);
+    h3{
+        font-size: 1.8em;
+        margin: 0px auto 15px auto;
+        max-width: 600px;
+        font-weight: normal;
+    }
+    p{
+        font-size: 1.1em;
+        margin: 0px auto;
+        max-width: 550px;
+        // color: $lightText
+    }
+}
