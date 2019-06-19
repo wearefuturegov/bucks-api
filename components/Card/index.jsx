@@ -4,10 +4,14 @@ import Link from 'next/link'
 import './style.scss'
 
 const Card = ({
-    title, description, image, imageAlt, href, green
+    title, 
+    description, 
+    image, 
+    imageAlt, 
+    href
 }) =>
 
-    <div className={(green? "card card--with-green-background" : "card")}>
+    <div className="card">
         <Link href={href}>
             <a className="card__link">
                 {image && <img src={image} alt={imageAlt} className="card__image" loading="lazy"/>}
@@ -28,8 +32,7 @@ Card.propTypes = {
     description: PropTypes.string,
     image: PropTypes.string,
     imageAlt: PropTypes.string,
-    href: PropTypes.string.isRequired,
-    green: PropTypes.bool
+    href: PropTypes.string.isRequired
 }
 
 export default Card

@@ -8,7 +8,6 @@ const AdviceSnippetGrid = ({snippets}) =>
         <div className="container advice-grid__inner">
             {snippets.map((snippet, i)=>
                 <Card 
-                    green
                     title={snippet.title}
                     description={snippet.description}
                     href={snippet.href}
