@@ -27,7 +27,6 @@ module.exports = {
                     {
                         $geoNear: {
                             spherical: true,
-                            // limit: perPage,
                             query: query,
                             distanceField: "distance",
                             explain: true,
@@ -51,6 +50,7 @@ module.exports = {
                 // Normal find query
                 let services = await Service.find(query)
                     .lean()
+                    .select("-_id -reviewDate -reviewStatus -reviewNotes -cloNotes -reviewNumber -assignedTo -lafArea -ccgLocality -volDbsCheck -safeguarding -healthSafety -insurance -legacyCategories")
                     .limit(perPage)
                     .skip((req.query.page - 1) * perPage)
                 res.json({
@@ -68,6 +68,7 @@ module.exports = {
         try{
             let service = await Service.findOne({assetId: req.params.id})
                 .lean()
+                .select("-_id -reviewDate -reviewStatus -reviewNotes -cloNotes -reviewNumber -assignedTo -lafArea -ccgLocality -volDbsCheck -safeguarding -healthSafety -insurance -legacyCategories")
             if (!service) return next(new Error("NOT_FOUND"))
             res.json({
                 status: "OK",
