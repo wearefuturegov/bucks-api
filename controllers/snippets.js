@@ -5,9 +5,7 @@ module.exports = {
 
         let query = {}
         
-        if(req.query.keywords){
-            query.keywords = { $elemMatch: { $in: req.query.keywords } }
-        }
+        query.keywords = { $elemMatch: { $in: req.query.keywords || [] } }
 
         try{
             const snippets = await Snippet.find(query).lean()

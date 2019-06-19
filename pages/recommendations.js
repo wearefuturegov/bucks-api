@@ -21,7 +21,7 @@ const Recommendations = ({snippets, services, query}) =>
             title="Your recommendations"
             />
 
-        {snippets && <AdviceSnippetGrid snippets={snippets}/>}
+        {snippets.length > 0 && <AdviceSnippetGrid snippets={snippets}/>}
         {services && <ServiceResults services={services} query={query}/>}
 
         <CentredText/>

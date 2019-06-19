@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import './style.scss'
 import ServiceCard from '../ServiceCard'
 
-import InterestsFilter from '../Filter/InterestsFilter'
+import CategoryFilter from '../Filter/CategoryFilter'
 import LocationFilter from '../Filter/LocationFilter'
+import KeywordsFilter from '../Filter/KeywordsFilter'
 
 const ServiceResults = ({services, query}) => 
     <section className="service-results">
@@ -13,8 +14,9 @@ const ServiceResults = ({services, query}) =>
             <h2 className="section-title service-results__title">{query.location ? `Services near you` : "All services" }</h2>
             
             <div className="service-results__filters">
-                <InterestsFilter query={query} />
+                <CategoryFilter query={query} />
                 <LocationFilter query={query}/>
+                <KeywordsFilter query={query}/>
             </div>
 
             <ol className="service-results__list">
