@@ -1,6 +1,23 @@
 const express = require('express')
 const Service = require('../models/Service')
 
+const backOfficeFields = {
+    _id: 0,
+    reviewDate: 0,
+    reviewStatus: 0,
+    reviewNotes: 0,
+    cloNotes: 0,
+    reviewNumber: 0,
+    assignedTo: 0,
+    lafArea: 0,
+    ccgLocality: 0,
+    volDbsCheck: 0,
+    safeguarding: 0,
+    healthSafety: 0,
+    insurance: 0,
+    legacyCategories: 0
+}
+
 module.exports = {
     list: async (req, res, next)=>{
         let query = {}
@@ -37,22 +54,7 @@ module.exports = {
                             }
                         }
                     },
-                    { $project: {
-                        _id: 0,
-                        reviewDate: 0,
-                        reviewStatus: 0,
-                        reviewNotes: 0,
-                        cloNotes: 0,
-                        reviewNumber: 0,
-                        assignedTo: 0,
-                        lafArea: 0,
-                        ccgLocality: 0,
-                        volDbsCheck: 0,
-                        safeguarding: 0,
-                        healthSafety: 0,
-                        insurance: 0,
-                        legacyCategories: 0
-                    }},
+                    { $project: backOfficeFields},
                     { $sort: {distance: 1}},
                     { $skip: (req.query.perPage > 1)? ((req.query.page - 1) * perPage) : 0},
                     { $limit: perPage },
@@ -66,7 +68,7 @@ module.exports = {
                 // Normal find query
                 let services = await Service.find(query)
                     .lean()
-                    .select("-_id -reviewDate -reviewStatus -reviewNotes -cloNotes -reviewNumber -assignedTo -lafArea -ccgLocality -volDbsCheck -safeguarding -healthSafety -insurance -legacyCategories")
+                    .select(backOfficeFields)
                     .limit(perPage)
                     .skip((req.query.page - 1) * perPage)
                 res.json({
@@ -84,7 +86,7 @@ module.exports = {
         try{
             let service = await Service.findOne({assetId: req.params.id})
                 .lean()
-                .select("-_id -reviewDate -reviewStatus -reviewNotes -cloNotes -reviewNumber -assignedTo -lafArea -ccgLocality -volDbsCheck -safeguarding -healthSafety -insurance -legacyCategories")
+                .select(backOfficeFields)
             if (!service) return next(new Error("NOT_FOUND"))
             res.json({
                 status: "OK",
