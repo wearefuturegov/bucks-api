@@ -1,5 +1,11 @@
 @import '../vars';
 
+.mobile-nav{
+    @media screen and (min-width: $tablet){
+        display: none;
+    }
+}
+
 .mobile-menu{
     position: absolute;
     right: 20px;

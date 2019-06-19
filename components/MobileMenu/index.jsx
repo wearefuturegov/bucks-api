@@ -9,7 +9,7 @@ const MobileMenu = ({menuItems, inverted}) => {
     const [isOpen, open] = useState(false)
 
     return (
-        <nav role="navigation">
+        <nav role="navigation" className="mobile-nav">
             <button 
                 className={(inverted)? "site-header__button site-header__button--inverted" : "site-header__button"} 
                 onClick={()=>{
