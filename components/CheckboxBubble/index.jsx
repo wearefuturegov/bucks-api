@@ -9,6 +9,7 @@ const CheckboxBubble = ({name, value, label, onChange, selectionState}) =>
             type="checkbox" 
             name={name} 
             value={value} 
+            autocomplete="off"
             id={`${name}-${value}`}
             checked={selectionState.includes(value)}
             onChange={onChange}

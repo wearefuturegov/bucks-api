@@ -1,18 +1,21 @@
 import React, {useState} from 'react'
-import fetch from 'isomorphic-unfetch'
 import './style.scss'
 import Button from '../Button'
-import CheckboxBubble from '../CheckboxBubble'
 import queryString from 'query-string'
 import Router from 'next/router'
 import geocode from '../../lib/geocode-client'
 
+import CategoryQuestion from './CategoryQuestion'
+import KeywordQuestion from './KeywordQuestion'
+import LocationQuestion from './LocationQuestion'
+
 const NeedsExplorerQuestions = () => {
 
     const [categorySelection, changeCategorySelection] = useState([])
-    // Add and remove checked and unchecked items from array
     const handleCategoryChange = (e) => {
         let {checked, value} = e.target
+        // Clear out keywords whenever the support category is hit
+        if(value === "support") changeKeywordSelection([])
         if(checked){
             changeCategorySelection([...categorySelection, value])
         } else {
@@ -22,67 +25,63 @@ const NeedsExplorerQuestions = () => {
         }
     }
 
-    const [rawLocation, changeRawLocation] = useState([])
-    const [formattedLocation, changeFormattedLocation] = useState([])
+    const [keywordSelection, changeKeywordSelection] = useState([])
+    const handleKeywordChange = (e) => {
+        let {checked, value} = e.target
+        if(checked){
+            changeKeywordSelection([...keywordSelection, value])
+        } else {
+            changeKeywordSelection(keywordSelection.filter(selection=>{
+                return selection != value
+            }))
+        }
+    }
 
+    const [rawLocation, changeRawLocation] = useState("")
+    const [formattedLocation, changeFormattedLocation] = useState("")
+    const handleRawLocationChange = (e) => {
+        changeRawLocation(e.target.value)
+    }
     const handleBlur = async () => {
         let location = await geocode(rawLocation)
         changeFormattedLocation(location.formattedLocation)
     }
-    
-    // Turn state into a URL query and change route
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         let geocoded = await geocode(rawLocation)
         let query = {
             category: categorySelection,
+            keywords: keywordSelection,
             location: rawLocation,
             lat: geocoded.lat,
             lng: geocoded.lng
-            // ...geocoded
         }
-        Router.replace(`/recommendations?${queryString.stringify(query)}`).then(() => window.scrollTo(0, 0))
+        Router.push(`/recommendations?${queryString.stringify(query)}`).then(() => window.scrollTo(0, 0))
     }
 
     return(
         <main className="questions">
             <div className="questions__inner">
-
                 <form method="get" action="/recommendations" onSubmit={handleSubmit}>
-
-                    <section className="question">
-                        <h2 className="question__title">What are you interested in?</h2>
-                        <p className="question__help-text">Select as many as you want</p>
-                        <div className="question__options">
-                            <CheckboxBubble selectionState={categorySelection} onChange={handleCategoryChange} name="category" value="social" label="Socialising"/>
-                            <CheckboxBubble selectionState={categorySelection} onChange={handleCategoryChange} name="category" value="cultural" label="Museums and culture"/>
-                            <CheckboxBubble selectionState={categorySelection} onChange={handleCategoryChange} name="category" value="learning" label="Learning new things"/>
-                            <CheckboxBubble selectionState={categorySelection} onChange={handleCategoryChange} name="category" value="active" label="Staying active"/>
-                            <CheckboxBubble selectionState={categorySelection} onChange={handleCategoryChange} name="category" value="support" label="Support"/>
-                        </div>
-                    </section>
-
-                    <section className="question">
-                        <label htmlFor="near"><h2 className="question__title">Find your nearest services</h2></label>
-                        <p className="question__help-text">Give a town or postcode in Buckinghamshire</p>
-                        <input 
-                            type="text" 
-                            className="question__text-input" 
-                            name="near"
-                            placeholder="eg. Aylesbury..."
-                            value={rawLocation} 
-                            required
-                            onChange={(e)=>{
-                                changeRawLocation(e.target.value)
-                            }}
-                            onBlur={handleBlur}
-                            ></input>
-                        {formattedLocation && <p className="question__help-text"><strong>{formattedLocation}</strong></p>}
-                    </section>
-
+                    <CategoryQuestion 
+                        selection={categorySelection} 
+                        onChange={handleCategoryChange}
+                        />
+                    {categorySelection.includes("support") && 
+                        <KeywordQuestion 
+                            onChange={handleKeywordChange} 
+                            selection={keywordSelection}
+                            />
+                    }
+                    <LocationQuestion 
+                        rawLocation={rawLocation} 
+                        formattedLocation={formattedLocation} 
+                        onChange={handleRawLocationChange} 
+                        onBlur={handleBlur}
+                        />
                     <Button>See your recommendations</Button>
                 </form>
-
             </div>
         </main>
     )
