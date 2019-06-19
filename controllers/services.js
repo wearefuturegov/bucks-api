@@ -29,6 +29,10 @@ module.exports = {
             query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
         }
 
+        if(req.query.days){
+            query.days = { $in: [].concat(req.query.days) }
+        }
+
         if(req.query.age){
             query.ageGroups = req.query.age
         }
