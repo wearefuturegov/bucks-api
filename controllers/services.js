@@ -37,6 +37,22 @@ module.exports = {
                             }
                         }
                     },
+                    { $project: {
+                        _id: 0,
+                        reviewDate: 0,
+                        reviewStatus: 0,
+                        reviewNotes: 0,
+                        cloNotes: 0,
+                        reviewNumber: 0,
+                        assignedTo: 0,
+                        lafArea: 0,
+                        ccgLocality: 0,
+                        volDbsCheck: 0,
+                        safeguarding: 0,
+                        healthSafety: 0,
+                        insurance: 0,
+                        legacyCategories: 0
+                    }},
                     { $sort: {distance: 1}},
                     { $skip: (req.query.perPage > 1)? ((req.query.page - 1) * perPage) : 0},
                     { $limit: perPage },

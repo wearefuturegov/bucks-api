@@ -36,6 +36,9 @@ const Service = new mongoose.Schema({
     url: String,
 
     lastUpdated: Date,
+
+    // PRIVATE/BACK OFFICE FIELDS
+
     reviewDate: Date,
 
     reviewStatus: String,
