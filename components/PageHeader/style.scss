@@ -11,6 +11,14 @@
         padding-top: 60px;
         padding-bottom: 60px;
     }
+    &.page-header--reduced-bottom-padding{
+        @media screen and (min-width: $desktop){
+            padding-bottom: 20px;
+        }
+        @media screen and (min-width: $largeDesktop){
+            padding-bottom: 20px;
+        }
+    }
 }
 
 .page-header__title{

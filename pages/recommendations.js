@@ -9,6 +9,7 @@ import queryString from 'query-string'
 const RecommendationsPage = ({snippets, services, query}) =>
     <Layout withHeader>
         <PageHeader 
+            reducedBottomPadding
             breadcrumbs={[
                 {
                     title: "Care for adults",
