@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 import ServiceCard from '../ServiceCard'
-
+import AdviceSnippetGrid from '../AdviceSnippetGrid'
 import CategoryFilter from '../Filter/CategoryFilter'
 import LocationFilter from '../Filter/LocationFilter'
 import KeywordsFilter from '../Filter/KeywordsFilter'
 
-const ServiceResults = ({services, query}) => 
+const Recommendations = ({services, snippets, query}) => 
     <section className="service-results">
         <div className="container">
 
@@ -18,6 +18,9 @@ const ServiceResults = ({services, query}) =>
                 <LocationFilter query={query}/>
                 <KeywordsFilter query={query}/>
             </div>
+            
+            <AdviceSnippetGrid snippets={snippets}/>
+
 
             <ol className="service-results__list">
                 {services.map((service, i)=>
@@ -35,9 +38,10 @@ const ServiceResults = ({services, query}) =>
         </div>
     </section>
 
-ServiceResults.propTypes = {
+Recommendations.propTypes = {
     services: PropTypes.array.isRequired,
+    snippets: PropTypes.array.isRequired,
     query: PropTypes.object
 }
 
-export default ServiceResults
+export default Recommendations

@@ -1,12 +1,12 @@
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import AdviceSnippetGrid from '../components/AdviceSnippetGrid'
-import ServiceResults from '../components/ServiceResults'
+import Recommendations from '../components/Recommendations'
 import CentredText from '../components/CentredText'
 import fetch from 'isomorphic-unfetch'
 import queryString from 'query-string'
 
-const Recommendations = ({snippets, services, query}) =>
+const RecommendationsPage = ({snippets, services, query}) =>
     <Layout withHeader>
         <PageHeader 
             breadcrumbs={[
@@ -20,14 +20,15 @@ const Recommendations = ({snippets, services, query}) =>
             ]}
             title="Your recommendations"
             />
-
-        {snippets.length > 0 && <AdviceSnippetGrid snippets={snippets}/>}
-        {services && <ServiceResults services={services} query={query}/>}
-
+        <Recommendations 
+            snippets={snippets}
+            services={services} 
+            query={query}
+            />
         <CentredText/>
     </Layout>
 
-Recommendations.getInitialProps = async ({req, query}) => {
+RecommendationsPage.getInitialProps = async ({req, query}) => {
     const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';    
     const endpoints = [
         `${baseUrl}/api/services?${queryString.stringify(query)}`,
@@ -45,4 +46,4 @@ Recommendations.getInitialProps = async ({req, query}) => {
 
 }
 
-export default Recommendations
+export default RecommendationsPage

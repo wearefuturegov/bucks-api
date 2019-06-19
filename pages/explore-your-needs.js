@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import NeedsExplorerHero from '../components/Hero/NeedsExplorerHero'
 import NeedsExplorerQuestions from '../components/NeedsExplorerQuestions'
 
-const ExploreYourNeeds = () => {
+const ExploreYourNeedsPage = () => {
     return(
         <Layout>
             <NeedsExplorerHero
@@ -33,4 +33,4 @@ const ExploreYourNeeds = () => {
     )
 }
 
-export default ExploreYourNeeds
+export default ExploreYourNeedsPage

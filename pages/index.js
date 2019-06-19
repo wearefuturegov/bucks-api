@@ -11,7 +11,7 @@ import i4 from '../images/4.jpg'
 import i5 from '../images/5.jpg'
 import i6 from '../images/6.jpg'
 
-const Home = () =>
+const HomePage = () =>
     <Layout>
         <Hero
             title="Support and care for adults, their families and carers"
@@ -140,4 +140,4 @@ const Home = () =>
             />
     </Layout>
 
-export default Home
+export default HomePage

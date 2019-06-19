@@ -2,7 +2,7 @@ import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import fetch from 'isomorphic-unfetch'
 
-const Detail = ({service}) =>
+const DetailPage = ({service}) =>
     <Layout withHeader>
         <PageHeader 
             breadcrumbs={[
@@ -29,4 +29,4 @@ Detail.getInitialProps = async ({req}) => {
 
 }
 
-export default Detail
+export default DetailPage
