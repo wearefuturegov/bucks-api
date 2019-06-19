@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 
 const Snippet = new mongoose.Schema({
     title: String,
@@ -7,4 +7,4 @@ const Snippet = new mongoose.Schema({
     keywords: Array
 })
 
-module.exports = mongoose.model('Snippet', Snippet)
+module.exports = mongoose.model("Snippet", Snippet)

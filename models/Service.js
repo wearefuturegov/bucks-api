@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 
 const Service = new mongoose.Schema({
     assetId: {
@@ -59,4 +59,4 @@ const Service = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Service', Service)
+module.exports = mongoose.model("Service", Service)

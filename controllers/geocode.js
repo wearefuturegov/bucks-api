@@ -1,5 +1,4 @@
-const express = require('express')
-const fetch = require('isomorphic-unfetch')
+const fetch = require("isomorphic-unfetch")
 
 module.exports = async (req, res, next) => {
 

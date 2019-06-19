@@ -1,8 +1,8 @@
-const router = require('express').Router()
+const router = require("express").Router()
 
-const services = require('../controllers/services')
-const snippets = require('../controllers/snippets')
-const geocode = require('../controllers/geocode')
+const services = require("../controllers/services")
+const snippets = require("../controllers/snippets")
+const geocode = require("../controllers/geocode")
 
 router.post("/geocode", geocode)
 router.get("/services", services.list)
@@ -10,7 +10,8 @@ router.get("/services/:id", services.getServiceById)
 router.get("/snippets", snippets.list)
 
 // Error handler
-router.use((err, req, res, next)=>{
+router.use((err, req, res)=>{
+    // eslint-disable-next-line no-console
     console.error(err)
     if(err.message === "NOT_FOUND"){
         res.status(404).json({
@@ -31,7 +32,7 @@ router.use((err, req, res, next)=>{
 })
 
 // Handle unknown api routes
-router.use('*', (req, res)=>{
+router.use("*", (req, res)=>{
     res.status(404).json({
         status: "NO_ROUTE",
         message: "No route matches your request"

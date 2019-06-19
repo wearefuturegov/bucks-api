@@ -1,5 +1,4 @@
-const express = require('express')
-const Snippet = require('../models/Snippet')
+const Snippet = require("../models/Snippet")
 
 module.exports = {
     list: async (req, res, next)=>{
