@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import PropTypes from 'prop-types'
 import { Dialog } from "@reach/dialog"
 import "@reach/dialog/styles.css"
 import './style.scss'
@@ -121,6 +122,10 @@ const InterestsFilter = ({query}) => {
             
         </>
     )
+}
+
+InterestsFilter.propTypes = {
+    query: PropTypes.object.isRequired
 }
 
 export default InterestsFilter

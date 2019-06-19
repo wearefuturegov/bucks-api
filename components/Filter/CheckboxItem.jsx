@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const CheckboxItem = ({
     label,
@@ -18,5 +19,13 @@ const CheckboxItem = ({
         <label className="checkbox-item__label" htmlFor={`${name}-${value}`}>{label}</label>
         <br/>
     </div>
+
+CheckboxItem.propTypes = {
+    name: PropTypes.string.isRequired, 
+    value: PropTypes.string.isRequired, 
+    label: PropTypes.string.isRequired, 
+    onChange: PropTypes.func.isRequired, 
+    selectionState: PropTypes.array.isRequired
+}
 
 export default CheckboxItem

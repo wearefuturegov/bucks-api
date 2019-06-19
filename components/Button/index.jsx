@@ -18,12 +18,10 @@ const Button = ({href, children, background}) =>
         }
     </>
     
-
-
-
 Button.propTypes = {
     href: PropTypes.string,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    background: PropTypes.string
 }
 
 export default Button

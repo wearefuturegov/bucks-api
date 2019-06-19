@@ -33,7 +33,11 @@ const Hero = ({
 Hero.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    menuItems: PropTypes.array
+    menuItems: PropTypes.array,
+    ctaTitle: PropTypes.string.isRequired,
+    ctaDescription: PropTypes.string.isRequired,
+    ctaHref: PropTypes.string.isRequired,
+    ctaLinkText: PropTypes.string.isRequired
 }
 
 export default Hero

@@ -22,8 +22,7 @@ const PromoGrid = ({title, promos}) =>
 
 PromoGrid.propTypes = {
     title: PropTypes.string,
-    promos: PropTypes.array.isRequired,
-    afterHero: PropTypes.bool
+    promos: PropTypes.array.isRequired
 }
 
 export default PromoGrid

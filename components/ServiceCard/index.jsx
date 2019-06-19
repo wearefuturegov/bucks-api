@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import './style.scss'
-import { SSL_OP_MSIE_SSLV2_RSA_PADDING } from 'constants';
 
 const truncate = (str, noWords) => {
     if(str.split(" ").length > noWords){
@@ -40,5 +39,14 @@ const ServiceCard = ({
             <p className="service-card__distance"><em>{distance != undefined && prettyDistance(distance)}</em></p>
         </div>
     </li>
+
+ServiceCard.propTypes = {
+    assetId: PropTypes.number.isRequired,
+    category: PropTypes.string,
+    title: PropTypes.string,
+    parentOrganisation: PropTypes.string,
+    description: PropTypes.string,
+    distance: PropTypes.number
+}
 
 export default ServiceCard

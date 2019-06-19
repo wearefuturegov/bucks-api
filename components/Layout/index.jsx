@@ -57,7 +57,8 @@ const Layout = ({children, withHeader})=>
 </>
 
 Layout.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    withHeader: PropTypes.bool
 }
 
 export default Layout

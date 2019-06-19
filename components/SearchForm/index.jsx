@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import icon from './icon.svg'
 import './style.scss'
 
@@ -11,5 +12,9 @@ const SearchForm = ({large}) =>
             <img className="search__icon" src={icon} alt="Submit search"/>
         </button>
     </form>
+
+SearchForm.propTypes = {
+    large: PropTypes.bool
+}
 
 export default SearchForm

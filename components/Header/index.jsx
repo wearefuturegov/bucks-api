@@ -32,7 +32,8 @@ const Header = ({menuItems, inverted}) =>
     </header>
 
 Header.propTypes = {
-    menuItems: PropTypes.array.isRequired
+    menuItems: PropTypes.array.isRequired,
+    inverted: PropTypes.bool
 }
 
 export default Header

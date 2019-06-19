@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './style.scss'
 
 const CheckboxBubble = ({name, value, label, onChange, selectionState}) =>
@@ -16,5 +17,13 @@ const CheckboxBubble = ({name, value, label, onChange, selectionState}) =>
             {label}
         </label>
     </div>
+
+CheckboxBubble.propTypes = {
+    name: PropTypes.string.isRequired, 
+    value: PropTypes.string.isRequired, 
+    label: PropTypes.string.isRequired, 
+    onChange: PropTypes.func.isRequired, 
+    selectionState: PropTypes.array.isRequired
+}
 
 export default CheckboxBubble

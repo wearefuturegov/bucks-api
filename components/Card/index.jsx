@@ -28,7 +28,8 @@ Card.propTypes = {
     description: PropTypes.string,
     image: PropTypes.string,
     imageAlt: PropTypes.string,
-    href: PropTypes.string.isRequired
+    href: PropTypes.string.isRequired,
+    green: PropTypes.bool
 }
 
 export default Card
