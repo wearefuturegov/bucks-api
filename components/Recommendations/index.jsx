@@ -1,39 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './style.scss'
-import ServiceCard from '../ServiceCard'
-import AdviceSnippetGrid from '../AdviceSnippetGrid'
 import CategoryFilter from '../Filter/CategoryFilter'
 import LocationFilter from '../Filter/LocationFilter'
 import KeywordsFilter from '../Filter/KeywordsFilter'
+import AdviceSnippetsGrid from '../AdviceSnippetGrid'
+import ServicesGrid from '../ServicesGrid'
+import './style.scss'
 
 const Recommendations = ({services, snippets, query}) => 
     <>
-        <div className="service-results__filters container">
+        <section className="recommendation-filters container">
             <CategoryFilter query={query} />
             <LocationFilter query={query}/>
             <KeywordsFilter query={query}/>
-        </div>
+        </section>
 
-        <section className="service-results">
+        <section className="recommendations">
             <div className="container">
-
-                <AdviceSnippetGrid snippets={snippets}/>
-
-                <h2 className="section-title service-results__title">{query.location ? `Services near you` : "All services" }</h2>
-                <ol className="service-results__list">
-                    {services.map((service, i)=>
-                        <ServiceCard
-                            key={i}
-                            assetId={service.assetId}
-                            category={service.category}
-                            title={service.name || service.parentOrganisation}
-                            description={service.description}
-                            distance={service.distance}
-                            parentOrganisation={service.parentOrganisation}
-                            />
-                    )}
-                </ol>
+                {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
+                <ServicesGrid services={services}/>
             </div>
         </section>
     </>

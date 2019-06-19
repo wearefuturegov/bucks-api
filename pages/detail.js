@@ -19,7 +19,7 @@ const DetailPage = ({service}) =>
             />  
     </Layout>
 
-Detail.getInitialProps = async ({req}) => {
+DetailPage.getInitialProps = async ({req}) => {
     const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
     let res = await fetch(`${baseUrl}/api/services/${req.params.id}`)
     let service = await res.json()
