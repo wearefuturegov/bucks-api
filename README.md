@@ -55,12 +55,11 @@ Pushes to master are built to [this static HTML site](http://bucks-care-style-gu
 
 The services API at `/api/services` can be filtered and sorted:
 
-* `category[]=`... will provide services that match *any* of the supplied categories
-* `keywords[]=`... will provide services that have *any* of the supplied keywords
-* `page=` plus an integer will skip through the results, 10 at a time
+* `category=`... will provide services that match *any* of the supplied categories
+* `keywords=`... will provide services that have *any* of the supplied keywords
+* `page=` plus an integer greater than one will skip through the results, 10 at a time
 * `ages=`, plus either `Young people`, `Young adults` or `Older adults` will filter to services matching *only* the given value
-* `near=`, plus a location string will attempt to convert the string into a lat/long and sort results by distance from that, unless...
-* `lat=` and `long=` are explicitly provided, then they will be used directly instead
+* `lat=` and `lng=` will order results by distance from that point, nearest first, and add an extra field "distance" to the response.
 
 * `accessibility[]=`... will provide services that match only *all* of the supplied values
 * `days[]=`... will provide services that match *any* of the supplied days
