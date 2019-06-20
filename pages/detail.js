@@ -9,8 +9,9 @@ import CentredText from '../components/CentredText'
 import ServiceSuitabilityPanel from '../components/ServiceSuitabilityPanel'
 
 const prettyDays = (rawDays) => {
+    if(rawDays.length === 7) return "Available every day"
     let prettyDays = rawDays.map(item=> item.charAt(0).toUpperCase() + item.substr(1).toLowerCase() + "s")
-    return "On " + prettyDays.join(", ")
+    return "Available on " + prettyDays.join(", ")
 }
 
 const DetailPage = ({service}) =>{
@@ -59,9 +60,10 @@ const DetailPage = ({service}) =>{
                             <a href={`https://www.google.com/maps/place/${service.postcode}/@${service.geo.coordinates[1]},${service.geo.coordinates[0]},15z`}>Get directions</a>
                         </ServiceDetailItem>
                     }
-                    {(days || frequency) &&
+                    {(days.length > 0 || frequency) &&
                         <ServiceDetailItem kind="calendar">
-                            {days && prettyDays(days)}
+
+                            {days.length > 0 && prettyDays(days)}
                             {frequency && <p>{frequency}</p>}
                         </ServiceDetailItem>
                     }
@@ -81,6 +83,7 @@ const DetailPage = ({service}) =>{
                         mapElement={<div style={{ height: `100%` }} />}
                         coordinates={service.geo.coordinates}
                         />
+                    <em>Approximate location only. Always check the website or contact the organiser first.</em>
                 </Column>
             </ColumnsWithDivider>
             <ServiceSuitabilityPanel
