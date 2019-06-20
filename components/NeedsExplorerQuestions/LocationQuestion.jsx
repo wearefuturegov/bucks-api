@@ -8,12 +8,13 @@ const LocationQuestion = ({
     onBlur
 }) =>
     <section className="question">
-        <label htmlFor="near"><h2 className="question__title">Find your nearest services</h2></label>
+        <label htmlFor="location"><h2 className="question__title">Find your nearest services</h2></label>
         <p className="question__help-text">Give a town or postcode in Buckinghamshire</p>
         <input 
             type="text" 
             className="question__text-input" 
-            name="near"
+            name="location"
+            id="location"
             placeholder="eg. Aylesbury..."
             value={rawLocation} 
             required

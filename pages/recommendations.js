@@ -26,7 +26,10 @@ const RecommendationsPage = ({snippets, services, query}) =>
             services={services} 
             query={query}
             />
-        <CentredText/>
+        <CentredText
+            title="Is anything missing?"
+            description="If you’re the organiser, of a club, activity or group that isn’t on this list, you can request it be added."
+            />
     </Layout>
 
 RecommendationsPage.getInitialProps = async ({req, query}) => {

@@ -22,8 +22,8 @@ const Layout = ({children, withHeader})=>
                 text: "Information and advice"
             },
             {
-                href: "/recommendations",
-                text: "All services"
+                href: "/explore-your-needs",
+                text: "Things to do"
             },
             {
                 href: "#",
