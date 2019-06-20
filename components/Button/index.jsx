@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import './style.scss'
 
-const Button = ({href, children, background}) =>
+const Button = ({href, children, background, withBottomMargin}) =>
     <>
         {href ? 
             <Link href={href}>
-                <a className={`button button--${background}`}>
+                <a className={`button ${background ? `button--with-${background}` : ""} ${withBottomMargin ? "button--with-bottom-margin" : ""}`}>
                     {children}
                 </a>
             </Link>
         :
-            <button className={`button button--${background}`}>
+            <button className={`button ${background ? `button--with-${background}` : ""} ${withBottomMargin ? "button--with-bottom-margin" : ""}`}>
                 {children}
             </button>
         }
@@ -21,7 +21,8 @@ const Button = ({href, children, background}) =>
 Button.propTypes = {
     href: PropTypes.string,
     children: PropTypes.node.isRequired,
-    background: PropTypes.string
+    background: PropTypes.string,
+    withBottomMargin: PropTypes.bool
 }
 
 export default Button

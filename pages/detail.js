@@ -29,7 +29,7 @@ const DetailPage = ({service, apiKey}) =>
 
         <ColumnsWithDivider>
             <Column>
-                {service.url && <Button href={service.url}>Visit website</Button>}
+                {service.url && <Button withBottomMargin href={service.url}>Visit website</Button>}
 
                 <ServiceDetailItem kind="place">
                     {service.venue && <p>{service.venue}</p>}
@@ -68,9 +68,9 @@ const DetailPage = ({service, apiKey}) =>
 
     </Layout>
 
-DetailPage.getInitialProps = async ({req}) => {
+DetailPage.getInitialProps = async ({req, query}) => {
     const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
-    let res = await fetch(`${baseUrl}/api/services/${req.params.id}`)
+    let res = await fetch(`${baseUrl}/api/services/${query.id}`)
     let service = await res.json()
     return {
         service: service.result,

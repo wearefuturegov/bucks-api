@@ -13,13 +13,15 @@
 .columns-with-divider__column{
     @media screen and (min-width: $tablet){
         display: inline-block;
-        width: calc(50% - 10px);
-        margin-right: 20px;
+        width: calc(50%);
         vertical-align: top;
-        &:nth-of-type(even){
-            padding-left: 20px;
+        &:last-of-type{
+            padding-left: 30px;
             margin-right: 0px;
             border-left: 1px solid $shadow;
+        }
+        &:first-of-type{
+            padding-right: 30px;
         }
     }
 
