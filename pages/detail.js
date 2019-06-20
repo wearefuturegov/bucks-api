@@ -11,7 +11,7 @@ const prettyDays = (rawDays) => {
     return "On " + prettyDays.join(", ")
 }
 
-const DetailPage = ({service, apiKey}) =>
+const DetailPage = ({service}) =>
     <Layout withHeader>
         <PageHeader 
             breadcrumbs={[
@@ -35,7 +35,7 @@ const DetailPage = ({service, apiKey}) =>
                     {service.venue && <p>{service.venue}</p>}
                     {service.area && <p>{service.area}</p>}
                     {service.postcode && <p>{service.postcode}</p>}
-                    <a href={`https://www.google.com/maps/place/${service.postcode}/@${service.geo.coordinates[1]},${service.geo.coordinates[0]},15z`}>See directions</a>
+                    <a href={`https://www.google.com/maps/place/${service.postcode}/@${service.geo.coordinates[1]},${service.geo.coordinates[0]},15z`}>Get directions</a>
                 </ServiceDetailItem>
 
                 <ServiceDetailItem kind="calendar">
@@ -56,7 +56,7 @@ const DetailPage = ({service, apiKey}) =>
 
 
                 <WrappedMap 
-                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_CLIENT_KEY}&v=3.exp&libraries=geometry,drawing,places`}
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div style={{ height: `400px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
@@ -73,8 +73,7 @@ DetailPage.getInitialProps = async ({req, query}) => {
     let res = await fetch(`${baseUrl}/api/services/${query.id}`)
     let service = await res.json()
     return {
-        service: service.result,
-        apiKey: process.env.GOOGLE_CLIENT_KEY
+        service: service.result
     }
 }
 

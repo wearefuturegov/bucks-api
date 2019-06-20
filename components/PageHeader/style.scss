@@ -2,15 +2,15 @@
 
 .page-header{
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     @media screen and (min-width: $desktop){
         padding-top: 40px;
-        padding-bottom: 40px;
+        padding-bottom: 60px;
     }
     @media screen and (min-width: $largeDesktop){
         padding-top: 60px;
-        padding-bottom: 60px;
     }
+
     &.page-header--reduced-bottom-padding{
         @media screen and (min-width: $desktop){
             padding-bottom: 20px;
@@ -19,6 +19,7 @@
             padding-bottom: 20px;
         }
     }
+    
 }
 
 .page-header__title{
