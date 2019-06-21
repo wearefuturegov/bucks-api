@@ -32,15 +32,14 @@ module.exports = {
 
         let perPage = 10
 
-        try{
-
-            let count = await Service.countDocuments(query)
-
-            let services = await Service.find(findQuery)
+        Promise.all([
+            Service.countDocuments(query),
+            Service.find(findQuery)
                 .lean()
                 .select(backOfficeFields)
                 .limit(perPage)
                 .skip((req.query.page - 1) * perPage)
+        ]).then(([count, services])=>{
             res.json({
                 status: "OK",
                 count: count,
@@ -65,9 +64,7 @@ module.exports = {
                     }
                 })
             })
-        } catch(err){
-            return next(err)
-        }
+        })
     },
 
     getServiceById: async (req, res, next)=>{
