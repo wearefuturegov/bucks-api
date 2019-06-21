@@ -37,50 +37,32 @@ module.exports = {
             query.ageGroups = req.query.age
         }
 
+        if(req.query.lat && req.query.lng) {
+            query.geo = {
+                $nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]
+            }
+        }
+
         let perPage = 10
 
         try{
-            if(req.query.lat && req.query.lng){
-                // Aggregation
-                let result = await Service.aggregate([
-                    {
-                        $geoNear: {
-                            spherical: true,
-                            query: query,
-                            distanceField: "distance",
-                            limit: perPage * req.query.page,
-                            near: {
-                                type: "Point" ,
-                                // REMEMBER: reverse lng and lat from usual order here
-                                coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]
-                            }
-                        }
-                    },
-                    { $project: backOfficeFields},
-                    { $sort: {distance: 1}},
-                    { $skip: (req.query.page > 1)? ((req.query.page - 1) * perPage) : 0},
-                    { $limit: perPage },
-                    { $count: "fuck"}
-                ])
-                res.json({
-                    status: "OK",
-                    page: req.query.page,
-                    // total: result[0].totalCount[0].totalCount,
-                    results: result
+
+
+            let services = await Service.find(query)
+                .lean()
+                .select(backOfficeFields)
+                .limit(perPage)
+                .skip((req.query.page - 1) * perPage)
+            res.json({
+                status: "OK",
+                results: services.map((service, i) =>{
+                    return {
+                        ...service,
+                        distance
+                    }
                 })
-    
-            } else {
-                // Normal find query
-                let services = await Service.find(query)
-                    .lean()
-                    .select(backOfficeFields)
-                    .limit(perPage)
-                    .skip((req.query.page - 1) * perPage)
-                res.json({
-                    status: "OK",
-                    results: services
-                })
-            }
+            })
+
 
         } catch(err){
             return next(err)
