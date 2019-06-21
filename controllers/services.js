@@ -43,7 +43,7 @@ module.exports = {
                 status: "OK",
                 count: count,
                 results: services.map((service, i) =>{
-                    if(req.query.lat && req.query.lng){
+                    if(findQuery.geo){
                         return {
                             ...service,
                             // Add an extra field for computed distance
