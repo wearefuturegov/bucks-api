@@ -9,7 +9,7 @@ import queryString from 'query-string'
 
 const RecommendationsPage = ({snippets, services, query}) => {
 
-    const [servicesState, changeServices] = useState(services)
+    // const [servicesState, changeServices] = useState(services)
     return(
         <Layout withHeader>
             <PageHeader 
@@ -25,18 +25,9 @@ const RecommendationsPage = ({snippets, services, query}) => {
                 ]}
                 title="Your recommendations"
                 />
-
-            <button onClick={()=>{
-
-                changeServices([{
-                    name: "duuuh"
-                }].concat(servicesState))
-
-            }}>clear list</button>
-
             <Recommendations 
                 snippets={snippets}
-                services={servicesState} 
+                services={services} 
                 query={query}
                 />
             <CentredText

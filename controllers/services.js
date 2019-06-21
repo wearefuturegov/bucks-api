@@ -1,4 +1,5 @@
 const Service = require("../models/Service")
+const haversine = require("haversine")
 
 const backOfficeFields = {
     _id: 0,
@@ -21,33 +22,15 @@ module.exports = {
     list: async (req, res, next)=>{
         let query = {}
         
-        if(req.query.category){
-            query.category = { $in: [].concat(req.query.category) }
-        }
-
-        if(req.query.keywords){
-            query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
-        }
-
-        if(req.query.days){
-            query.days = { $in: [].concat(req.query.days) }
-        }
-
-        if(req.query.age){
-            query.ageGroups = req.query.age
-        }
-
-        if(req.query.lat && req.query.lng) {
-            query.geo = {
-                $nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]
-            }
-        }
+        if(req.query.category) query.category = { $in: [].concat(req.query.category) }
+        if(req.query.keywords) query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
+        if(req.query.days) query.days = { $in: [].concat(req.query.days) }
+        if(req.query.age) query.ageGroups = req.query.age
+        if(req.query.lat && req.query.lng) query.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}
 
         let perPage = 10
 
         try{
-
-
             let services = await Service.find(query)
                 .lean()
                 .select(backOfficeFields)
@@ -56,14 +39,26 @@ module.exports = {
             res.json({
                 status: "OK",
                 results: services.map((service, i) =>{
-                    return {
-                        ...service,
-                        distance
+                    if(req.query.lat && req.query.lng){
+                        return {
+                            ...service,
+                            // Add an extra field for computed distance
+                            distance: haversine({
+                                latitude: req.query.lat,
+                                longitude: req.query.lng
+                            },{
+                                latitude: service.geo.coordinates[1],
+                                longitude: service.geo.coordinates[0]
+                            },
+                            {
+                                unit: "mile"
+                            })
+                        }
+                    } else {
+                        return service
                     }
                 })
             })
-
-
         } catch(err){
             return next(err)
         }

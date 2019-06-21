@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import ServiceCard from '../ServiceCard'
 import './style.scss'
 
-
-
-
 const ServicesGrid = ({services}) =>
     <>
         <h2 className="recommendations__section-title">Services near you</h2>
