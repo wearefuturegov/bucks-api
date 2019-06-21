@@ -42,14 +42,13 @@ module.exports = {
         try{
             if(req.query.lat && req.query.lng){
                 // Aggregation
-
-                let services = await Service.aggregate([
+                let result = await Service.aggregate([
                     {
                         $geoNear: {
                             spherical: true,
                             query: query,
                             distanceField: "distance",
-                            explain: true,
+                            limit: perPage * req.query.page,
                             near: {
                                 type: "Point" ,
                                 // REMEMBER: reverse lng and lat from usual order here
@@ -59,12 +58,15 @@ module.exports = {
                     },
                     { $project: backOfficeFields},
                     { $sort: {distance: 1}},
-                    { $skip: (req.query.perPage > 1)? ((req.query.page - 1) * perPage) : 0},
+                    { $skip: (req.query.page > 1)? ((req.query.page - 1) * perPage) : 0},
                     { $limit: perPage },
+                    { $count: "fuck"}
                 ])
                 res.json({
                     status: "OK",
-                    results: services
+                    page: req.query.page,
+                    // total: result[0].totalCount[0].totalCount,
+                    results: result
                 })
     
             } else {

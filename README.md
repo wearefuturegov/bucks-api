@@ -20,6 +20,7 @@ It consists of:
     * `FOREST_ENV_SECRET`
     * `FOREST_AUTH_SECRET`
     * `GOOGLE_API_KEY` with the geocoding API enabled
+    * `GOOGLE_CLIENT_KEY` with the Maps Javascript API enabled, and scoped to the production URL and browsers only. This credential will be exposed client-side.
 3. `npm install`
 4. `npm run dev`
 5. Optionally, [seed the database](#database-seeds)
@@ -61,6 +62,8 @@ The services API at `/api/services` can be filtered and sorted:
 * `ages=`, plus either `Young people`, `Young adults` or `Older adults` will filter to services matching *only* the given value
 * `lat=` and `lng=` will order results by distance from that point, nearest first, and add an extra field "distance" to the response.
 
-* `accessibility[]=`... will provide services that match only *all* of the supplied values
-* `days[]=`... will provide services that match *any* of the supplied days
+* `accessibility=`... will provide services that match only *all* of the supplied values
+* `days=`... will provide services that match *any* of the supplied days
 * `evening=true` will restrict results to those happening at evenings and weekends only
+
+To pass arrays of values, include the parameter multiple times, like: `?category=active&category=support`.

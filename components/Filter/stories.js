@@ -1,11 +1,11 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import InterestsFilter from './InterestsFilter'
+import CategoryFilter from './CategoryFilter'
 import LocationFilter from './LocationFilter'
 
 storiesOf('Filters', module)
     .add('interests', () => (
-        <InterestsFilter query={{
+        <CategoryFilter query={{
             category: ["support", "social"]
         }}/>
     ))

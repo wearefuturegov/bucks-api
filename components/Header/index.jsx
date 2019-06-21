@@ -54,7 +54,6 @@ const Header = ({inverted}) => {
 
 
 Header.propTypes = {
-    menuItems: PropTypes.array.isRequired,
     inverted: PropTypes.bool
 }
 
