@@ -6,11 +6,10 @@ import Header from '../Header'
 
 const Hero = ({
     title,
-    description,
-    menuItems,
+    description
 }) => 
     <section className="hero hero--needs">
-        <Header menuItems={menuItems} inverted/>
+        <Header inverted/>
         <div className="hero__inner container">
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">{description}</p>
@@ -20,8 +19,7 @@ const Hero = ({
 
 Hero.propTypes = {
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    menuItems: PropTypes.array
+    description: PropTypes.string.isRequired
 }
 
 export default Hero

@@ -26,7 +26,7 @@ const ServicesGrid = ({services}) =>
         : 
             <div className="services-grid__no-results">
                 <h3>No results</h3>
-                <p>Improve your search results by removing filters, double-checking your spelling or searching for something less specific.</p>
+                <p>Improve your search results by removing filters or double-checking your spelling.</p>
             </div>
         }
     </>

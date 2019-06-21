@@ -9,14 +9,13 @@ import CallToAction from './CallToAction'
 const Hero = ({
     title,
     description,
-    menuItems,
     ctaTitle,
     ctaDescription,
     ctaHref,
     ctaLinkText
 }) => 
     <section className="hero">
-        <Header menuItems={menuItems} inverted/>
+        <Header inverted/>
         <div className="hero__inner container">
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">{description}</p>
@@ -33,7 +32,6 @@ const Hero = ({
 Hero.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    menuItems: PropTypes.array,
     ctaTitle: PropTypes.string.isRequired,
     ctaDescription: PropTypes.string.isRequired,
     ctaHref: PropTypes.string.isRequired,

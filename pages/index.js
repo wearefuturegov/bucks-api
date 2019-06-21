@@ -16,24 +16,6 @@ const HomePage = () =>
         <Hero
             title="Support and care for adults, their families and carers"
             description="Helping you find the right information and support in Buckinghamshire."
-            menuItems={[
-                {
-                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1228",
-                    text: "Information and advice"
-                },
-                {
-                    href: "/recommendations",
-                    text: "All services"
-                },
-                {
-                    href: "https://www.careadvicebuckinghamshire.org/s4s/Auth",
-                    text: "Log in"
-                },
-                {
-                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1636",
-                    text: "Sign up"
-                },
-            ]}
             ctaTitle="Find services in your area"
             ctaDescription="Answer a few questions to find clubs, activities and support groups in your area"
             ctaHref="/explore-your-needs"

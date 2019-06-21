@@ -116,7 +116,7 @@ const InterestsFilter = ({query}) => {
                             >
                             Apply
                         </button>
-                        <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Show all</button>
+                        <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Clear</button>
                     </footer>
                 </form>
             </Dialog>
