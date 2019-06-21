@@ -16,25 +16,7 @@ const Layout = ({children, withHeader})=>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap" rel="stylesheet"/> 
     </Head>
     <PhaseBanner href="#"/>
-    {withHeader && <Header menuItems={[
-            {
-                href: "#",
-                text: "Information and advice"
-            },
-            {
-                href: "/recommendations",
-                text: "All services"
-            },
-            {
-                href: "#",
-                text: "Log in"
-            },
-            {
-                href: "#",
-                text: "Sign up"
-            },
-        ]}/>
-    }
+    {withHeader && <Header /> }
     {children}
     <IsPageUseful/>
     <FullWidthSearch
