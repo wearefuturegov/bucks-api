@@ -27,14 +27,16 @@ module.exports = {
         if(req.query.days) query.days = { $in: [].concat(req.query.days) }
         if(req.query.age) query.ageGroups = req.query.age
 
+        let findQuery = {...query}
+        if(req.query.lat && req.query.lng) findQuery.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}
+
         let perPage = 10
 
         try{
-            let count = await Service.count(query)
 
-            if(req.query.lat && req.query.lng) query.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}
+            let count = await Service.countDocuments(query)
 
-            let services = await Service.find(query)
+            let services = await Service.find(findQuery)
                 .lean()
                 .select(backOfficeFields)
                 .limit(perPage)
