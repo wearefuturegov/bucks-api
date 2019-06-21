@@ -26,11 +26,14 @@ module.exports = {
         if(req.query.keywords) query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
         if(req.query.days) query.days = { $in: [].concat(req.query.days) }
         if(req.query.age) query.ageGroups = req.query.age
-        if(req.query.lat && req.query.lng) query.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}
 
         let perPage = 10
 
         try{
+            let count = await Service.count(query)
+
+            if(req.query.lat && req.query.lng) query.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}
+
             let services = await Service.find(query)
                 .lean()
                 .select(backOfficeFields)
@@ -38,6 +41,7 @@ module.exports = {
                 .skip((req.query.page - 1) * perPage)
             res.json({
                 status: "OK",
+                count: count,
                 results: services.map((service, i) =>{
                     if(req.query.lat && req.query.lng){
                         return {
