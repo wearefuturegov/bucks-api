@@ -10,7 +10,7 @@ router.get("/services/:id", services.getServiceById)
 router.get("/snippets", snippets.list)
 
 // Error handler
-router.use((err, req, res)=>{
+router.use((err, req, res, next)=>{
     // eslint-disable-next-line no-console
     console.error(err)
     if(err.message === "NOT_FOUND"){
@@ -32,7 +32,7 @@ router.use((err, req, res)=>{
 })
 
 // Handle unknown api routes
-router.use("*", (req, res)=>{
+router.use("*", (req, res, next)=>{
     res.status(404).json({
         status: "NO_ROUTE",
         message: "No route matches your request"
