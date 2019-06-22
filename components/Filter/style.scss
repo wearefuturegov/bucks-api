@@ -101,7 +101,10 @@
 }
 
 .checkbox-item{
-    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     &:focus-within{
         .checkbox-item__label:before{
             outline: none;
@@ -117,9 +120,11 @@
 }
 
 .checkbox-item__label{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     cursor: pointer;
+    margin-bottom: 5px;
     &:before{
         content: "";
         display: inline-block;
@@ -132,6 +137,11 @@
         border: 2px solid $darkText;
         margin-right: 15px;
     }
+}
+
+.checkbox-item__help-text{
+    font-size: 0.9em;
+    color: $lightText;
 }
 
 .filter-dialog__text-label{

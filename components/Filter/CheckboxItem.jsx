@@ -6,7 +6,8 @@ const CheckboxItem = ({
     value,
     name,
     selectionState,
-    onChange
+    onChange,
+    helpText
 }) =>
     <div className="checkbox-item">
         <input className="checkbox-item__input visually-hidden" type="checkbox" 
@@ -16,8 +17,12 @@ const CheckboxItem = ({
             checked={selectionState.includes(value)}
             onChange={onChange}
             />
-        <label className="checkbox-item__label" htmlFor={`${name}-${value}`}>{label}</label>
-        <br/>
+        <label className="checkbox-item__label" htmlFor={`${name}-${value}`}>
+            <div>
+                {label}
+                {helpText && <p className="checkbox-item__help-text">{helpText}</p>}
+            </div>
+        </label>
     </div>
 
 CheckboxItem.propTypes = {
@@ -25,7 +30,8 @@ CheckboxItem.propTypes = {
     value: PropTypes.string.isRequired, 
     label: PropTypes.string.isRequired, 
     onChange: PropTypes.func.isRequired, 
-    selectionState: PropTypes.array.isRequired
+    selectionState: PropTypes.array.isRequired,
+    helpText: PropTypes.string
 }
 
 export default CheckboxItem

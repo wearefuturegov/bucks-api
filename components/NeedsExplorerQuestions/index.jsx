@@ -8,6 +8,7 @@ import geocode from '../../lib/geocode-client'
 import CategoryQuestion from './CategoryQuestion'
 import KeywordQuestion from './KeywordQuestion'
 import LocationQuestion from './LocationQuestion'
+import AgeQuestion from './AgeQuestion'
 
 const NeedsExplorerQuestions = () => {
 
@@ -37,6 +38,11 @@ const NeedsExplorerQuestions = () => {
         }
     }
 
+    const [ageSelection, changeAgeSelection] = useState([])
+    const handleAgeChange = (e) => {
+        changeAgeSelection([e.target.value])
+    }
+
     const [rawLocation, changeRawLocation] = useState("")
     const [formattedLocation, changeFormattedLocation] = useState("")
     const handleRawLocationChange = (e) => {
@@ -54,6 +60,7 @@ const NeedsExplorerQuestions = () => {
             category: categorySelection,
             keywords: keywordSelection,
             location: rawLocation,
+            age: ageSelection,
             lat: geocoded.lat,
             lng: geocoded.lng
         }
@@ -74,12 +81,19 @@ const NeedsExplorerQuestions = () => {
                             selection={keywordSelection}
                             />
                     }
+
+                    <AgeQuestion 
+                        onChange={handleAgeChange} 
+                        selection={ageSelection}
+                        />
+
                     <LocationQuestion 
                         rawLocation={rawLocation} 
                         formattedLocation={formattedLocation} 
                         onChange={handleRawLocationChange} 
                         onBlur={handleBlur}
                         />
+
                     <Button>See your recommendations</Button>
                 </form>
             </div>

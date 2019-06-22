@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import CategoryFilter from '../Filter/CategoryFilter'
 import LocationFilter from '../Filter/LocationFilter'
 import KeywordsFilter from '../Filter/KeywordsFilter'
+import AgesFilter from '../Filter/AgesFilter'
 import DaysFilter from '../Filter/DaysFilter'
 import AdviceSnippetsGrid from '../AdviceSnippetGrid'
 import ServicesGrid from '../ServicesGrid'
@@ -15,6 +16,7 @@ const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, tot
             <CategoryFilter query={query} />
             <KeywordsFilter query={query}/>
             <LocationFilter query={query}/>
+            <AgesFilter query={query}/>
             <DaysFilter query={query}/>
         </section>
 
