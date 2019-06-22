@@ -9,7 +9,7 @@ import ServicesGrid from '../ServicesGrid'
 import Button from '../Button'
 import './style.scss'
 
-const Recommendations = ({services, snippets, query, onLoadMore}) => 
+const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad}) => 
     <>
         <section className="recommendation-filters container">
             <CategoryFilter query={query} />
@@ -22,7 +22,7 @@ const Recommendations = ({services, snippets, query, onLoadMore}) =>
             <div className="container">
                 {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
                 <ServicesGrid services={services}/>
-                <Button onClick={onLoadMore}>Show more results</Button>
+                {moreToLoad && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
             </div>
         </section>
     </>
@@ -30,7 +30,8 @@ const Recommendations = ({services, snippets, query, onLoadMore}) =>
 Recommendations.propTypes = {
     services: PropTypes.array.isRequired,
     snippets: PropTypes.array.isRequired,
-    query: PropTypes.object
+    query: PropTypes.object,
+    moreToLoad: PropTypes.bool
 }
 
 export default Recommendations
