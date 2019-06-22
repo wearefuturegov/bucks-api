@@ -51,8 +51,8 @@ const RecommendationsPage = ({snippets, services, query}) => {
                 snippets={snippets}
                 services={services.concat(moreServices)} 
                 query={query}
+                onLoadMore={handleLoadMore}
                 />
-                            <button onClick={handleLoadMore}>get more</button>
             <CentredText
                 title="Is anything missing?"
                 description="If you’re the organiser, of a club, activity or group that isn’t on this list, you can request it be added."

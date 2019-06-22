@@ -6,9 +6,10 @@ import KeywordsFilter from '../Filter/KeywordsFilter'
 import DaysFilter from '../Filter/DaysFilter'
 import AdviceSnippetsGrid from '../AdviceSnippetGrid'
 import ServicesGrid from '../ServicesGrid'
+import Button from '../Button'
 import './style.scss'
 
-const Recommendations = ({services, snippets, query}) => 
+const Recommendations = ({services, snippets, query, onLoadMore}) => 
     <>
         <section className="recommendation-filters container">
             <CategoryFilter query={query} />
@@ -21,6 +22,7 @@ const Recommendations = ({services, snippets, query}) =>
             <div className="container">
                 {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
                 <ServicesGrid services={services}/>
+                <Button onClick={onLoadMore}>Show more results</Button>
             </div>
         </section>
     </>
