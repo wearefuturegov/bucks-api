@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import ServiceCard from '../ServiceCard'
 import './style.scss'
 
-const ServicesGrid = ({initialServices}) => 
+const ServicesGrid = ({services}) => 
     <>
         <h2 className="recommendations__section-title">Services near you</h2>
-        {initialServices.length > 0 ? 
+        {services.length > 0 ? 
             <ol className="services-grid">
-                {initialServices.map((service, i)=>
+                {services.map((service, i)=>
                     <ServiceCard
                         key={i}
                         assetId={service.assetId}
@@ -29,7 +29,7 @@ const ServicesGrid = ({initialServices}) =>
     </>
     
 ServicesGrid.propTypes = {
-    initialServices: PropTypes.array.isRequired
+    services: PropTypes.array.isRequired
 }
 
 export default ServicesGrid

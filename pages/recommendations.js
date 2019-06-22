@@ -26,6 +26,7 @@ const RecommendationsPage = ({snippets, services, query}) => {
         }
         const res = await fetch(`/api/services?${queryString.stringify(loadMoreQuery)}`)
         const newServices = await res.json()
+        // Update state
         changeMoreServices(moreServices.concat(newServices.results))
         changePage(page+1)
     }

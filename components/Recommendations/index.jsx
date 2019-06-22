@@ -20,7 +20,7 @@ const Recommendations = ({services, snippets, query}) =>
         <section className="recommendations">
             <div className="container">
                 {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
-                <ServicesGrid initialServices={services}/>
+                <ServicesGrid services={services}/>
             </div>
         </section>
     </>
