@@ -1,4 +1,5 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+
 import Layout from '../components/Layout'
 import PageHeader from '../components/PageHeader'
 import AdviceSnippetGrid from '../components/AdviceSnippetGrid'
@@ -9,7 +10,26 @@ import queryString from 'query-string'
 
 const RecommendationsPage = ({snippets, services, query}) => {
 
-    // const [servicesState, changeServices] = useState(services)
+    const [page, changePage] = useState(1)
+    const [moreServices, changeMoreServices] = useState([])
+
+    // When URL query changes, start afresh
+    useEffect(()=>{
+        changePage(1)
+        changeMoreServices([])
+    }, [query])
+
+    const handleLoadMore = async () => {
+        let loadMoreQuery = {
+            ...query,
+            page: page + 1
+        }
+        const res = await fetch(`/api/services?${queryString.stringify(loadMoreQuery)}`)
+        const newServices = await res.json()
+        changeMoreServices(moreServices.concat(newServices.results))
+        changePage(page+1)
+    }
+
     return(
         <Layout withHeader>
             <PageHeader 
@@ -25,11 +45,13 @@ const RecommendationsPage = ({snippets, services, query}) => {
                 ]}
                 title="Your recommendations"
                 />
+
             <Recommendations 
                 snippets={snippets}
-                services={services} 
+                services={services.concat(moreServices)} 
                 query={query}
                 />
+                            <button onClick={handleLoadMore}>get more</button>
             <CentredText
                 title="Is anything missing?"
                 description="If you’re the organiser, of a club, activity or group that isn’t on this list, you can request it be added."
