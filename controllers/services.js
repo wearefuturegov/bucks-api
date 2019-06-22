@@ -42,6 +42,7 @@ module.exports = {
             res.json({
                 status: "OK",
                 count: count,
+                pages: Math.ceil(count / perPage),
                 results: services.map((service, i) =>{
                     if(findQuery.geo){
                         return {
