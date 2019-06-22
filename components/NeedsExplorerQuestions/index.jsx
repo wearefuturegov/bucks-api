@@ -68,9 +68,10 @@ const NeedsExplorerQuestions = () => {
     }
 
     return(
-        <main className="questions">
-            <div className="questions__inner">
-                <form method="get" action="/recommendations" onSubmit={handleSubmit}>
+        <form method="get" action="/recommendations" onSubmit={handleSubmit}>
+            <section className="questions">
+                <div className="questions__inner">
+
                     <CategoryQuestion 
                         selection={categorySelection} 
                         onChange={handleCategoryChange}
@@ -93,11 +94,14 @@ const NeedsExplorerQuestions = () => {
                         onChange={handleRawLocationChange} 
                         onBlur={handleBlur}
                         />
+                </div>
+            </section>
+            {rawLocation && <section className="continue-to-recommendations container">
+                <p className="continue-to-recommendations__message">Continue to your recommendations</p>
+                <Button>See your recommendations</Button>
+            </section>}
 
-                    <Button>See your recommendations</Button>
-                </form>
-            </div>
-        </main>
+        </form>
     )
 }
 

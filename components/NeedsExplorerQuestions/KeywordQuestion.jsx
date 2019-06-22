@@ -6,7 +6,7 @@ const KeywordQuestion = ({
     selection,
     onChange
 }) => 
-    <section className="question">
+    <section className="question question--animated">
         <h2 className="question__title">What do you need help with?</h2>
         <p className="question__help-text">Select as many as you want</p>
         <div className="question__options">

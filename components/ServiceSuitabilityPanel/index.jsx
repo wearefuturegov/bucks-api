@@ -25,8 +25,8 @@ const ServiceSuitabilityPanel = ({
         <div className="service-suitability-panel__inner container">
 
             {accessibility.length > 0 && <List title="Accessibility" items={accessibility}/>}
-            {suitability.length > 0 &&<List title="Suitable for" items={suitability}/>}
-            {ages.length > 0 && <List title="Age groups" items={ages}/>}
+            {suitability.length > 0 &&<List title="Suitable for people with..." items={suitability}/>}
+            {ages.length > 0 && <List title="Suitable for..." items={ages}/>}
 
             {price &&
                 <div className="service-suitability-panel__column">

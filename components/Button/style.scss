@@ -34,7 +34,7 @@
     @media screen and (min-width: $desktop){
         font-size: 1.2em;
         padding: 12px 55px;
-        // display: inline-block;
+        display: inline-block;
     }
     &.button--white{
         background: $white;
@@ -54,6 +54,8 @@
             display: none;
         }
         background-color: $darkText;
-        margin: 0 auto;
+        display: block;
+        max-width: 300px;
+        margin: 20px auto;
     }
 }

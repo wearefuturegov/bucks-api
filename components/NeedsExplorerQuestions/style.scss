@@ -1,5 +1,15 @@
 @import '../vars';
 
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
 .questions{
     background: $background;
 }
@@ -22,6 +32,9 @@
     padding: 40px 0px;
     @media screen and (min-width: $tablet){
         padding: 60px 0px;
+    }
+    &.question--animated{
+        animation: fadeIn 0.3s ease-out;
     }
 }
 
@@ -67,4 +80,25 @@
         font-size: 1.1em;
         padding: 12px 50px 12px 25px;
     }
+}
+
+.continue-to-recommendations{
+    text-align: center;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+    @media screen and (min-width: $tablet){
+        margin: 100px auto;
+    }
+    @media screen and (min-width: $desktop){
+        margin: 120px auto;
+    }
+}
+
+.continue-to-recommendations__message{
+    font-size: 1.3em;
+    margin-bottom: 15px;
 }
