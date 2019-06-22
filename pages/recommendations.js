@@ -8,7 +8,7 @@ import CentredText from '../components/CentredText'
 import fetch from 'isomorphic-unfetch'
 import queryString from 'query-string'
 
-const RecommendationsPage = ({snippets, services, query, totalPages}) => {
+const RecommendationsPage = ({snippets, services, query, totalPages, totalServices}) => {
 
     const [page, changePage] = useState(1)
     const [moreServices, changeMoreServices] = useState([])
@@ -50,6 +50,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages}) => {
                 snippets={snippets}
                 services={services.concat(moreServices)} 
                 query={query}
+                totalServices={totalServices}
                 onLoadMore={handleLoadMore}
                 moreToLoad={page < totalPages}
                 />
@@ -76,6 +77,7 @@ RecommendationsPage.getInitialProps = async ({req, query}) => {
         services: services.results,
         snippets: snippets.results,
         query: query,
+        totalServices: services.count,
         totalPages: services.pages
     }
 }
