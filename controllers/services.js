@@ -25,6 +25,7 @@ module.exports = {
         if(req.query.keywords) query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
         if(req.query.days) query.days = { $in: [].concat(req.query.days) }
         if(req.query.age) query.ageGroups = { $in: [].concat(req.query.age) }
+        if(req.query.accessibility) query.accessibility = { $in: [].concat(req.query.accessibility) }
         // Spin off a second query object, because .countDocuments doesn't accept geospatial operators
         let findQuery = {...query}
         if(req.query.lat && req.query.lng) findQuery.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}

@@ -5,6 +5,7 @@ import LocationFilter from '../Filter/LocationFilter'
 import KeywordsFilter from '../Filter/KeywordsFilter'
 import AgesFilter from '../Filter/AgesFilter'
 import DaysFilter from '../Filter/DaysFilter'
+import AccessibilityFilter from '../Filter/AccessibilityFilter'
 import AdviceSnippetsGrid from '../AdviceSnippetGrid'
 import ServicesGrid from '../ServicesGrid'
 import Button from '../Button'
@@ -18,6 +19,7 @@ const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, tot
             <LocationFilter query={query}/>
             <AgesFilter query={query}/>
             <DaysFilter query={query}/>
+            <AccessibilityFilter query={query}/>
         </section>
 
         <section className="recommendations">

@@ -7,10 +7,10 @@ import Router from 'next/router'
 import "@reach/dialog/styles.css"
 import './style.scss'
 
-const AgesFilter = ({query}) => {
+const AccessibilityFilter = ({query}) => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [selection, changeSelection] = useState((query.age)? [].concat(query.age) : [])
+    const [selection, changeSelection] = useState((query.accessibility)? [].concat(query.accessibility) : [])
 
     // Add and remove checked and unchecked items from array
     const handleChange = (e) => {
@@ -29,7 +29,7 @@ const AgesFilter = ({query}) => {
         if(e) e.preventDefault()
         let newQuery = {
             ...query,
-            age: selection
+            accessibility: selection
         }
         Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         toggleDialog(false)
@@ -41,7 +41,7 @@ const AgesFilter = ({query}) => {
         changeSelection([])
         let newQuery = {
             ...query,
-            age: []
+            accessibility: []
         }
         Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         toggleDialog(false)
@@ -53,7 +53,7 @@ const AgesFilter = ({query}) => {
                 className={(selection.length > 0)? "filter-button filter-button--active" : "filter-button"}
                 onClick={() => {toggleDialog(true)}}
                 >
-                Ages
+                Accessibility
             </button>
 
             <Dialog
@@ -64,12 +64,15 @@ const AgesFilter = ({query}) => {
 
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
                     <div className="filter-dialog__body">
-                        <h2 className="filter-dialog__title">Suitable for ages</h2>
+                        <h2 className="filter-dialog__title">Accessibility</h2>
 
                         <div className="filter-dialog__options">
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="Young people" label="Young people" helpText="Under 18s"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="Young adults" label="Young adults" helpText="18-25"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="Older adults" label="Older adults" helpText="Over 60"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Building Lift" label="Building lift"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Building Wheelchair Access" label="Building wheelchair access"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Hearing Induction Loop" label="Hearing induction loop"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Nearby Bus Stop" label="Nearby bus stop"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="On-Site Parking" label="On-Site parking"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="WC Wheelchair Access" label="WC wheelchair access"/>
                         </div>
 
                     </div>
@@ -89,8 +92,8 @@ const AgesFilter = ({query}) => {
     )
 }
 
-AgesFilter.propTypes = {
+AccessibilityFilter.propTypes = {
     query: PropTypes.object.isRequired
 }
 
-export default AgesFilter
+export default AccessibilityFilter
