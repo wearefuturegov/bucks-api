@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import icon from './icon.svg'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import icon from "./icon.svg"
+import "./style.scss"
 
 const SearchForm = ({large}) =>
     <form className={(large)? "search search--large" : "search"} action="https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=2239" method="get">

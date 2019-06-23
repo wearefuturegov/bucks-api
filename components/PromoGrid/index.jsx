@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Promo from '../Promo'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import Promo from "../Promo"
+import "./style.scss"
 
 const PromoGrid = ({title, promos}) =>
     <section className="promo-grid">
@@ -14,7 +14,7 @@ const PromoGrid = ({title, promos}) =>
                         description={promo.description}
                         href={promo.href}
                         key={i}
-                        />    
+                    />    
                 )}
             </ul>
         </div>

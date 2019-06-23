@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import SearchForm from '../SearchForm'
-import MobileMenu from '../MobileMenu'
-import MenuItem from './MenuItem'
-import Link from 'next/link'
-import './style.scss'
-import logo from './logo.svg'
-import invertedLogo from './logo-inverted.svg'
+import React from "react"
+import PropTypes from "prop-types"
+import SearchForm from "../SearchForm"
+import MobileMenu from "../MobileMenu"
+import MenuItem from "./MenuItem"
+import Link from "next/link"
+import "./style.scss"
+import logo from "./logo.svg"
+import invertedLogo from "./logo-inverted.svg"
 
 const Header = ({inverted}) => {
     let menuItems = [

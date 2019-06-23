@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import "./style.scss"
 
 const CentredText = ({title, description}) =>
     <section className="centred-text">

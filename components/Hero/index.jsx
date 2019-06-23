@@ -1,10 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.scss'
-import hero from './hero.jpg'
-import triangle from './triangle.svg'
-import Header from '../Header'
-import CallToAction from './CallToAction'
+import React from "react"
+import PropTypes from "prop-types"
+import "./style.scss"
+import triangle from "./triangle.svg"
+import Header from "../Header"
+import CallToAction from "./CallToAction"
 
 const Hero = ({
     title,

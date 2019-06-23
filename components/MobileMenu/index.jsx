@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import Link from 'next/link'
-import PropTypes from 'prop-types'
-import Router from 'next/router'
-import './style.scss'
+import React, { useState } from "react"
+import Link from "next/link"
+import PropTypes from "prop-types"
+import "./style.scss"
 
 const MobileMenu = ({menuItems, inverted}) => {
 
@@ -22,7 +21,7 @@ const MobileMenu = ({menuItems, inverted}) => {
                 // aria-haspopup="true"
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
-                >
+            >
                 {(isOpen)? "Close menu": "Menu"}
             </button>
 
@@ -30,7 +29,7 @@ const MobileMenu = ({menuItems, inverted}) => {
                 className={(isOpen)? "mobile-menu mobile-menu--visible" : "mobile-menu"} 
                 aria-hidden={!isOpen}
                 id="mobile-menu"
-                >
+            >
 
                 {(menuItems.map((menuItem, i)=>
                     <li key={i}>

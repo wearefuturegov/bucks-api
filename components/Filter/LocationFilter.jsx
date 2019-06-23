@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import PropTypes from 'prop-types'
+import React, {useState} from "react"
+import PropTypes from "prop-types"
 import { Dialog } from "@reach/dialog"
 import "@reach/dialog/styles.css"
-import './style.scss'
-import queryString from 'query-string'
-import Router from 'next/router'
-import geocode from '../../lib/geocode-client'
+import "./style.scss"
+import queryString from "query-string"
+import Router from "next/router"
+import geocode from "../../lib/geocode-client"
 
 const LocationFilter = ({query}) => {
 
@@ -46,7 +46,7 @@ const LocationFilter = ({query}) => {
             <button 
                 className={(location)? "filter-button filter-button--active" : "filter-button"}
                 onClick={() => {toggleDialog(true)}}
-                >
+            >
                 Location
             </button>
 
@@ -54,7 +54,7 @@ const LocationFilter = ({query}) => {
                 className="filter-dialog"
                 isOpen={dialogIsOpen}
                 onDismiss={updateResults}
-                >
+            >
 
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
                     <div className="filter-dialog__body">
@@ -71,15 +71,15 @@ const LocationFilter = ({query}) => {
                             onChange={(e)=>{
                                 changeLocation(e.target.value)
                             }}
-                            />
+                        />
                     </div>
 
                     <footer className="filter-dialog__footer">
                         <button className="filter-dialog__action" 
-                                type="submit" 
-                                >
+                            type="submit" 
+                        >
                                 Apply
-                            </button>
+                        </button>
                         <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Clear</button>
                     </footer>
                 </form>

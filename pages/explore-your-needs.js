@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import Layout from '../components/Layout'
-import NeedsExplorerHero from '../components/Hero/NeedsExplorerHero'
-import NeedsExplorerQuestions from '../components/NeedsExplorerQuestions'
+import React from "react"
+import Layout from "../components/Layout"
+import NeedsExplorerHero from "../components/Hero/NeedsExplorerHero"
+import NeedsExplorerQuestions from "../components/NeedsExplorerQuestions"
 
 const ExploreYourNeedsPage = () => {
     return(
@@ -9,7 +9,7 @@ const ExploreYourNeedsPage = () => {
             <NeedsExplorerHero
                 title="Find people and services near you"
                 description="Answer a few questions to find activities and support groups in your area"
-                />
+            />
             <NeedsExplorerQuestions />
         </Layout>
     )

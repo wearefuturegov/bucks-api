@@ -1,9 +1,9 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import PromoGrid from './index'
+import React from "react"
+import { storiesOf } from "@storybook/react"
+import PromoGrid from "./index"
 
-storiesOf('Promo grid', module)
-    .add('default', () => (
+storiesOf("Promo grid", module)
+    .add("default", () => (
         <PromoGrid
             title="Life events"
             promos={[
@@ -54,5 +54,5 @@ storiesOf('Promo grid', module)
                     href: "#"
                 },
             ]}
-            />
+        />
     ))

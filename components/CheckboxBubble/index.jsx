@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import "./style.scss"
 
 const CheckboxBubble = ({name, value, label, onChange, selectionState}) =>
     <div className="checkbox-bubble">
@@ -13,7 +13,7 @@ const CheckboxBubble = ({name, value, label, onChange, selectionState}) =>
             id={`${name}-${value}`}
             checked={selectionState.includes(value)}
             onChange={onChange}
-            />
+        />
         <label className="checkbox-bubble__label" htmlFor={`${name}-${value}`}>
             {label}
         </label>

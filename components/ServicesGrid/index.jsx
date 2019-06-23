@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import PropTypes from 'prop-types'
-import ServiceCard from '../ServiceCard'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import ServiceCard from "../ServiceCard"
+import "./style.scss"
 
 const ServicesGrid = ({services, totalServices}) => 
     <>
@@ -17,10 +17,10 @@ const ServicesGrid = ({services, totalServices}) =>
                         description={service.description}
                         distance={service.distance}
                         parentOrganisation={service.parentOrganisation}
-                        />
+                    />
                 )}
             </ol>
-        : 
+            : 
             <div className="services-grid__no-results">
                 <h3>No results</h3>
                 <p>Improve your search results by removing filters or double-checking your spelling.</p>

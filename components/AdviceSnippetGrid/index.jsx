@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Card from '../Card'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import Card from "../Card"
+import "./style.scss"
 
 const AdviceSnippetGrid = ({snippets}) =>
     <>
@@ -13,7 +13,7 @@ const AdviceSnippetGrid = ({snippets}) =>
                     description={snippet.description}
                     href={snippet.href}
                     key={i}
-                    />
+                />
             )}
         </section>
     </>
