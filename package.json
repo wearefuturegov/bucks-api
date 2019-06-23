@@ -9,6 +9,7 @@
     "start": "NODE_ENV=production node server.js -p $PORT",
     "seed": "node lib/seed.js",
     "storybook": "start-storybook",
+    "test": "eslint --ignore-path .gitignore .",
     "build-storybook": "build-storybook -c .storybook -o .out"
   },
   "keywords": [],

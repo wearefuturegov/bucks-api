@@ -67,3 +67,7 @@ The services API at `/api/services` can be filtered and sorted:
 * `evening=true` will restrict results to those happening at evenings and weekends only
 
 To pass arrays of values, include the parameter multiple times, like: `?category=active&category=support`.
+
+## Linting
+
+`eslint` is used to enforce code style. Use a code editor with eslint support, or the `npm test` command, to run a lint.

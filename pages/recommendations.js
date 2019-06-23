@@ -62,7 +62,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
 }
 
 RecommendationsPage.getInitialProps = async ({req, query}) => {
-    const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";    
+    const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : ""    
     const endpoints = [
         `${baseUrl}/api/services?${queryString.stringify(query)}`,
         `${baseUrl}/api/snippets?${queryString.stringify(query)}`
