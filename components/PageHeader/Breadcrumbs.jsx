@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
 
 const Breadcrumbs = ({breadcrumbs}) =>
     <ul className="breadcrumbs">
@@ -9,7 +9,7 @@ const Breadcrumbs = ({breadcrumbs}) =>
                     <Link href={breadcrumb.href}>
                         <a className="breadcrumbs__link">{breadcrumb.title}</a>
                     </Link>
-                : breadcrumb.title }
+                    : breadcrumb.title }
             </li>    
         )}
     </ul>

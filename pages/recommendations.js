@@ -1,12 +1,10 @@
-import {useState, useEffect} from 'react'
-
-import Layout from '../components/Layout'
-import PageHeader from '../components/PageHeader'
-import AdviceSnippetGrid from '../components/AdviceSnippetGrid'
-import Recommendations from '../components/Recommendations'
-import CentredText from '../components/CentredText'
-import fetch from 'isomorphic-unfetch'
-import queryString from 'query-string'
+import {useState, useEffect} from "react"
+import Layout from "../components/Layout"
+import PageHeader from "../components/PageHeader"
+import Recommendations from "../components/Recommendations"
+import CentredText from "../components/CentredText"
+import fetch from "isomorphic-unfetch"
+import queryString from "query-string"
 
 const RecommendationsPage = ({snippets, services, query, totalPages, totalServices}) => {
 
@@ -45,7 +43,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
                     },
                 ]}
                 title="Your recommendations"
-                />
+            />
             <Recommendations 
                 snippets={snippets}
                 services={services.concat(moreServices)} 
@@ -53,18 +51,18 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
                 totalServices={totalServices}
                 onLoadMore={handleLoadMore}
                 moreToLoad={page < totalPages}
-                />
+            />
             <CentredText
                 title="Is anything missing?"
                 description="If you’re the organiser, of a club, activity or group that isn’t on this list, you can request it be added."
-                />
+            />
         </Layout>
     )
 
 }
 
 RecommendationsPage.getInitialProps = async ({req, query}) => {
-    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';    
+    const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : "";    
     const endpoints = [
         `${baseUrl}/api/services?${queryString.stringify(query)}`,
         `${baseUrl}/api/snippets?${queryString.stringify(query)}`

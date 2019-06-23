@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import "./style.scss"
 
-import place from './place.svg'
-import calendar from './calendar.svg'
-import contact from './contact.svg'
+import place from "./place.svg"
+import calendar from "./calendar.svg"
+import contact from "./contact.svg"
 
 const ServiceDetailItem = ({kind, children}) =>
     <div className="service-detail-item">

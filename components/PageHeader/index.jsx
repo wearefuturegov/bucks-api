@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Breadcrumbs from './Breadcrumbs'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import Breadcrumbs from "./Breadcrumbs"
+import "./style.scss"
 
 const PageHeader = ({
     title,

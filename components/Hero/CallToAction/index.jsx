@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.scss'
-import Button from '../../Button'
+import React from "react"
+import PropTypes from "prop-types"
+import "./style.scss"
+import Button from "../../Button"
 
 const CallToAction = ({
     title, description, href, linkText

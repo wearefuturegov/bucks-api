@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.scss'
-import triangle from './triangle.svg'
-import Header from '../Header'
+import React from "react"
+import PropTypes from "prop-types"
+import "./style.scss"
+import triangle from "./triangle.svg"
+import Header from "../Header"
 
 const Hero = ({
     title,

@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import RadioBubble from '../RadioBubble'
+import React from "react"
+import PropTypes from "prop-types"
+import RadioBubble from "../RadioBubble"
 
 const AgeQuestion = ({
     selection,

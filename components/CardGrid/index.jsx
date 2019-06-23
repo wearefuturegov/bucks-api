@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Card from '../Card'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import Card from "../Card"
+import "./style.scss"
 
 const CardGrid = ({title, cards, afterHero}) =>
     <section className={(afterHero)? "card-grid card-grid--extra-top-padding card-grid--with-bottom-overlap": "card-grid"}>
@@ -15,7 +15,7 @@ const CardGrid = ({title, cards, afterHero}) =>
                         image={card.image}
                         href={card.href}
                         key={i}
-                        />    
+                    />    
                 )}
             </div>
         </div>

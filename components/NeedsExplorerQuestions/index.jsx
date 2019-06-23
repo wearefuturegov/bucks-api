@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
-import './style.scss'
-import Button from '../Button'
-import queryString from 'query-string'
-import Router from 'next/router'
-import geocode from '../../lib/geocode-client'
+import React, {useState} from "react"
+import "./style.scss"
+import Button from "../Button"
+import queryString from "query-string"
+import Router from "next/router"
+import geocode from "../../lib/geocode-client"
 
-import CategoryQuestion from './CategoryQuestion'
-import KeywordQuestion from './KeywordQuestion'
-import LocationQuestion from './LocationQuestion'
-import AgeQuestion from './AgeQuestion'
+import CategoryQuestion from "./CategoryQuestion"
+import KeywordQuestion from "./KeywordQuestion"
+import LocationQuestion from "./LocationQuestion"
+import AgeQuestion from "./AgeQuestion"
 
 const NeedsExplorerQuestions = () => {
 
@@ -75,25 +75,25 @@ const NeedsExplorerQuestions = () => {
                     <CategoryQuestion 
                         selection={categorySelection} 
                         onChange={handleCategoryChange}
-                        />
+                    />
                     {categorySelection.includes("support") && 
                         <KeywordQuestion 
                             onChange={handleKeywordChange} 
                             selection={keywordSelection}
-                            />
+                        />
                     }
 
                     <AgeQuestion 
                         onChange={handleAgeChange} 
                         selection={ageSelection}
-                        />
+                    />
 
                     <LocationQuestion 
                         rawLocation={rawLocation} 
                         formattedLocation={formattedLocation} 
                         onChange={handleRawLocationChange} 
                         onBlur={handleBlur}
-                        />
+                    />
                 </div>
             </section>
             {rawLocation && <section className="continue-to-recommendations container">

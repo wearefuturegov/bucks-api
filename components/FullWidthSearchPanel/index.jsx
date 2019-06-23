@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import SearchForm from '../SearchForm'
-import Link from 'next/link'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import SearchForm from "../SearchForm"
+import Link from "next/link"
+import "./style.scss"
 
 const PopularPages = ({pages}) =>
     <ul className="popular-pages">

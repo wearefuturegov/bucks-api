@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 const CheckboxItem = ({
     label,
@@ -16,7 +16,7 @@ const CheckboxItem = ({
             id={`${name}-${value}`} 
             checked={selectionState.includes(value)}
             onChange={onChange}
-            />
+        />
         <label className="checkbox-item__label" htmlFor={`${name}-${value}`}>
             <div>
                 {label}

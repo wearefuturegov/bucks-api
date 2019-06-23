@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Link from 'next/link'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import Link from "next/link"
+import "./style.scss"
 
 const truncate = (str, noWords) => {
     if(str.split(" ").length > noWords){
@@ -22,7 +22,7 @@ const ServiceCard = ({
     assetId,
     category,
     title,
-    parentOrganisation,
+    // parentOrganisation,
     description,
     distance
 }) => 

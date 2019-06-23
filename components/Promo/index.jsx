@@ -1,7 +1,7 @@
-import React from 'react'
-import Link from 'next/link'
-import PropTypes from 'prop-types'
-import './style.scss'
+import React from "react"
+import Link from "next/link"
+import PropTypes from "prop-types"
+import "./style.scss"
 
 const Promo = ({title, description, href}) =>
     <li className="promo">

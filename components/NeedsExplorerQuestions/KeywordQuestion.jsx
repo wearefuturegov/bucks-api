@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import CheckboxBubble from '../CheckboxBubble'
+import React from "react"
+import PropTypes from "prop-types"
+import CheckboxBubble from "../CheckboxBubble"
 
 const KeywordQuestion = ({
     selection,

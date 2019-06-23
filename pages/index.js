@@ -1,15 +1,15 @@
-import Layout from '../components/Layout'
-import Hero from '../components/Hero'
-import CardGrid from '../components/CardGrid'
-import PromoGrid from '../components/PromoGrid'
-import WideCallToActionPanel from '../components/WideCallToActionPanel'
+import Layout from "../components/Layout"
+import Hero from "../components/Hero"
+import CardGrid from "../components/CardGrid"
+import PromoGrid from "../components/PromoGrid"
+import WideCallToActionPanel from "../components/WideCallToActionPanel"
 
-import i1 from '../images/1.jpg'
-import i2 from '../images/2.jpg'
-import i3 from '../images/3.jpg'
-import i4 from '../images/4.jpg'
-import i5 from '../images/5.jpg'
-import i6 from '../images/6.jpg'
+import i1 from "../images/1.jpg"
+import i2 from "../images/2.jpg"
+import i3 from "../images/3.jpg"
+import i4 from "../images/4.jpg"
+import i5 from "../images/5.jpg"
+import i6 from "../images/6.jpg"
 
 const HomePage = () =>
     <Layout>
@@ -20,7 +20,7 @@ const HomePage = () =>
             ctaDescription="Answer a few questions to find clubs, activities and support groups in your area"
             ctaHref="/explore-your-needs"
             ctaLinkText="Get started"
-            />
+        />
         <CardGrid
             afterHero
             title="Information and advice"
@@ -62,13 +62,13 @@ const HomePage = () =>
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1134"
                 }
             ]}
-            />
+        />
         <WideCallToActionPanel
             title="In an emergency"
             description="If you need to speak to someone urgently about a vulnerable adult, call us."
             linkText="Get emergency help"
             href="https://www.buckscc.gov.uk/services/care-for-adults/advice-for-vulnerable-adults/"
-            />
+        />
         <PromoGrid
             title="Life events"
             promos={[
@@ -119,7 +119,7 @@ const HomePage = () =>
                     href: "#"
                 },
             ]}
-            />
+        />
     </Layout>
 
 export default HomePage

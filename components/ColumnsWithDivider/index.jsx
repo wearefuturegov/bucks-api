@@ -1,5 +1,5 @@
-import React from 'react'
-import './style.scss'
+import React from "react"
+import "./style.scss"
 
 export const Column = ({ children }) => 
     <aside className="columns-with-divider__column">

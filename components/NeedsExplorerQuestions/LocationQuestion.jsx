@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 const LocationQuestion = ({
     rawLocation,
@@ -20,7 +20,7 @@ const LocationQuestion = ({
             required
             onChange={onChange}
             onBlur={onBlur}
-            ></input>
+        ></input>
         {formattedLocation && <p className="question__help-text"><strong>{formattedLocation}</strong></p>}
     </section>
 

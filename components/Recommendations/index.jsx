@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import CategoryFilter from '../Filter/CategoryFilter'
-import LocationFilter from '../Filter/LocationFilter'
-import KeywordsFilter from '../Filter/KeywordsFilter'
-import AgesFilter from '../Filter/AgesFilter'
-import DaysFilter from '../Filter/DaysFilter'
-import AccessibilityFilter from '../Filter/AccessibilityFilter'
-import AdviceSnippetsGrid from '../AdviceSnippetGrid'
-import ServicesGrid from '../ServicesGrid'
-import Button from '../Button'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import CategoryFilter from "../Filter/CategoryFilter"
+import LocationFilter from "../Filter/LocationFilter"
+import KeywordsFilter from "../Filter/KeywordsFilter"
+import AgesFilter from "../Filter/AgesFilter"
+import DaysFilter from "../Filter/DaysFilter"
+import AccessibilityFilter from "../Filter/AccessibilityFilter"
+import AdviceSnippetsGrid from "../AdviceSnippetGrid"
+import ServicesGrid from "../ServicesGrid"
+import Button from "../Button"
+import "./style.scss"
 
 const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, totalServices}) => 
     <>

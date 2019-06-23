@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import PropTypes from 'prop-types'
+import React, {useState} from "react"
+import PropTypes from "prop-types"
 import { Dialog } from "@reach/dialog"
-import CheckboxItem from './CheckboxItem'
-import queryString from 'query-string'
-import Router from 'next/router'
+import CheckboxItem from "./CheckboxItem"
+import queryString from "query-string"
+import Router from "next/router"
 import "@reach/dialog/styles.css"
-import './style.scss'
+import "./style.scss"
 
 const KeywordsFilter = ({query}) => {
 
@@ -52,7 +52,7 @@ const KeywordsFilter = ({query}) => {
             <button 
                 className={(selection.length > 0)? "filter-button filter-button--active" : "filter-button"}
                 onClick={() => {toggleDialog(true)}}
-                >
+            >
                 Kinds of support
             </button>
 
@@ -60,7 +60,7 @@ const KeywordsFilter = ({query}) => {
                 className="filter-dialog"
                 isOpen={dialogIsOpen}
                 onDismiss={updateResults}
-                >
+            >
 
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
                     <div className="filter-dialog__body">
@@ -81,7 +81,7 @@ const KeywordsFilter = ({query}) => {
                     <footer className="filter-dialog__footer">
                         <button className="filter-dialog__action" 
                             type="submit" 
-                            >
+                        >
                             Apply
                         </button>
                         <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Clear</button>

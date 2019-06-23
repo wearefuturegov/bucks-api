@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Head from 'next/head'
-import Header from '../Header'
-import PhaseBanner from '../PhaseBanner'
-import IsPageUseful from '../IsPageUseful'
-import FullWidthSearch from '../FullWidthSearchPanel'
-import Footer from '../Footer'
-import './style.scss'
+import React from "react"
+import PropTypes from "prop-types"
+import Head from "next/head"
+import Header from "../Header"
+import PhaseBanner from "../PhaseBanner"
+import IsPageUseful from "../IsPageUseful"
+import FullWidthSearch from "../FullWidthSearchPanel"
+import Footer from "../Footer"
+import "./style.scss"
 
 const Layout = ({children, withHeader})=>
 <>
@@ -34,7 +34,7 @@ const Layout = ({children, withHeader})=>
                 href: "#"
             },
         ]}
-        />
+    />
     <Footer/>
 </>
 
