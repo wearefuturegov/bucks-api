@@ -7,7 +7,7 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "plugin:jsx-a11y/strict"
+        "plugin:jsx-a11y/recommended"
       ],
     "globals": {
         "Atomics": "readonly",
@@ -29,10 +29,6 @@ module.exports = {
             "error",
             4
         ],
-        // "linebreak-style": [
-        //     "error",
-        //     "unix"
-        // ],
         "quotes": [
             "error",
             "double"
@@ -43,6 +39,12 @@ module.exports = {
         ],
         "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 1,
-        "no-var": 2
+        "no-var": 2,
+        // Deal with next/link gracefully
+        "jsx-a11y/anchor-is-valid": [ "error", {
+            "components": [ "Link" ],
+            "specialLink": [ "hrefLeft", "hrefRight" ],
+            "aspects": [ "invalidHref", "preferButton" ]
+          }]
     }
 }
