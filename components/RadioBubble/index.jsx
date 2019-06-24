@@ -9,7 +9,7 @@ const RadioBubble = ({name, value, label, onChange}) =>
             type="radio" 
             name={name} 
             value={value} 
-            autocomplete="off"
+            autoComplete="off"
             id={`${name}-${value}`}
             onChange={onChange}
         />
