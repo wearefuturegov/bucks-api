@@ -1,6 +1,9 @@
 # Buckinghamshire adult social care
 
+[![CircleCI](https://circleci.com/gh/wearefuturegov/bucks/tree/master.svg?style=svg)](https://circleci.com/gh/wearefuturegov/bucks/tree/master)
+
 An app for the Buckinghamshire adult social care project. It provides a needs explorer interface leading to a personalised list of advice articles and local community services.
+
 
 It consists of:
 
