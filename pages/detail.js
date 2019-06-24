@@ -7,12 +7,7 @@ import WrappedMap from "../components/DetailMap"
 import ServiceDetailItem from "../components/ServiceDetailItem"
 import CentredText from "../components/CentredText"
 import ServiceSuitabilityPanel from "../components/ServiceSuitabilityPanel"
-
-const prettyDays = (rawDays) => {
-    if(rawDays.length === 7) return "Available every day"
-    let prettyDays = rawDays.map(item=> item.charAt(0).toUpperCase() + item.substr(1).toLowerCase() + "s")
-    return "Available on " + prettyDays.join(", ")
-}
+import prettyDays from "../lib/utils"
 
 const DetailPage = ({service}) =>{
     let {

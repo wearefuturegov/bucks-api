@@ -2,21 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Link from "next/link"
 import "./style.scss"
-
-const truncate = (str, noWords) => {
-    if(str.split(" ").length > noWords){
-        return str.split(" ").splice(0,noWords).join(" ") + "..."
-    } else {
-        return str
-    }
-}
-
-const prettyDistance = (miles)=>{
-    let roundMiles = Math.round(miles)
-    if(roundMiles < 1 || roundMiles == 0) return "Less than a mile away"
-    if(roundMiles === 1) return "About a mile away"
-    return `About ${roundMiles} miles away`
-}
+import {truncate, prettyDistance} from "../lib/utils"
 
 const ServiceCard = ({
     assetId,
