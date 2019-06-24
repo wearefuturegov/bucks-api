@@ -36,6 +36,7 @@ module.exports = {
             Service.countDocuments(query),
             Service.find(findQuery)
                 .lean()
+                // Only return public fields
                 .select(backOfficeFields)
                 .limit(perPage)
                 .skip((req.query.page - 1) * perPage)
