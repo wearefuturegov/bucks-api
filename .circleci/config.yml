@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/tmp
     docker:
-      - image: circle/node:lts
+      - image: circleci/node:4.8.2
     steps:
       - checkout
       - run: npm install
