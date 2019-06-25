@@ -31,7 +31,9 @@ const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, tot
             <section className="recommendations">
                 <div className="container">
 
-                    {(query.formattedLocation === "Buckinghamshire, UK") && <Alert toggleDialog={toggleDialog}/>}
+                    {(query.formattedLocation === "Buckinghamshire, UK") && <Alert onClick={()=>{
+                        toggleDialog(true)
+                    }}/>}
 
                     <ServicesGrid services={services} totalServices={totalServices}/>
                     {moreToLoad && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
