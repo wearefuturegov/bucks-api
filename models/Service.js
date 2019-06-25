@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 
 const Service = new mongoose.Schema({
+
     assetId: {
         type: Number,
         required: [true, "All services need a unique asset ID"]
@@ -13,10 +14,10 @@ const Service = new mongoose.Schema({
 
     category: String,
 
-    keywords: Array,
-    ageGroups: Array,
-    accessibility: Array,
-    suitability: Array,
+    keywords: [String],
+    ageGroups: [String],
+    accessibility: [String],
+    suitability: [String],
 
     venue: String,
     area: String,
@@ -28,7 +29,7 @@ const Service = new mongoose.Schema({
 
     daytime: Boolean,
     frequency: String,
-    days: Array,
+    days: [String],
 
     contactName: String,
     email: String,
@@ -55,7 +56,7 @@ const Service = new mongoose.Schema({
     healthSafety: String,
     insurance: String,
 
-    legacyCategories: Array
+    legacyCategories: [String]
 
 })
 
