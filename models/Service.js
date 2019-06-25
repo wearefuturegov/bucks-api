@@ -1,5 +1,15 @@
 const mongoose = require("mongoose")
 
+const strToLower = v => {
+    return v.toLowerCase()
+}
+
+const arrayToLower = v =>{
+    return v.map(el =>{
+        return el.toLowerCase()
+    })
+}
+
 const Service = new mongoose.Schema({
 
     assetId: {
@@ -12,12 +22,12 @@ const Service = new mongoose.Schema({
     description: String,
     price: String,
 
-    category: String,
+    category: {type: String, set: strToLower},
 
-    keywords: [String],
-    ageGroups: [String],
-    accessibility: [String],
-    suitability: [String],
+    keywords: {type: [String], set: arrayToLower},
+    ageGroups: {type: [String], set: arrayToLower},
+    accessibility: {type: [String], set: arrayToLower},
+    suitability: {type: [String], set: arrayToLower},
 
     venue: String,
     area: String,
@@ -29,12 +39,12 @@ const Service = new mongoose.Schema({
 
     daytime: Boolean,
     frequency: String,
-    days: [String],
+    days: {type: [String], set: arrayToLower},
 
     contactName: String,
-    email: String,
+    email: {type: String, set: strToLower},
     phone: String,
-    url: String,
+    url: {type: String, set: strToLower},
 
     lastUpdated: Date,
 
