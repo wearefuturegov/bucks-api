@@ -67,12 +67,12 @@ const AccessibilityFilter = ({query}) => {
                         <h2 className="filter-dialog__title">Accessibility</h2>
 
                         <div className="filter-dialog__options">
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Building Lift" label="Building lift"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Building Wheelchair Access" label="Building wheelchair access"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Hearing Induction Loop" label="Hearing induction loop"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="Nearby Bus Stop" label="Nearby bus stop"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="On-Site Parking" label="On-Site parking"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="WC Wheelchair Access" label="WC wheelchair access"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="building lift" label="Building has lift"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="building wheelchair access" label="Building wheelchair access"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="hearing induction loop" label="Hearing induction loop"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="nearby bus stop" label="Nearby bus stop"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="on-site parking" label="On-Site parking"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="accessibility" value="wc wheelchair access" label="Wheelchair-accessible bathroom"/>
                         </div>
 
                     </div>
