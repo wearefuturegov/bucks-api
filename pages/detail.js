@@ -7,7 +7,7 @@ import WrappedMap from "../components/DetailMap"
 import ServiceDetailItem from "../components/ServiceDetailItem"
 import CentredText from "../components/CentredText"
 import ServiceSuitabilityPanel from "../components/ServiceSuitabilityPanel"
-import prettyDays from "../lib/utils"
+import {prettyDays} from "../lib/utils"
 
 const DetailPage = ({service}) =>{
     let {
