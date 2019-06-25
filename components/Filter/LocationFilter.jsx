@@ -7,9 +7,8 @@ import queryString from "query-string"
 import Router from "next/router"
 import geocode from "../../lib/geocode-client"
 
-const LocationFilter = ({query}) => {
-
-    const [dialogIsOpen, toggleDialog] = useState(false)
+// State moved up into parent component so that alert bar can trigger dialog
+const LocationFilter = ({query, dialogIsOpen, toggleDialog}) => {
 
     const [location, changeLocation] = useState(query.location || "")
 
@@ -22,7 +21,8 @@ const LocationFilter = ({query}) => {
                 ...query,
                 location: location,
                 lat: newLocation.lat,
-                lng: newLocation.lng
+                lng: newLocation.lng,
+                formattedLocation: newLocation.formattedLocation
             }
             Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         }
@@ -35,7 +35,8 @@ const LocationFilter = ({query}) => {
             ...query,
             location: null,
             lat: null,
-            lng: null
+            lng: null,
+            formattedLocation: null
         }
         Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
         toggleDialog(false)

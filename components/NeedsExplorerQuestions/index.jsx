@@ -64,6 +64,7 @@ const NeedsExplorerQuestions = () => {
             category: categorySelection,
             keywords: keywordSelection,
             location: rawLocation,
+            formattedLocation: geocoded.formattedLocation,
             age: ageSelection,
             lat: geocoded.lat,
             lng: geocoded.lng

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import PropTypes from "prop-types"
 import CategoryFilter from "../Filter/CategoryFilter"
 import LocationFilter from "../Filter/LocationFilter"
@@ -12,26 +12,36 @@ import Alert from "../Alert"
 import Button from "../Button"
 import "./style.scss"
 
-const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, totalServices}) => 
-    <>
-        <section className="recommendation-filters container">
-            <CategoryFilter query={query} />
-            <KeywordsFilter query={query}/>
-            <LocationFilter query={query}/>
-            <AgesFilter query={query}/>
-            <DaysFilter query={query}/>
-            <AccessibilityFilter query={query}/>
-        </section>
+const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, totalServices}) => {
 
-        <section className="recommendations">
-            <div className="container">
-                <Alert/>
-                <ServicesGrid services={services} totalServices={totalServices}/>
-                {moreToLoad && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
-                {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
-            </div>
-        </section>
-    </>
+    // Location filter state moved up so that alert bar can trigger dialog
+    const [dialogIsOpen, toggleDialog] = useState(false)
+
+    return(
+        <>
+            <section className="recommendation-filters container">
+                <CategoryFilter query={query} />
+                <KeywordsFilter query={query}/>
+                <LocationFilter query={query} dialogIsOpen={dialogIsOpen} toggleDialog={toggleDialog}/>
+                <AgesFilter query={query}/>
+                <DaysFilter query={query}/>
+                <AccessibilityFilter query={query}/>
+            </section>
+
+            <section className="recommendations">
+                <div className="container">
+
+                    {(query.formattedLocation === "Buckinghamshire, UK") && <Alert toggleDialog={toggleDialog}/>}
+
+                    <ServicesGrid services={services} totalServices={totalServices}/>
+                    {moreToLoad && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
+                    {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
+                </div>
+            </section>
+        </>
+    )
+}
+
 
 Recommendations.propTypes = {
     services: PropTypes.array.isRequired,
