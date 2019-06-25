@@ -5,7 +5,7 @@ import "./style.scss"
 
 const AdviceSnippetGrid = ({snippets}) =>
     <>
-        <h2 className="recommendations__section-title">Advice for you</h2>
+        <h2 className="recommendations__section-title recommendations__section-title--with-top-margin">Advice for you</h2>
         <section className="advice-grid">
             {snippets.map((snippet, i)=>
                 <Card 

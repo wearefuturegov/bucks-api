@@ -24,9 +24,9 @@ const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, tot
 
         <section className="recommendations">
             <div className="container">
-                {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
                 <ServicesGrid services={services} totalServices={totalServices}/>
                 {moreToLoad && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
+                {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
             </div>
         </section>
     </>

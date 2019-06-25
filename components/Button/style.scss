@@ -5,7 +5,7 @@
     text-align: center;
     background: $link;
     border-radius: 30px;
-    font-size: 1.1em;
+    @include paragraphText;
     color: $white;
     padding: 10px 20px;
     font-weight: bold;
@@ -32,7 +32,6 @@
         transition: 0.1s ease-in-out;
     }
     @media screen and (min-width: $desktop){
-        font-size: 1.2em;
         padding: 12px 55px;
         display: inline-block;
     }

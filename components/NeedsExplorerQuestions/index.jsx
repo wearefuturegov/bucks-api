@@ -96,10 +96,10 @@ const NeedsExplorerQuestions = () => {
                     />
                 </div>
             </section>
-            {rawLocation && <section className="continue-to-recommendations container">
-                <p className="continue-to-recommendations__message">Continue to your recommendations</p>
+            <section className="continue-to-recommendations container">
+                <p className="continue-to-recommendations__message">We've found <strong>824</strong> recommendations that could be right for you:</p>
                 <Button>See your recommendations</Button>
-            </section>}
+            </section>
 
         </form>
     )

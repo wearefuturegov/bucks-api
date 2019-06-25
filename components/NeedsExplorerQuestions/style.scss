@@ -21,6 +21,7 @@
     margin-right: auto;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 20px;
     @media screen and (min-width: $tablet){
         padding-left: 30px;
         padding-right: 30px;
@@ -84,21 +85,21 @@
 
 .continue-to-recommendations{
     text-align: center;
-    margin: 60px auto;
+    margin: 80px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    animation: fadeIn 0.3s ease-out;
     @media screen and (min-width: $tablet){
-        margin: 100px auto;
+        margin: 120px auto;
     }
     @media screen and (min-width: $desktop){
-        margin: 120px auto;
+        margin: 140px auto;
     }
 }
 
 .continue-to-recommendations__message{
     font-size: 1.3em;
-    margin-bottom: 15px;
+    max-width: 400px;
+    margin-bottom: 20px;
 }

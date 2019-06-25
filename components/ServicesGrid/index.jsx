@@ -5,7 +5,7 @@ import "./style.scss"
 
 const ServicesGrid = ({services, totalServices}) => 
     <>
-        <h2 className="recommendations__section-title">{totalServices} services near you</h2>
+        <h2 className="recommendations__section-title"><strong>{totalServices}</strong> services near you</h2>
         {services.length > 0 ? 
             <ol className="services-grid">
                 {services.map((service, i)=>

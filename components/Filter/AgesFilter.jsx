@@ -67,9 +67,9 @@ const AgesFilter = ({query}) => {
                         <h2 className="filter-dialog__title">Suitable for ages</h2>
 
                         <div className="filter-dialog__options">
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="Young people" label="Young people" helpText="Under 18s"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="Young adults" label="Young adults" helpText="18-25"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="Older adults" label="Older adults" helpText="Over 60"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="young people" label="Young people" helpText="Under 18s"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="young adults" label="Young adults" helpText="18-25"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="older adults" label="Older adults" helpText="65+"/>
                         </div>
 
                     </div>

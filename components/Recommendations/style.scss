@@ -13,12 +13,19 @@
 }
 
 .recommendations__section-title{
-    // font-weight: normal;
-    margin-bottom: 10px;
+    font-weight: normal;
+    margin-bottom: 15px;
     font-size: 1.3em;
     color: $darkText;
     @media screen and (min-width: $desktop){
         font-size: 1.5em;
         margin-bottom: 25px;
+    }
+}
+
+.recommendations__section-title--with-top-margin{
+    margin-top: 40px;
+    @media screen and (min-width: $desktop){
+        margin-top: 60px
     }
 }

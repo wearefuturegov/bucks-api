@@ -22,7 +22,7 @@ const ServiceCard = ({
         {description && <p className="service-card__description">{truncate(description, 15)}</p>}
         <div className="service-card__footer">
             {/* <SaveForLater/> */}
-            <p className="service-card__distance"><em>{distance != undefined && prettyDistance(distance)}</em></p>
+            <p className="service-card__distance">{distance != undefined && prettyDistance(distance)}</p>
         </div>
     </li>
 

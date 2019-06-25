@@ -8,7 +8,7 @@ import FullWidthSearch from "../FullWidthSearchPanel"
 import Footer from "../Footer"
 import "./style.scss"
 
-const Layout = ({children, withHeader})=>
+const Layout = ({children, withHeader, withUseful})=>
 <>
     <Head>
         <title>Care and support for adults | Buckinghamshire County Council</title>
@@ -18,7 +18,7 @@ const Layout = ({children, withHeader})=>
     <PhaseBanner href="#"/>
     {withHeader && <Header /> }
     {children}
-    <IsPageUseful/>
+    {withUseful && <IsPageUseful />}
     <FullWidthSearch
         popularPages={[
             {
@@ -40,7 +40,8 @@ const Layout = ({children, withHeader})=>
 
 Layout.propTypes = {
     children: PropTypes.node,
-    withHeader: PropTypes.bool
+    withHeader: PropTypes.bool,
+    withUseful: PropTypes.bool
 }
 
 export default Layout
