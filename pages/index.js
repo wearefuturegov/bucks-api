@@ -17,7 +17,7 @@ const HomePage = () =>
             title="Support and care for adults, their families and carers"
             description="Helping you find the right information and support in Buckinghamshire."
             ctaTitle="Find services in your area"
-            ctaDescription="Answer a few questions to find clubs, activities and support groups in your area"
+            ctaDescription="Answer a few questions to find activities, support groups and clubs in your area"
             ctaHref="/explore-your-needs"
             ctaLinkText="Get started"
         />
@@ -35,13 +35,13 @@ const HomePage = () =>
                     title: "Remaining independent at home",
                     description: "You could be able to get help with everyday tasks like washing, dressing, getting hot meals delivered.",
                     image: i2,
-                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1566"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1237"
                 },
                 {
                     title: "Considering your care and support options",
                     description: "Understand care and support options that are relevant in your situation.",
                     image: i3,
-                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1237"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1229"
                 },
                 {
                     title: "Who pays?",
@@ -53,7 +53,7 @@ const HomePage = () =>
                     title: "Worried about someone else?",
                     description: "Get practical tips to help out a neighbour or loved one, or, if it’s an emergency, tell us about someone in immediate need",
                     image: i5,
-                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1569"
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1566"
                 },
                 {
                     title: "Coping with loneliness",
