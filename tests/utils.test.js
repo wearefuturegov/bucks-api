@@ -58,5 +58,4 @@ it("pretty features", ()=>{
         ],
         days: allDays
     })).toBe("Recommended  ·  Wheelchair accessible  ·  On every day")
-
 })
