@@ -7,7 +7,7 @@ const ExploreYourNeedsPage = () => {
     return(
         <Layout>
             <NeedsExplorerHero
-                title="Find people and services near you"
+                title="Find activities, groups and services near you"
                 description="Answer a few questions to find activities and support groups in your area"
             />
             <NeedsExplorerQuestions />

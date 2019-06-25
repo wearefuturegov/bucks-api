@@ -32,7 +32,7 @@ const HomePage = () =>
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1156"
                 },
                 {
-                    title: "Remaining independent at home",
+                    title: "Identifying your care and support needs",
                     description: "You could be able to get help with everyday tasks like washing, dressing, getting hot meals delivered.",
                     image: i2,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1237"
@@ -44,16 +44,16 @@ const HomePage = () =>
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1229"
                 },
                 {
-                    title: "Who pays?",
-                    description: "Understand what different kinds of care cost, and the level of financial help available",
-                    image: i4,
-                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1545"
-                },
-                {
                     title: "Worried about someone else?",
                     description: "Get practical tips to help out a neighbour or loved one, or, if it’s an emergency, tell us about someone in immediate need",
                     image: i5,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1566"
+                },
+                {
+                    title: "Who pays?",
+                    description: "Understand what different kinds of care cost, and the level of financial help available",
+                    image: i4,
+                    href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1545"
                 },
                 {
                     title: "Coping with loneliness",

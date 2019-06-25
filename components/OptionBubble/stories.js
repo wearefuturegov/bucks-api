@@ -1,10 +1,10 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
-import CheckboxBubble from "./index"
+import OptionBubble from "./index"
 
 storiesOf("Checkbox bubble", module)
     .add("unchecked", () => (
-        <CheckboxBubble
+        <OptionBubble
             name="test"
             value="test"
             label="Cultural"
@@ -12,7 +12,7 @@ storiesOf("Checkbox bubble", module)
         />
     ))
     .add("checked", () => (
-        <CheckboxBubble
+        <OptionBubble
             name="test"
             value="test"
             label="Cultural"

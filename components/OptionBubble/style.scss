@@ -1,11 +1,11 @@
 @import '../vars';
 
-.checkbox-bubble{
+.option-bubble{
     margin: 5px;
     width: 100%;
     height: 60px;
     &:focus-within{
-        .checkbox-bubble__label{
+        .option-bubble__label{
             outline: none;
             box-shadow: 0 0 0 3px $focus;
         }
@@ -15,13 +15,17 @@
     }
 }
 
-.checkbox-bubble__input:checked + .checkbox-bubble__label{
+.option-bubble__input:checked + .option-bubble__label{
     background-color: $darkText;
     color: $white;
+    .option-bubble__helptext{
+        color: $white;
+    }
 }
 
-.checkbox-bubble__label{
+.option-bubble__label{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -39,4 +43,11 @@
     &:hover{
         filter: brightness(0.95);
     }
+}
+
+.option-bubble__helptext{
+    font-weight: normal;
+    display: block;
+    font-size: 0.9em;
+    color: $lightText;
 }
