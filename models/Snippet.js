@@ -6,7 +6,7 @@ const strToLower = v => {
 
 const arrayToLower = v =>{
     return v.map(el =>{
-        return el.toLowerCase().replace(/\s+/g, "")
+        return el.toLowerCase()
     })
 }
 
