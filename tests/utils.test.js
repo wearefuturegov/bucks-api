@@ -1,15 +1,14 @@
-import {prettyDays, truncate, prettyDistance, prettyList} from "../lib/utils"
+import {
+    prettyDays, 
+    truncate, 
+    prettyDistance, 
+    prettyList
+} from "../lib/utils"
 
-describe("truncate", () => {
-    it("should cope with one day", () => {
-        expect(prettyDays(["monday"])).toBe("Available on Mondays")
-    })
-    it("should produce shortened output if all days are given", () => {
-        expect(prettyDays(["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"])).toBe("Available every day")
-    })
-    it("should produce falsy output if given empty input", () => {
-        expect(prettyDays([])).toBeFalsy()
-    })
+it("pretty days", () => {
+    expect(prettyDays(["monday"])).toBe("Available on Mondays")
+    expect(prettyDays(["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"])).toBe("Available every day")
+    expect(prettyDays([])).toBeFalsy()
 })
 
 it("truncate", () => {
