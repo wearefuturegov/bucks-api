@@ -2,6 +2,7 @@ const express = require("express")
 const next = require("next")
 const mongoose = require("mongoose")
 const apiRouter = require("./routes/api")
+const sslRedirect = require("heroku-ssl-redirect")
 
 require("dotenv").config()
 
@@ -29,6 +30,7 @@ app
             mongoose: mongoose,
         }))
 
+        server.use(sslRedirect())
         server.use(express.json())
 
         // API routes
