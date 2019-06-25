@@ -8,6 +8,7 @@ import DaysFilter from "../Filter/DaysFilter"
 import AccessibilityFilter from "../Filter/AccessibilityFilter"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import ServicesGrid from "../ServicesGrid"
+import Alert from "../Alert"
 import Button from "../Button"
 import "./style.scss"
 
@@ -24,6 +25,7 @@ const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, tot
 
         <section className="recommendations">
             <div className="container">
+                <Alert/>
                 <ServicesGrid services={services} totalServices={totalServices}/>
                 {moreToLoad && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
                 {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}

@@ -17,7 +17,6 @@ const LocationQuestion = ({
             id="location"
             placeholder="eg. Aylesbury..."
             value={rawLocation} 
-            required
             onChange={onChange}
             onBlur={onBlur}
         ></input>

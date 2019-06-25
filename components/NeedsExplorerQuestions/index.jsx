@@ -47,10 +47,14 @@ const NeedsExplorerQuestions = () => {
     const [formattedLocation, changeFormattedLocation] = useState("")
     const handleRawLocationChange = (e) => {
         changeRawLocation(e.target.value)
+        if(!e.target.value) changeFormattedLocation(false)
     }
-    const handleBlur = async () => {
-        let location = await geocode(rawLocation)
-        changeFormattedLocation(location.formattedLocation)
+
+    const handleBlur = async (e) => {
+        if(e.target.value){
+            let location = await geocode(rawLocation)
+            changeFormattedLocation(location.formattedLocation)
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -68,7 +72,7 @@ const NeedsExplorerQuestions = () => {
     }
 
     return(
-        <form method="get" action="/recommendations" onSubmit={handleSubmit}>
+        <form method="get" action="/recommendations" onSubmit={handleSubmit} aria-live="polite">
             <section className="questions">
                 <div className="questions__inner">
 
@@ -97,12 +101,40 @@ const NeedsExplorerQuestions = () => {
                 </div>
             </section>
             <section className="continue-to-recommendations container">
-                <p className="continue-to-recommendations__message">We've found <strong>824</strong> recommendations that could be right for you:</p>
-                <Button>See your recommendations</Button>
+                <ContinueToRecommendations
+                    keywordSelection={keywordSelection}
+                    ageSelection={ageSelection}
+                    categorySelection={categorySelection}
+                    rawLocation={rawLocation}
+                />
             </section>
-
         </form>
     )
 }
 
 export default NeedsExplorerQuestions
+
+const ContinueToRecommendations= ({categorySelection, keywordSelection, ageSelection, rawLocation}) => {
+    if ((categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0) && rawLocation){
+        return(
+            <>
+                <p className="continue-to-recommendations__message">See recommendations that could be right for you:</p>
+                <Button>Go to recommendations</Button>
+            </>
+        )
+    } else if (categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0){
+        return(
+            <>
+                <p className="continue-to-recommendations__message">Give <strong>a location</strong> to see your recommendations</p>
+                <Button disabled>Go to recommendations</Button>
+            </>
+        )
+    } else {
+        return(
+            <>
+                <p className="continue-to-recommendations__message">Answer <strong>more questions</strong> to see your recommendations</p>
+                <Button disabled>Go to recommendations</Button>
+            </>
+        )
+    }
+}
