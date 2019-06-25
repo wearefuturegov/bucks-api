@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import "./style.scss"
+import { prettyList } from "../../lib/utils"
 
 const List = ({
     title,
@@ -24,9 +25,9 @@ const ServiceSuitabilityPanel = ({
     <section className="service-suitability-panel">
         <div className="service-suitability-panel__inner container">
 
-            {accessibility.length > 0 && <List title="Accessibility" items={accessibility}/>}
-            {suitability.length > 0 &&<List title="Suitable for people with..." items={suitability}/>}
-            {ages.length > 0 && <List title="Suitable for..." items={ages}/>}
+            {accessibility.length > 0 && <List title="Accessibility" items={prettyList(accessibility)}/>}
+            {suitability.length > 0 &&<List title="Suitable for people with..." items={prettyList(suitability)}/>}
+            {ages.length > 0 && <List title="Suitable for..." items={prettyList(ages)}/>}
 
             {price &&
                 <div className="service-suitability-panel__column">
