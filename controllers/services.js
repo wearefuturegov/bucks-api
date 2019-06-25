@@ -32,8 +32,6 @@ module.exports = {
             if(req.query.keywords) query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
         }
 
-        console.log(query)
-
         if(req.query.days) query.days = { $in: [].concat(req.query.days) }
         if(req.query.age) query.ageGroups = { $in: [].concat(req.query.age) }
         if(req.query.accessibility) query.accessibility = { $in: [].concat(req.query.accessibility) }
@@ -42,8 +40,6 @@ module.exports = {
         if(req.query.lat && req.query.lng) findQuery.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}
 
         let perPage = 10
-
-        console.log(findQuery)
 
         Promise.all([
             Service.countDocuments(query),
