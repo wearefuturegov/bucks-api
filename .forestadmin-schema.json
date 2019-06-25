@@ -10,20 +10,6 @@
     "onlyForRelationships": false,
     "paginationType": "page",
     "fields": [{
-      "field": "Keywords",
-      "type": "String",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": false,
-      "isReadOnly": false,
-      "isRequired": false,
-      "isSortable": false,
-      "isVirtual": true,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
       "field": "_id",
       "type": "String",
       "defaultValue": null,
@@ -573,6 +559,20 @@
     "onlyForRelationships": false,
     "paginationType": "page",
     "fields": [{
+      "field": "Keywords",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "_id",
       "type": "String",
       "defaultValue": null,
