@@ -67,7 +67,7 @@ const KeywordsFilter = ({query}) => {
                         <h2 className="filter-dialog__title">Kinds of support</h2>
 
                         <div className="filter-dialog__options">
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="caring" label="Caring after someon else"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="caring" label="Caring after someone else"/>
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="transport" label="Getting out and about"/>
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="housework" label="Housework"/>
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="meals" label="Meals and nutrition"/>
