@@ -2,12 +2,15 @@ import {
     prettyDays, 
     truncate, 
     prettyDistance, 
-    prettyList
+    prettyList,
+    prettyFeatures
 } from "../lib/utils"
 
+const allDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
 it("pretty days", () => {
-    expect(prettyDays(["monday"])).toBe("Available on Mondays")
-    expect(prettyDays(["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"])).toBe("Available every day")
+    expect(prettyDays(["monday"])).toBe("On Mondays")
+    expect(prettyDays(allDays)).toBe("On every day")
     expect(prettyDays([])).toBeFalsy()
 })
 
@@ -30,4 +33,30 @@ it("pretty list", () => {
     expect(prettyList()).toBeFalsy()
     expect(prettyList([])).toEqual(expect.arrayContaining([]))
     expect(prettyList(["el", "el2"])).toEqual(expect.arrayContaining(["El", "El2"]))
+})
+
+it("pretty features", ()=>{
+    expect(prettyFeatures({
+        distance: 100,
+        promoted: true,
+        accessibility: [
+            "building wheelchair access"
+        ],
+        days: allDays
+    })).toBe("Recommended  ·  About 100 miles away  ·  Wheelchair accessible  ·  On every day")
+    
+    expect(prettyFeatures({
+        promoted: false,
+        accessibility: null,
+        days: ["monday"]
+    })).toBeFalsy()
+
+    expect(prettyFeatures({
+        promoted: true,
+        accessibility: [
+            "building wheelchair access"
+        ],
+        days: allDays
+    })).toBe("Recommended  ·  Wheelchair accessible  ·  On every day")
+
 })
