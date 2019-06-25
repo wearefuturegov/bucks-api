@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import ServiceCard from "../ServiceCard"
 import "./style.scss"
+import { prettyFeatures } from "../../lib/utils"
 
 const ServicesGrid = ({services, totalServices}) => 
     <>
@@ -17,6 +18,7 @@ const ServicesGrid = ({services, totalServices}) =>
                         description={service.description}
                         distance={service.distance}
                         parentOrganisation={service.parentOrganisation}
+                        features={prettyFeatures(service)}
                     />
                 )}
             </ol>

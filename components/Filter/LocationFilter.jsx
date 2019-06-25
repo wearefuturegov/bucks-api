@@ -62,7 +62,7 @@ const LocationFilter = ({query, dialogIsOpen, toggleDialog}) => {
                         <h2 className="filter-dialog__title">Near you</h2>
 
 
-                        <label className="filter-dialog__text-label" htmlFor="location">Town or postcode</label>
+                        <label className="filter-dialog__text-label" htmlFor="location">Town or postcode in Buckinghamshire</label>
                         <input 
                             type="text" 
                             className="filter-dialog__text-input"

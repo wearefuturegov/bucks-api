@@ -10,7 +10,7 @@ const ServiceCard = ({
     title,
     // parentOrganisation,
     description,
-    distance
+    features
 }) => 
     <li className={`service-card service-card--${category}`}>
 
@@ -22,7 +22,7 @@ const ServiceCard = ({
         {description && <p className="service-card__description">{truncate(description, 15)}</p>}
         <div className="service-card__footer">
             {/* <SaveForLater/> */}
-            <p className="service-card__distance">{distance != undefined && prettyDistance(distance)}</p>
+            {features && <p className="service-card__features">{features}</p>}
         </div>
     </li>
 
@@ -32,7 +32,7 @@ ServiceCard.propTypes = {
     title: PropTypes.string,
     parentOrganisation: PropTypes.string,
     description: PropTypes.string,
-    distance: PropTypes.number
+    features: PropTypes.string
 }
 
 export default ServiceCard
