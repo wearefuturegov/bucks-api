@@ -21,8 +21,19 @@ const backOfficeFields = {
 module.exports = {
     list: async (req, res, next)=>{
         let query = {}
-        if(req.query.category) query.category = { $in: [].concat(req.query.category) }
-        if(req.query.keywords) query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
+
+        if(req.query.category && req.query.keywords){
+            query.$or = [
+                {category: { $in: [].concat(req.query.category) }},
+                {keywords: { $elemMatch: { $in: [].concat(req.query.keywords) } }}
+            ]
+        } else {
+            if(req.query.category) query.category = { $in: [].concat(req.query.category) }
+            if(req.query.keywords) query.keywords = { $elemMatch: { $in: [].concat(req.query.keywords) } }
+        }
+
+        console.log(query)
+
         if(req.query.days) query.days = { $in: [].concat(req.query.days) }
         if(req.query.age) query.ageGroups = { $in: [].concat(req.query.age) }
         if(req.query.accessibility) query.accessibility = { $in: [].concat(req.query.accessibility) }
