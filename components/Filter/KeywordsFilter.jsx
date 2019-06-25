@@ -67,13 +67,13 @@ const KeywordsFilter = ({query}) => {
                         <h2 className="filter-dialog__title">Kinds of support</h2>
 
                         <div className="filter-dialog__options">
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="caring" label="Looking after someone"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="caring" label="Caring after someon else"/>
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="transport" label="Getting out and about"/>
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="housework" label="Housework"/>
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="meals" label="Meals and nutrition"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="equipment" label="Equipment and gadgets"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="hygiene" label="Personal hygiene and continence"/>
-                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="money" label="Money matters"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="equipment" label="Equipment and safety at home"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="hygiene" label="Personal hygiene and incontinence"/>
+                            <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="money" label="Paying for things"/>
                         </div>
 
                     </div>
