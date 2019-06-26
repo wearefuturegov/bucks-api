@@ -43,7 +43,7 @@ it("pretty features", ()=>{
             "building wheelchair access"
         ],
         days: allDays
-    })).toBe("Recommended  ·  About 100 miles away  ·  Wheelchair accessible  ·  On every day")
+    })).toBe("<strong>Recommended</strong>  <span aria-hidden='true'>·</span>  About 100 miles away  <span aria-hidden='true'>·</span>  Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
     
     expect(prettyFeatures({
         promoted: false,
@@ -57,5 +57,5 @@ it("pretty features", ()=>{
             "building wheelchair access"
         ],
         days: allDays
-    })).toBe("Recommended  ·  Wheelchair accessible  ·  On every day")
+    })).toBe("<strong>Recommended</strong>  <span aria-hidden='true'>·</span>  Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
 })
