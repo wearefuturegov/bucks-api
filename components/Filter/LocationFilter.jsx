@@ -6,6 +6,7 @@ import "./style.scss"
 import queryString from "query-string"
 import Router from "next/router"
 import geocode from "../../lib/geocode-client"
+import cross from "./cross.svg"
 
 // State moved up into parent component so that alert bar can trigger dialog
 const LocationFilter = ({query, dialogIsOpen, toggleDialog}) => {
@@ -84,6 +85,9 @@ const LocationFilter = ({query, dialogIsOpen, toggleDialog}) => {
                         <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Clear</button>
                     </footer>
                 </form>
+                <button onClick={()=>{
+                    toggleDialog(false)
+                }} className="filter__close"><img src={cross} alt="close filter" className="filter__close-icon"/></button>
             </Dialog>
             
         </>

@@ -6,10 +6,11 @@ import queryString from "query-string"
 import Router from "next/router"
 import "@reach/dialog/styles.css"
 import "./style.scss"
+import cross from "./cross.svg"
 
 const AccessibilityFilter = ({query}) => {
 
-    const [dialogIsOpen, toggleDialog] = useState(false)
+    const [dialogIsOpen, toggleDialog] = useState(true)
     const [selection, changeSelection] = useState((query.accessibility)? [].concat(query.accessibility) : [])
 
     // Add and remove checked and unchecked items from array
@@ -61,7 +62,6 @@ const AccessibilityFilter = ({query}) => {
                 isOpen={dialogIsOpen}
                 onDismiss={updateResults}
             >
-
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
                     <div className="filter-dialog__body">
                         <h2 className="filter-dialog__title">Accessibility</h2>
@@ -86,6 +86,9 @@ const AccessibilityFilter = ({query}) => {
                         <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Clear</button>
                     </footer>
                 </form>
+                <button onClick={()=>{
+                    toggleDialog(false)
+                }} className="filter__close"><img src={cross} alt="close filter" className="filter__close-icon"/></button>
             </Dialog>
             
         </>

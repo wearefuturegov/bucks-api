@@ -74,6 +74,7 @@
 
 .filter-dialog__title{
     margin-bottom: 20px;
+    margin-right: 50px;
 }
 
 .filter-dialog__action{
@@ -158,4 +159,18 @@
     padding: 10px;
     border-radius: 4px;
     width: 100%;
+}
+
+.filter__close{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.filter__close-icon{
+    width: 20px;
+    height: 20px;
 }

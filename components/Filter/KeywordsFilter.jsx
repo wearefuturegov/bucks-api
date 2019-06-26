@@ -6,6 +6,7 @@ import queryString from "query-string"
 import Router from "next/router"
 import "@reach/dialog/styles.css"
 import "./style.scss"
+import cross from "./cross.svg"
 
 const KeywordsFilter = ({query}) => {
 
@@ -87,6 +88,9 @@ const KeywordsFilter = ({query}) => {
                         <button className="filter-dialog__action filter-dialog__action--secondary" onClick={clearFilter}>Clear</button>
                     </footer>
                 </form>
+                <button onClick={()=>{
+                    toggleDialog(false)
+                }} className="filter__close"><img src={cross} alt="close filter" className="filter__close-icon"/></button>
             </Dialog>
             
         </>
