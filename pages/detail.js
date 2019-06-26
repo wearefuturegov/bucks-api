@@ -78,7 +78,7 @@ const DetailPage = ({service}) =>{
                         mapElement={<div style={{ height: "100%" }} />}
                         coordinates={service.geo.coordinates}
                     />
-                    <em>Approximate location only. Always check the website or contact the organiser first.</em>
+                    {/* <em>Approximate location only. Always check the website or contact the organiser first.</em> */}
                 </Column>
             </ColumnsWithDivider>
             <ServiceSuitabilityPanel
