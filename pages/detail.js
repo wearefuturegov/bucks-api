@@ -1,4 +1,5 @@
 import Layout from "../components/Layout"
+import Head from "next/head"
 import PageHeader from "../components/PageHeader"
 import fetch from "isomorphic-unfetch"
 import {ColumnsWithDivider, Column} from "../components/ColumnsWithDivider"
@@ -31,6 +32,9 @@ const DetailPage = ({service}) =>{
     } = service
     return(
         <Layout withHeader>
+            <Head>
+                <title>{(name || parentOrganisation)} | Care and support for adults | Buckinghamshire County Council</title>
+            </Head>
             <PageHeader 
                 breadcrumbs={[
                     {

@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react"
+import Head from "next/head"
 import Layout from "../components/Layout"
 import PageHeader from "../components/PageHeader"
 import Recommendations from "../components/Recommendations"
@@ -34,6 +35,9 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
 
     return(
         <Layout withHeader>
+            <Head>
+                <title>Recommendations | Care and support for adults | Buckinghamshire County Council</title>
+            </Head>
             <PageHeader 
                 reducedBottomPadding
                 breadcrumbs={[
