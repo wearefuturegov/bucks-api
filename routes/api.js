@@ -1,9 +1,19 @@
 /* eslint-disable no-unused-vars */
 const router = require("express").Router()
-
+const rateLimit = require("express-rate-limit")
 const services = require("../controllers/services")
 const snippets = require("../controllers/snippets")
 const geocode = require("../controllers/geocode")
+
+// If IPs make more than 500 requests in a minute, block for an hour
+router.use(rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 500,
+    message: {
+        status: "TOO_MANY_REQUESTS",
+        message: "You made too many requests. Try again later."
+    }
+}))
 
 router.post("/geocode", geocode)
 router.get("/services", services.list)

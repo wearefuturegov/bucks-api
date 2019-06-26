@@ -23,6 +23,8 @@ app
     .then(() => {
         const server = express()
 
+        server.set("trust proxy", 1)
+
         server.use(require("forest-express-mongoose").init({
             modelsDir: __dirname + "/models",
             envSecret: process.env.FOREST_ENV_SECRET,
