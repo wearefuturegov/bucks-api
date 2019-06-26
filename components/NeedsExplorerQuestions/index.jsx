@@ -100,15 +100,13 @@ const NeedsExplorerQuestions = () => {
                         onBlur={handleBlur}
                     />
 
-                    <div className="question">
-
+                    <div className="continue-to-recommendations">
                         <ContinueToRecommendations
                             keywordSelection={keywordSelection}
                             ageSelection={ageSelection}
                             categorySelection={categorySelection}
                             rawLocation={rawLocation}
                         />
-
                     </div>
 
 

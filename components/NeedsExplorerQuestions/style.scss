@@ -83,6 +83,13 @@
     }
 }
 
+.continue-to-recommendations{
+    padding: 40px 0px;
+    // display: flex
+    @media screen and (min-width: $tablet){
+        padding: 60px 0px;
+    }
+}
 
 .continue-to-recommendations__message{
     font-size: 1.3em;

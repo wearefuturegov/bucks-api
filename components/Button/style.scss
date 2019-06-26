@@ -2,10 +2,12 @@
 
 .button{
     display: block;
+    width: 100%;
     text-align: center;
     background: $link;
     border-radius: 30px;
-    @include paragraphText;
+    // @include paragraphText;
+    font-size: 1.1em;
     color: $white;
     padding: 10px 20px;
     font-weight: bold;
@@ -40,6 +42,8 @@
     @media screen and (min-width: $desktop){
         padding: 12px 55px;
         display: inline-block;
+        font-size: 1.2em;
+        width: initial;
     }
     &.button--white{
         background: $white;

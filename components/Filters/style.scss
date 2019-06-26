@@ -1,0 +1,42 @@
+@import "../vars";
+
+.recommendation-toggle{
+    background: $darkText;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    // font-weight: bold;
+    border: none;
+    display: block;
+    width: 100%;
+    font-size: 1.1em;
+    cursor: pointer;
+    @media screen and (min-width: $tablet) {
+        display: none;
+    }
+    position: relative;
+    z-index: 2;
+}
+
+.recommendation-toggle__icon{
+    margin-right: 10px;
+    display: inline-block;
+    // width: 15px;
+    height: 13px;
+}
+
+.recommendation-filters{
+    padding: 15px 20px;
+    background: $shadow;
+    display: none;
+    &.recommendation-filters--open{
+        display: block;
+    }
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 15px;
+        background: none;
+        padding: 0px 30px;
+        display: block;
+    }
+}
+
