@@ -99,15 +99,20 @@ const NeedsExplorerQuestions = () => {
                         onChange={handleRawLocationChange} 
                         onBlur={handleBlur}
                     />
+
+<div className="question">
+
+<ContinueToRecommendations
+    keywordSelection={keywordSelection}
+    ageSelection={ageSelection}
+    categorySelection={categorySelection}
+    rawLocation={rawLocation}
+/>
+
+</div>
+
+
                 </div>
-            </section>
-            <section className="continue-to-recommendations container">
-                <ContinueToRecommendations
-                    keywordSelection={keywordSelection}
-                    ageSelection={ageSelection}
-                    categorySelection={categorySelection}
-                    rawLocation={rawLocation}
-                />
             </section>
         </form>
     )
@@ -119,21 +124,20 @@ const ContinueToRecommendations= ({categorySelection, keywordSelection, ageSelec
     if ((categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0) && rawLocation){
         return(
             <>
-                <p className="continue-to-recommendations__message">See recommendations that could be right for you:</p>
                 <Button>Go to recommendations</Button>
             </>
         )
     } else if (categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0){
         return(
             <>
-                <p className="continue-to-recommendations__message">Give <strong>a location</strong> to see your recommendations</p>
+                <p className="continue-to-recommendations__message">Give a location to see your recommendations</p>
                 <Button disabled>Go to recommendations</Button>
             </>
         )
     } else {
         return(
             <>
-                <p className="continue-to-recommendations__message">Answer <strong>more questions</strong> to see your recommendations</p>
+                <p className="continue-to-recommendations__message">Answer more questions to see your recommendations</p>
                 <Button disabled>Go to recommendations</Button>
             </>
         )
