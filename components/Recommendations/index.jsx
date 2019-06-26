@@ -1,12 +1,7 @@
 import React, {useState} from "react"
 import PropTypes from "prop-types"
-import CategoryFilter from "../Filter/CategoryFilter"
-import LocationFilter from "../Filter/LocationFilter"
-import KeywordsFilter from "../Filter/KeywordsFilter"
-import AgesFilter from "../Filter/AgesFilter"
-import DaysFilter from "../Filter/DaysFilter"
-import AccessibilityFilter from "../Filter/AccessibilityFilter"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
+import Filters from "../Filters"
 import ServicesGrid from "../ServicesGrid"
 import Alert from "../Alert"
 import Button from "../Button"
@@ -20,14 +15,11 @@ const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, tot
 
     return(
         <>
-            <section className="recommendation-filters container">
-                <CategoryFilter query={query} />
-                <KeywordsFilter query={query}/>
-                <LocationFilter query={query} dialogIsOpen={dialogIsOpen} toggleDialog={toggleDialog}/>
-                <AgesFilter query={query}/>
-                <DaysFilter query={query}/>
-                <AccessibilityFilter query={query}/>
-            </section>
+            <Filters
+                query={query}
+                locationFilterIsOpen={dialogIsOpen}
+                toggleLocationFilterDialog={toggleDialog}
+            />
 
             <section className="recommendations">
                 <div className="container">
