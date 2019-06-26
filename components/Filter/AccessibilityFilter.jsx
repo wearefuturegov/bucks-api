@@ -10,7 +10,7 @@ import cross from "./cross.svg"
 
 const AccessibilityFilter = ({query}) => {
 
-    const [dialogIsOpen, toggleDialog] = useState(true)
+    const [dialogIsOpen, toggleDialog] = useState(false)
     const [selection, changeSelection] = useState((query.accessibility)? [].concat(query.accessibility) : [])
 
     // Add and remove checked and unchecked items from array
