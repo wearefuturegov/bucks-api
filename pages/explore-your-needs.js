@@ -8,7 +8,7 @@ const ExploreYourNeedsPage = () => {
         <Layout withUsefulOverlap>
             <NeedsExplorerHero
                 title="Find activities, groups and services near you"
-                description="Answer a few questions to find activities and support groups in your area"
+                description="Answer a few questions and we'll suggest recommendations in your area"
             />
             <NeedsExplorerQuestions />
         </Layout>

@@ -16,8 +16,8 @@ const HomePage = () =>
         <Hero
             title="Support and care for adults, their families and carers"
             description="Helping you find the right information and support in Buckinghamshire."
-            ctaTitle="Find services in your area"
-            ctaDescription="Answer a few questions to find activities, support groups and clubs in your area"
+            ctaTitle="Find activities, groups and services near you"
+            ctaDescription="Answer a few questions and we'll suggest recommendations in your area"
             ctaHref="/explore-your-needs"
             ctaLinkText="Get started"
         />

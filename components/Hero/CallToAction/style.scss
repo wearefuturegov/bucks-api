@@ -35,8 +35,9 @@
 
 .hero-call-to-action__description{
     margin-bottom: 20px;
+    font-size: 1.1em;
     @media screen and (min-width: $tablet){
-        font-size: 1.2em;
+        font-size: 1.1em;
         margin-bottom: 25px;
     }
 }
