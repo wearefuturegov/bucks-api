@@ -4,11 +4,11 @@ import ServiceCard from "../ServiceCard"
 import "./style.scss"
 import { prettyFeatures } from "../../lib/utils"
 
-const ServicesGrid = ({services, totalServices}) => 
+const ServicesGrid = ({services, totalServices, query}) => 
     <>
-        <h2 className="recommendations__section-title"><strong>{totalServices}</strong> services near you</h2>
+        <h2 className="recommendations__section-title"><strong>{totalServices}</strong> services near {query.formattedLocation ? query.formattedLocation : "you"}</h2>
         {services.length > 0 ? 
-            <ol className="services-grid">
+            <ol className="services-grid" aria-live="polite">
                 {services.map((service, i)=>
                     <ServiceCard
                         key={i}

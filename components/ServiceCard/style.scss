@@ -1,11 +1,13 @@
 @import '../vars';
 
-@keyframes fadeIn{
+@keyframes fadeInUp{
     from{
         opacity: 0;
+        transform: translateY(2px)
     }
     to{
         opacity: 1;
+        transform: translateY(0px)
     }
 }
 
@@ -17,6 +19,7 @@
     position: relative;
     box-shadow: 0 4px 0 $shadow;
     border-top: 7px solid $white;
+    animation: fadeInUp 0.1s ease-out;
     @media screen and (min-width: $tablet){
         margin-bottom: 30px
     }

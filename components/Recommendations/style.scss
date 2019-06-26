@@ -29,3 +29,21 @@
         margin-top: 60px
     }
 }
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.recommendations__loader{
+    animation: fadeIn 0.1s ease-out;
+    animation-delay: 0.3s;
+    margin: 22px auto;
+    display: block;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}

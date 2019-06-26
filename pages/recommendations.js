@@ -10,6 +10,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
 
     const [page, changePage] = useState(1)
     const [moreServices, changeMoreServices] = useState([])
+    const [loading, changeLoading] = useState(false)
 
     // When URL query changes, start afresh
     useEffect(()=>{
@@ -18,6 +19,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
     }, [query])
 
     const handleLoadMore = async () => {
+        changeLoading(true)
         let loadMoreQuery = {
             ...query,
             page: page + 1
@@ -27,6 +29,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
         // Update state
         changeMoreServices(moreServices.concat(newServices.results))
         changePage(page+1)
+        changeLoading(false)
     }
 
     return(
@@ -51,6 +54,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
                 totalServices={totalServices}
                 onLoadMore={handleLoadMore}
                 moreToLoad={page < totalPages}
+                loading={loading}
             />
             <CentredText
                 title="Is anything missing?"
@@ -58,7 +62,6 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
             />
         </Layout>
     )
-
 }
 
 RecommendationsPage.getInitialProps = async ({req, query}) => {
