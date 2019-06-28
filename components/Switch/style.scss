@@ -1,0 +1,53 @@
+@import "../vars";
+
+.switch{
+    &:focus-within{
+        .switch__label{
+            outline: none;
+            box-shadow: 0 0 0 3px $focus;
+        }
+    }
+}
+
+.switch__label{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    color: $darkText;
+
+    // Switch body
+    &:after{
+        content: "";
+        margin-left: 10px;
+        display: inline-block;
+        background: $shadow;
+        border-radius: 100px;
+        height: 25px;
+        width: 50px;
+    }
+    // Switch peg
+    &:before{
+        content: "";
+        position: absolute;
+        right: 27px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        transition: 0.2s ease-in-out;
+        background-image: url("./tick.svg");
+        background-size: 10px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: $background;
+    }
+}
+
+.switch__input:checked+label{
+    &:before{
+        right: 3px;
+        background-color: $darkText;
+    }
+}

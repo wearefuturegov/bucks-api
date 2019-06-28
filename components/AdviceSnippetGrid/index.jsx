@@ -4,19 +4,17 @@ import Card from "../Card"
 import "./style.scss"
 
 const AdviceSnippetGrid = ({snippets}) =>
-    <>
-        <h2 className="recommendations__section-title recommendations__section-title--with-top-margin">Advice for you</h2>
-        <section className="advice-grid">
-            {snippets.map((snippet, i)=>
-                <Card 
-                    title={snippet.title}
-                    description={snippet.description}
-                    href={snippet.href}
-                    key={i}
-                />
-            )}
-        </section>
-    </>
+    <div className="advice__grid">
+        {snippets.map((snippet, i)=>
+            <Card 
+                title={snippet.title}
+                description={snippet.description}
+                href={snippet.href}
+                key={i}
+                // image="https://placehold.it/300x200"
+            />
+        )}
+    </div>
 
 AdviceSnippetGrid.propTypes = {
     snippets: PropTypes.array.isRequired

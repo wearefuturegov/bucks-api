@@ -3,36 +3,30 @@ import PropTypes from "prop-types"
 import ServiceCard from "../ServiceCard"
 import "./style.scss"
 import { prettyFeatures } from "../../lib/utils"
+import Button from "../Button"
+import loadingIcon from "./loading.svg"
 
-const ServicesGrid = ({services, totalServices, query}) => 
+const ServicesGrid = ({services, onLoadMore, loading, moreToLoad, className}) => 
     <>
-        <h2 className="recommendations__section-title"><strong>{totalServices}</strong> services near {query.formattedLocation ? query.formattedLocation : "you"}</h2>
-        {services.length > 0 ? 
-            <ol className="services-grid" aria-live="polite">
-                {services.map((service, i)=>
-                    <ServiceCard
-                        key={i}
-                        assetId={service.assetId}
-                        category={service.category}
-                        title={service.name || service.parentOrganisation}
-                        description={service.description}
-                        distance={service.distance}
-                        parentOrganisation={service.parentOrganisation}
-                        features={prettyFeatures(service)}
-                    />
-                )}
-            </ol>
-            : 
-            <div className="services-grid__no-results">
-                <h3>No results</h3>
-                <p>Improve your search results by removing filters or double-checking your spelling.</p>
-            </div>   
-        }
+        <ol className={className? `services__grid ${className}` : "services__grid"} aria-live="polite">
+            {services.map((service, i)=>
+                <ServiceCard
+                    key={i}
+                    assetId={service.assetId}
+                    category={service.category}
+                    title={service.name || service.parentOrganisation}
+                    description={service.description}
+                    distance={service.distance}
+                    parentOrganisation={service.parentOrganisation}
+                    features={prettyFeatures(service)}
+                />
+            )}
+        </ol>
+        {loading && <img className="services-grid__loader" src={loadingIcon} alt="Loading..."/>}
+        {(!loading && moreToLoad) && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
     </>
-    
 ServicesGrid.propTypes = {
-    services: PropTypes.array.isRequired,
-    totalServices: PropTypes.number.isRequired
+    services: PropTypes.array.isRequired
 }
 
 export default ServicesGrid

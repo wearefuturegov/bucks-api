@@ -8,38 +8,27 @@
     }
 }
 
-.recommendations__section-title{
+.services__section-title, .advice__section-title{
+    margin-bottom: 10px;
     font-weight: normal;
-    margin-bottom: 15px;
-    font-size: 1.3em;
-    color: $darkText;
-    @media screen and (min-width: $desktop){
-        font-size: 1.5em;
-        margin-bottom: 25px;
+    @media screen and (min-width: $tablet){
+        margin-bottom: 0px;
     }
 }
 
-.recommendations__section-title--with-top-margin{
+.services__header, .advice__header{
+    @media screen and (min-width: $tablet){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    margin-bottom: 25px;
+}
+
+.advice__header{
     margin-top: 40px;
-    @media screen and (min-width: $desktop){
-        margin-top: 60px
+    @media screen and (min-width: $tablet){
+        margin-top: 60px;
     }
-}
-
-@keyframes fadeIn{
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
-}
-
-.recommendations__loader{
-    animation: fadeIn 0.1s ease-out;
-    animation-delay: 0.3s;
-    margin: 22px auto;
-    display: block;
-    opacity: 0;
-    animation-fill-mode: forwards;
 }

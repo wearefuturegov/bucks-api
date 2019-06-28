@@ -12,6 +12,7 @@
     }
 
     &.page-header--reduced-bottom-padding{
+        padding-bottom: 10px;
         @media screen and (min-width: $desktop){
             padding-bottom: 20px;
         }

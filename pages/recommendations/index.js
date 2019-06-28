@@ -1,9 +1,9 @@
 import {useState, useEffect} from "react"
 import Head from "next/head"
-import Layout from "../components/Layout"
-import PageHeader from "../components/PageHeader"
-import Recommendations from "../components/Recommendations"
-import CentredText from "../components/CentredText"
+import Layout from "../../components/Layout"
+import PageHeader from "../../components/PageHeader"
+import Recommendations from "../../components/Recommendations"
+import CentredText from "../../components/CentredText"
 import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
 
@@ -68,7 +68,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
     )
 }
 
-RecommendationsPage.getInitialProps = async ({req, query}) => {
+export const getInitialProps = async ({req, query}) => {
     const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : ""    
     const endpoints = [
         `${baseUrl}/api/services?${queryString.stringify(query)}`,
@@ -86,5 +86,7 @@ RecommendationsPage.getInitialProps = async ({req, query}) => {
         totalPages: services.pages
     }
 }
+
+RecommendationsPage.getInitialProps = getInitialProps
 
 export default RecommendationsPage

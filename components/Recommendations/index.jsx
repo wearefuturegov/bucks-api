@@ -1,23 +1,34 @@
 import React, {useState} from "react"
-import PropTypes from "prop-types"
-import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import Filters from "../Filters"
-import ServicesGrid from "../ServicesGrid"
 import Alert from "../Alert"
-import Button from "../Button"
+import Switch from "../Switch"
+import ServicesGrid from "../ServicesGrid"
+import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import "./style.scss"
-import loadingIcon from "./loading.svg"
+import Router from "next/router"
+import queryString from "query-string"
 
-const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, totalServices, loading}) => {
+const Recommendations = ({
+    services,
+    snippets, 
+    query, 
+    onLoadMore, 
+    moreToLoad, 
+    totalServices, 
+    loading
+}) => {
 
-    // Location filter state moved up so that alert bar can trigger dialog
-    const [dialogIsOpen, toggleDialog] = useState(false)
+    const [dialogOpen, toggleDialog] = useState(false)
+    const [mapOpen, toggleMap] = useState(false)
 
-    return(
+    if(mapOpen) Router.push(`/recommendations/map?${queryString.stringify(query)}`)
+
+    return (
+
         <>
             <Filters
                 query={query}
-                locationFilterIsOpen={dialogIsOpen}
+                locationFilterIsOpen={dialogOpen}
                 toggleLocationFilterDialog={toggleDialog}
             />
 
@@ -26,22 +37,39 @@ const Recommendations = ({services, snippets, query, onLoadMore, moreToLoad, tot
                     {(query.formattedLocation === "Buckinghamshire, UK") && <Alert onClick={()=>{
                         toggleDialog(true)
                     }}/>}
-                    <ServicesGrid services={services} totalServices={totalServices} query={query}/>
-                    {(!loading && moreToLoad) && <Button centredSecondary onClick={onLoadMore}>Show more results</Button>}
-                    {loading && <img className="recommendations__loader" src={loadingIcon} alt="Loading..."/>}
-                    {snippets.length > 0 && <AdviceSnippetsGrid snippets={snippets}/>}
+                    <section className="services">
+                        <header className="services__header">
+                            <h2 className="services__section-title"><strong>{totalServices}</strong> services near {query.formattedLocation ? query.formattedLocation : "you"}</h2>
+                            <Switch
+                                name="show-map"
+                                checked={mapOpen}
+                                onChange={()=>{
+                                    toggleMap(!mapOpen)
+                                }}
+                            />
+                        </header>
+                        <ServicesGrid
+                            services={services}
+                            query={query}
+                            loading={loading}
+                            moreToLoad={moreToLoad}
+                            onLoadMore={onLoadMore}
+                            className="services__grid--with-columns"
+                        />
+                    </section>
+                    {snippets.length > 0 && 
+                        <section className="advice">
+                            <header className="advice__header">
+                                <h2 className="advice__section-title">Advice for you</h2>
+                            </header>
+                            <AdviceSnippetsGrid snippets={snippets}/>
+                        </section>
+                    }
                 </div>
             </section>
         </>
     )
 }
 
-Recommendations.propTypes = {
-    services: PropTypes.array.isRequired,
-    snippets: PropTypes.array.isRequired,
-    query: PropTypes.object,
-    moreToLoad: PropTypes.bool,
-    totalServices: PropTypes.number.isRequired
-}
 
 export default Recommendations
