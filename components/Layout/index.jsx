@@ -9,7 +9,7 @@ import Footer from "../Footer"
 import "./style.scss"
 
 const Layout = ({children, withHeader, withUseful, withFooter, fullHeight})=>
-    <div className={fullHeight ? "layout--full-height" : false}>
+    <div className={fullHeight ? "layout--full-height" : undefined}>
         <Head>
             <title>Care and support for adults | Buckinghamshire County Council</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
