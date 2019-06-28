@@ -5,8 +5,6 @@ import Switch from "../Switch"
 import ServicesGrid from "../ServicesGrid"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import "./style.scss"
-import Router from "next/router"
-import queryString from "query-string"
 
 const Recommendations = ({
     services,
@@ -20,8 +18,6 @@ const Recommendations = ({
 
     const [dialogOpen, toggleDialog] = useState(false)
     const [mapOpen, toggleMap] = useState(false)
-
-    if(mapOpen) Router.push(`/recommendations/map?${queryString.stringify(query)}`)
 
     return (
 

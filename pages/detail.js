@@ -31,7 +31,7 @@ const DetailPage = ({service}) =>{
         ageGroups
     } = service
     return(
-        <Layout withHeader>
+        <Layout withHeader withFooter>
             <Head>
                 <title>{(name || parentOrganisation)} | Care and support for adults | Buckinghamshire County Council</title>
             </Head>

@@ -12,7 +12,7 @@ import i5 from "../images/5.jpg"
 import i6 from "../images/6.jpg"
 
 const HomePage = () =>
-    <Layout withUseful>
+    <Layout withUseful withFooter>
         <Hero
             title="Support and care for adults, their families and carers"
             description="Helping you find the right information and support in Buckinghamshire."

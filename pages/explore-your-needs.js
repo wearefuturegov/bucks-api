@@ -6,7 +6,7 @@ import NeedsExplorerQuestions from "../components/NeedsExplorerQuestions"
 
 const ExploreYourNeedsPage = () => {
     return(
-        <Layout withUsefulOverlap>
+        <Layout withUsefulOverlap withFooter>
             <Head>
                 <title>Explore your needs | Care and support for adults | Buckinghamshire County Council</title>
             </Head>
