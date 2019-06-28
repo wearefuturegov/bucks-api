@@ -4,6 +4,7 @@ const rateLimit = require("express-rate-limit")
 const services = require("../controllers/services")
 const snippets = require("../controllers/snippets")
 const geocode = require("../controllers/geocode")
+const notify = require("../controllers/notify")
 
 // If IPs make more than 500 requests in a minute, block for an hour
 router.use(rateLimit({
@@ -16,6 +17,10 @@ router.use(rateLimit({
 }))
 
 router.post("/geocode", geocode)
+
+router.post("/share/email", notify.email)
+router.post("/share/text", notify.text)
+
 router.get("/services", services.list)
 router.get("/services/:id", services.getServiceById)
 router.get("/snippets", snippets.list)
