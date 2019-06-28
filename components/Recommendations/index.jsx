@@ -4,6 +4,7 @@ import Alert from "../Alert"
 import Switch from "../Switch"
 import ServicesGrid from "../ServicesGrid"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
+import ListMap from "../ListMap"
 import "./style.scss"
 
 const Recommendations = ({
@@ -44,6 +45,16 @@ const Recommendations = ({
                                 }}
                             />
                         </header>
+                        {mapOpen &&
+                            <ListMap
+                                loadingElement={<div style={{ height: "100%" }} />}
+                                containerElement={<div style={{ height: "100%" }} />}
+                                mapElement={<div style={{ height: "300px" }} />}
+                                lat={parseFloat(query.lat)}
+                                lng={parseFloat(query.lng)}
+                                services={services}
+                            />
+                        }
                         <ServicesGrid
                             services={services}
                             query={query}

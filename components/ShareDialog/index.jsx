@@ -3,7 +3,6 @@ import { Dialog } from "@reach/dialog"
 import "@reach/dialog/styles.css"
 import "./style.scss"
 import cross from "./cross.svg"
-import Router from "next/router"
 import fetch from "isomorphic-unfetch"
 
 const ShareDialog = () => {
@@ -26,8 +25,8 @@ const ShareDialog = () => {
 
     return (
         <>
-            <button onClick={() => {toggleDialog(true)}}>
-                Share
+            <button className="share-button" onClick={() => {toggleDialog(true)}}>
+                Share this list
             </button>
 
 

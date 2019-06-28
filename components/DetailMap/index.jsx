@@ -13,4 +13,8 @@ const WrappedMap = withScriptjs(withGoogleMap((props)=>
     </GoogleMap>
 ))
 
+WrappedMap.defaultProps = {
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_CLIENT_KEY}&v=3.exp&libraries=geometry,drawing,places`
+}
+
 export default WrappedMap

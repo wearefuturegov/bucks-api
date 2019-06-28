@@ -20,13 +20,12 @@ const WrappedMap = withScriptjs(withGoogleMap(({lat, lng, services})=>
                     key={i}
                 />
             )}
-
-            {/* <Marker position={{
-                lat: props.coordinates[1], 
-                lng: props.coordinates[0]
-            }}/> */}
         </GoogleMap>
     </>
 ))
+
+WrappedMap.defaultProps = {
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_CLIENT_KEY}&v=3.exp&libraries=geometry,drawing,places`
+}
 
 export default WrappedMap
