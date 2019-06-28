@@ -29,8 +29,15 @@
     padding: 15px 20px;
     background: $shadow;
     display: none;
-    &.recommendation-filters--open{
-        display: block;
+    @media screen and (max-width: $tablet) {
+        &.recommendation-filters--open{
+            display: block;
+            .filter-button{
+                display: block;
+                text-align: left;
+                width: 100%;
+            }
+        }
     }
     @media screen and (min-width: $tablet) {
         margin-bottom: 15px;
@@ -40,3 +47,42 @@
     }
 }
 
+
+.filter-button{
+    border: none;
+    background: none;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+    color: $darkText;
+    margin-right: 25px;
+    padding: 10px 0px;
+    display: inline-block;
+    &:after{
+        content: "";
+        height: 12px;
+        width: 12px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        margin-left: 10px;
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='9' viewBox='0 0 16 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8 8L15 1' stroke='%231E2428' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    }
+    &.filter-button--active{
+        font-weight: bold;
+    }
+    @media screen and (min-width: $tablet){
+        &:after{
+            position: inherit;
+            right: 0px;
+            margin-left: 10px;
+        }
+    }
+
+
+
+
+}
