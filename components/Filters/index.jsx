@@ -12,8 +12,7 @@ import ShareDialog from "../ShareDialog"
 
 const Filters = ({
     locationFilterIsOpen, 
-    toggleLocationFilterDialog,
-    query
+    toggleLocationFilterDialog
 }) => {
     
     const [filtersOpen, toggleFilters] = useState(false)
@@ -33,18 +32,18 @@ const Filters = ({
                 }
             </button>
             <section className={filtersOpen ? "recommendation-filters container recommendation-filters--open" : "recommendation-filters container"}>
-                <CategoryFilter query={query} />
-                <KeywordsFilter query={query}/>
-                <LocationFilter query={query} dialogIsOpen={locationFilterIsOpen} toggleDialog={toggleLocationFilterDialog}/>
-                <AgesFilter query={query}/>
-                <DaysFilter query={query}/>
-                <AccessibilityFilter query={query}/>
-                
+                <div>
+                    <CategoryFilter />
+                    <KeywordsFilter/>
+                    <LocationFilter dialogIsOpen={locationFilterIsOpen} toggleDialog={toggleLocationFilterDialog}/>
+                    <AgesFilter/>
+                    <DaysFilter/>
+                    <AccessibilityFilter/>
+                </div>
                 <ShareDialog/>
             </section>
         </>
     )
 }
-
 
 export default Filters

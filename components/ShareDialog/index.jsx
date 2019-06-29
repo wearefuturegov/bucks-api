@@ -26,7 +26,7 @@ const ShareDialog = () => {
     return (
         <>
             <button className="share-button" onClick={() => {toggleDialog(true)}}>
-                Share this list
+                Share
             </button>
 
 

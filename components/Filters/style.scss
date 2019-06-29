@@ -45,6 +45,19 @@
         padding: 0px 30px;
         display: block;
     }
+    @media screen and (min-width: $desktop) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .share-button{
+        display: none;
+        @media screen and (min-width: $desktop) {
+            display: flex;
+        }
+    }
 }
 
 

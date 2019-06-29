@@ -8,6 +8,7 @@ import socialMarker from "./social-marker.svg"
 import "./style.scss"
 import mapStyles from "./style.json"
 import { truncate } from "../../lib/utils"
+import Link from "next/link"
 
 const markerIcon = (category) => {
     if (category === "support") return supportMarker
@@ -17,49 +18,70 @@ const markerIcon = (category) => {
     if (category === "social") return socialMarker
 }
 
-
-const ServiceMarker = ({service}) => {
-    const [infoBoxOpen, toggleInfoBox] = useState(false)
+const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) => {
+    let position = {
+        lat: service.geo.coordinates[1],
+        lng: service.geo.coordinates[0]
+    }
     return(
         <>
             <Marker
-                position={{
-                    lat: service.geo.coordinates[1],
-                    lng: service.geo.coordinates[0]
-                }}
-                // icon={markerIcon(service.category)}
+                position={position}
+                clusterer={clusterer}
                 icon={{
                     url: markerIcon(service.category),
                     optimized: false,
-                    scaledSize: new google.maps.Size(40, 40),
+                    scaledSize: new window.google.maps.Size(40, 40),
                 }}
-                onClick={()=>{
-                    toggleInfoBox(true)
-                }}
+                onClick={()=>{changeActiveMarker(service.assetId)}}
             />
-            {infoBoxOpen && 
-            
+            {(service.assetId === activeMarker) && 
                 <InfoWindow
-                    position={{
-                        lat: service.geo.coordinates[1],
-                        lng: service.geo.coordinates[0]
-                    }}
-                    onCloseClick={()=>{
-                        toggleInfoBox(false)
-                    }}
+                    position={position}
+                    onCloseClick={()=>{changeActiveMarker(0)}}
+                    options={{maxWidth: 300}}
                 >
                     <>
                         <h1>{service.name || service.parentOrganisation}</h1>
-                        <p>{truncate(service.description, 10)}</p>
+                        <p>{truncate(service.description, 15)}</p>
+                        <Link href={`/service/${service.assetId}`}>
+                            <a>See details</a>
+                        </Link>
                     </>
                 </InfoWindow>
-            
             }
         </>
     )
 }
 
+const ServiceClusterer = ({services, activeMarker, changeActiveMarker}) => {
+    return(
+        <MarkerClusterer 
+            options={{imagePath: "/static/m"}} minimumClusterSize={3}
+            zoomOnClick={false}
+            onClick={(e)=>{
+                console.log(e.markers)
+            }}
+        >
+            {
+                (clusterer) => 
+                    services.map((service, i)=>
+                        <ServiceMarker 
+                            key={i} 
+                            service={service} 
+                            clusterer={clusterer}
+                            activeMarker={activeMarker} 
+                            changeActiveMarker={changeActiveMarker} 
+                        />
+                    )
+            }
+        </MarkerClusterer>
+    )
+}
+
 const WrappedMap = ({lat, lng, services})=> {
+
+    const [activeMarker, changeActiveMarker] = useState(0)
 
     return(
         <>
@@ -73,7 +95,7 @@ const WrappedMap = ({lat, lng, services})=> {
                         streetViewControl: false,
                         styles: mapStyles
                     }}
-                    key={services}
+                    // key={new Date()}
                     zoom={12} 
                     center={{
                         lat: lat, 
@@ -91,9 +113,7 @@ const WrappedMap = ({lat, lng, services})=> {
                         map.fitBounds(bounds)
                     }}
                 >
-                    {services.map((service, i)=>
-                        <ServiceMarker key={i} service={service}/>
-                    )}
+                    <ServiceClusterer activeMarker={activeMarker} changeActiveMarker={changeActiveMarker} services={services}/>
                 </GoogleMap>
             </LoadScript>
         </>
