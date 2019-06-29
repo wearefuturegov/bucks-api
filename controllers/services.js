@@ -37,9 +37,23 @@ module.exports = {
         if(req.query.accessibility) query.accessibility = { $all: [].concat(req.query.accessibility) }
         // Spin off a second query object, because .countDocuments doesn't accept geospatial operators
         let findQuery = {...query}
-        if(req.query.lat && req.query.lng) findQuery.geo = {$nearSphere: [parseFloat(req.query.lng), parseFloat(req.query.lat)]}
 
-        let perPage = 10
+        if(req.query.lat && req.query.lng)  {
+            findQuery.geo = { 
+                $nearSphere: {
+                    $geometry: {
+                        type : "Point",
+                        coordinates : [parseFloat(req.query.lng), parseFloat(req.query.lat)]
+                    }
+                }
+            }
+            if(req.query.radius) findQuery.geo.$nearSphere.$maxDistance = parseFloat(req.query.radius)
+        } 
+    
+
+        console.log(findQuery)
+
+        let perPage = req.query.radius ? 0 : 10
 
         Promise.all([
             Service.countDocuments(query),
