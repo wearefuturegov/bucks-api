@@ -4,7 +4,6 @@ import Layout from "../components/Layout"
 import PageHeader from "../components/PageHeader"
 import Recommendations from "../components/Recommendations"
 import CentredText from "../components/CentredText"
-import ShareDialog from "../components/ShareDialog"
 import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
 
@@ -52,7 +51,6 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
                 ]}
                 title="Your recommendations"
             />
-            <ShareDialog/>
             <Recommendations 
                 snippets={snippets}
                 services={services.concat(moreServices)} 

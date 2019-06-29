@@ -1,17 +1,19 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
+import React, {useState, useEffect} from "react"
 import { Dialog } from "@reach/dialog"
 import CheckboxItem from "./CheckboxItem"
-import queryString from "query-string"
 import Router from "next/router"
 import "@reach/dialog/styles.css"
 import "./style.scss"
 import cross from "./cross.svg"
 
-const AccessibilityFilter = ({query}) => {
+const AccessibilityFilter = () => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [selection, changeSelection] = useState((query.accessibility)? [].concat(query.accessibility) : [])
+    const [selection, changeSelection] = useState([])
+
+    useEffect(()=>{
+        Router.query.accessibility && changeSelection([].concat(Router.query.accessibility))
+    }, dialogIsOpen)
 
     // Add and remove checked and unchecked items from array
     const handleChange = (e) => {
@@ -28,11 +30,13 @@ const AccessibilityFilter = ({query}) => {
     // Create new query from state and push new route
     const updateResults = (e) => {
         if(e) e.preventDefault()
-        let newQuery = {
-            ...query,
-            accessibility: selection
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+        Router.push({
+            pathname: Router.pathname,
+            query: {
+                ...Router.query,
+                accessibility: selection
+            }
+        })
         toggleDialog(false)
     }
 
@@ -40,12 +44,6 @@ const AccessibilityFilter = ({query}) => {
     const clearFilter = (e) => {
         if(e) e.preventDefault()
         changeSelection([])
-        let newQuery = {
-            ...query,
-            accessibility: []
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
-        toggleDialog(false)
     }
 
     return (
@@ -93,10 +91,6 @@ const AccessibilityFilter = ({query}) => {
             
         </>
     )
-}
-
-AccessibilityFilter.propTypes = {
-    query: PropTypes.object.isRequired
 }
 
 export default AccessibilityFilter

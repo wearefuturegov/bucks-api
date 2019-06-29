@@ -8,6 +8,7 @@ import AccessibilityFilter from "../Filter/AccessibilityFilter"
 import "./style.scss"
 import filterIcon from "./filter.svg"
 import crossIcon from "./cross.svg"
+import ShareDialog from "../ShareDialog"
 
 const Filters = ({
     locationFilterIsOpen, 
@@ -38,6 +39,8 @@ const Filters = ({
                 <AgesFilter query={query}/>
                 <DaysFilter query={query}/>
                 <AccessibilityFilter query={query}/>
+                
+                <ShareDialog/>
             </section>
         </>
     )

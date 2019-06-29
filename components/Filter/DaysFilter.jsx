@@ -1,17 +1,19 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
+import React, {useState, useEffect} from "react"
 import { Dialog } from "@reach/dialog"
 import CheckboxItem from "./CheckboxItem"
-import queryString from "query-string"
 import Router from "next/router"
 import "@reach/dialog/styles.css"
 import "./style.scss"
 import cross from "./cross.svg"
 
-const DaysFilter = ({query}) => {
+const DaysFilter = () => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [selection, changeSelection] = useState((query.days)? [].concat(query.days) : [])
+    const [selection, changeSelection] = useState([])
+
+    useEffect(()=>{
+        Router.query.days && changeSelection([].concat(Router.query.days))
+    }, dialogIsOpen)
 
     // Add and remove checked and unchecked items from array
     const handleChange = (e) => {
@@ -28,11 +30,13 @@ const DaysFilter = ({query}) => {
     // Create new query from state and push new route
     const updateResults = (e) => {
         if(e) e.preventDefault()
-        let newQuery = {
-            ...query,
-            days: selection
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+        Router.push({
+            pathname: Router.pathname,
+            query: {
+                ...Router.query,
+                days: selection
+            }
+        })
         toggleDialog(false)
     }
 
@@ -40,12 +44,6 @@ const DaysFilter = ({query}) => {
     const clearFilter = (e) => {
         if(e) e.preventDefault()
         changeSelection([])
-        let newQuery = {
-            ...query,
-            days: []
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
-        toggleDialog(false)
     }
 
     return (
@@ -94,10 +92,6 @@ const DaysFilter = ({query}) => {
             
         </>
     )
-}
-
-DaysFilter.propTypes = {
-    query: PropTypes.object.isRequired
 }
 
 export default DaysFilter

@@ -1,17 +1,19 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
+import React, {useState, useEffect} from "react"
 import { Dialog } from "@reach/dialog"
 import CheckboxItem from "./CheckboxItem"
-import queryString from "query-string"
 import Router from "next/router"
 import "@reach/dialog/styles.css"
 import "./style.scss"
 import cross from "./cross.svg"
 
-const AgesFilter = ({query}) => {
+const AgesFilter = () => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [selection, changeSelection] = useState((query.age)? [].concat(query.age) : [])
+    const [selection, changeSelection] = useState([])
+
+    useEffect(()=>{
+        Router.query.age && changeSelection([].concat(Router.query.age))
+    }, dialogIsOpen)
 
     // Add and remove checked and unchecked items from array
     const handleChange = (e) => {
@@ -28,11 +30,13 @@ const AgesFilter = ({query}) => {
     // Create new query from state and push new route
     const updateResults = (e) => {
         if(e) e.preventDefault()
-        let newQuery = {
-            ...query,
-            age: selection
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+        Router.push({
+            pathname: Router.pathname,
+            query: {
+                ...Router.query,
+                age: selection
+            }
+        })
         toggleDialog(false)
     }
 
@@ -40,12 +44,6 @@ const AgesFilter = ({query}) => {
     const clearFilter = (e) => {
         if(e) e.preventDefault()
         changeSelection([])
-        let newQuery = {
-            ...query,
-            age: []
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
-        toggleDialog(false)
     }
 
     return (
@@ -91,10 +89,6 @@ const AgesFilter = ({query}) => {
             
         </>
     )
-}
-
-AgesFilter.propTypes = {
-    query: PropTypes.object.isRequired
 }
 
 export default AgesFilter

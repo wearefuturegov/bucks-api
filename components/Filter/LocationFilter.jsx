@@ -1,46 +1,42 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import PropTypes from "prop-types"
 import { Dialog } from "@reach/dialog"
 import "@reach/dialog/styles.css"
 import "./style.scss"
-import queryString from "query-string"
 import Router from "next/router"
 import geocode from "../../lib/geocode-client"
 import cross from "./cross.svg"
 
 // State moved up into parent component so that alert bar can trigger dialog
-const LocationFilter = ({query, dialogIsOpen, toggleDialog}) => {
+const LocationFilter = ({dialogIsOpen, toggleDialog}) => {
 
-    const [location, changeLocation] = useState(query.location || "")
+    const [location, changeLocation] = useState("")
+    
+    useEffect(()=>{
+        Router.query.location && changeLocation(Router.query.location)
+    }, dialogIsOpen)
 
     const updateResults = async (e) => {
         if(e) e.preventDefault()
         toggleDialog(false)
         if(location){
             let newLocation = await geocode(location)
-            let newQuery = {
-                ...query,
-                location: location,
-                lat: newLocation.lat,
-                lng: newLocation.lng,
-                formattedLocation: newLocation.formattedLocation
-            }
-            Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+            Router.push({
+                pathname: Router.pathname,
+                query: {
+                    ...Router.query,
+                    location: location,
+                    lat: newLocation.lat,
+                    lng: newLocation.lng,
+                    formattedLocation: newLocation.formattedLocation
+                }
+            })
         }
     }
 
     const clearFilter = (e) =>{
         if(e) e.preventDefault()
         changeLocation("")
-        let newQuery = {
-            ...query,
-            location: null,
-            lat: null,
-            lng: null,
-            formattedLocation: null
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
-        toggleDialog(false)
     }
 
     return (
@@ -95,7 +91,8 @@ const LocationFilter = ({query, dialogIsOpen, toggleDialog}) => {
 }
 
 LocationFilter.propTypes = {
-    query: PropTypes.object.isRequired
+    dialogIsOpen: PropTypes.bool.isRequired,
+    toggleDialog: PropTypes.func.isRequired
 }
 
 export default LocationFilter

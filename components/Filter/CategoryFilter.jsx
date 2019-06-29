@@ -1,17 +1,19 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
+import React, {useState, useEffect} from "react"
 import { Dialog } from "@reach/dialog"
 import CheckboxItem from "./CheckboxItem"
-import queryString from "query-string"
 import Router from "next/router"
 import "@reach/dialog/styles.css"
 import "./style.scss"
 import cross from "./cross.svg"
 
-const InterestsFilter = ({query}) => {
+const InterestsFilter = () => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [selection, changeSelection] = useState((query.category)? [].concat(query.category) : [])
+    const [selection, changeSelection] = useState([])
+
+    useEffect(()=>{
+        Router.query.category && changeSelection([].concat(Router.query.category))
+    }, dialogIsOpen)
 
     // Add and remove checked and unchecked items from array
     const handleChange = (e) => {
@@ -28,24 +30,20 @@ const InterestsFilter = ({query}) => {
     // Create new query from state and push new route
     const updateResults = (e) => {
         if(e) e.preventDefault()
-        let newQuery = {
-            ...query,
-            category: selection
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+        Router.push({
+            pathname: Router.pathname,
+            query: {
+                ...Router.query,
+                category: selection
+            }
+        })
         toggleDialog(false)
     }
 
-    // Create new query, clear state and push new route
+    // Clear state
     const clearFilter = (e) => {
         if(e) e.preventDefault()
         changeSelection([])
-        let newQuery = {
-            ...query,
-            category: []
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
-        toggleDialog(false)
     }
 
     return (
@@ -118,10 +116,6 @@ const InterestsFilter = ({query}) => {
             
         </>
     )
-}
-
-InterestsFilter.propTypes = {
-    query: PropTypes.object.isRequired
 }
 
 export default InterestsFilter

@@ -1,17 +1,20 @@
-import React, {useState} from "react"
-import PropTypes from "prop-types"
+import React, {useState, useEffect} from "react"
 import { Dialog } from "@reach/dialog"
 import CheckboxItem from "./CheckboxItem"
-import queryString from "query-string"
 import Router from "next/router"
 import "@reach/dialog/styles.css"
 import "./style.scss"
 import cross from "./cross.svg"
 
-const KeywordsFilter = ({query}) => {
+const KeywordsFilter = () => {
 
     const [dialogIsOpen, toggleDialog] = useState(false)
-    const [selection, changeSelection] = useState((query.keywords)? [].concat(query.keywords) : [])
+    const [selection, changeSelection] = useState([])
+
+    useEffect(()=>{
+        Router.query.keywords && changeSelection([].concat(Router.query.keywords))
+    }, dialogIsOpen)
+
 
     // Add and remove checked and unchecked items from array
     const handleChange = (e) => {
@@ -28,11 +31,13 @@ const KeywordsFilter = ({query}) => {
     // Create new query from state and push new route
     const updateResults = (e) => {
         if(e) e.preventDefault()
-        let newQuery = {
-            ...query,
-            keywords: selection
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
+        Router.push({
+            pathname: Router.pathname,
+            query: {
+                ...Router.query,
+                keywords: selection
+            }
+        })
         toggleDialog(false)
     }
 
@@ -40,12 +45,6 @@ const KeywordsFilter = ({query}) => {
     const clearFilter = (e) => {
         if(e) e.preventDefault()
         changeSelection([])
-        let newQuery = {
-            ...query,
-            keywords: []
-        }
-        Router.push(`/recommendations?${queryString.stringify(newQuery)}`)
-        toggleDialog(false)
     }
 
     return (
@@ -95,10 +94,6 @@ const KeywordsFilter = ({query}) => {
             
         </>
     )
-}
-
-KeywordsFilter.propTypes = {
-    query: PropTypes.object.isRequired
 }
 
 export default KeywordsFilter

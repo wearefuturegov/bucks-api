@@ -55,7 +55,7 @@
     cursor: pointer;
     position: relative;
     color: $darkText;
-    margin-right: 25px;
+    margin-right: 20px;
     padding: 10px 0px;
     display: inline-block;
     &:after{
@@ -68,7 +68,7 @@
         display: inline-block;
         position: absolute;
         right: 0px;
-        margin-left: 10px;
+        margin-left: 5px;
         background-image: url("data:image/svg+xml,%3Csvg width='16' height='9' viewBox='0 0 16 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8 8L15 1' stroke='%231E2428' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
     }
     &.filter-button--active{
@@ -78,7 +78,7 @@
         &:after{
             position: inherit;
             right: 0px;
-            margin-left: 10px;
+            margin-left: 7px;
         }
     }
 
