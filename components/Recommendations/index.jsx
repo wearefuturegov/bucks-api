@@ -24,7 +24,6 @@ const Recommendations = ({
 
         <>
             <Filters
-                query={query}
                 locationFilterIsOpen={dialogOpen}
                 toggleLocationFilterDialog={toggleDialog}
             />
@@ -49,7 +48,7 @@ const Recommendations = ({
                             <ListMap
                                 loadingElement={<div style={{ height: "100%" }} />}
                                 containerElement={<div style={{ height: "100%" }} />}
-                                mapElement={<div style={{ height: "300px" }} />}
+                                mapElement={<div className="list-map" />}
                                 lat={parseFloat(query.lat)}
                                 lng={parseFloat(query.lng)}
                                 services={services}

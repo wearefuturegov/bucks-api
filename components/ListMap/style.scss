@@ -1,0 +1,10 @@
+@import "../vars";
+
+.list-map{
+    margin-bottom: 25px;
+    height: 350px;
+    @media screen and (min-width: $desktop){
+        height: 450px;
+        margin-bottom: 30px;
+    }
+}

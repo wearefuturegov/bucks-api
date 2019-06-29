@@ -1,5 +1,6 @@
 import React from "react"
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from "react-google-maps"
+import "./style.scss"
 
 const WrappedMap = withScriptjs(withGoogleMap(({lat, lng, services})=>
     <>

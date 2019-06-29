@@ -49,10 +49,7 @@ module.exports = {
             }
             if(req.query.radius) findQuery.geo.$nearSphere.$maxDistance = parseFloat(req.query.radius)
         } 
-    
-
-        console.log(findQuery)
-
+  
         let perPage = req.query.radius ? 0 : 10
 
         Promise.all([
