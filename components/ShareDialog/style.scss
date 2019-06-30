@@ -169,3 +169,18 @@
     }
 }
 
+
+.inline-button{
+    margin-top: 15px;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-size: 1em;
+    color: $link;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        text-decoration: none;
+    }
+    // font-family: 
+}

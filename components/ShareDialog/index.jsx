@@ -5,11 +5,12 @@ import "./style.scss"
 import cross from "./cross.svg"
 import fetch from "isomorphic-unfetch"
 import RadioItem from "./RadioItem"
+import Alert from "../Alert"
 
 const ShareDialog = () => {
 
     const [response, setResponse] = useState(false)
-    const [dialogIsOpen, toggleDialog] = useState(true)
+    const [dialogIsOpen, toggleDialog] = useState(false)
     const [recipient, changeRecipient] = useState("")
     const [medium, changeMedium] = useState("email")
 
@@ -32,14 +33,16 @@ const ShareDialog = () => {
         }
     }
 
+    const reset = () => {
+        changeRecipient("")
+        changeMedium("email")
+        setResponse(false)
+        toggleDialog(true)
+    }
+
     return (
         <>
-            <button className="share-button" onClick={() => {
-                changeRecipient("")
-                changeMedium("email")
-                setResponse(false)
-                toggleDialog(true)}
-            }>
+            <button className="share-button" onClick={reset}>
                 Share
             </button>
             <Dialog
@@ -53,12 +56,17 @@ const ShareDialog = () => {
                     <div className="share-dialog__body">
                         <h2 className="share-dialog__title">Shared successfully!</h2>
                         <p>Would you like to share with someone else?</p>
+                        <button className="inline-button" onClick={reset}>
+                            Yes, share again
+                        </button>
                     </div>
                     :
-                    <form method="post" action={`/share/${medium}`} onSubmit={handleSubmit}>
+                    <form method="post" action={`/share/${medium}`} onSubmit={handleSubmit} aria-live="polite">
                         <div className="share-dialog__body">
                             <h2 className="share-dialog__title">Share these recommendations</h2>
-                            {(response === 500 || response === 404 || response === "fail") && <p>There was an error sharing. If the problem continues, please try again later</p>}
+                            {(response === 500 || response === "fail") && <Alert>There was a problem sharing. If this continues, please try again later</Alert>}
+                            {(response === 404) && <Alert>We couldn't share to that {(medium === "sms")? "phone number" : "email"}. Please check it and try again.</Alert>}
+
                             <p className="radio-group-label">Share by:</p>
                             <div className="radio-group">
                                 <RadioItem

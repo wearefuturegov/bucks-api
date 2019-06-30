@@ -1,0 +1,45 @@
+@import "../vars";
+
+.alert{
+    border: 1px solid $focus;
+    padding: 10px;
+    background: lighten($focus, 35);
+    margin-bottom: 25px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    &:before{
+        content: "";
+        background-image: url("./exclamation.svg");
+        width: 25px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 25px;
+        display: inline-block;
+        margin-right: 20px;
+        min-width: 25px;
+    }
+    @media screen and (min-width: $desktop){
+        margin-bottom: 40px;
+    }
+}
+
+.alert__message{
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.alert__button{
+    border: none;
+    background: none;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover{
+        text-decoration: none;
+    }
+}

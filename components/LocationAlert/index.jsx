@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import "./style.scss"
+import Alert from "../Alert"
 
 const LocationAlert = ({onClick}) => 
-    <div className="alert">
+    <Alert>
         <p className="alert__message">That location doesn't look right.</p> 
         <button className="alert__button" onClick={onClick}>Check it now</button>
-    </div>
+    </Alert>
 
 Alert.propTypes = {
     onClick: PropTypes.func.isRequired
