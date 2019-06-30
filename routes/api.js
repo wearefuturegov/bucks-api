@@ -19,7 +19,7 @@ router.use(rateLimit({
 router.post("/geocode", geocode)
 
 router.post("/share/email", notify.email)
-router.post("/share/text", notify.text)
+router.post("/share/sms", notify.text)
 
 router.get("/services", services.list)
 router.get("/services/:id", services.getServiceById)

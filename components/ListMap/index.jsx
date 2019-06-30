@@ -33,6 +33,11 @@ const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) =
                     optimized: false,
                     scaledSize: new window.google.maps.Size(40, 40),
                 }}
+                options={{
+                    styles: {
+                        outline: "1px solid red"
+                    }
+                }}
                 onClick={()=>{changeActiveMarker(service.assetId)}}
             />
             {(service.assetId === activeMarker) && 
@@ -58,13 +63,6 @@ const ServiceClusterer = ({services, activeMarker, changeActiveMarker}) => {
     return(
         <MarkerClusterer 
             options={{imagePath: "/static/m"}} minimumClusterSize={3}
-            zoomOnClick={false}
-            onClick={(cluster)=>{
-                // TODO: Pass these up into parent state, where it can be managed alongside activeMarker
-                console.log(cluster.center.lat())
-                console.log(cluster.center.lng())
-                console.log(cluster.markers)
-            }}
         >
             {
                 (clusterer) => 
@@ -83,9 +81,7 @@ const ServiceClusterer = ({services, activeMarker, changeActiveMarker}) => {
 }
 
 const WrappedMap = ({lat, lng, services})=> {
-
     const [activeMarker, changeActiveMarker] = useState(0)
-
     return(
         <>
             <LoadScript

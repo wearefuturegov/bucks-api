@@ -35,6 +35,7 @@
     "next": "^8.1.0",
     "next-images": "^1.1.1",
     "notifications-node-client": "^4.6.0",
+    "overlapping-marker-spiderfier": "^1.1.4",
     "prop-types": "^15.7.2",
     "query-string": "^5.1.1",
     "react": "^16.8.6",

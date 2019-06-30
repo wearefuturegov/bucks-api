@@ -4,7 +4,7 @@
     background: transparentize(white, 0.15)
 }
 
-.filter-dialog{
+.share-dialog{
     align-self: flex-end;
     position: relative;
     max-width: 400px;
@@ -16,14 +16,14 @@
     box-shadow: $shadow 0px 14px 36px 2px !important;
 }
 
-.filter-dialog__body{
+.share-dialog__body{
     padding: 20px;
     @media screen and (min-width: $tablet){
         padding: 30px;
     }
 }
 
-.filter-dialog__footer{
+.share-dialog__footer{
     background-color: $background;
     border: 1px solid $background;
     border-radius: 0px 0px 10px 10px;
@@ -32,43 +32,38 @@
     justify-content: space-between;
 }
 
-.filter-dialog__title{
+.share-dialog__title{
     margin-bottom: 20px;
     margin-right: 50px;
 }
 
-.filter-dialog__action{
+.share-dialog__action{
+    background-color: $darkText;
     font-weight: bold;
     cursor: pointer;
     font-size: 1em;
-    color: $darkText;
+    color: $white;
     padding: 20px;
-    background: none;
     border: none;
+    width: 100%;
+    border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     @media screen and (min-width: $tablet){
         padding: 20px 30px;
     }
     &:hover{
-        background: transparentize($darkText, 0.95);
-    }
-    &.filter-dialog__action--secondary{
-        font-weight: normal;
-        color: $lightText;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 10px;
-        order: -1;
+        background: lighten($darkText, 5);
     }
 }
 
-.filter-dialog__text-label{
+.share-dialog__text-label{
     display: inline-block;
     font-size: 0.95em;
     margin-bottom: 10px;
     color: $darkText;
 }
 
-.filter-dialog__text-input{
+.share-dialog__text-input{
     border: 2px solid $darkText;
     font-size: 0.95em;
     background: $white;
@@ -77,7 +72,7 @@
     width: 100%;
 }
 
-.filter__close{
+.share__close{
     position: absolute;
     right: 30px;
     top: 30px;
@@ -86,7 +81,7 @@
     cursor: pointer;
 }
 
-.filter__close-icon{
+.share__close-icon{
     width: 20px;
     height: 20px;
 }
@@ -113,3 +108,64 @@
         background-repeat: no-repeat;
     }
 }
+
+
+.radio-group-label{
+    color: $darkText;
+    font-size: 0.95em;
+}
+
+.radio-group{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.radio-item{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5px;
+    align-items: flex-start;
+    &:focus-within{
+        .radio-item__label:before{
+            outline: none;
+            box-shadow: 0 0 0 3px $focus;
+        }
+    }
+}
+
+.radio-item__input:checked + .radio-item__label:after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 100%;
+    background-color: $darkText;
+    height: 19px;
+    width: 19px;
+
+}
+
+.radio-item__label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+    &:before{
+        content: "";
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        min-width: 25px;
+        background: $white;
+        background-repeat: no-repeat;
+        border-radius: 100%;
+        border: 2px solid $darkText;
+        margin-right: 15px;
+
+    }
+}
+
