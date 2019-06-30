@@ -35,16 +35,18 @@ const Recommendations = ({
                     }}/>}
                     <section className="services">
                         <header className="services__header">
-                            <h2 className="services__section-title"><strong>{totalServices}</strong> services near {query.formattedLocation ? query.formattedLocation : "you"}</h2>
-                            <Switch
-                                name="show-map"
-                                checked={mapOpen}
-                                onChange={()=>{
-                                    toggleMap(!mapOpen)
-                                }}
-                            />
+                            <h2 className="services__section-title">{services.length} of <strong>{totalServices}</strong> services near {query.formattedLocation ? query.formattedLocation : "you"}</h2>
+                            {services.length > 0 && 
+                                <Switch
+                                    name="show-map"
+                                    checked={mapOpen}
+                                    onChange={()=>{
+                                        toggleMap(!mapOpen)
+                                    }}
+                                />
+                            }
                         </header>
-                        {mapOpen &&
+                        {(mapOpen && services.length > 0) &&
                             <ListMap
                                 loadingElement={<div style={{ height: "100%" }} />}
                                 containerElement={<div style={{ height: "100%" }} />}

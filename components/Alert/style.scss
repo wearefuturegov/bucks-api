@@ -1,4 +1,4 @@
-@import '../vars';
+@import "../vars";
 
 .alert{
     border: 1px solid $focus;
@@ -20,6 +20,7 @@
         height: 25px;
         display: inline-block;
         margin-right: 20px;
+        min-width: 25px;
     }
     @media screen and (min-width: $desktop){
         margin-bottom: 40px;
@@ -29,7 +30,6 @@
 .alert__message{
     margin-right: 10px;
     display: inline-block;
-
 }
 
 .alert__button{
