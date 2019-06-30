@@ -59,8 +59,11 @@ const ServiceClusterer = ({services, activeMarker, changeActiveMarker}) => {
         <MarkerClusterer 
             options={{imagePath: "/static/m"}} minimumClusterSize={3}
             zoomOnClick={false}
-            onClick={(e)=>{
-                console.log(e.markers)
+            onClick={(cluster)=>{
+                // TODO: Pass these up into parent state, where it can be managed alongside activeMarker
+                console.log(cluster.center.lat())
+                console.log(cluster.center.lng())
+                console.log(cluster.markers)
             }}
         >
             {
