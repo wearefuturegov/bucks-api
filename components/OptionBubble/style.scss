@@ -51,3 +51,19 @@
     font-size: 0.9em;
     color: $lightText;
 }
+
+.option-bubble__label--support{
+    background-color: transparentize($support, 0.7);
+}
+.option-bubble__label--social{
+    background-color: transparentize($social, 0.7);
+}
+.option-bubble__label--cultural{
+    background-color: transparentize($cultural, 0.7);
+}
+.option-bubble__label--learning{
+    background-color: transparentize($learning, 0.7);
+}
+.option-bubble__label--active{
+    background-color: transparentize($active, 0.7);
+}

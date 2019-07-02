@@ -10,11 +10,11 @@ const CategoryQuestion = ({
         <h2 className="question__title">What are you interested in?</h2>
         <p className="question__help-text">Select as many as you want</p>
         <div className="question__options">
-            <OptionBubble selectionState={selection} onChange={onChange} name="category" value="active" label="Staying active"/>
-            <OptionBubble selectionState={selection} onChange={onChange} name="category" value="social" label="Socialising"/>
-            <OptionBubble selectionState={selection} onChange={onChange} name="category" value="support" label="Support"/>
-            <OptionBubble selectionState={selection} onChange={onChange} name="category" value="cultural" label="Visiting new places"/>
-            <OptionBubble selectionState={selection} onChange={onChange} name="category" value="learning" label="Learning new things"/>
+            <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="active" label="Staying active"/>
+            <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="social" label="Socialising"/>
+            <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="support" label="Support"/>
+            <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="cultural" label="Visiting new places"/>
+            <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="learning" label="Learning new things"/>
         </div>
     </section>
 

@@ -20,8 +20,8 @@ const markerIcon = (category) => {
 
 const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) => {
     let position = {
-        lat: service.geo.coordinates[1],
-        lng: service.geo.coordinates[0]
+        lat: service.geo.coordinates[1] + (service.assetId/1500000),
+        lng: service.geo.coordinates[0] + (service.assetId/1500000)
     }
     return(
         <>
@@ -38,12 +38,12 @@ const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) =
                         outline: "1px solid red"
                     }
                 }}
-                onClick={()=>{changeActiveMarker(service.assetId)}}
+                // onClick={()=>{changeActiveMarker(service.assetId)}}
             />
             {(service.assetId === activeMarker) && 
                 <InfoWindow
                     position={position}
-                    onCloseClick={()=>{changeActiveMarker(0)}}
+                    // onCloseClick={()=>{changeActiveMarker(0)}}
                     options={{maxWidth: 300}}
                 >
                     <>
@@ -61,24 +61,21 @@ const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) =
 
 const ServiceClusterer = ({services, activeMarker, changeActiveMarker}) => {
     return(
-        <MarkerClusterer 
-            options={{imagePath: "/static/m"}} minimumClusterSize={3}
-        >
-            {
-                (clusterer) => 
-                    services.map((service, i)=>
-                        <ServiceMarker 
-                            key={i} 
-                            service={service} 
-                            clusterer={clusterer}
-                            activeMarker={activeMarker} 
-                            changeActiveMarker={changeActiveMarker} 
-                        />
-                    )
-            }
-        </MarkerClusterer>
+        <>
+            {services.map((service, i)=>
+                <ServiceMarker 
+                    key={i} 
+                    service={service} 
+                    // clusterer={clusterer}
+                    activeMarker={activeMarker} 
+                    changeActiveMarker={changeActiveMarker} 
+                />
+            )}
+        </>
     )
 }
+
+
 
 const WrappedMap = ({lat, lng, services})=> {
     const [activeMarker, changeActiveMarker] = useState(0)
