@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 const router = require("express").Router()
+const cors = require("cors")
 const rateLimit = require("express-rate-limit")
 const services = require("../controllers/services")
 const snippets = require("../controllers/snippets")
@@ -20,6 +21,8 @@ router.post("/geocode", geocode)
 
 router.post("/share/email", notify.email)
 router.post("/share/sms", notify.text)
+
+router.use(cors())
 
 router.get("/services", services.list)
 router.get("/services/:id", services.getServiceById)
