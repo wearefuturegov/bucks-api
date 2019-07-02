@@ -38,12 +38,12 @@ const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) =
                         outline: "1px solid red"
                     }
                 }}
-                // onClick={()=>{changeActiveMarker(service.assetId)}}
+                onClick={()=>{changeActiveMarker(service.assetId)}}
             />
             {(service.assetId === activeMarker) && 
                 <InfoWindow
                     position={position}
-                    // onCloseClick={()=>{changeActiveMarker(0)}}
+                    onCloseClick={()=>{changeActiveMarker(0)}}
                     options={{maxWidth: 300}}
                 >
                     <>
@@ -61,17 +61,23 @@ const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) =
 
 const ServiceClusterer = ({services, activeMarker, changeActiveMarker}) => {
     return(
-        <>
-            {services.map((service, i)=>
-                <ServiceMarker 
-                    key={i} 
-                    service={service} 
-                    // clusterer={clusterer}
-                    activeMarker={activeMarker} 
-                    changeActiveMarker={changeActiveMarker} 
-                />
-            )}
-        </>
+        <MarkerClusterer 
+            options={{imagePath: "/static/m"}} minimumClusterSize={3}
+            zoomOnClick={false}
+        >
+            {
+                (clusterer) => 
+                    services.map((service, i)=>
+                        <ServiceMarker 
+                            key={i} 
+                            service={service} 
+                            clusterer={clusterer}
+                            activeMarker={activeMarker} 
+                            changeActiveMarker={changeActiveMarker} 
+                        />
+                    )
+            }
+        </MarkerClusterer>
     )
 }
 
