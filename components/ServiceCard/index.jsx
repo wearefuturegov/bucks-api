@@ -10,21 +10,35 @@ const ServiceCard = ({
     title,
     // parentOrganisation,
     description,
-    features
-}) => 
-    <li className={`service-card service-card--${category}`}>
+    features,
+    service,
+    setActiveService
+}) => {
 
-        <Link href={`/service/${assetId}`}>
-            <a className="service-card__link">
+    const handleClick = (e) => {
+        e.preventDefault()
+        setActiveService(service)
+    }
+
+    return(
+        <li className={`service-card service-card--${category}`}>
+            <a 
+                href={`/service/${assetId}`}
+                className="service-card__link"
+                onClick={handleClick}
+            >
                 <h3 className="service-card__title">{title}</h3>
             </a>
-        </Link>
-        {description && <p className="service-card__description">{truncate(description, 15)}</p>}
-        <div className="service-card__footer">
-            {/* <SaveForLater/> */}
-            {features && <p className="service-card__features" dangerouslySetInnerHTML={{__html: features}}></p>}
-        </div>
-    </li>
+
+            {description && <p className="service-card__description">{truncate(description, 15)}</p>}
+            <div className="service-card__footer">
+                {/* <SaveForLater/> */}
+                {features && <p className="service-card__features" dangerouslySetInnerHTML={{__html: features}}></p>}
+            </div>
+        </li>
+    )
+}
+
 
 ServiceCard.propTypes = {
     assetId: PropTypes.number.isRequired,

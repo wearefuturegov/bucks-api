@@ -6,12 +6,14 @@ import { prettyFeatures } from "../../lib/utils"
 import Button from "../Button"
 import loadingIcon from "./loading.svg"
 
-const ServicesGrid = ({services, onLoadMore, loading, moreToLoad, className}) => 
+const ServicesGrid = ({services, onLoadMore, loading, moreToLoad, className, setActiveService}) => 
     <>
         <ol className={className? `services__grid ${className}` : "services__grid"} aria-live="polite">
             {services.map((service, i)=>
                 <ServiceCard
                     key={i}
+                    service={service}
+                    setActiveService={setActiveService}
                     assetId={service.assetId}
                     category={service.category}
                     title={service.name || service.parentOrganisation}
