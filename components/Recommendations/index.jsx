@@ -4,7 +4,7 @@ import Alert from "../Alert"
 import Switch from "../Switch"
 import ServicesGrid from "../ServicesGrid"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
-import ListMap from "../ListMap"
+import ListMap from "../Maps"
 import "./style.scss"
 
 const Recommendations = ({
@@ -18,7 +18,7 @@ const Recommendations = ({
 }) => {
 
     const [dialogOpen, toggleDialog] = useState(false)
-    const [mapOpen, toggleMap] = useState(false)
+    const [mapOpen, toggleMap] = useState(true)
 
     return (
 

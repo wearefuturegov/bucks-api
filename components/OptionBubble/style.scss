@@ -21,6 +21,25 @@
     .option-bubble__helptext{
         color: $white;
     }
+
+    &.option-bubble__label--active{
+        background-color: darken($active, 30)
+    }
+    &.option-bubble__label--support{
+        background-color: darken($support, 30)
+    }
+    &.option-bubble__label--cultural{
+        background-color: darken($cultural, 30)
+    }
+    &.option-bubble__label--social{
+        background-color: darken($social, 30)
+    }
+    &.option-bubble__label--learning{
+        background-color: darken($learning, 30)
+    }
+
+
+
 }
 
 .option-bubble__label{

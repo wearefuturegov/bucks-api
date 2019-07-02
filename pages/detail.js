@@ -4,7 +4,7 @@ import PageHeader from "../components/PageHeader"
 import fetch from "isomorphic-unfetch"
 import {ColumnsWithDivider, Column} from "../components/ColumnsWithDivider"
 import Button from "../components/Button"
-import WrappedMap from "../components/DetailMap"
+import DetailMap from "../components/Maps/DetailMap"
 import ServiceDetailItem from "../components/ServiceDetailItem"
 import CentredText from "../components/CentredText"
 import ServiceSuitabilityPanel from "../components/ServiceSuitabilityPanel"
@@ -75,10 +75,8 @@ const DetailPage = ({service}) =>{
                     }
                 </Column>
                 <Column>
-                    <WrappedMap 
-                        loadingElement={<div style={{ height: "100%" }} />}
-                        containerElement={<div style={{ height: "400px" }} />}
-                        mapElement={<div style={{ height: "100%" }} />}
+                    <DetailMap
+                        category={service.category}
                         coordinates={service.geo.coordinates}
                     />
                     {/* <em>Approximate location only. Always check the website or contact the organiser first.</em> */}

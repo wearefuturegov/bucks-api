@@ -6,7 +6,7 @@ import learningMarker from "./learning-marker.svg"
 import culturalMarker from "./cultural-marker.svg"
 import socialMarker from "./social-marker.svg"
 import "./style.scss"
-import mapStyles from "./style.json"
+import mapStyles from "./map-styles.json"
 import { truncate } from "../../lib/utils"
 import Link from "next/link"
 
@@ -32,11 +32,6 @@ const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) =
                     url: markerIcon(service.category),
                     optimized: false,
                     scaledSize: new window.google.maps.Size(40, 40),
-                }}
-                options={{
-                    styles: {
-                        outline: "1px solid red"
-                    }
                 }}
                 onClick={()=>{changeActiveMarker(service.assetId)}}
             />
@@ -97,7 +92,7 @@ const WrappedMap = ({lat, lng, services})=> {
                         streetViewControl: false,
                         styles: mapStyles
                     }}
-                    // key={new Date()}
+                    key={new Date()}
                     zoom={12} 
                     center={{
                         lat: lat, 
