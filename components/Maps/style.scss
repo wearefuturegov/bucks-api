@@ -1,5 +1,12 @@
 @import "../vars";
 
+.detail-map{
+    height: 350px;
+    @media screen and (min-width: $desktop){
+        height: 450px;
+    }
+}
+
 .list-map{
     margin-bottom: 25px;
     height: 350px;

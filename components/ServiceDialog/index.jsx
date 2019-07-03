@@ -3,6 +3,11 @@ import { Dialog } from "@reach/dialog"
 import "./style.scss"
 import ServiceDetailItem from "../ServiceDetailItem"
 import {prettyDays} from "../../lib/utils"
+import cross from "./cross.svg"
+import heart from "./heart.svg"
+import ShareDialog from "../ShareDialog"
+import Button from "../Button"
+import DetailMap from "../Maps/DetailMap"
 
 const ServiceDialog = ({service, handleDismiss}) =>
     <Dialog
@@ -12,10 +17,25 @@ const ServiceDialog = ({service, handleDismiss}) =>
     >
         {service &&
             <>
-                <div className={`service-dialog__cover-image service-dialog__cover-image--${service.category}`}></div>
+                <div className={`service-dialog__cover-image service-dialog__cover-image--${service.category}`}>
+                    <div className="service-dialog__actions">
+                        <button className="service-dialog__close-button" onClick={handleDismiss}><img src={cross} alt="Close"/></button>
+                        <div>
+                            <button className="service-dialog__save-button"><img src={heart} alt="Save for later"/></button>
+                            <ShareDialog
+                                shareableUrl={`/service/${service.assetId}`}
+                                singleService
+                            />
+                        </div>
+
+                    </div>
+                </div>
                 <div className="service-dialog__body">
-                    <h1>{service.name || service.parentOrganisation}</h1>
-                    <p>{service.description}</p>    
+                    <h1 className="service-dialog__title">{service.name || service.parentOrganisation}</h1>
+                    {service.description && <p className="service-dialog__description">{service.description}</p>}
+
+                    {service.url && <Button withBottomMargin href={service.url}>Visit website</Button>}
+                    
                     {(service.venue || service.area || service.postcode) &&
                         <ServiceDetailItem kind="place">
                             {service.venue && <p>{service.venue}</p>}
@@ -24,9 +44,6 @@ const ServiceDialog = ({service, handleDismiss}) =>
                             <a href={`https://www.google.com/maps/place/${service.postcode}/@${service.geo.coordinates[1]},${service.geo.coordinates[0]},15z`}>Get directions</a>
                         </ServiceDetailItem>
                     }
-        
-                    {console.log(prettyDays)}
-                    {console.log(service.days)}
         
                     {(service.days.length > 0 || service.frequency) &&
                         <ServiceDetailItem kind="calendar">
@@ -42,6 +59,10 @@ const ServiceDialog = ({service, handleDismiss}) =>
                         </ServiceDetailItem>                    
                     }
                 </div> 
+                <DetailMap
+                    category={service.category}
+                    coordinates={service.geo.coordinates}
+                />
             </>
         }
     </Dialog>

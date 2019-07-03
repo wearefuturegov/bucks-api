@@ -7,7 +7,7 @@ import fetch from "isomorphic-unfetch"
 import RadioItem from "./RadioItem"
 import Alert from "../Alert"
 
-const ShareDialog = () => {
+const ShareDialog = ({shareableUrl, singleService}) => {
 
     const [response, setResponse] = useState(false)
     const [dialogIsOpen, toggleDialog] = useState(false)
@@ -21,13 +21,12 @@ const ShareDialog = () => {
                 method: "post",    
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({ 
-                    url: window.location.href, 
+                    url: (shareableUrl)? window.location.host + shareableUrl : window.location.href, 
                     email: recipient,
                     phoneNumber: recipient
                 })
             })
             setResponse(res.status)
-
         } catch(e){
             setResponse("fail")
         }
@@ -43,7 +42,7 @@ const ShareDialog = () => {
     return (
         <>
             <button className="share-button" onClick={reset}>
-                Share
+                <span className={(singleService)? "visually-hidden": null}>Share</span>
             </button>
             <Dialog
                 className="share-dialog"
@@ -63,7 +62,7 @@ const ShareDialog = () => {
                     :
                     <form method="post" action={`/share/${medium}`} onSubmit={handleSubmit} aria-live="polite">
                         <div className="share-dialog__body">
-                            <h2 className="share-dialog__title">Share these recommendations</h2>
+                            <h2 className="share-dialog__title">{(singleService)? "Share this service" : "Share these recommendations"}</h2>
                             {(response === 500 || response === "fail") && <Alert>There was a problem sharing. If this continues, please try again later</Alert>}
                             {(response === 404) && <Alert>We couldn't share to that {(medium === "sms")? "phone number" : "email"}. Please check it and try again.</Alert>}
 
