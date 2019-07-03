@@ -21,7 +21,8 @@ const Recommendations = ({
     const [dialogOpen, toggleDialog] = useState(false)
     const [mapOpen, toggleMap] = useState(false)
 
-    const [activeService, setActiveService] = useState(false)
+    // TODO: change this to false
+    const [activeService, setActiveService] = useState(services[8])
 
     return (
         <>
@@ -77,12 +78,14 @@ const Recommendations = ({
                     }
                 </div>
             </section>
+
             <ServiceDialog
                 service={activeService}
                 handleDismiss={()=>{
                     setActiveService(false)
                 }}
             />
+
         </>
     )
 }

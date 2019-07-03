@@ -6,8 +6,8 @@ const KeywordQuestion = ({
     selection,
     onChange
 }) => 
-    <section className="question question--animated">
-        <h2 className="question__title">What do you need help with?</h2>
+    <fieldset className="question question--animated">
+        <h2 className="question__title"><legend>What do you need help with?</legend></h2>
         <p className="question__help-text">Select as many as you want</p>
         <div className="question__options">
             <OptionBubble selectionState={selection} onChange={onChange} name="keywords" value="caring" label="Caring for someone else"/>
@@ -18,7 +18,7 @@ const KeywordQuestion = ({
             <OptionBubble selectionState={selection} onChange={onChange} name="keywords" value="hygiene" label="Personal hygiene and incontinence"/>
             <OptionBubble selectionState={selection} onChange={onChange} name="keywords" value="money" label="Paying for things"/>
         </div>
-    </section>
+    </fieldset>
 
 
 KeywordQuestion.propTypes = {
