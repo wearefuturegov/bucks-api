@@ -19,7 +19,7 @@ const Recommendations = ({
 }) => {
 
     const [dialogOpen, toggleDialog] = useState(false)
-    const [mapOpen, toggleMap] = useState(true)
+    const [mapOpen, toggleMap] = useState(false)
 
     const [activeService, setActiveService] = useState(false)
 
