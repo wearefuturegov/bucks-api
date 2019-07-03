@@ -6,8 +6,18 @@ import Recommendations from "../components/Recommendations"
 import CentredText from "../components/CentredText"
 import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
+import Router from "next/router"
+
+
 
 const RecommendationsPage = ({snippets, services, query, totalPages, totalServices}) => {
+
+
+    Router.beforePopState(({ url, as, options }) => {
+        console.log(url, as, options)
+        return true
+    })
+      
 
     const [page, changePage] = useState(1)
     const [moreServices, changeMoreServices] = useState([])
