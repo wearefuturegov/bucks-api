@@ -60,10 +60,23 @@
 .service-dialog__cover-image{
     height: 220px;
     background-color: darken($background, 10);
-    background-image: url("./bg.jpg");
     background-size: cover;
     background-position: center;
-
+    &.service-dialog__cover-image--active{
+        background-image: url("./bg-active.jpg");
+    }
+    &.service-dialog__cover-image--learning{
+        background-image: url("./bg-learning.jpg");
+    }
+    &.service-dialog__cover-image--social{
+        background-image: url("./bg-social.jpg");
+    }
+    // &.service-dialog__cover-image--support{
+    //     background-image: url("./bg-support.jpg");
+    // }
+    &.service-dialog__cover-image--cultural{
+        background-image: url("./bg-cultural.jpg");
+    }
 }
 
 .service-dialog__body{
@@ -86,12 +99,26 @@
         left: 0px;
         top: 10px;
         content: "";
-        background-color: $support;
         display: inline-block;
         width: 20px;
         height: 20px;
         // margin-left: -30px;
         border-radius: 5px;
+    }
+    &.service-dialog__title--support::before{
+        background-color: $support
+    }
+    &.service-dialog__title--learning::before{
+        background-color: $learning
+    }
+    &.service-dialog__title--cultural::before{
+        background-color: $cultural
+    }
+    &.service-dialog__title--social::before{
+        background-color: $social
+    }
+    &.service-dialog__title--active::before{
+        background-color: $active
     }
 }
 

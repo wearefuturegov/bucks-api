@@ -2,6 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import "./style.scss"
 import {truncate} from "../../lib/utils"
+import Link from "next/link"
+// import Router from "next/router"
 
 const ServiceCard = ({
     assetId,
@@ -10,25 +12,28 @@ const ServiceCard = ({
     // parentOrganisation,
     description,
     features,
-    service,
-    setActiveService
+    // service,
+    // setActiveService
 }) => {
 
-    const handleClick = (e) => {
-        e.preventDefault()
-        setActiveService(service)
-    }
+    // const handleClick = (e) => {
+    //     e.preventDefault()
+    //     console.log(Router)
+    //     Router.push(Router.asPath, `/service/${assetId}`, { shallow: true })
+    //     setActiveService(service)
+    // }
 
     return(
         <li className={`service-card service-card--${category}`}>
-            <a 
-                href={`/service/${assetId}`}
-                className="service-card__link"
-                onClick={handleClick}
-            >
-                <h3 className="service-card__title">{title}</h3>
-            </a>
-
+            <Link href={`/service/${assetId}`}>
+                <a 
+                    // href={`/service/${assetId}`}
+                    className="service-card__link"
+                    // onClick={handleClick}
+                >
+                    <h3 className="service-card__title">{title}</h3>
+                </a>
+            </Link>
             {description && <p className="service-card__description">{truncate(description, 15)}</p>}
             <div className="service-card__footer">
                 {/* <SaveForLater/> */}

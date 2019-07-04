@@ -34,7 +34,7 @@ const ServiceDialog = ({service, handleDismiss}) => {
                         </div>
                     </div>
                     <div className="service-dialog__body">
-                        <h1 className="service-dialog__title">{service.name || service.parentOrganisation}</h1>
+                        <h1 className={`service-dialog__title service-dialog__title--${service.category}`}>{service.name || service.parentOrganisation}</h1>
                         {service.description && <p className="service-dialog__description">{service.description}</p>}
 
                         {service.url && <Button withBottomMargin href={service.url}>Visit website</Button>}

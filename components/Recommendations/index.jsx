@@ -5,7 +5,7 @@ import Switch from "../Switch"
 import ServicesGrid from "../ServicesGrid"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import ListMap from "../Maps"
-import ServiceDialog from "../ServiceDialog"
+// import ServiceDialog from "../ServiceDialog"
 import "./style.scss"
 
 const Recommendations = ({
@@ -20,9 +20,7 @@ const Recommendations = ({
 
     const [dialogOpen, toggleDialog] = useState(false)
     const [mapOpen, toggleMap] = useState(false)
-
-    // TODO: change this to false
-    const [activeService, setActiveService] = useState(services[8])
+    // const [activeService, setActiveService] = useState(false)
 
     return (
         <>
@@ -60,7 +58,7 @@ const Recommendations = ({
                         }
                         <ServicesGrid
                             services={services}
-                            setActiveService={setActiveService}
+                            // setActiveService={setActiveService}
                             query={query}
                             loading={loading}
                             moreToLoad={moreToLoad}
@@ -79,12 +77,16 @@ const Recommendations = ({
                 </div>
             </section>
 
-            <ServiceDialog
+            {/* <ServiceDialog
                 service={activeService}
                 handleDismiss={()=>{
+                    console.log(Router)
+                    Router.push(Router.pathname, {
+                        query: Router.query
+                    })
                     setActiveService(false)
                 }}
-            />
+            /> */}
 
         </>
     )

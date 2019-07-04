@@ -1,3 +1,4 @@
+import {useState} from "react"
 import Layout from "../components/Layout"
 import Head from "next/head"
 import PageHeader from "../components/PageHeader"
@@ -9,6 +10,7 @@ import ServiceDetailItem from "../components/ServiceDetailItem"
 import CentredText from "../components/CentredText"
 import ServiceSuitabilityPanel from "../components/ServiceSuitabilityPanel"
 import {prettyDays} from "../lib/utils"
+import ShareDialog from "../components/ShareDialog"
 
 const DetailPage = ({service}) =>{
     let {
@@ -75,6 +77,7 @@ const DetailPage = ({service}) =>{
                     }
                 </Column>
                 <Column>
+                    {/* <ShareDialog/> */}
                     <DetailMap
                         category={service.category}
                         coordinates={service.geo.coordinates}
