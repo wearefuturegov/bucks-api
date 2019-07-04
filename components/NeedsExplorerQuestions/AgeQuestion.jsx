@@ -7,7 +7,7 @@ const AgeQuestion = ({
     onChange
 }) => 
     <fieldset className="question">
-            <h2 className="question__title"><legend>Show me recommendations for...</legend></h2>
+        <h2 className="question__title"><legend>Show me recommendations for...</legend></h2>
         <p className="question__help-text">Choose one option</p>
         <div className="question__options">
             <OptionBubble type="radio" selectionState={selection} onChange={onChange} name="age" value="young adults" label="Young adults" helpText="18-25"/>
