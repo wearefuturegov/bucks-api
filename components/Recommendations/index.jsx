@@ -5,6 +5,7 @@ import Switch from "../Switch"
 import ServicesGrid from "../ServicesGrid"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import ListMap from "../Maps"
+// import ServiceDialog from "../ServiceDialog"
 import "./style.scss"
 
 const Recommendations = ({
@@ -19,15 +20,14 @@ const Recommendations = ({
 
     const [dialogOpen, toggleDialog] = useState(false)
     const [mapOpen, toggleMap] = useState(false)
+    // const [activeService, setActiveService] = useState(false)
 
     return (
-
         <>
             <Filters
                 locationFilterIsOpen={dialogOpen}
                 toggleLocationFilterDialog={toggleDialog}
             />
-
             <section className="recommendations">
                 <div className="container">
                     {(query.formattedLocation === "Buckinghamshire, UK") && <Alert onClick={()=>{
@@ -58,6 +58,7 @@ const Recommendations = ({
                         }
                         <ServicesGrid
                             services={services}
+                            // setActiveService={setActiveService}
                             query={query}
                             loading={loading}
                             moreToLoad={moreToLoad}
@@ -75,6 +76,18 @@ const Recommendations = ({
                     }
                 </div>
             </section>
+
+            {/* <ServiceDialog
+                service={activeService}
+                handleDismiss={()=>{
+                    console.log(Router)
+                    Router.push(Router.pathname, {
+                        query: Router.query
+                    })
+                    setActiveService(false)
+                }}
+            /> */}
+
         </>
     )
 }

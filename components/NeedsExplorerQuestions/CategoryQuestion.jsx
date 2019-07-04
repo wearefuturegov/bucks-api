@@ -6,8 +6,8 @@ const CategoryQuestion = ({
     selection,
     onChange
 }) => 
-    <section className="question">
-        <h2 className="question__title">What are you interested in?</h2>
+    <fieldset className="question">
+        <h2 className="question__title"><legend>What are you interested in?</legend></h2>
         <p className="question__help-text">Select as many as you want</p>
         <div className="question__options">
             <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="active" label="Staying active"/>
@@ -16,7 +16,7 @@ const CategoryQuestion = ({
             <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="cultural" label="Visiting new places"/>
             <OptionBubble withColours selectionState={selection} onChange={onChange} name="category" value="learning" label="Learning new things"/>
         </div>
-    </section>
+    </fieldset>
 
 
 CategoryQuestion.propTypes = {

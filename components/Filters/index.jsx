@@ -10,12 +10,14 @@ import filterIcon from "./filter.svg"
 import crossIcon from "./cross.svg"
 import ShareDialog from "../ShareDialog"
 
+
 const Filters = ({
     locationFilterIsOpen, 
     toggleLocationFilterDialog
 }) => {
     
     const [filtersOpen, toggleFilters] = useState(false)
+    const [shareDialogOpen, toggleShareDialog] = useState(false)
 
     return(
         <>
@@ -40,8 +42,11 @@ const Filters = ({
                     <DaysFilter/>
                     <AccessibilityFilter/>
                 </div>
-                <ShareDialog/>
+                <button className="share-button" onClick={()=>{
+                    toggleShareDialog(true)
+                }}>Share</button>
             </section>
+            <ShareDialog dialogIsOpen={shareDialogOpen} toggleDialog={toggleShareDialog}/>
         </>
     )
 }

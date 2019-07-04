@@ -1,0 +1,133 @@
+@import "../vars";
+
+[data-reach-dialog-overlay]{
+    background: transparentize(white, 0.15)
+}
+
+.service-dialog{
+    margin: 0px;
+    position: relative;
+    width: 100%;
+    z-index: 5;
+    padding: 0px;
+    min-height: 100%;
+    overflow: hidden;
+    @media screen and (min-width: $tablet){
+        margin: 80px auto;
+        max-width: 550px;
+        border-radius: 10px;
+        width: 90vw;
+        border: 1px solid $shadow;
+        box-shadow: $shadow 0px 14px 36px 2px !important;
+    }
+}
+
+.service-dialog__actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-start;
+    padding: 20px;
+    div{
+        display: flex;
+        flex-direction: row;
+        .service-dialog__button:last-child{
+            margin-left: 10px;
+        }
+    }
+}
+
+.service-dialog__button{
+    display: inline-block;
+    background: $darkText;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 25px;
+        height: 25px;
+    }
+    &:hover{
+        background: lighten($darkText, 5);
+    }
+}
+
+.service-dialog__cover-image{
+    height: 220px;
+    background-color: darken($background, 10);
+    background-size: cover;
+    background-position: center;
+    &.service-dialog__cover-image--active{
+        background-image: url("./bg-active.jpg");
+    }
+    &.service-dialog__cover-image--learning{
+        background-image: url("./bg-learning.jpg");
+    }
+    &.service-dialog__cover-image--social{
+        background-image: url("./bg-social.jpg");
+    }
+    // &.service-dialog__cover-image--support{
+    //     background-image: url("./bg-support.jpg");
+    // }
+    &.service-dialog__cover-image--cultural{
+        background-image: url("./bg-cultural.jpg");
+    }
+}
+
+.service-dialog__body{
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: -20px;
+    background: $white;
+    @media screen and (min-width: $tablet){
+        padding: 30px;
+    }
+}
+
+.service-dialog__title{
+    font-size: 1.7em;
+    padding-left: 40px;
+    position: relative;
+    margin-bottom: 20px;
+    &:before{
+        position: absolute;
+        left: 0px;
+        top: 10px;
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        // margin-left: -30px;
+        border-radius: 5px;
+    }
+    &.service-dialog__title--support::before{
+        background-color: $support
+    }
+    &.service-dialog__title--learning::before{
+        background-color: $learning
+    }
+    &.service-dialog__title--cultural::before{
+        background-color: $cultural
+    }
+    &.service-dialog__title--social::before{
+        background-color: $social
+    }
+    &.service-dialog__title--active::before{
+        background-color: $active
+    }
+}
+
+.service-dialog__description{
+    font-size: 0.95em;
+    color: $darkText;
+    margin-bottom: 25px;
+    @media screen and (min-width: $desktop){
+        font-size: 1.1em;
+        margin-bottom: 35px;
+    }
+}

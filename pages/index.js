@@ -45,7 +45,7 @@ const HomePage = () =>
                 },
                 {
                     title: "Worried about someone else?",
-                    description: "Get practical tips to help out a neighbour or loved one, or, if it’s an emergency, tell us about someone in immediate need",
+                    description: "If you're worried that someone you know is being neglected or abused, let us know right away.",
                     image: i5,
                     href: "https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=1566"
                 },

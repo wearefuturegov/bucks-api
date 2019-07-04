@@ -1,7 +1,7 @@
 @import '../vars';
 
 .hero{
-    background: $darkText;
+    background: lighten($darkText, 5);
     color: $white;
     position: relative;
     @media screen and (min-width: $tablet){
@@ -16,7 +16,7 @@
             background-image: url('./hero.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.075;
+            opacity: 0.1;
         }
     }
     &.hero--needs{

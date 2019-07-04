@@ -31,7 +31,7 @@ const DetailMap = ({coordinates, category}) =>
                 lat: coordinates[1], 
                 lng: coordinates[0]
             }}
-            mapContainerClassName="list-map"
+            mapContainerClassName="detail-map"
         >
             <Marker
                 position={{

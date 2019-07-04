@@ -86,30 +86,6 @@
     height: 20px;
 }
 
-.share-button{
-    font-size: 1em;
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-    &:after{
-        margin-left: 10px;
-        width: 35px;
-        height: 35px;
-        border-radius: 100%;
-        background-color: $darkText;
-        content: "";
-        display: inline-block;
-        background-image: url("./send.svg");
-        background-size: 19px;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-}
-
-
 .radio-group-label{
     color: $darkText;
     font-size: 0.95em;
