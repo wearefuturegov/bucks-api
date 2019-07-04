@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import {useState} from "react"
 import Layout from "../components/Layout"
 import Head from "next/head"
 import PageHeader from "../components/PageHeader"
@@ -11,22 +11,10 @@ import CentredText from "../components/CentredText"
 import ServiceSuitabilityPanel from "../components/ServiceSuitabilityPanel"
 import {prettyDays} from "../lib/utils"
 import ShareDialog from "../components/ShareDialog"
+import Favourite from "../components/Favourite"
 import "./detail.scss"
-import {isFavourited, addFavourite as addToStorage, removeFavourite as removeFromStorage} from "../lib/localStorage"
 
 const DetailPage = ({service}) =>{
-
-    const [favourited, setFavourited] = useState(false)
-
-    const addFavourite = () => {
-        addToStorage(service)
-        setFavourited(isFavourited(service.assetId))
-    }
-
-    // useEffect(()=>{
-    //     console.log("running effect...")
-    //     setFavourited(isFavourited(service.assetId))
-    // }, [favourited])
 
     let {
         name, 
@@ -99,19 +87,8 @@ const DetailPage = ({service}) =>{
                         <button className="share-button" onClick={()=>{
                             toggleShareDialog(true)
                         }}>Share</button>
+                        <Favourite service={service}/>
                     </div>
-
-
-                    {favourited ? "true" : "false"}
-
-                    {favourited ?
-                        <button onClick={()=>{
-                            // removeFavourite(service.assetId)
-                        }}>Remove from saved</button>
-                        :
-                        <button onClick={addFavourite}>Save for later</button>
-                    }
-
                     <DetailMap
                         category={service.category}
                         coordinates={service.geo.coordinates}

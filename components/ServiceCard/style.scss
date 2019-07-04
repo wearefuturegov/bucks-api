@@ -23,10 +23,10 @@
     @media screen and (min-width: $tablet){
         margin-bottom: 30px
     }
-    &:focus-within{
-        outline: none;
-        box-shadow: 0 0 0 3px $focus;
-    }
+    // &:focus-within{
+    //     outline: none;
+    //     box-shadow: 0 0 0 3px $focus;
+    // }
     &:active{
         transform: translateY(4px);
         background: $activeCard;
@@ -78,7 +78,7 @@
     }
     &:focus{
         outline: none;
-        box-shadow: none;
+        box-shadow: 0 0 0 3px $focus;
     }
 }
 

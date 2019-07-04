@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import "./style.scss"
 import {truncate} from "../../lib/utils"
 import Link from "next/link"
+import Favourite from "../Favourite"
 // import Router from "next/router"
 
 const ServiceCard = ({
@@ -12,7 +13,7 @@ const ServiceCard = ({
     // parentOrganisation,
     description,
     features,
-    // service,
+    service,
     // setActiveService
 }) => {
 
@@ -36,8 +37,8 @@ const ServiceCard = ({
             </Link>
             {description && <p className="service-card__description">{truncate(description, 15)}</p>}
             <div className="service-card__footer">
-                {/* <SaveForLater/> */}
                 {features && <p className="service-card__features" dangerouslySetInnerHTML={{__html: features}}></p>}
+                <Favourite service={service}/>
             </div>
         </li>
     )
