@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import Layout from "../components/Layout"
 import Head from "next/head"
 import PageHeader from "../components/PageHeader"
@@ -11,8 +11,23 @@ import CentredText from "../components/CentredText"
 import ServiceSuitabilityPanel from "../components/ServiceSuitabilityPanel"
 import {prettyDays} from "../lib/utils"
 import ShareDialog from "../components/ShareDialog"
+import "./detail.scss"
+import {isFavourited, addFavourite as addToStorage, removeFavourite as removeFromStorage} from "../lib/localStorage"
 
 const DetailPage = ({service}) =>{
+
+    const [favourited, setFavourited] = useState(false)
+
+    const addFavourite = () => {
+        addToStorage(service)
+        setFavourited(isFavourited(service.assetId))
+    }
+
+    // useEffect(()=>{
+    //     console.log("running effect...")
+    //     setFavourited(isFavourited(service.assetId))
+    // }, [favourited])
+
     let {
         name, 
         parentOrganisation, 
@@ -32,6 +47,9 @@ const DetailPage = ({service}) =>{
         price,
         ageGroups
     } = service
+
+    const [shareDialogOpen, toggleShareDialog] = useState(false)
+
     return(
         <Layout withHeader withFooter>
             <Head>
@@ -77,7 +95,23 @@ const DetailPage = ({service}) =>{
                     }
                 </Column>
                 <Column>
-                    {/* <ShareDialog/> */}
+                    <div className="detail__actions">
+                        <button className="share-button" onClick={()=>{
+                            toggleShareDialog(true)
+                        }}>Share</button>
+                    </div>
+
+
+                    {favourited ? "true" : "false"}
+
+                    {favourited ?
+                        <button onClick={()=>{
+                            // removeFavourite(service.assetId)
+                        }}>Remove from saved</button>
+                        :
+                        <button onClick={addFavourite}>Save for later</button>
+                    }
+
                     <DetailMap
                         category={service.category}
                         coordinates={service.geo.coordinates}
@@ -95,6 +129,8 @@ const DetailPage = ({service}) =>{
                 title="Is anything missing?"
                 description="If there’s anything out of date or missing from this service, you can request it be updated."
             />
+            <ShareDialog dialogIsOpen={shareDialogOpen} toggleDialog={toggleShareDialog}/>
+
         </Layout>
     )
 }
