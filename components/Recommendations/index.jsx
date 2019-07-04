@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import Filters from "../Filters"
 import Alert from "../Alert"
 import Switch from "../Switch"
@@ -7,6 +7,7 @@ import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import ListMap from "../Maps"
 // import ServiceDialog from "../ServiceDialog"
 import "./style.scss"
+import {listFavourites} from "../../lib/localStorage"
 
 const Recommendations = ({
     services,
@@ -18,9 +19,18 @@ const Recommendations = ({
     loading
 }) => {
 
+    const [favourites, setFavourites] = useState([])
+
     const [dialogOpen, toggleDialog] = useState(false)
     const [mapOpen, toggleMap] = useState(false)
     // const [activeService, setActiveService] = useState(false)
+
+    useEffect(()=>{
+        setFavourites(listFavourites())
+    }, [])
+
+
+
 
     return (
         <>
@@ -33,6 +43,20 @@ const Recommendations = ({
                     {(query.formattedLocation === "Buckinghamshire, UK") && <Alert onClick={()=>{
                         toggleDialog(true)
                     }}/>}
+
+                    {(favourites && favourites.length > 0) &&
+                        <section className="services">
+                            <header className="services__header">
+                                <h2 className="services__section-title">Saved from your last visit</h2>
+                            </header>
+                            <ServicesGrid
+                                services={favourites}
+                                // setActiveService={setActiveService}
+                                className="services__grid--with-columns"
+                            />
+                        </section>                    
+                    }
+
                     <section className="services">
                         <header className="services__header">
                             <h2 className="services__section-title">{services.length} of <strong>{totalServices}</strong> services near {query.formattedLocation ? query.formattedLocation : "you"}</h2>
