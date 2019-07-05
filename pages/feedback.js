@@ -31,9 +31,20 @@ const FeedbackPage = () => {
                 <input name="category" type="hidden" value=""/>
                 <input name="serviceId" type="hidden" value=""/>
 
-                <label htmlFor="message">Were you able to do what you needed today?</label>
-                <input id="message" type="text" required="true" name="message"/>
-                <br/>
+                <fieldset>
+                    <legend>Were you able to do what you needed today?</legend>
+
+                    <label htmlFor="satisfied-yes">Yes</label>
+                    <input id="satisfied-yes" type="radio" required="true" name="satisfied" value="yes"/>
+                    
+                    <label htmlFor="satisfied-somewhat">Somewhat</label>
+                    <input id="satisfied-somewhat" type="radio" required="true" name="satisfied" value="somewhat"/>
+
+                    <label htmlFor="satisfied-no">No</label>
+                    <input id="satisfied-no" type="radio" required="true" name="satisfied" value="no"/>
+
+                </fieldset>
+
 
                 <label htmlFor="message">How can we improve this website?</label>
                 <textarea id="message" type="text" required="true" name="message"></textarea>

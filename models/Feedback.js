@@ -9,6 +9,12 @@ const Feedback = new mongoose.Schema({
     email: String,
     phone: String,
 
+    satisfied: {
+        type: String,
+        enum: ["yes", "somewhat", "no"],
+        required: true
+    },
+
     category: {
         type: String,
         enum: ["general", "new", "amend"],
