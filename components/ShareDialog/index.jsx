@@ -61,8 +61,8 @@ const ShareDialog = ({dialogIsOpen, toggleDialog, shareableUrl, singleService}) 
                         {(response === 500 || response === "fail") && <Alert>There was a problem sharing. If this continues, please try again later</Alert>}
                         {(response === 404) && <Alert>We couldn't share to that {(medium === "sms")? "phone number" : "email"}. Please check it and try again.</Alert>}
 
-                        <p className="radio-group-label">Share by:</p>
-                        <div className="radio-group">
+                        <fieldset className="radio-group">
+                            <p className="radio-group-label"><legend>Share by:</legend></p>
                             <RadioItem
                                 name="medium"
                                 value="email"
@@ -83,7 +83,7 @@ const ShareDialog = ({dialogIsOpen, toggleDialog, shareableUrl, singleService}) 
                                     changeMedium("sms")
                                 }}
                             />
-                        </div>
+                        </fieldset>
                         <label className="share-dialog__text-label" htmlFor="recipient">{(medium === "sms")? "Phone number" : "Email address"} </label>
                         <input 
                             type={(medium === "sms")? "tel" : "email"} 

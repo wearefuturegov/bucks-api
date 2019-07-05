@@ -92,11 +92,13 @@
 .radio-group-label{
     color: $darkText;
     font-size: 0.95em;
+    margin-bottom: 10px;
 }
 
 .radio-group{
-    margin-top: 10px;
+
     margin-bottom: 15px;
+    border: none;
 }
 
 .radio-item{
