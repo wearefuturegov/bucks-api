@@ -22,6 +22,10 @@ module.exports = {
     list: async (req, res, next)=>{
         let query = {}
 
+        query.reviewStatus = {
+            $ne: "Un-Publish"
+        }
+
         if(req.query.category && req.query.keywords){
             query.$or = [
                 {category: { $in: [].concat(req.query.category) }},
