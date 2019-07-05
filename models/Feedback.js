@@ -5,15 +5,16 @@ const Feedback = new mongoose.Schema({
         type: String,
         required: true
     },
-    // Contact details
+
     email: String,
     phone: String,
-    // General/new/amend
+
     category: {
         type: String,
+        enum: ["general", "new", "amend"],
         required: true
     },
-    // Associated service
+
     serviceId: Number
 })
 

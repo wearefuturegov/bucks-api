@@ -25,9 +25,13 @@
       "validations": []
     }, {
       "field": "category",
-      "type": "String",
+      "type": "Enum",
       "defaultValue": null,
-      "enums": null,
+      "enums": [
+        "general",
+        "new",
+        "amend"
+      ],
       "integration": null,
       "isFilterable": true,
       "isReadOnly": false,
