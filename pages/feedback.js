@@ -4,12 +4,13 @@ import Layout from "../components/Layout"
 import PageHeader from "../components/PageHeader"
 import Button from "../components/Button"
 import { useRouter } from "next/router"
+import "./feedback.scss"
 
 const RadioItem  = ({name, value, label, currentState, setCurrentState}) =>     
-    <>                
-        <label htmlFor={`${name}-${value}`}>{label}</label>
-        <input id={`${name}-${value}`} type="radio" required name={name} value={value} checked={currentState === value} onChange={()=>{setCurrentState(value)}}/>
-    </>
+    <div className="radio-button">                
+        <label className="radio-button__label" htmlFor={`${name}-${value}`}>{label}</label>
+        <input className="radio-button__input" id={`${name}-${value}`} type="radio" required name={name} value={value} checked={currentState === value} onChange={()=>{setCurrentState(value)}}/>
+    </div>
 
 const FeedbackPage = () => {
 
@@ -25,7 +26,7 @@ const FeedbackPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
-            const res = await fetch(`/api/feedback`, {
+            const res = await fetch("/api/feedback", {
                 method: "post",    
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({ 
@@ -43,13 +44,33 @@ const FeedbackPage = () => {
         }
     }
 
+    if(response===200){ return(
+        <Layout withHeader withFooter>
+            <Head>
+                <title>Feedback | Care and support for adults | Buckinghamshire County Council</title>
+            </Head>
+            <PageHeader 
+                breadcrumbs={[
+                    {
+                        title: "Care for adults",
+                        href: "/"
+                    },
+                    {
+                        title: "Feedback"
+                    },
+                ]}
+                title="Thank you for your feedback"
+                lede="If you gave us contact details, we may be in touch to learn more."
+            />
+        </Layout>
+    )}
+
     return(
         <Layout withHeader withFooter>
             <Head>
                 <title>Feedback | Care and support for adults | Buckinghamshire County Council</title>
             </Head>
             <PageHeader 
-                reducedBottomPadding
                 breadcrumbs={[
                     {
                         title: "Care for adults",
@@ -63,26 +84,33 @@ const FeedbackPage = () => {
                 lede="Give feedback on this website"
             />
 
-            <form action="/api/feedback" method="post" className="container" onSubmit={handleSubmit}>
+            <form action="/api/feedback" method="post" className="container feedback-form" onSubmit={handleSubmit}>
 
-                <fieldset>
-                    <legend>Were you able to do what you needed today?</legend>
+                <fieldset className="radio-button-group">
+                    <legend className="radio-button-group__legend">Were you able to do what you needed today?</legend>
                     <RadioItem name="satisfied" value="yes" label="Yes" currentState={satisfied} setCurrentState={setSatisfied}/>
                     <RadioItem name="satisfied" value="somewhat" label="Somewhat" currentState={satisfied} setCurrentState={setSatisfied}/>
                     <RadioItem name="satisfied" value="no" label="No" currentState={satisfied} setCurrentState={setSatisfied}/>
                 </fieldset>
 
+                <div className="form-input">
+                    <label className="form-input__label" htmlFor="message">How can we improve this website?</label>
+                    <textarea className="form-input__textarea" id="message" type="text" required name="message" rows="6" onChange={e=>setMessage(e.target.value)}>{message}</textarea>
+                </div>
 
-                <label htmlFor="message">How can we improve this website?</label>
-                <textarea id="message" type="text" required name="message" rows="6" onChange={e=>setMessage(e.target.value)}>{message}</textarea>
-                <br/>
+                <p>You don't have to give us any contact details, but if you choose to, it'll be easier for us to get in touch to find out more.</p>
 
-                <label htmlFor="email">Your email address</label>
-                <input id="email" type="text" required name="email" value={email} onChange={e=>setEmail(e.target.value)}/>
-                <br/>
-
-                <label htmlFor="phone">Your phone number</label>
-                <input id="phone" type="text" required name="phone" value={phone} onChange={e=>setPhone(e.target.value)}/>
+                <div className="form-input">
+                    <label className="form-input__label" htmlFor="email">Your email address</label>
+                    <p className="form-input__hint">Optional</p>
+                    <input className="form-input__text-input" id="email" type="text" name="email" value={email} onChange={e=>setEmail(e.target.value)}/>
+                </div>
+ 
+                <div className="form-input">
+                    <label className="form-input__label" htmlFor="phone">Your phone number</label>
+                    <p className="form-input__hint">Optional</p>
+                    <input className="form-input__text-input" id="phone" type="text" name="phone" value={phone} onChange={e=>setPhone(e.target.value)}/>
+                </div>
 
                 <Button>Send feedback</Button>
 
