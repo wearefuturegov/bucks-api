@@ -6,6 +6,7 @@ const services = require("../controllers/services")
 const snippets = require("../controllers/snippets")
 const geocode = require("../controllers/geocode")
 const notify = require("../controllers/notify")
+const feedback = require("../controllers/feedback")
 
 // If IPs make more than 500 requests in a minute, block for an hour
 router.use(rateLimit({
@@ -18,6 +19,7 @@ router.use(rateLimit({
 }))
 
 router.post("/geocode", geocode)
+router.post("/feedback", feedback)
 
 router.post("/share/email", notify.email)
 router.post("/share/sms", notify.text)
