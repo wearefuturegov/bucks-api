@@ -88,7 +88,7 @@ const DetailPage = ({service}) =>{
                         <button className="share-button" onClick={()=>{
                             toggleShareDialog(true)
                         }}>Share</button>
-                        <Favourite service={service}/>
+                        <Favourite service={service} labelled/>
                     </div>
                     <DetailMap
                         category={service.category}

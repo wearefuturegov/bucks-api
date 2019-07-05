@@ -54,3 +54,10 @@ hr{
     display: flex;
     flex-direction: column;
 }
+
+a{
+    color: $link;
+    &:hover{
+        text-decoration: none;
+    }
+}

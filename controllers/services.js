@@ -22,6 +22,7 @@ module.exports = {
     list: async (req, res, next)=>{
         let query = {}
 
+        // Only show published results
         query.reviewStatus = {
             $ne: "Un-Publish"
         }

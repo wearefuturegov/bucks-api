@@ -1,7 +1,8 @@
 @import '../vars';
 
 [data-reach-dialog-overlay]{
-    background: transparentize(white, 0.15)
+    background: transparentize(white, 0.15);
+    z-index: 2;
 }
 
 .filter-dialog{

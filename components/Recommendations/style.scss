@@ -32,3 +32,10 @@
         margin-top: 60px;
     }
 }
+
+.saved{
+    margin-bottom: 40px;
+    @media screen and (min-width: $tablet){
+        margin-bottom: 60px;
+    }
+}

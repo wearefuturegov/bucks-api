@@ -3,7 +3,9 @@ import "./style.scss"
 
 const Alert = ({children, className}) =>
     <div className={`alert ${className}`}>
-        {children}
+        <p className="alert__message">
+            {children}
+        </p>
     </div>
 
 export default Alert

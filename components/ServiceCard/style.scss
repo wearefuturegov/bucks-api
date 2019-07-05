@@ -15,8 +15,9 @@
     margin-bottom: 20px;
     background: $white;
     list-style-type: none;
-    padding: 25px;
+    padding: 25px 25px 15px 25px;
     position: relative;
+    box-sizing: border-box;
     box-shadow: 0 4px 0 $shadow;
     border-top: 7px solid $white;
     animation: fadeInUp 0.1s ease-out;
@@ -71,14 +72,19 @@
         content: "";
         display: block;
         position: absolute;
-        top: 0;
+        // border: 1px solid red;
+        top: -7px;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: calc(100% + 7px);
     }
     &:focus{
         outline: none;
-        box-shadow: 0 0 0 3px $focus;
+        box-shadow: none;
+        &:after{
+            outline: none;
+            box-shadow: 0 0 0 3px $focus;
+        }
     }
 }
 
@@ -94,11 +100,16 @@
 }
 
 .service-card__footer{
-    padding-top: 10px;
+    display: flex;
+    margin-top: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .service-card__features{
     font-size: 0.9em;
     color: $lightText;
     font-style: italic;
+    margin-right: 20px;
 }

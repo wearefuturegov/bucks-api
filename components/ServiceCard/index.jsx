@@ -37,7 +37,9 @@ const ServiceCard = ({
             </Link>
             {description && <p className="service-card__description">{truncate(description, 15)}</p>}
             <div className="service-card__footer">
-                {features && <p className="service-card__features" dangerouslySetInnerHTML={{__html: features}}></p>}
+                <div>
+                    {features && <p className="service-card__features" dangerouslySetInnerHTML={{__html: features}}></p>}
+                </div>
                 <Favourite service={service}/>
             </div>
         </li>

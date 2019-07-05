@@ -40,14 +40,14 @@ const Recommendations = ({
             />
             <section className="recommendations">
                 <div className="container">
-                    {(query.formattedLocation === "Buckinghamshire, UK") && <Alert onClick={()=>{
+                    {(query.formattedLocation === "Buckinghamshire, UK") && <Alert>That location doesn't look right.  <button className="alert__button" onClick={()=>{
                         toggleDialog(true)
-                    }}/>}
+                    }}>Check now</button></Alert>}
 
                     {(favourites && favourites.length > 0) &&
-                        <section className="services">
+                        <section className="saved">
                             <header className="services__header">
-                                <h2 className="services__section-title">Saved from your last visit</h2>
+                                <h2 className="services__section-title">Saved from last time</h2>
                             </header>
                             <ServicesGrid
                                 services={favourites}
