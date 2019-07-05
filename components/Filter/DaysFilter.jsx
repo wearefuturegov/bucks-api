@@ -62,8 +62,8 @@ const DaysFilter = () => {
             >
 
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
-                    <div className="filter-dialog__body">
-                        <h2 className="filter-dialog__title">When you're free</h2>
+                    <fieldset className="filter-dialog__body">
+                        <h2 className="filter-dialog__title"><legend>When you're free</legend></h2>
 
                         <div className="filter-dialog__options">
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="days" value="monday" label="Mondays"/>
@@ -74,7 +74,7 @@ const DaysFilter = () => {
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="days" value="saturday" label="Saturdays"/>
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="days" value="sunday" label="Sundays"/>
                         </div>
-                    </div>
+                    </fieldset>
 
                     <footer className="filter-dialog__footer">
                         <button className="filter-dialog__action" 

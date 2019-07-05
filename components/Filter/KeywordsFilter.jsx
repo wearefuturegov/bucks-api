@@ -63,8 +63,8 @@ const KeywordsFilter = () => {
             >
 
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
-                    <div className="filter-dialog__body">
-                        <h2 className="filter-dialog__title">Kinds of support</h2>
+                    <fieldset className="filter-dialog__body">
+                        <h2 className="filter-dialog__title"><legend>Kinds of support</legend></h2>
 
                         <div className="filter-dialog__options">
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="caring" label="Caring for someone else"/>
@@ -76,7 +76,7 @@ const KeywordsFilter = () => {
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="keywords" value="money" label="Paying for things"/>
                         </div>
 
-                    </div>
+                    </fieldset>
 
                     <footer className="filter-dialog__footer">
                         <button className="filter-dialog__action" 

@@ -62,8 +62,8 @@ const AgesFilter = () => {
             >
 
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
-                    <div className="filter-dialog__body">
-                        <h2 className="filter-dialog__title">Suitable for ages</h2>
+                    <fieldset className="filter-dialog__body">
+                        <h2 className="filter-dialog__title"><legend>Suitable for ages</legend></h2>
 
                         <div className="filter-dialog__options">
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="young people" label="Young people" helpText="Under 18s"/>
@@ -71,7 +71,7 @@ const AgesFilter = () => {
                             <CheckboxItem selectionState={selection} onChange={handleChange} name="age" value="older adults" label="Older adults" helpText="65+"/>
                         </div>
 
-                    </div>
+                    </fieldset>
 
                     <footer className="filter-dialog__footer">
                         <button className="filter-dialog__action" 

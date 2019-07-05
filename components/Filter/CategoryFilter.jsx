@@ -60,8 +60,8 @@ const InterestsFilter = () => {
                 onDismiss={updateResults}
             >
                 <form method="get" action="/recommendations" onSubmit={updateResults}>
-                    <div className="filter-dialog__body">
-                        <h2 className="filter-dialog__title">Your interests</h2>
+                    <fieldset className="filter-dialog__body">
+                        <h2 className="filter-dialog__title"><legend>Your interests</legend></h2>
                         <div className="filter-dialog__options">
                             <CheckboxItem 
                                 label="Support"
@@ -99,7 +99,7 @@ const InterestsFilter = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                    </div>
+                    </fieldset>
                     <footer className="filter-dialog__footer">
                         <button className="filter-dialog__action" 
                             type="submit" 
