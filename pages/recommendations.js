@@ -62,8 +62,10 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
             />
             <CentredText
                 title="Is anything missing?"
-                description="If you’re the organiser, of a club, activity or group that isn’t on this list, you can request it be added."
-            />
+            >
+                If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=amend"><a>request it be adde3d</a></Link>.
+            </CentredText>
+
         </Layout>
     )
 }

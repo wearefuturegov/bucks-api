@@ -13,6 +13,7 @@ import {prettyDays} from "../lib/utils"
 import ShareDialog from "../components/ShareDialog"
 import Favourite from "../components/Favourite"
 import "./detail.scss"
+import Link from "next/link"
 
 const DetailPage = ({service}) =>{
 
@@ -104,8 +105,9 @@ const DetailPage = ({service}) =>{
             />
             <CentredText
                 title="Is anything missing?"
-                description="If there’s anything out of date or missing from this service, you can request it be updated."
-            />
+            >
+                If there’s anything out of date or missing from this service, you can <Link href={`/feedback?category=amend&serviceId=${service.assetId}`}><a>request it be updated</a></Link>.
+            </CentredText>
             <ShareDialog dialogIsOpen={shareDialogOpen} toggleDialog={toggleShareDialog}/>
 
         </Layout>
