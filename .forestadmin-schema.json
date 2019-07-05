@@ -44,6 +44,10 @@
         "message": null,
         "type": "is present",
         "value": null
+      }, {
+        "message": null,
+        "type": "is shorter than",
+        "value": 10
       }]
     }, {
       "field": "email",
@@ -58,7 +62,11 @@
       "isVirtual": false,
       "reference": null,
       "inverseOf": null,
-      "validations": []
+      "validations": [{
+        "message": null,
+        "type": "is shorter than",
+        "value": 500
+      }]
     }, {
       "field": "message",
       "type": "String",
@@ -76,6 +84,10 @@
         "message": null,
         "type": "is present",
         "value": null
+      }, {
+        "message": null,
+        "type": "is shorter than",
+        "value": 500
       }]
     }, {
       "field": "phone",
@@ -90,7 +102,11 @@
       "isVirtual": false,
       "reference": null,
       "inverseOf": null,
-      "validations": []
+      "validations": [{
+        "message": null,
+        "type": "is shorter than",
+        "value": 500
+      }]
     }, {
       "field": "satisfied",
       "type": "Enum",
@@ -112,6 +128,10 @@
         "message": null,
         "type": "is present",
         "value": null
+      }, {
+        "message": null,
+        "type": "is shorter than",
+        "value": 10
       }]
     }, {
       "field": "serviceId",
@@ -127,6 +147,24 @@
       "reference": null,
       "inverseOf": null,
       "validations": []
+    }, {
+      "field": "submitted",
+      "type": "Date",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": true,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": [{
+        "message": null,
+        "type": "is present",
+        "value": null
+      }]
     }],
     "segments": [],
     "actions": []

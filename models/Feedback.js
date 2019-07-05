@@ -26,7 +26,17 @@ const Feedback = new mongoose.Schema({
         required: true,
         maxlength: 10
     },
-    serviceId: Number
+    serviceId: Number,
+    submitted: {
+        type: Date,
+        required: true
+    }
+
+})
+
+Feedback.virtual("created").get( function () {
+    if (this["_created"]) return this["_created"]
+    return this["_created"] = this._id.getTimestamp()
 })
 
 module.exports = mongoose.model("Feedback", Feedback)
