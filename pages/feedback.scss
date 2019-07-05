@@ -1,0 +1,41 @@
+@import "../components/vars";
+
+.feedback-form{
+    margin-bottom: 60px;
+    color: $darkText;
+    @media screen and (min-width: $desktop){
+        margin-bottom: 80px;
+        max-width: 66.67%
+    }
+}
+
+.radio-button-group, .form-field{
+    border: none;
+    margin-bottom: 30px;
+}
+
+.form-field__label,
+.radio-button-group__legend{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    @media screen and (min-width: $desktop){
+        font-size: 1.4em;
+    }
+}
+
+.form-field__hint{
+    font-size: 0.9em;
+    color: $lightText;
+    margin-bottom: 5px;
+}
+
+.form-field__text-input,
+.form-field__textarea{
+    border: 2px solid $darkText;
+    font-size: 0.95em;
+    background: $white;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+}

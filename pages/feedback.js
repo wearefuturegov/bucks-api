@@ -60,7 +60,7 @@ const FeedbackPage = () => {
                     },
                 ]}
                 title="Thank you for your feedback"
-                lede="If you gave us contact details, we may be in touch to learn more."
+                lede="If you gave us contact detailsn, we may be in touch to learn more."
             />
         </Layout>
     )}
@@ -83,39 +83,40 @@ const FeedbackPage = () => {
                 title="Give feedback"
                 lede="Give feedback on this website"
             />
+            <div className="container">
+                <form action="/api/feedback" method="post" className="feedback-form" onSubmit={handleSubmit}>
 
-            <form action="/api/feedback" method="post" className="container feedback-form" onSubmit={handleSubmit}>
+                    <fieldset className="radio-button-group">
+                        <legend className="radio-button-group__legend">Were you able to do what you needed today?</legend>
+                        <RadioItem name="satisfied" value="yes" label="Yes" currentState={satisfied} setCurrentState={setSatisfied}/>
+                        <RadioItem name="satisfied" value="somewhat" label="Somewhat" currentState={satisfied} setCurrentState={setSatisfied}/>
+                        <RadioItem name="satisfied" value="no" label="No" currentState={satisfied} setCurrentState={setSatisfied}/>
+                    </fieldset>
 
-                <fieldset className="radio-button-group">
-                    <legend className="radio-button-group__legend">Were you able to do what you needed today?</legend>
-                    <RadioItem name="satisfied" value="yes" label="Yes" currentState={satisfied} setCurrentState={setSatisfied}/>
-                    <RadioItem name="satisfied" value="somewhat" label="Somewhat" currentState={satisfied} setCurrentState={setSatisfied}/>
-                    <RadioItem name="satisfied" value="no" label="No" currentState={satisfied} setCurrentState={setSatisfied}/>
-                </fieldset>
+                    <div className="form-field">
+                        <label className="form-field__label" htmlFor="message">How can we improve this website?</label>
+                        <textarea className="form-field__textarea" id="message" type="text" required name="message" rows="6" onChange={e=>setMessage(e.target.value)}>{message}</textarea>
+                    </div>
 
-                <div className="form-input">
-                    <label className="form-input__label" htmlFor="message">How can we improve this website?</label>
-                    <textarea className="form-input__textarea" id="message" type="text" required name="message" rows="6" onChange={e=>setMessage(e.target.value)}>{message}</textarea>
-                </div>
+                    <p>You don't have to give us any contact details, but if you choose to, it'll be easier for us to get in touch to find out more.</p>
 
-                <p>You don't have to give us any contact details, but if you choose to, it'll be easier for us to get in touch to find out more.</p>
+                    <div className="form-field">
+                        <label className="form-field__label" htmlFor="email">Your email address</label>
+                        <p className="form-field__hint">Optional</p>
+                        <input className="form-field__text-input" id="email" type="text" name="email" value={email} onChange={e=>setEmail(e.target.value)}/>
+                    </div>
+    
+                    <div className="form-field">
+                        <label className="form-field__label" htmlFor="phone">Your phone number</label>
+                        <p className="form-field__hint">Optional</p>
+                        <input className="form-field__text-input" id="phone" type="text" name="phone" value={phone} onChange={e=>setPhone(e.target.value)}/>
+                    </div>
 
-                <div className="form-input">
-                    <label className="form-input__label" htmlFor="email">Your email address</label>
-                    <p className="form-input__hint">Optional</p>
-                    <input className="form-input__text-input" id="email" type="text" name="email" value={email} onChange={e=>setEmail(e.target.value)}/>
-                </div>
- 
-                <div className="form-input">
-                    <label className="form-input__label" htmlFor="phone">Your phone number</label>
-                    <p className="form-input__hint">Optional</p>
-                    <input className="form-input__text-input" id="phone" type="text" name="phone" value={phone} onChange={e=>setPhone(e.target.value)}/>
-                </div>
-
-                <Button>Send feedback</Button>
+                    <Button>Send feedback</Button>
 
 
-            </form>
+                </form>
+            </div>
 
         </Layout>
     )
