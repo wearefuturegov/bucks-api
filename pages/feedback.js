@@ -8,8 +8,8 @@ import "./feedback.scss"
 
 const RadioItem  = ({name, value, label, currentState, setCurrentState}) =>     
     <div className="radio-button">                
+        <input className="radio-button__input visually-hidden" id={`${name}-${value}`} type="radio" required name={name} value={value} checked={currentState === value} onChange={()=>{setCurrentState(value)}}/>
         <label className="radio-button__label" htmlFor={`${name}-${value}`}>{label}</label>
-        <input className="radio-button__input" id={`${name}-${value}`} type="radio" required name={name} value={value} checked={currentState === value} onChange={()=>{setCurrentState(value)}}/>
     </div>
 
 const FeedbackPage = () => {
@@ -44,26 +44,38 @@ const FeedbackPage = () => {
         }
     }
 
-    if(response===200){ return(
-        <Layout withHeader withFooter>
-            <Head>
-                <title>Feedback | Care and support for adults | Buckinghamshire County Council</title>
-            </Head>
-            <PageHeader 
-                breadcrumbs={[
-                    {
-                        title: "Care for adults",
-                        href: "/"
-                    },
-                    {
-                        title: "Feedback"
-                    },
-                ]}
-                title="Thank you for your feedback"
-                lede="If you gave us contact detailsn, we may be in touch to learn more."
-            />
-        </Layout>
-    )}
+    let title = "Give feedback"
+    if(category === "amend") title = "Suggest a change to this service"
+    if(category === "new") title = "Suggest a new service"
+    if(response === 200) title = "Thanks for your feedback"
+
+    let messageLabel = "How can we improve this website"
+    if((category === "amend") && serviceId) messageLabel = "Describe what should be changed about this service"
+    if(category === "new") messageLabel = "Describe the service you would like us to add"
+
+    let breadcrumbs = [
+        {
+            title: "Care for adults",
+            href: "/"
+        },
+        {
+            title: "Feedback"
+        },
+    ]
+
+    if(serviceId) breadcrumbs = [
+        {
+            title: "Care for adults",
+            href: "/"
+        },
+        {
+            title: "Service detail",
+            href: `/service/${serviceId}`
+        },
+        {
+            title: "Feedback"
+        },
+    ]
 
     return(
         <Layout withHeader withFooter>
@@ -71,52 +83,41 @@ const FeedbackPage = () => {
                 <title>Feedback | Care and support for adults | Buckinghamshire County Council</title>
             </Head>
             <PageHeader 
-                breadcrumbs={[
-                    {
-                        title: "Care for adults",
-                        href: "/"
-                    },
-                    {
-                        title: "Feedback"
-                    },
-                ]}
-                title="Give feedback"
-                lede="Give feedback on this website"
+                breadcrumbs={breadcrumbs}
+                title={title}
+                lede={(response === 200) && "If you gave us contact details, we may be in touch."}
             />
-            <div className="container">
-                <form action="/api/feedback" method="post" className="feedback-form" onSubmit={handleSubmit}>
+            {(response !== 200) &&
+                <div className="container">
+                    <form action="/api/feedback" method="post" className="feedback-form" onSubmit={handleSubmit}>
+                        <fieldset className="radio-button-group">
+                            <legend className="radio-button-group__legend">Were you able to do what you needed today?</legend>
+                            <RadioItem name="satisfied" value="yes" label="Yes" currentState={satisfied} setCurrentState={setSatisfied}/>
+                            <RadioItem name="satisfied" value="somewhat" label="Somewhat" currentState={satisfied} setCurrentState={setSatisfied}/>
+                            <RadioItem name="satisfied" value="no" label="No" currentState={satisfied} setCurrentState={setSatisfied}/>
+                        </fieldset>
+                        <div className="form-field">
+                            <label className="form-field__label" htmlFor="message">{messageLabel}</label>
+                            <textarea className="form-field__textarea" maxLength="500" id="message" type="text" required name="message" rows="5" onChange={e=>setMessage(e.target.value)} value={message}></textarea>
+                        </div>
+                        <section className="feedback-form__optional">
+                            <p>You don't have to give us any contact details, but if you choose to, it'll be easier for us to get in touch to find out more.</p>
+                            <div className="form-field">
+                                <label className="form-field__label" htmlFor="email">Your email address</label>
+                                <p className="form-field__hint">Optional</p>
+                                <input className="form-field__text-input" id="email" type="email" name="email" maxLength="500" value={email} onChange={e=>setEmail(e.target.value)}/>
+                            </div>
+                            <div className="form-field">
+                                <label className="form-field__label" htmlFor="phone">Your phone number</label>
+                                <p className="form-field__hint">Optional</p>
+                                <input className="form-field__text-input" id="phone" type="text" name="phone" maxLength="500" value={phone} onChange={e=>setPhone(e.target.value)}/>
+                            </div>
+                        </section>
+                        <Button>Send feedback</Button>
+                    </form>
+                </div>
+            }
 
-                    <fieldset className="radio-button-group">
-                        <legend className="radio-button-group__legend">Were you able to do what you needed today?</legend>
-                        <RadioItem name="satisfied" value="yes" label="Yes" currentState={satisfied} setCurrentState={setSatisfied}/>
-                        <RadioItem name="satisfied" value="somewhat" label="Somewhat" currentState={satisfied} setCurrentState={setSatisfied}/>
-                        <RadioItem name="satisfied" value="no" label="No" currentState={satisfied} setCurrentState={setSatisfied}/>
-                    </fieldset>
-
-                    <div className="form-field">
-                        <label className="form-field__label" htmlFor="message">How can we improve this website?</label>
-                        <textarea className="form-field__textarea" id="message" type="text" required name="message" rows="6" onChange={e=>setMessage(e.target.value)}>{message}</textarea>
-                    </div>
-
-                    <p>You don't have to give us any contact details, but if you choose to, it'll be easier for us to get in touch to find out more.</p>
-
-                    <div className="form-field">
-                        <label className="form-field__label" htmlFor="email">Your email address</label>
-                        <p className="form-field__hint">Optional</p>
-                        <input className="form-field__text-input" id="email" type="text" name="email" value={email} onChange={e=>setEmail(e.target.value)}/>
-                    </div>
-    
-                    <div className="form-field">
-                        <label className="form-field__label" htmlFor="phone">Your phone number</label>
-                        <p className="form-field__hint">Optional</p>
-                        <input className="form-field__text-input" id="phone" type="text" name="phone" value={phone} onChange={e=>setPhone(e.target.value)}/>
-                    </div>
-
-                    <Button>Send feedback</Button>
-
-
-                </form>
-            </div>
 
         </Layout>
     )

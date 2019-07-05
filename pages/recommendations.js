@@ -6,6 +6,7 @@ import Recommendations from "../components/Recommendations"
 import CentredText from "../components/CentredText"
 import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
+import Link from "next/link"
 
 const RecommendationsPage = ({snippets, services, query, totalPages, totalServices}) => {
 
@@ -63,7 +64,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
             <CentredText
                 title="Is anything missing?"
             >
-                If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=amend"><a>request it be adde3d</a></Link>.
+                If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=new"><a>request it be added</a></Link>.
             </CentredText>
 
         </Layout>
