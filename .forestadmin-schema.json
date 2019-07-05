@@ -92,6 +92,28 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "satisfied",
+      "type": "Enum",
+      "defaultValue": null,
+      "enums": [
+        "yes",
+        "somewhat",
+        "no"
+      ],
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": true,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": [{
+        "message": null,
+        "type": "is present",
+        "value": null
+      }]
+    }, {
       "field": "serviceId",
       "type": "Number",
       "defaultValue": null,
