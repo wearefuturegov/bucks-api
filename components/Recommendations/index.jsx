@@ -24,11 +24,13 @@ const Recommendations = ({
 
     const fave = (service) => {
         // Remove distance key
-        delete service.distance
+        let serviceToSave = Object.assign({}, service)
+        console.log(serviceToSave)
+        delete serviceToSave.distance
         // Update state
-        setFavourites(favourites.concat(service))
+        setFavourites(favourites.concat(serviceToSave))
         // Add to persistent storage
-        addFavourite(service)
+        addFavourite(serviceToSave)
     }
 
     const unfave = (id) => {
