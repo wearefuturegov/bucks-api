@@ -1,15 +1,15 @@
 import React from "react"
 import App, { Container } from "next/app"
 import Router from "next/router"
-import ReactGA from "react-ga"
-ReactGA.initialize(process.env.GOOGLE_TRACKING_ID)
+import { initGA, logPageView } from "../lib/analytics"
 
 const handleRouteChange = url => {
-    console.log("route changing to: " + url)
-    ReactGA.pageview(url)
+    console.log("App is changing to: ", url)
+    logPageView()
 }
   
-Router.events.on("routeChangeStart", handleRouteChange)
+Router.events.on("routeChangeComplete", handleRouteChange)
+Router.events.on("hashChangeComplete", handleRouteChange)
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
@@ -22,9 +22,17 @@ class MyApp extends App {
         return { pageProps }
     }
 
+    componentDidMount () {
+        if (!window.GA_INITIALIZED) {
+            initGA()
+            window.GA_INITIALIZED = true
+        }
+        logPageView()
+        console.log("fuck")
+    }
+
     render() {
         const { Component, pageProps } = this.props
-
         return (
             <Container>
                 <Component {...pageProps} />
