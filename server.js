@@ -3,6 +3,7 @@ const next = require("next")
 const mongoose = require("mongoose")
 const apiRouter = require("./routes/api")
 const sslRedirect = require("heroku-ssl-redirect")
+const basicAuth = require("express-basic-auth")
 
 require("dotenv").config()
 
@@ -31,6 +32,12 @@ app
             authSecret: process.env.FOREST_AUTH_SECRET,
             mongoose: mongoose,
         }))
+
+        if(process.env.USER && process.env.PASSWORD) {
+            app.use(basicAuth({
+                users: { [process.env.USER]: [process.env.PASSWORD] }
+            }))
+        }
 
         server.use(sslRedirect())
         server.use(express.json())
