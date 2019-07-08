@@ -10,9 +10,9 @@ const AgeQuestion = ({
         <h2 className="question__title"><legend>Show me recommendations for...</legend></h2>
         <p className="question__help-text">Choose one option</p>
         <div className="question__options">
-            <OptionBubble type="radio" selectionState={selection} onChange={onChange} name="age" value="" label="Show everything"/>
-            <OptionBubble type="radio" selectionState={selection} onChange={onChange} name="age" value="young adults" label="Young adults" helpText="18-25"/>
-            <OptionBubble type="radio" selectionState={selection} onChange={onChange} name="age" value="older adults" label="Older adults"  helpText="65+"/>
+            <OptionBubble type="radio" selectionState={selection} onChange={onChange} name="age" value="" label="Everyone"/>
+            <OptionBubble type="radio" selectionState={selection} onChange={onChange} name="age" value="young adults" label="Just young adults" helpText="18-25"/>
+            <OptionBubble type="radio" selectionState={selection} onChange={onChange} name="age" value="older adults" label="Just older adults"  helpText="65+"/>
         </div>
     </fieldset>
 
