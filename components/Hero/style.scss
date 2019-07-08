@@ -27,30 +27,16 @@
             align-items: center;
             padding-bottom: 80px;
         }
-        // &:after{
-        //     position: absolute;
-        //     display: block;
-        //     content: "";
-        //     z-index: 4;
-        //     bottom: 17px;
-        //     width: 50px;
-        //     height: 50px;
-        //     border-radius: 100%;
-        //     background: $shadow;
-        //     left: 50%;
-        //     background-size: 20px;
-        //     background-position: 15px 22px;
-        //     background-repeat: no-repeat;
-        //     transform: translateX(-50%);
-        //     background-image: url("data:image/svg+xml,%3Csvg width='16' height='9' viewBox='0 0 16 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8 8L15 1' stroke='%231E2428' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
-        // }
         @media screen and (min-width: $tablet){
             &:before{
                 background-image: url('./needs-hero.jpg');
             }
-            // &:after{
-            //     bottom: 25px;
-            // }
+            .hero__title{
+                    max-width: 45%;
+            }
+            .hero__description{
+                max-width: 55%;
+        }
         }
         @media screen and (min-width: $desktop){
             .hero__inner{
@@ -58,7 +44,7 @@
             }
         }
     }
-    
+
 }
 
 .hero__inner{
@@ -75,6 +61,18 @@
     &:focus{
         box-shadow: none;
     }
+    *:last-child{
+        margin-bottom: 40px;
+        @media screen and (min-width: $tablet){
+            margin-bottom: 60px;
+        }
+        @media screen and (min-width: $desktop){
+            margin-bottom: 80px;
+        }
+        @media screen and (min-width: $largeDesktop){
+            margin-bottom: 120px;
+        }
+    }
 }
 
 .hero__title{
@@ -88,17 +86,10 @@
 
 .hero__description{
     font-size: 1.1em;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     @media screen and (min-width: $tablet){
-        margin-bottom: 60px;
         font-size: 1.5em;
         max-width: 45%;
-    }
-    @media screen and (min-width: $desktop){
-        margin-bottom: 80px;
-    }
-    @media screen and (min-width: $largeDesktop){
-        margin-bottom: 120px;
     }
 }
 
@@ -110,5 +101,14 @@
     height: 80px;
     @media screen and (min-width: $tablet){
         height: 100px;
+    }
+}
+
+.hero__all-services{
+    font-size: 1em;
+    font-style: italic;
+    color: transparentize($white, 0.3);
+    a{
+        color: transparentize($white, 0.3);
     }
 }

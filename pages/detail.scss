@@ -2,10 +2,12 @@
 
 .detail__actions{
     margin-bottom: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    @media screen and (min-width: $tablet){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 
@@ -31,7 +33,7 @@
         background-repeat: no-repeat;
     }
     &:hover{
-        &:after{
+        &:before{
             background-color: lighten($darkText, 5)
         }
     }

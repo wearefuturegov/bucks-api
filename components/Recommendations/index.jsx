@@ -25,7 +25,6 @@ const Recommendations = ({
     const fave = (service) => {
         // Remove distance key
         let serviceToSave = Object.assign({}, service)
-        console.log(serviceToSave)
         delete serviceToSave.distance
         // Update state
         setFavourites(favourites.concat(serviceToSave))

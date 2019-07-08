@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import "./style.scss"
 import triangle from "./triangle.svg"
 import Header from "../Header"
+import Link from "next/link"
 
 const Hero = ({
     title,
@@ -10,9 +11,10 @@ const Hero = ({
 }) => 
     <section className="hero hero--needs">
         <Header inverted/>
-        <div className="hero__inner container">
+        <div className="hero__inner container hero__inner--needs">
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">{description}</p>
+            <p className="hero__all-services">Or, <Link href="/recommendations"><a>see all services</a></Link></p>
         </div>
         <img src={triangle} alt="" className="hero__triangle"/>
     </section>
