@@ -7,6 +7,7 @@ import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import ListMap from "../Maps"
 import "./style.scss"
 import {listFavourites, addFavourite, removeFavourite} from "../../lib/localStorage"
+import {logEvent} from "../../lib/analytics"
 
 const Recommendations = ({
     services,
@@ -77,6 +78,10 @@ const Recommendations = ({
                                     checked={mapOpen}
                                     onChange={()=>{
                                         toggleMap(!mapOpen)
+                                        logEvent({
+                                            category: "Recommendations",
+                                            action: "Toggled map view"
+                                        })
                                     }}
                                 />
                             }
