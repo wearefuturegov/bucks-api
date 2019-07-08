@@ -23,22 +23,17 @@ const Recommendations = ({
     const [favourites, setFavourites] = useState([])
 
     const fave = (service) => {
-        // Remove distance key
         let serviceToSave = Object.assign({}, service)
         delete serviceToSave.distance
-        // Update state
         setFavourites(favourites.concat(serviceToSave))
-        // Add to persistent storage
         addFavourite(serviceToSave)
     }
 
     const unfave = (id) => {
-        // Update state
         let remainingFaves = favourites.filter(service =>{
             if(service.assetId !== id) return service
         })
         setFavourites(remainingFaves)
-        // Remove from persistent storage
         removeFavourite(id)
     }
 
@@ -48,6 +43,7 @@ const Recommendations = ({
 
     return (
         <>
+            {console.log(favourites)}
             <Filters
                 locationFilterIsOpen={dialogOpen}
                 toggleLocationFilterDialog={toggleDialog}
