@@ -16,11 +16,17 @@
         border-radius: 0px;
         .favourite-button__icon{
             margin-right: 10px;
+            background: $background;
+            opacity: 0;
+            transform: scale(0);
+            transition: 0.1s;
         }
     }
     &:hover{
         .favourite-button__icon{
-            background: $background
+            background: $background;
+            opacity: 1;
+            transform: scale(1)
         }
     }
 }

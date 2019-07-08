@@ -110,7 +110,13 @@ const DetailPage = ({service}) =>{
                         <button className="share-button" onClick={()=>{
                             toggleShareDialog(true)
                         }}>Share</button>
-                        <Favourite service={service} labelled fave={fave} unfave={unfave} favourited={favourited}/>
+                        <Favourite 
+                            service={service} 
+                            // labelled 
+                            fave={fave} 
+                            unfave={unfave} 
+                            favourited={favourited}
+                        />
                     </div>
                     <DetailMap
                         category={service.category}
@@ -130,7 +136,7 @@ const DetailPage = ({service}) =>{
             >
                 If there’s anything out of date or missing from this service, you can <Link href={`/feedback?category=amend&serviceId=${service.assetId}`}><a>request it be updated</a></Link>.
             </CentredText>
-            <ShareDialog dialogIsOpen={shareDialogOpen} toggleDialog={toggleShareDialog}/>
+            <ShareDialog singleService dialogIsOpen={shareDialogOpen} toggleDialog={toggleShareDialog}/>
 
         </Layout>
     )
