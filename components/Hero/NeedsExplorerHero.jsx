@@ -13,8 +13,11 @@ const Hero = ({
         <Header inverted/>
         <div className="hero__inner container hero__inner--needs">
             <h1 className="hero__title">{title}</h1>
-            <p className="hero__description">{description}</p>
-            <p className="hero__all-services">Or, <Link href="/recommendations"><a>see all services</a></Link></p>
+            <p className="hero__description">
+                {description}
+                <span className="hero__all-services">Or, <Link href="/recommendations"><a>see all services</a></Link></span>
+            </p>
+           
         </div>
         <img src={triangle} alt="" className="hero__triangle"/>
     </section>
