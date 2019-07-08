@@ -1,6 +1,6 @@
 @import "../vars";
 
-.favourite-button{
+.favourite-button--unlabelled{
     position: relative;
     z-index: 1;
     border: none;
@@ -12,21 +12,9 @@
     justify-content: center;
     flex-direction: row;
     border-radius: 100%;
-    &.favourite-button--labelled{
-        border-radius: 0px;
-        .favourite-button__icon{
-            margin-right: 10px;
-            background: $background;
-            opacity: 0;
-            transform: scale(0);
-            transition: 0.1s;
-        }
-    }
     &:hover{
         .favourite-button__icon{
             background: $background;
-            opacity: 1;
-            transform: scale(1)
         }
     }
 }
@@ -38,4 +26,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+
+.favourite-button--labelled{
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding-right: 10px;
+    .favourite-button__icon{
+        margin-right: 5px;
+    }
+    &:hover{
+        .favourite-button__icon{
+            background: $background;
+        }
+    }
 }
