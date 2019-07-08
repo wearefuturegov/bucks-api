@@ -6,7 +6,7 @@ import { prettyFeatures } from "../../lib/utils"
 import Button from "../Button"
 import loadingIcon from "./loading.svg"
 
-const ServicesGrid = ({services, onLoadMore, loading, moreToLoad, className, setActiveService}) => 
+const ServicesGrid = ({services, onLoadMore, loading, moreToLoad, className, setActiveService, fave, unfave, favourites}) => 
     <>
         <ol className={className? `services__grid ${className}` : "services__grid"} aria-live="polite">
             {services.map((service, i)=>
@@ -21,6 +21,10 @@ const ServicesGrid = ({services, onLoadMore, loading, moreToLoad, className, set
                     distance={service.distance}
                     parentOrganisation={service.parentOrganisation}
                     features={prettyFeatures(service)}
+                    
+                    fave={fave}
+                    unfave={unfave}
+                    favourited={favourites.find(el => {if(el.assetId === service.assetId) return el})}
                 />
             )}
         </ol>

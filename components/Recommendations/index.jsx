@@ -6,7 +6,7 @@ import ServicesGrid from "../ServicesGrid"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import ListMap from "../Maps"
 import "./style.scss"
-import {listFavourites} from "../../lib/localStorage"
+import {listFavourites, addFavourite, removeFavourite} from "../../lib/localStorage"
 
 const Recommendations = ({
     services,
@@ -17,12 +17,29 @@ const Recommendations = ({
     totalServices, 
     loading
 }) => {
-
-    const [favourites, setFavourites] = useState([])
-
     const [dialogOpen, toggleDialog] = useState(false)
     const [mapOpen, toggleMap] = useState(false)
 
+    const [favourites, setFavourites] = useState([])
+
+    const fave = (service) => {
+        // Remove distance key
+        delete service.distance
+        // Update state
+        setFavourites(favourites.concat(service))
+        // Add to persistent storage
+        addFavourite(service)
+    }
+
+    const unfave = (id) => {
+        // Update state
+        let remainingFaves = favourites.filter(service =>{
+            if(service.assetId !== id) return service
+        })
+        setFavourites(remainingFaves)
+        // Remove from persistent storage
+        removeFavourite(id)
+    }
 
     useEffect(()=>{
         setFavourites(listFavourites())
@@ -48,6 +65,9 @@ const Recommendations = ({
                             <ServicesGrid
                                 services={favourites}
                                 className="services__grid--with-columns"
+                                fave={fave}
+                                unfave={unfave}
+                                favourites={favourites}
                             />
                         </section>                    
                     }
@@ -82,6 +102,9 @@ const Recommendations = ({
                             moreToLoad={moreToLoad}
                             onLoadMore={onLoadMore}
                             className="services__grid--with-columns"
+                            fave={fave}
+                            unfave={unfave}
+                            favourites={favourites}
                         />
                     </section>
                     {snippets.length > 0 && 
