@@ -32,6 +32,10 @@
 .question{
     padding: 40px 0px;
     border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     @media screen and (min-width: $tablet){
         padding: 60px 0px;
     }
@@ -61,6 +65,7 @@
 
 .question__options{
     border: none;
+    width: 100%;
     @media screen and (min-width: $smartphone){
         display: flex;
         flex-direction: row;
@@ -87,7 +92,10 @@
 
 .continue-to-recommendations{
     padding: 40px 0px;
-    // display: flex
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     @media screen and (min-width: $tablet){
         padding: 60px 0px;
     }

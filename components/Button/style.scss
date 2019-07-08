@@ -6,7 +6,6 @@
     text-align: center;
     background: $link;
     border-radius: 30px;
-    // @include paragraphText;
     font-size: 1.1em;
     color: $white;
     padding: 10px 20px;
@@ -15,6 +14,7 @@
     border: none;
     cursor: pointer;
     transition: 0.1s ease-out;
+    max-width: 365px;
     &[disabled]{
         background: $shadow;
         cursor: inherit;

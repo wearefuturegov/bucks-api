@@ -15,7 +15,7 @@ const Hero = ({
             <h1 className="hero__title">{title}</h1>
             <p className="hero__description">
                 {description}
-                <span className="hero__all-services">Or, <Link href="/recommendations"><a>see all services</a></Link></span>
+                <span className="hero__all-services">Or, <Link href="/recommendations"><a>see everything</a></Link></span>
             </p>
            
         </div>
