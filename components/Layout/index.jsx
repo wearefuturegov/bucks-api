@@ -6,6 +6,7 @@ import PhaseBanner from "../PhaseBanner"
 import IsPageUseful from "../IsPageUseful"
 import FullWidthSearch from "../FullWidthSearchPanel"
 import Footer from "../Footer"
+import Cookies from "../Cookies"
 import "./style.scss"
 
 const Layout = ({children, withHeader, withUseful, withFooter, fullHeight})=>
@@ -16,6 +17,7 @@ const Layout = ({children, withHeader, withUseful, withFooter, fullHeight})=>
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap" rel="stylesheet"/> 
         </Head>
         <PhaseBanner href="#"/>
+        <Cookies/>
         {withHeader && <Header /> }
         {children}
         {withUseful && <IsPageUseful />}
