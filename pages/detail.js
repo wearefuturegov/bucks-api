@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import Layout from "../components/Layout"
 import Head from "next/head"
 import PageHeader from "../components/PageHeader"
@@ -14,6 +14,7 @@ import ShareDialog from "../components/ShareDialog"
 import Favourite from "../components/Favourite"
 import "./detail.scss"
 import Link from "next/link"
+import {isFavourited, addFavourite, removeFavourite} from "../lib/localStorage"
 
 const DetailPage = ({service}) =>{
 
@@ -38,6 +39,27 @@ const DetailPage = ({service}) =>{
     } = service
 
     const [shareDialogOpen, toggleShareDialog] = useState(false)
+    const [favourited, setFavourited] = useState(false)
+
+    const fave = (service) => {
+        // Remove distance key
+        delete service.distance
+        // Update state
+        setFavourited(true)
+        // Add to persistent storage
+        addFavourite(service)
+    }
+
+    const unfave = (id) => {
+        // Update state
+        setFavourited(false)
+        // Remove from persistent storage
+        removeFavourite(id)
+    }
+
+    useEffect(()=>{
+        setFavourited(isFavourited(service.assetId))
+    }, [])
 
     return(
         <Layout withHeader withFooter>
@@ -88,7 +110,7 @@ const DetailPage = ({service}) =>{
                         <button className="share-button" onClick={()=>{
                             toggleShareDialog(true)
                         }}>Share</button>
-                        <Favourite service={service} labelled/>
+                        <Favourite service={service} labelled fave={fave} unfave={unfave} favourited={favourited}/>
                     </div>
                     <DetailMap
                         category={service.category}
