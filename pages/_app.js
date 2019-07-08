@@ -1,7 +1,15 @@
 import React from "react"
 import App, { Container } from "next/app"
 import Router from "next/router"
-import withGA from "next-ga"
+import ReactGA from "react-ga";
+ReactGA.initialize(process.env.GOOGLE_TRACKING_ID)
+
+const handleRouteChange = url => {
+    console.log("route changing to: " + url)
+    ReactGA.pageview(url)
+}
+  
+Router.events.on("routeChangeStart", handleRouteChange)
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
@@ -19,10 +27,11 @@ class MyApp extends App {
 
         return (
             <Container>
+                {process.env.GOOGLE_TRACKING_ID}
                 <Component {...pageProps} />
             </Container>
         )
     }
 }
 
-export default withGA(process.env.GOOGLE_TRACKING_ID, Router)(MyApp);
+export default MyApp

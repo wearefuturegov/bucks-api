@@ -35,7 +35,6 @@
     "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.5.14",
     "next": "^8.1.0",
-    "next-ga": "^2.3.4",
     "next-images": "^1.1.1",
     "notifications-node-client": "^4.6.0",
     "overlapping-marker-spiderfier": "^1.1.4",
@@ -43,6 +42,7 @@
     "query-string": "^5.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-ga": "^2.6.0",
     "react-google-maps": "^9.4.5",
     "request": "^2.88.0"
   },

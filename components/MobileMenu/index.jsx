@@ -13,10 +13,7 @@ const MobileMenu = ({menuItems, inverted}) => {
                 className={(inverted)? "site-header__button site-header__button--inverted" : "site-header__button"} 
                 onClick={()=>{
                     open(!isOpen)
-
-                    // console.log(
                     document.querySelector(".mobile-menu a").focus()
-                    // )
                 }} 
                 // aria-haspopup="true"
                 aria-expanded={isOpen}

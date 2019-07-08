@@ -43,7 +43,6 @@ const Recommendations = ({
 
     return (
         <>
-            {console.log(favourites)}
             <Filters
                 locationFilterIsOpen={dialogOpen}
                 toggleLocationFilterDialog={toggleDialog}
