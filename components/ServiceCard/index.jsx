@@ -14,23 +14,13 @@ const ServiceCard = ({
     description,
     features,
     service,
-    // setActiveService
 }) => {
-
-    // const handleClick = (e) => {
-    //     e.preventDefault()
-    //     console.log(Router)
-    //     Router.push(Router.asPath, `/service/${assetId}`, { shallow: true })
-    //     setActiveService(service)
-    // }
 
     return(
         <li className={`service-card service-card--${category}`}>
             <Link href={`/service/${assetId}`}>
                 <a 
-                    // href={`/service/${assetId}`}
                     className="service-card__link"
-                    // onClick={handleClick}
                 >
                     <h3 className="service-card__title">{title}</h3>
                 </a>

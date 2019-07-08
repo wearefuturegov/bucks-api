@@ -11,8 +11,7 @@ const CentredText = ({title, children}) =>
     </section>
 
 CentredText.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
 }
 
 export default CentredText
