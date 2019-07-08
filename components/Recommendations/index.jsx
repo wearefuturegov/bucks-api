@@ -5,7 +5,6 @@ import Switch from "../Switch"
 import ServicesGrid from "../ServicesGrid"
 import AdviceSnippetsGrid from "../AdviceSnippetGrid"
 import ListMap from "../Maps"
-// import ServiceDialog from "../ServiceDialog"
 import "./style.scss"
 import {listFavourites} from "../../lib/localStorage"
 
@@ -23,14 +22,11 @@ const Recommendations = ({
 
     const [dialogOpen, toggleDialog] = useState(false)
     const [mapOpen, toggleMap] = useState(false)
-    // const [activeService, setActiveService] = useState(false)
+
 
     useEffect(()=>{
         setFavourites(listFavourites())
     }, [])
-
-
-
 
     return (
         <>
@@ -51,7 +47,6 @@ const Recommendations = ({
                             </header>
                             <ServicesGrid
                                 services={favourites}
-                                // setActiveService={setActiveService}
                                 className="services__grid--with-columns"
                             />
                         </section>                    
@@ -82,7 +77,6 @@ const Recommendations = ({
                         }
                         <ServicesGrid
                             services={services}
-                            // setActiveService={setActiveService}
                             query={query}
                             loading={loading}
                             moreToLoad={moreToLoad}
@@ -100,18 +94,6 @@ const Recommendations = ({
                     }
                 </div>
             </section>
-
-            {/* <ServiceDialog
-                service={activeService}
-                handleDismiss={()=>{
-                    console.log(Router)
-                    Router.push(Router.pathname, {
-                        query: Router.query
-                    })
-                    setActiveService(false)
-                }}
-            /> */}
-
         </>
     )
 }
