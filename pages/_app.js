@@ -2,22 +2,16 @@ import React from "react"
 import App, { Container } from "next/app"
 import Router from "next/router"
 import { initGA, logPageView } from "../lib/analytics"
-
-const handleRouteChange = url => {
-    logPageView()
-}
   
-Router.events.on("routeChangeComplete", handleRouteChange)
-Router.events.on("hashChangeComplete", handleRouteChange)
+Router.events.on("routeChangeComplete", logPageView)
+Router.events.on("hashChangeComplete", logPageView)
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
         let pageProps = {}
-
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
         }
-
         return { pageProps }
     }
 
