@@ -1,7 +1,7 @@
 import React from "react"
 import App, { Container } from "next/app"
 import Router from "next/router"
-import ReactGA from "react-ga";
+import ReactGA from "react-ga"
 ReactGA.initialize(process.env.GOOGLE_TRACKING_ID)
 
 const handleRouteChange = url => {
@@ -27,7 +27,6 @@ class MyApp extends App {
 
         return (
             <Container>
-                {process.env.GOOGLE_TRACKING_ID}
                 <Component {...pageProps} />
             </Container>
         )
