@@ -4,7 +4,6 @@ import Router from "next/router"
 import { initGA, logPageView } from "../lib/analytics"
 
 const handleRouteChange = url => {
-    console.log("App is changing to: ", url)
     logPageView()
 }
   
@@ -28,7 +27,6 @@ class MyApp extends App {
             window.GA_INITIALIZED = true
         }
         logPageView()
-        console.log("fuck")
     }
 
     render() {
