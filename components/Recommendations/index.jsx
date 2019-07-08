@@ -28,6 +28,7 @@ const Recommendations = ({
         delete serviceToSave.distance
         setFavourites(favourites.concat(serviceToSave))
         addFavourite(serviceToSave)
+        logEvent("Recommendations", "Save a service")
     }
 
     const unfave = (id) => {
@@ -36,6 +37,7 @@ const Recommendations = ({
         })
         setFavourites(remainingFaves)
         removeFavourite(id)
+        logEvent("Recommendations", "Unsave a service")
     }
 
     useEffect(()=>{
@@ -78,10 +80,7 @@ const Recommendations = ({
                                     checked={mapOpen}
                                     onChange={()=>{
                                         toggleMap(!mapOpen)
-                                        logEvent({
-                                            category: "Recommendations",
-                                            action: "Toggled map view"
-                                        })
+                                        logEvent("Recommendations", "Toggle map view")
                                     }}
                                 />
                             }

@@ -15,6 +15,7 @@ import Favourite from "../components/Favourite/LabelledFave"
 import "./detail.scss"
 import Link from "next/link"
 import {isFavourited, addFavourite, removeFavourite} from "../lib/localStorage"
+import {logEvent} from "../lib/analytics"
 
 const DetailPage = ({service}) =>{
 
@@ -48,6 +49,7 @@ const DetailPage = ({service}) =>{
         setFavourited(true)
         // Add to persistent storage
         addFavourite(service)
+        logEvent("Service detail", "Save a service")
     }
 
     const unfave = (id) => {
@@ -55,6 +57,7 @@ const DetailPage = ({service}) =>{
         setFavourited(false)
         // Remove from persistent storage
         removeFavourite(id)
+        logEvent("Service detail", "Unsave a service")
     }
 
     useEffect(()=>{
