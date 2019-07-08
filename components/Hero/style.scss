@@ -61,18 +61,6 @@
     &:focus{
         box-shadow: none;
     }
-    *:last-child{
-        margin-bottom: 40px;
-        @media screen and (min-width: $tablet){
-            margin-bottom: 60px;
-        }
-        @media screen and (min-width: $desktop){
-            margin-bottom: 80px;
-        }
-        @media screen and (min-width: $largeDesktop){
-            margin-bottom: 120px;
-        }
-    }
 }
 
 .hero__title{
@@ -86,7 +74,16 @@
 
 .hero__description{
     font-size: 1.1em;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
+    @media screen and (min-width: $tablet){
+        margin-bottom: 60px;
+    }
+    @media screen and (min-width: $desktop){
+        margin-bottom: 80px;
+    }
+    @media screen and (min-width: $largeDesktop){
+        margin-bottom: 120px;
+    }
     @media screen and (min-width: $tablet){
         font-size: 1.5em;
         max-width: 45%;
