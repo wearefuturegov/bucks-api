@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import "./style.scss"
 import triangle from "./triangle.svg"
+import downArrow from "./down-arrow.svg"
 import Header from "../Header"
 import Link from "next/link"
 
@@ -19,6 +20,7 @@ const Hero = ({
             </p>
            
         </div>
+        <img src={downArrow} alt="" className="hero__scroll-on"/>
         <img src={triangle} alt="" className="hero__triangle"/>
     </section>
 

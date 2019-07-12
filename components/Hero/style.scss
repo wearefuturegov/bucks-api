@@ -114,3 +114,27 @@
             font-size: 0.8em;
     }
 }
+
+@keyframes fadeInDown{
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.hero__scroll-on{
+    position: absolute;
+    bottom: 65px;
+    width: 70px;
+    left: 0px;
+    right: 0px;
+    margin: 0px auto 10px auto;
+    animation: fadeInDown 0.5s ease-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
