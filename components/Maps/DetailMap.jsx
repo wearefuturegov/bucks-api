@@ -44,7 +44,7 @@ const DetailMap = ({coordinates, category}) => {
                     icon={{
                         url: markerIcon(category),
                         optimized: false,
-                        scaledSize: new google.maps.Size(60, 60),
+                        scaledSize: new window.google.maps.Size(60, 60),
                     }}
                 />
             </GoogleMap>
