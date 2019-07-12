@@ -7,8 +7,8 @@ class MyDocument extends Document {
     }
 
     render() {
-        
-        const host = process.env.HOST || "http://bucks-care-staging.herokuapp.com"
+
+        const host = process.env.HOST || "https://bucks-care-staging.herokuapp.com"
 
         return (
             <Html lang="en">
