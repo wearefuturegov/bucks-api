@@ -99,20 +99,18 @@ const NeedsExplorerQuestions = () => {
                         onChange={handleRawLocationChange} 
                         onBlur={handleBlur}
                     />
-
-                    <div className="continue-to-recommendations">
-                        <ContinueToRecommendations
-                            keywordSelection={keywordSelection}
-                            ageSelection={ageSelection}
-                            categorySelection={categorySelection}
-                            rawLocation={rawLocation}
-                        />
-                    </div>
-
-
                 </div>
             </section>
+            <div className="continue-to-recommendations">
+                <ContinueToRecommendations
+                    keywordSelection={keywordSelection}
+                    ageSelection={ageSelection}
+                    categorySelection={categorySelection}
+                    rawLocation={rawLocation}
+                />
+            </div>
         </form>
+        
     )
 }
 
