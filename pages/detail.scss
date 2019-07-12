@@ -1,12 +1,17 @@
 @import "../components/vars";
 
 .detail__actions{
+    border-top: 1px solid $shadow;
+    padding-top: 30px;
     margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
     @media screen and (min-width: $tablet){
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-start;
+        border-top: none;
+        padding-top: 0px;
     }
 }
 
@@ -19,8 +24,11 @@
     flex-direction: row;
     align-items: center;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     margin-right: 25px;
+    // @media screen and (min-width: $desktop) {
+    //     margin-bottom: 0px;
+    // }
     &:before{
         margin-right: 10px;
         width: 35px;

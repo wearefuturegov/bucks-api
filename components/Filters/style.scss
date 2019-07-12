@@ -98,29 +98,33 @@
 
 
 .share-button--for-list{
-    font-size: 1em;
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-    &:before{
-        margin-right: 10px;
-        width: 35px;
-        height: 35px;
-        border-radius: 100%;
-        background-color: $darkText;
-        content: "";
-        display: inline-block;
-        background-image: url("./send.svg");
-        background-size: 19px;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    &:hover{
-        &:after{
-            background-color: lighten($darkText, 5)
+    display: none;
+    @media screen and (min-width: $desktop){
+        font-size: 1em;
+        background: none;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        &:before{
+            margin-right: 10px;
+            width: 35px;
+            height: 35px;
+            border-radius: 100%;
+            background-color: $darkText;
+            content: "";
+            display: inline-block;
+            background-image: url("./send.svg");
+            background-size: 19px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        &:hover{
+            &:after{
+                background-color: lighten($darkText, 5)
+            }
         }
     }
+
 }
