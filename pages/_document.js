@@ -11,6 +11,14 @@ class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+
+                    <meta name="twitter:card" content="summary"></meta>
+                    <meta name="twitter:username" content="@buckscc"></meta>
+                    <meta property="og:url" content="" />
+                    <meta property="og:title" content="Care and support for adults, their families and carers" />
+                    <meta property="og:description" content="Helping you find the right information and support in Buckinghamshire." />
+                    <meta property="og:image" content="/static/share-image.jpg" />
+
                 </Head>
                 <body>
                     <Main />
