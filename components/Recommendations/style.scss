@@ -11,6 +11,7 @@
 .services__section-title, .advice__section-title{
     margin-bottom: 10px;
     font-weight: normal;
+    max-width: 580px;
     @media screen and (min-width: $tablet){
         margin-bottom: 0px;
     }
