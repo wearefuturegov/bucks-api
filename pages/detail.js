@@ -68,6 +68,8 @@ const DetailPage = ({service}) =>{
         <Layout withHeader withFooter>
             <Head>
                 <title>{(name || parentOrganisation)} | Care and support for adults | Buckinghamshire County Council</title>
+                <meta property="og:title" content={(name || parentOrganisation)} />
+                <meta property="og:description" content="See more information about clubs, activities and support in your area." />
             </Head>
             <PageHeader 
                 breadcrumbs={[

@@ -83,6 +83,8 @@ const FeedbackPage = () => {
         <Layout withHeader withFooter>
             <Head>
                 <title>Feedback | Care and support for adults | Buckinghamshire County Council</title>
+                <meta property="og:title" content="Give feedback" />
+                <meta property="og:description" content="This is a new website, feedback helps us to improve it." />
             </Head>
             <PageHeader 
                 breadcrumbs={breadcrumbs}
