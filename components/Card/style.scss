@@ -16,6 +16,13 @@
     width: 100%;
     height: auto;
     // TODO: object-fit: cover if supported?
+
+    @supports (object-fit: cover){
+        @media screen and (max-width: $tablet){
+            object-fit: cover;
+            height: 160px;
+        }
+    }
 }
 
 .card__link{

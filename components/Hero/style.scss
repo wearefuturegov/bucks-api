@@ -4,7 +4,7 @@
     background: lighten($darkText, 5);
     color: $white;
     position: relative;
-    @media screen and (min-width: $tablet){
+    // @media screen and (min-width: $tablet){
         &:before{
             content: "";
             display: block;
@@ -18,7 +18,7 @@
             background-position: center;
             opacity: 0.1;
         }
-    }
+    // }
     &.hero--needs{
         text-align: center;
         .hero__inner{
@@ -27,10 +27,11 @@
             align-items: center;
             padding-bottom: 80px;
         }
+        &:before{
+            background-image: url('./needs-hero.jpg');
+        }
         @media screen and (min-width: $tablet){
-            &:before{
-                background-image: url('./needs-hero.jpg');
-            }
+
             .hero__title{
                     max-width: 45%;
             }
