@@ -82,6 +82,7 @@
     border: none;
     background: none;
     cursor: pointer;
+    z-index: 5;
 }
 
 .share__close-icon{
@@ -96,7 +97,6 @@
 }
 
 .radio-group{
-
     margin-bottom: 15px;
     border: none;
 }
