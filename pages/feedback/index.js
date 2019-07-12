@@ -17,6 +17,7 @@ const FeedbackPage = () => {
     const router = useRouter()
     const { category, serviceId } = router.query
 
+    // eslint-disable-next-line no-unused-vars
     const [response, setResponse] = useState(false)
     const [message, setMessage] = useState("")
     const [satisfied, setSatisfied] = useState("")
