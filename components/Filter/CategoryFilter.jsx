@@ -64,27 +64,6 @@ const InterestsFilter = () => {
                         <h2 className="filter-dialog__title"><legend>Your interests</legend></h2>
                         <div className="filter-dialog__options">
                             <CheckboxItem 
-                                label="Support"
-                                name="category"
-                                value="support"
-                                selectionState={selection}
-                                onChange={handleChange}
-                            />
-                            <CheckboxItem 
-                                label="Social"
-                                name="category"
-                                value="social"
-                                selectionState={selection}
-                                onChange={handleChange}
-                            />
-                            <CheckboxItem 
-                                label="Learning new things"
-                                name="category"
-                                value="learning"
-                                selectionState={selection}
-                                onChange={handleChange}
-                            />
-                            <CheckboxItem 
                                 label="Staying active"
                                 name="category"
                                 value="active"
@@ -92,9 +71,30 @@ const InterestsFilter = () => {
                                 onChange={handleChange}
                             />
                             <CheckboxItem 
-                                label="Cultural"
+                                label="Socialising"
+                                name="category"
+                                value="social"
+                                selectionState={selection}
+                                onChange={handleChange}
+                            />
+                            <CheckboxItem 
+                                label="Support"
+                                name="category"
+                                value="support"
+                                selectionState={selection}
+                                onChange={handleChange}
+                            />
+                            <CheckboxItem 
+                                label="Visiting new places"
                                 name="category"
                                 value="cultural"
+                                selectionState={selection}
+                                onChange={handleChange}
+                            />
+                            <CheckboxItem 
+                                label="Learning new things"
+                                name="category"
+                                value="learning"
                                 selectionState={selection}
                                 onChange={handleChange}
                             />
