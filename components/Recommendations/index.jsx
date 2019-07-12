@@ -59,7 +59,7 @@ const Recommendations = ({
                     {(favourites && favourites.length > 0) &&
                         <section className="saved">
                             <header className="services__header">
-                                <h2 className="services__section-title">Saved from last time</h2>
+                                <h2 className="services__section-title">Your favourites</h2>
                             </header>
                             <ServicesGrid
                                 services={favourites}

@@ -10,18 +10,18 @@ const Favourite = ({service, favourited, fave, unfave}) =>
                 unfave(service.assetId)
             }} className="favourite-button--labelled">
                 <div className="favourite-button__icon">
-                    <img src={heartFilled} alt="Remove from saved services"/>
+                    <img src={heartFilled} alt=""/>
                 </div>
-                Remove from saved services
+                Remove from favourites
             </button>
             :
             <button onClick={()=>{
                 fave(service)
             }} className="favourite-button--labelled">
                 <div className="favourite-button__icon">
-                    <img src={heart} alt="Save for later"/>
+                    <img src={heart} alt=""/>
                 </div>
-                Save for later
+                Favourite
             </button>
         }
     </>
