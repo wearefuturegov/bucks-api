@@ -128,8 +128,8 @@
 
 .hero__scroll-on{
     position: absolute;
-    bottom: 65px;
-    width: 70px;
+    bottom: 45px;
+    width: 50px;
     left: 0px;
     right: 0px;
     margin: 0px auto 10px auto;
@@ -137,4 +137,10 @@
     animation-delay: 0.5s;
     animation-fill-mode: forwards;
     opacity: 0;
+    @media screen and (min-width: $tablet){
+        bottom: 60px;
+    }
+    @media screen and (min-width: $largeDesktop){
+        width: 70px;
+    }
 }
