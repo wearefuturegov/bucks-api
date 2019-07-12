@@ -2,6 +2,7 @@ import React from "react"
 import App, { Container } from "next/app"
 import Router from "next/router"
 import { initGA, logPageView } from "../lib/analytics"
+import Head from "next/head"
   
 Router.events.on("routeChangeComplete", logPageView)
 Router.events.on("hashChangeComplete", logPageView)

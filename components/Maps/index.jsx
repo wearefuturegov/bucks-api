@@ -1,5 +1,5 @@
 import React, { useState} from "react"
-import { GoogleMap, LoadScript, Marker, InfoWindow, MarkerClusterer } from "@react-google-maps/api"
+import { GoogleMap, LoadScriptNext, Marker, InfoWindow, MarkerClusterer } from "@react-google-maps/api"
 import supportMarker from "./support-marker.svg"
 import activeMarker from "./active-marker.svg"
 import learningMarker from "./learning-marker.svg"
@@ -82,7 +82,7 @@ const WrappedMap = ({lat, lng, services})=> {
     const [activeMarker, changeActiveMarker] = useState(0)
     return(
         <>
-            <LoadScript
+            <LoadScriptNext
                 id="script-loader"
                 googleMapsApiKey={process.env.GOOGLE_CLIENT_KEY}
             >
@@ -112,7 +112,7 @@ const WrappedMap = ({lat, lng, services})=> {
                 >
                     <ServiceClusterer activeMarker={activeMarker} changeActiveMarker={changeActiveMarker} services={services}/>
                 </GoogleMap>
-            </LoadScript>
+            </LoadScriptNext>
         </>
     )
 }
