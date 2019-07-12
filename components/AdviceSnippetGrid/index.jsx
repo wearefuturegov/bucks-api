@@ -11,7 +11,7 @@ const AdviceSnippetGrid = ({snippets}) =>
                 description={snippet.description}
                 href={snippet.href}
                 key={i}
-                // image="https://placehold.it/300x200"
+                image={snippet.imageUrl}
             />
         )}
     </div>
