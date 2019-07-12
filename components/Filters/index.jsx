@@ -42,7 +42,7 @@ const Filters = ({
                     <DaysFilter/>
                     <AccessibilityFilter/>
                 </div>
-                <button className="share-button" onClick={()=>{
+                <button className="share-button--for-list" onClick={()=>{
                     toggleShareDialog(true)
                 }}>Share</button>
             </section>

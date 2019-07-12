@@ -110,7 +110,7 @@ const DetailPage = ({service}) =>{
                 </Column>
                 <Column>
                     <div className="detail__actions">
-                        <button className="share-button" onClick={()=>{
+                        <button className="share-button--for-detail" onClick={()=>{
                             toggleShareDialog(true)
                         }}>Share</button>
                         <Favourite 

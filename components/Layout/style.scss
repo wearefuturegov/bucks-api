@@ -27,8 +27,10 @@ a:focus, input:focus, button:focus{
 
 .visually-hidden{
     position: absolute !important;
-    // top: -9999px !important;
-    left: -9999px !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
 }
 
 .section-title{
