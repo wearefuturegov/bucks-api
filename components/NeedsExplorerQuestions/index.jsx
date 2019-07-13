@@ -14,14 +14,17 @@ const NeedsExplorerQuestions = () => {
 
     const [scrolled, setScrolled] = useState(false)
 
+    const controlScroll = ()=>{
+        if(window.scrollY === 0){
+            setScrolled(false)
+        } else {
+            setScrolled(true)
+        }
+    }
+
     useEffect(()=>{
-        window.addEventListener("scroll", ()=>{
-            if(window.scrollY === 0){
-                setScrolled(false)
-            } else {
-                setScrolled(true)
-            }
-        })
+        controlScroll()
+        window.addEventListener("scroll", controlScroll)
     }, [])
 
     const [categorySelection, changeCategorySelection] = useState([])

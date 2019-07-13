@@ -36,7 +36,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @media screen and (min-width: $tablet){
+    @media screen and (min-width: $largeDesktop){
         padding: 60px 0px;
     }
     &.question--animated{
@@ -104,6 +104,7 @@
     justify-content: center;
     align-items: center;
     border-top: 1px solid $shadow;
+    text-align: center;
     @media screen and (min-width: $tablet){
             padding: 40px 15px;
     }
