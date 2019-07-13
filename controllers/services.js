@@ -20,6 +20,8 @@ const backOfficeFields = {
 
 module.exports = {
     list: async (req, res, next)=>{
+
+
         let query = {}
 
         // Only show published results
@@ -57,44 +59,21 @@ module.exports = {
   
         let perPage = req.query.radius ? 0 : 10
 
-        Promise.all([
-            Service.countDocuments(query),
-            Service.find(findQuery)
-                .lean()
-                // Only return public fields
-                .select(backOfficeFields)
-                // Reorder to bring promoted results to top
-                .limit(perPage)
-                .skip((req.query.page - 1) * perPage)
-        ]).then(([count, services])=>{
-            res.json({
-                status: "OK",
-                count: count,
-                pages: Math.ceil(count / perPage),
-                results: services.map((service) =>{
-                    if(findQuery.geo){
-                        return {
-                            ...service,
-                            // Add an extra field for computed distance
-                            distance: haversine({
-                                latitude: req.query.lat,
-                                longitude: req.query.lng
-                            },{
-                                latitude: service.geo.coordinates[1],
-                                longitude: service.geo.coordinates[0]
-                            },
-                            {
-                                unit: "mile"
-                            })
-                        }
-                    } else {
-                        return service
-                    }
-                })
-            })
-        }).catch((e)=>{
-            next(e)
+
+
+        Service.aggregate([{
+            $facet: {
+                "promoted": [
+                    { $match: findQuery }
+                ],
+                "near": [
+                    { $match: findQuery }
+                ]
+            }
+        }]).then((results)=>{
+            res.json(results)
         })
+
     },
 
     getServiceById: async (req, res, next)=>{
