@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "./style.scss"
 import Button from "../Button"
 import queryString from "query-string"
@@ -11,6 +11,18 @@ import LocationQuestion from "./LocationQuestion"
 import AgeQuestion from "./AgeQuestion"
 
 const NeedsExplorerQuestions = () => {
+
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(()=>{
+        window.addEventListener("scroll", ()=>{
+            if(window.scrollY === 0){
+                setScrolled(false)
+            } else {
+                setScrolled(true)
+            }
+        })
+    }, [])
 
     const [categorySelection, changeCategorySelection] = useState([])
     const handleCategoryChange = (e) => {
@@ -101,7 +113,7 @@ const NeedsExplorerQuestions = () => {
                     />
                 </div>
             </section>
-            <div className="continue-to-recommendations">
+            <div className={(scrolled)? "continue-to-recommendations continue-to-recommendations--visible":"continue-to-recommendations"}>
                 <ContinueToRecommendations
                     keywordSelection={keywordSelection}
                     ageSelection={ageSelection}

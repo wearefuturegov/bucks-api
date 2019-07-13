@@ -90,6 +90,7 @@
     }
 }
 
+
 .continue-to-recommendations{
     width: 100%;
     background: white;
@@ -103,9 +104,14 @@
     justify-content: center;
     align-items: center;
     border-top: 1px solid $shadow;
-
     @media screen and (min-width: $tablet){
             padding: 40px 15px;
+    }
+    
+    transition: 0.3s ease-out;
+    opacity: 0;
+    &.continue-to-recommendations--visible{
+        opacity: 1;
     }
 }
 
