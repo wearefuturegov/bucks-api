@@ -32,8 +32,8 @@ const Service = new mongoose.Schema({
     venue: String,
     area: String,
     postcode: String,
-    latitude: Number,
-    longitude: Number,
+    // latitude: Number,
+    // longitude: Number,
 
     promoted: Boolean,
 

@@ -64,6 +64,7 @@ module.exports = {
                 // Only return public fields
                 .select(backOfficeFields)
                 // Reorder to bring promoted results to top
+                .sort({promoted: -1})
                 .limit(perPage)
                 .skip((req.query.page - 1) * perPage)
         ]).then(([count, services])=>{
