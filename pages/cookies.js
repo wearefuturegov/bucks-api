@@ -23,7 +23,7 @@ const CookiesPage = () =>{
                     },
                 ]}
                 title="Cookies on this website"
-                lede="Learn about the cookies we use and control your settings"
+                reducedBottomPadding
             />  
 
             <div className="container">
@@ -36,11 +36,12 @@ const CookiesPage = () =>{
                     <p>We use three kinds of cookie:</p>
 
                     <h2>Cookies that are needed for the website to work</h2>
-                    <p>These cookies are vital for the website to work. For example, recording whether you accept this statement.</p>
+                    <p>These cookies are vital for the website to work. For example, recording whether you accept the use of cookies.</p>
 
                     <h2>Cookies that improve your experience</h2>
                     <p>These cookies do things like record services that you have favourited, so you can see them first when you open the website later on the same device.</p>
-
+                    <p>These cookies are private to you, and are never shared with us.</p>
+                    
                     <h2>Cookies that measure website use</h2>
                     <p>We use Google Analytics to understand how people are using this website, so we can keep improving it.</p>
                     <p>They record things like:</p>
