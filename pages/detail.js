@@ -86,7 +86,7 @@ const DetailPage = ({service}) =>{
             />  
             <ColumnsWithDivider>
                 <Column>
-                    {url && <Button withBottomMargin href={url}>Visit website</Button>}
+                    {url && <Button  target="blank" withBottomMargin href={url}>Visit website</Button>}
                     {(venue || area || postcode) &&
                         <ServiceDetailItem kind="place">
                             {venue && <p>{venue}</p>}
