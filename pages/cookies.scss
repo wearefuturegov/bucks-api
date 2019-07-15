@@ -1,0 +1,52 @@
+@import "../components/vars";
+
+.two-thirds{
+    margin-bottom: 40px;
+    @media screen and (min-width: $tablet){
+        max-width: 66%;
+        margin-bottom: 60px;
+    }
+
+    color: $darkText;
+
+    p{
+        margin-bottom: 20px;
+        @media screen and (min-width: $tablet){
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+    }
+
+    p + h2{
+        margin-top: 30px;
+        @media screen and (min-width: $tablet){
+            margin-top: 40px;
+        }
+    }
+
+    h2{
+        margin-bottom: 10px;
+        @media screen and (min-width: $tablet){
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+    }
+
+    ul, ol{
+        margin-left: 20px;
+        margin-bottom: 20px;
+        @media screen and (min-width: $tablet){
+            margin-bottom: 25px;
+        }
+    }
+
+    li{
+        padding-left: 20px;
+        margin-bottom: 5px;
+        @media screen and (min-width: $tablet){
+            font-size: 1.1em;
+            // margin-bottom: 10px;
+        }
+    }
+
+}

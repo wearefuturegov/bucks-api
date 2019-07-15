@@ -8,17 +8,17 @@ const Footer = () =>
             <ul className="site-footer__menu">
 
                 <li className="site-footer__menu-item">
-                    <Link href="#test">
-                        <a className="site-footer__menu-link">Privacy statement</a>
+                    <Link href="https://www.buckscc.gov.uk/services/council-and-democracy/privacy-policy/">
+                        <a className="site-footer__menu-link">Privacy policy</a>
                     </Link>
                 </li>
                 <li className="site-footer__menu-item">
-                    <Link href="#test">
+                    <Link href="https://www.buckscc.gov.uk/services/contact-and-complaints/contact-us/">
                         <a className="site-footer__menu-link">Contact us</a>
                     </Link>
                 </li>
                 <li className="site-footer__menu-item">
-                    <Link href="#test">
+                    <Link href="/cookies">
                         <a className="site-footer__menu-link">Cookies</a>
                     </Link>
                 </li>
