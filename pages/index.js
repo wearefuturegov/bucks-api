@@ -19,7 +19,7 @@ const HomePage = () =>
             ctaTitle="Find activities, groups and services near you"
             ctaDescription="Answer a few questions and we'll suggest recommendations in your area"
             ctaHref="/explore-your-needs"
-            ctaLinkText="Get started"
+            ctaLinkText="Start looking"
         />
         <CardGrid
             afterHero
