@@ -73,7 +73,7 @@ const Recommendations = ({
 
                     <section className="services">
                         <header className="services__header">
-                            <h2 className="services__section-title">{services.length} of <strong>{totalServices}</strong> services near {query.formattedLocation ? query.formattedLocation : "you"}</h2>
+                            <h2 className="services__section-title">Showing {services.length} of <strong>{totalServices}</strong> services nearest {query.formattedLocation ? query.formattedLocation : "you"}</h2>
                             {services.length > 0 && 
                                 <Switch
                                     name="show-map"
