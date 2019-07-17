@@ -1,7 +1,7 @@
 @import '../vars';
 
 .hero{
-    background: lighten($darkText, 5);
+    background: lighten($darkText, 10);
     color: $white;
     position: relative;
     // @media screen and (min-width: $tablet){
