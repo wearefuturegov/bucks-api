@@ -4,6 +4,7 @@ import Button from "../Button"
 import queryString from "query-string"
 import Router from "next/router"
 import geocode from "../../lib/geocode-client"
+import { logEvent } from "../../lib/analytics"
 
 import CategoryQuestion from "./CategoryQuestion"
 import KeywordQuestion from "./KeywordQuestion"
@@ -135,7 +136,7 @@ const ContinueToRecommendations= ({categorySelection, keywordSelection, ageSelec
     if ((categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0) && rawLocation){
         return(
             <>
-                <Button>Go to recommendations</Button>
+                <Button onClick={()=>{logEvent("Needs explorer form", "Continue to recommendations")}}>Go to recommendations</Button>
             </>
         )
     } else if (categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0){
