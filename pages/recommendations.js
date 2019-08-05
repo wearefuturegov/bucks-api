@@ -7,6 +7,7 @@ import CentredText from "../components/CentredText"
 import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
 import Link from "next/link"
+import {logEvent} from "../lib/analytics"
 
 const RecommendationsPage = ({snippets, services, query, totalPages, totalServices}) => {
 
@@ -21,6 +22,7 @@ const RecommendationsPage = ({snippets, services, query, totalPages, totalServic
     }, [query])
 
     const handleLoadMore = async () => {
+        logEvent("Recommendations", "Load more results")
         changeLoading(true)
         let loadMoreQuery = {
             ...query,

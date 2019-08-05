@@ -85,6 +85,7 @@ const NeedsExplorerQuestions = () => {
             lat: geocoded.lat,
             lng: geocoded.lng
         }
+        logEvent("Needs explorer form", "Continue to recommendations")
         Router.push(`/recommendations?${queryString.stringify(query)}`).then(() => window.scrollTo(0, 0))
     }
 
@@ -136,7 +137,7 @@ const ContinueToRecommendations= ({categorySelection, keywordSelection, ageSelec
     if ((categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0) && rawLocation){
         return(
             <>
-                <Button onClick={()=>{logEvent("Needs explorer form", "Continue to recommendations")}}>Go to recommendations</Button>
+                <Button>Go to recommendations</Button>
             </>
         )
     } else if (categorySelection.length > 0 || keywordSelection.length > 0 || ageSelection.length > 0){
