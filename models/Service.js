@@ -39,7 +39,7 @@ const Service = new mongoose.Schema({
 
     geo: Object,
 
-    daytime: Boolean,
+    // daytime: Boolean,
     frequency: String,
     days: {type: [String], set: arrayToLower},
 
@@ -60,13 +60,19 @@ const Service = new mongoose.Schema({
     reviewNumber: Number,
     assignedTo: String,
 
-    lafArea: String,
-    ccgLocality: String,
+    // lafArea: String,
+    // ccgLocality: String,
+
+
+    cloCheckMeetings: Boolean,
 
     volDbsCheck: String,
     safeguarding: String,
     healthSafety: String,
     insurance: String,
+
+    confidDataProtect: Boolean,
+    equalityDiversity: Boolean,
 
     legacyCategories: [String]
 
