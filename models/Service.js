@@ -35,7 +35,7 @@ const Service = new mongoose.Schema({
     // latitude: Number,
     // longitude: Number,
 
-    // promoted: Boolean,
+    promoted: Boolean,
 
     geo: Object,
 
