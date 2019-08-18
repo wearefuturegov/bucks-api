@@ -24,7 +24,7 @@ module.exports = {
 
         // Only show published results
         query.reviewStatus = {
-            $ne: "Un-Publish"
+            $ne: "Unpublish"
         }
 
         if(req.query.category && req.query.keywords){
