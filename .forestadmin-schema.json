@@ -281,8 +281,8 @@
       "inverseOf": null,
       "validations": []
     }, {
-      "field": "ccgLocality",
-      "type": "String",
+      "field": "cloCheckMeetings",
+      "type": "Boolean",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -297,6 +297,20 @@
     }, {
       "field": "cloNotes",
       "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "confidDataProtect",
+      "type": "Boolean",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -337,20 +351,6 @@
       "inverseOf": null,
       "validations": []
     }, {
-      "field": "daytime",
-      "type": "Boolean",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": true,
-      "isReadOnly": false,
-      "isRequired": false,
-      "isSortable": true,
-      "isVirtual": false,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
       "field": "description",
       "type": "String",
       "defaultValue": null,
@@ -367,6 +367,20 @@
     }, {
       "field": "email",
       "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "equalityDiversity",
+      "type": "Boolean",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -449,20 +463,6 @@
       "inverseOf": null,
       "validations": []
     }, {
-      "field": "lafArea",
-      "type": "String",
-      "defaultValue": null,
-      "enums": null,
-      "integration": null,
-      "isFilterable": true,
-      "isReadOnly": false,
-      "isRequired": false,
-      "isSortable": true,
-      "isVirtual": false,
-      "reference": null,
-      "inverseOf": null,
-      "validations": []
-    }, {
       "field": "lastUpdated",
       "type": "Date",
       "defaultValue": null,
@@ -487,6 +487,20 @@
       "isRequired": false,
       "isSortable": true,
       "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
+      "field": "longlat",
+      "type": "String",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": false,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": false,
+      "isVirtual": true,
       "reference": null,
       "inverseOf": null,
       "validations": []

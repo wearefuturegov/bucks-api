@@ -40,10 +40,7 @@ const Service = new mongoose.Schema({
 
     geo: {
         type: Object,
-        default: {
-            type:"Point",
-            coordinates:[]
-        }
+        default: {}
     },
 
     // daytime: Boolean,
@@ -69,7 +66,6 @@ const Service = new mongoose.Schema({
 
     // lafArea: String,
     // ccgLocality: String,
-
 
     cloCheckMeetings: Boolean,
 
