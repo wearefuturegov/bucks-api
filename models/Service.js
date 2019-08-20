@@ -38,7 +38,13 @@ const Service = new mongoose.Schema({
 
     promoted: Boolean,
 
-    geo: Object,
+    geo: {
+        type: Object,
+        default: {
+            type:"Point",
+            coordinates:[]
+        }
+    },
 
     // daytime: Boolean,
     frequency: String,
