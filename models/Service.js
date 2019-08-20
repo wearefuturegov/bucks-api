@@ -14,7 +14,8 @@ const Service = new mongoose.Schema({
 
     assetId: {
         type: Number,
-        required: [true, "All services need a unique asset ID"]
+        required: [true, "All services need a unique asset ID"],
+        unique: true
     },
 
     name: String,
