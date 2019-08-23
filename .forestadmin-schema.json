@@ -282,7 +282,7 @@
       "validations": []
     }, {
       "field": "cloCheckMeetings",
-      "type": "Boolean",
+      "type": "String",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -310,7 +310,7 @@
       "validations": []
     }, {
       "field": "confidDataProtect",
-      "type": "Boolean",
+      "type": "String",
       "defaultValue": null,
       "enums": null,
       "integration": null,
@@ -380,7 +380,7 @@
       "validations": []
     }, {
       "field": "equalityDiversity",
-      "type": "Boolean",
+      "type": "String",
       "defaultValue": null,
       "enums": null,
       "integration": null,

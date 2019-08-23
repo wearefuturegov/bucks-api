@@ -67,15 +67,15 @@ const Service = new mongoose.Schema({
     // lafArea: String,
     // ccgLocality: String,
 
-    cloCheckMeetings: Boolean,
+    cloCheckMeetings: String,
 
     volDbsCheck: String,
     safeguarding: String,
     healthSafety: String,
     insurance: String,
 
-    confidDataProtect: Boolean,
-    equalityDiversity: Boolean,
+    confidDataProtect: String,
+    equalityDiversity: String,
 
     legacyCategories: [String]
 
