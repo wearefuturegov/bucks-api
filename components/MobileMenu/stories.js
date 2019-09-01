@@ -17,7 +17,7 @@ storiesOf("Mobile menu", module)
                 },
                 {
                     href: "#",
-                    text: "Explore your needs"
+                    text: "Find support near me"
                 },
                 {
                     href: "#",

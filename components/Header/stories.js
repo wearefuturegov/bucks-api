@@ -12,7 +12,7 @@ storiesOf("Site header", module)
                 },
                 {
                     href: "#",
-                    text: "Explore your needs"
+                    text: "Find support near me"
                 },
                 {
                     href: "#",
@@ -35,7 +35,7 @@ storiesOf("Site header", module)
                 },
                 {
                     href: "#",
-                    text: "Explore your needs"
+                    text: "Find support near me"
                 },
                 {
                     href: "#",

@@ -29,7 +29,7 @@
     margin-bottom: 20px;
     @media screen and (min-width: $desktop){
         font-size: 2.8em;
-        max-width: 66.67%
+        max-width: 63%
         // padding-bottom: 60px;
     }
 }
@@ -39,7 +39,7 @@
     font-size: 1.1em;
     @media screen and (min-width: $desktop){
         font-size: 1.3em;
-        max-width: 66.67%
+        max-width: 63%
     }
 }
 
@@ -54,7 +54,7 @@
 
 .breadcrumbs__item{
     display: inline;
-    font-size: 0.95em;
+    font-size: 0.9em;
     color: $lightText;
     position: relative;
     margin-right: 25px;
@@ -92,9 +92,6 @@
     }
     @media screen and (min-width: $tablet) {
         font-size: 1em;
-    }
-    @media screen and (min-width: $desktop) {
-        font-size: 1.1em;
     }
 }
 
