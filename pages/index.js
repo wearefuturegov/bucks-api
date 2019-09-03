@@ -1,6 +1,6 @@
 import Layout from "../components/Layout"
 import HeroWithImage from "../components/HeroWithImage"
-import hero from "../images/hero.jpg"
+import hero from "./hero.jpg"
 import CallToAction from "../components/CallToAction"
 import NarrowCallToAction from "../components/NarrowCallToAction"
 import PageBodyContent from "../components/PageBodyContent"
