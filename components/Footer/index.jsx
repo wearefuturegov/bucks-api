@@ -11,10 +11,6 @@ const SiteFooter = styled.footer`
         padding: 60px 20px;
         font-size: 0.95em;
     }
-    @media screen and (min-width: ${theme.desktop}){
-        padding: 80px 20px;
-    }
-
     a{
         color: ${theme.lightText};
         &:hover{
