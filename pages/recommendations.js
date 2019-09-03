@@ -1,46 +1,30 @@
 import Layout from "../components/Layout"
-import HeroWithColor from "../components/HeroWithColor"
-import PageBodyContent, { UserContent } from "../components/PageBodyContent"
+import fetch from "isomorphic-unfetch"
 
 const RecommendationsPage = () => 
     <Layout>
-
-        <HeroWithColor
-            breadcrumbs={[
-                {
-                    href: "/",
-                    label: "Home"
-                },
-                {
-                    href: "/",
-                    label: "Support near you"
-                },
-                {
-                    label: "Recommendations"
-                }
-            ]}
-            headline="Your recommendations"
-            deck="Answer a few questions to find activities and support groups in your area"
-            />
-        <PageBodyContent
-            sidebarItems={[
-                {
-                    href: "/",
-                    label: "Paying for care"
-                },
-                {
-                    href: "/",
-                    label: "Bucks family information service"
-                }
-            ]}
-            >
-            <UserContent>
-                <p>Yeah, but John, if The Pirates of the <a href="#">testing link</a> Caribbean breaks down, the pirates don’t eat the tourists. Must go faster... go, go, go, go, go! What do they got in there? King Kong? Forget the fat lady! You're obsessed with the fat lady! Drive us out of here!</p>
-                <h2>Testing</h2>
-                <p>Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists.</p>
-            </UserContent>
-        </PageBodyContent>
-        
+        Recommendations
     </Layout>
+
+RecommendationsPage.getInitialProps = async ({ req, query }) =>{
+
+    let lat
+    let lng
+    if(!parseFloat(query.lat) || !parseFloat(query.lng)){
+        let res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${query.location}, Buckinghamshire&region=uk&key=${process.env.GOOGLE_API_KEY}`)
+        let data = await res.json()
+        lat = data.results[0].geometry.location.lat
+        lng = data.results[0].geometry.location.lng
+    } else {
+        lat = query.lat
+        lng = query.lng
+    }
+
+    console.log(lat, lng)
+
+    return {
+
+    }
+}
 
 export default RecommendationsPage
