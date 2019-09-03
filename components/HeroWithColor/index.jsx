@@ -54,7 +54,7 @@ const HeroWithColor = ({
 }) =>
     <Hero>
         <HeroInner>
-        <Breadcrumbs breadcrumbs={breadcrumbs}/>
+            <Breadcrumbs breadcrumbs={breadcrumbs}/>
             <TextBox>
                 <Headline>{headline}</Headline>
                 <Deck>{deck}</Deck>

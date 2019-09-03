@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import theme from "../_theme"
-import Link from "next/link"
 import Sidebar from "../Sidebar"
 
 const Outer = styled.div`
