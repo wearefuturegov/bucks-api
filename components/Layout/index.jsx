@@ -1,10 +1,11 @@
 import React, {useEffect, useRef} from "react"
+import PhaseBanner from "../PhaseBanner"
 import Header from "../Header"
 import Footer from "../Footer"
 import styled, { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
-    body{
+    *{
         font-family: "Open Sans", sans-serif;
         margin: 0;
         padding: 0;
@@ -32,6 +33,7 @@ const FocusOnMount = ({children}) => {
 const Layout = ({ children }) =>
     <FocusOnMount>
         <GlobalStyle/>
+        <PhaseBanner/>
         <Header/>
         {children}
         <Footer/>
