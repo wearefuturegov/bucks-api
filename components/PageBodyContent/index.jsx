@@ -59,12 +59,13 @@ const ContentArea = styled.article`
             background: ${theme.focus};               
         }
     }
-    *:first-child{
+    /* TODO: fix these */
+    /* &:first-child{
         margin-top: 0px !important;
     }
-    *:last-child{
+    &:last-child{
         margin-bottom: 0px !important;
-    }
+    } */
 `
 
 const PageBodyContent = ({

@@ -36,7 +36,7 @@ const HomePage = () =>
                 },
             ]}
             >
-            <p>Form goes here</p>
+            <FindSupportForm/>
         </PageBodyContent>
         
 
