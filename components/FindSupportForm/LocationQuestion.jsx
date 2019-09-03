@@ -15,9 +15,14 @@ const Input = styled.input`
     border-radius: 2px;
     display: block;
     width: 100%;
+    &:focus{
+        outline: none;
+        box-shadow: 0 0 0 3px ${theme.focus};
+    }
 `
 
 const LocationQuestion = ({
+    support,
     setLatLng
 }) => {
 
@@ -26,27 +31,24 @@ const LocationQuestion = ({
     let autocomplete = null
 
     useEffect(() => {
-        autocomplete = new window.google.maps.places.Autocomplete(
-            inputRef.current,
-            { types: ["geocode"] }
-        )
+        autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, { 
+            types: ["geocode"]
+        })
+        autocomplete.setComponentRestrictions({"country": ["gb"]})
         autocomplete.addListener("place_changed", handlePlaceChanged)
     }, [])
 
     const handlePlaceChanged = () => {
         const place = autocomplete.getPlace()
-        console.log("place changed: ", place)
-
         const lat = place.geometry.location.lat()
         const lng = place.geometry.location.lng()
-
         setLatLng([lat, lng])
     }
 
     return(
         <Outer>
             <label htmlFor="location">
-                <Question>3. Where do you want to look?</Question>
+                <Question>{support ? "3" : "2"}. Where do you want to look?</Question>
             </label>
             <Hint>Give a town or postcode in Buckinghamshire.</Hint>
             <Input 
@@ -58,6 +60,5 @@ const LocationQuestion = ({
         </Outer>
     )
 }
-
 
 export default LocationQuestion

@@ -1,9 +1,6 @@
 import React from "react"
 import Checkbox, { Checkboxes } from "./Checkbox"
-import styled from "styled-components"
-import theme from "../_theme"
 import { Fieldset, Hint, Question } from "./utils"
-
 
 const InterestsQuestion = ({
     support,
@@ -29,7 +26,7 @@ const InterestsQuestion = ({
                     value="support"
                     checked={support}
                     onChange={handleSupportChange}
-                    >
+                >
                     Support with daily tasks
                 </Checkbox>
 

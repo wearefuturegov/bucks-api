@@ -18,11 +18,12 @@ const Form = () => {
             {support && <SupportQuestion/>}
 
             <LocationQuestion
+                support={support}
                 setLatLng={setLatLng}
             />
 
-            <input type="text" name="lat" value={latLng[0]} readOnly/>
-            <input type="text" name="lng" value={latLng[1]} readOnly/>
+            <input type="hidden" name="lat" value={latLng[0]} readOnly/>
+            <input type="hidden" name="lng" value={latLng[1]} readOnly/>
 
             <Button type="submit">See recommendations</Button>
         </form>
