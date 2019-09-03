@@ -47,7 +47,7 @@ const CardGrid = ({
                         headline={card.headline}
                         deck={card.deck}
                         href={card.href}
-                        />
+                    />
                 )}
             </Grid>
         </Inner>
