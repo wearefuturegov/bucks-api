@@ -26,7 +26,7 @@ const Input = styled.input`
         display: block;
         height: 23px;
         width: 23px;
-        left: 4px;
+        left: 5px;
         top: 5px;
         background-image: url(${tick});
         background-size: contain;

@@ -1,8 +1,11 @@
-/* global google */
-import React, {useRef} from "react"
+import React, {useRef, useEffect} from "react"
 import { Hint, Question } from "./utils"
 import styled from "styled-components"
 import theme from "../_theme"
+
+const Outer = styled.div`
+    margin-bottom: 55px;
+`
 
 const Input = styled.input`
     margin-top: 20px;
@@ -14,50 +17,47 @@ const Input = styled.input`
     width: 100%;
 `
 
-class LocationQuestion extends React.Component{
+const LocationQuestion = ({
+    setLatLng
+}) => {
 
-    constructor(props){
-        super(props)
-        this.autocompleteInput = React.createRef();
-        this.autocomplete = null;
-        this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
-    }
+    const inputRef = useRef(false)
 
-    componentDidMount() {
-        this.autocomplete = new google.maps.places.Autocomplete(
-            this.autocompleteInput.current,
+    let autocomplete = null
+
+    useEffect(() => {
+        autocomplete = new window.google.maps.places.Autocomplete(
+            inputRef.current,
             { types: ["geocode"] }
-        );
-        this.autocomplete.addListener("place_changed", this.handlePlaceChanged);
-    }
+        )
+        autocomplete.addListener("place_changed", handlePlaceChanged)
+    }, [])
 
-    handlePlaceChanged() {
-        const place = this.autocomplete.getPlace();
+    const handlePlaceChanged = () => {
+        const place = autocomplete.getPlace()
         console.log("place changed: ", place)
-        // this.props.onPlaceChanged(place);
+
+        const lat = place.geometry.location.lat()
+        const lng = place.geometry.location.lng()
+
+        setLatLng([lat, lng])
     }
 
-
-    render(){
     return(
-        <>
-
-            <label><Question>3. Where do you want to look?</Question></label>
-            <Hint>Give a town or postcode in Buckinghamshire</Hint>
-
+        <Outer>
+            <label htmlFor="location">
+                <Question>3. Where do you want to look?</Question>
+            </label>
+            <Hint>Give a town or postcode in Buckinghamshire.</Hint>
             <Input 
-                ref={this.autocompleteInput}
+                ref={inputRef}
                 id="autocomplete"
                 name="location" 
-                placeholder="Town or postcode"
+                required
             />
-
-        </>
+        </Outer>
     )
-    }
-
 }
-
 
 
 export default LocationQuestion
