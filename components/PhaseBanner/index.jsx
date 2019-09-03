@@ -31,6 +31,11 @@ const StyledLink = styled.a`
     &:hover{
         text-decoration: none;
     }
+    &:focus{
+        outline: 3px solid ${theme.darkText};
+        background: ${theme.darkText};
+        color: ${theme.focus};
+    }
 `
 
 const PhaseBanner = () =>
