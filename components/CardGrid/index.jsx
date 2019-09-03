@@ -7,7 +7,7 @@ import Card from "../Card"
 
 const Outer = styled.section`
     background-color: ${theme.background};
-    padding: 20px 20px;
+    padding: 40px 20px;
     @media screen and (min-width: ${theme.tablet}){
         padding: 50px 20px;
     }
@@ -28,13 +28,18 @@ const Grid = styled.ul`
     }
 `
 
+const Headline = styled.h2`
+    margin-bottom: 25px;
+    color: ${theme.darkText};
+`
+
 const CardGrid = ({
     headline,
     cards
 }) =>
     <Outer>
         <Inner>
-            {headline && <Headline>Card grid</Headline>}
+            {headline && <Headline>{headline}</Headline>}
             <Grid>
                 {cards.map(card => 
                     <Card

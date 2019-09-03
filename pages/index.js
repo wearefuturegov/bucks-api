@@ -27,6 +27,7 @@ const HomePage = () =>
 
         
         <CardGrid
+            headline="Upcoming events"
             cards={[
                 {
                     headline: "My health and wellbeing",
