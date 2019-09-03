@@ -3,7 +3,7 @@ import styled from "styled-components"
 import theme from "../_theme"
 import Breadcrumbs from "../Breadcrumbs"
 
-const Hero = styled.section`
+const Outer = styled.section`
     padding: 50px 20px;
     background-size: cover;
     background-position: center;
@@ -16,7 +16,7 @@ const Hero = styled.section`
     }
 `
 
-const HeroInner = styled.div`
+const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
@@ -50,7 +50,7 @@ const Headline = styled.h1`
 const Deck = styled.p`
     margin-bottom: 10px;
     line-height: 1.6;
-    color: ${theme.darkText};
+    color: ${theme.lightText};
     @media screen and (min-width: ${theme.tablet}){
         font-size: 1.15em;
     }
@@ -65,14 +65,14 @@ const HeroWithImage = ({
     deck,
     image
 }) =>
-    <Hero image={image}>
-        <HeroInner>
+    <Outer image={image}>
+        <Inner>
             <TextBox>
                 <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 <Headline>{headline}</Headline>
                 <Deck>{deck}</Deck>
             </TextBox>
-        </HeroInner>
-    </Hero>
+        </Inner>
+    </Outer>
     
 export default HeroWithImage

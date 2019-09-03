@@ -4,6 +4,8 @@ import hero from "../images/hero.jpg"
 import CallToAction from "../components/CallToAction"
 import NarrowCallToAction from "../components/NarrowCallToAction"
 import PageBodyContent from "../components/PageBodyContent"
+import CardGrid from "../components/CardGrid"
+import Card from "../components/Card";
 
 const HomePage = () => 
     <Layout>
@@ -23,6 +25,26 @@ const HomePage = () =>
             image={hero}
             />
 
+        
+        <CardGrid
+            cards={[
+                {
+                    headline: "My health and wellbeing",
+                    deck: "People are often worried that they won't be able to adopt because of their age or health. The reality is that few people are turned away for these reasons.",
+                    href:"/"
+                },
+                {
+                    headline: "Time and money",
+                    deck: "Affording the time is often a bigger consideration for adopters than affording the costs.",
+                    href:"/"
+                },
+                {
+                    headline: "My family and background",
+                    deck: "People are often worried that they won't be able to adopt because of their age or health. The reality is that few people are turned away for these reasons.",
+                    href:"/"
+                },
+            ]}
+            />
 
         <PageBodyContent>
             <p>Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists.</p>

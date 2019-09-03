@@ -5,14 +5,14 @@ import logo from "./logo.svg"
 import eyeglass from "./eyeglass.svg"
 import theme from "../_theme"
 
-const Header = styled.header`
+const Outer = styled.header`
     background: ${theme.darkText};
     color: white;
     width: 100%;
     padding: 20px;
 `
 
-const HeaderInner = styled.div`
+const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
@@ -20,6 +20,7 @@ const HeaderInner = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
     }
 `
 
@@ -124,8 +125,8 @@ const MenuItem = ({href, children}) =>
     <MenuListItem><Link href={href}><MenuLink href={href}>{children}</MenuLink></Link></MenuListItem>
 
 const SiteHeader = () =>
-    <Header>
-        <HeaderInner>
+    <Outer>
+        <Inner>
 
             <Link href="/">
                 <MastheadLink href="/">
@@ -147,7 +148,7 @@ const SiteHeader = () =>
                 </Menu>
             </Nav>
 
-        </HeaderInner>
-    </Header>
+        </Inner>
+    </Outer>
 
 export default SiteHeader

@@ -1,6 +1,6 @@
 export default {
     darkText: "#1E2428",
-    lightText: "#555F66",
+    lightText: "#43484D",
     link: "#20825F",
     shadow: "#D8DDE0",
     background: "#F0F3F2",

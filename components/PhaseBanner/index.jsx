@@ -2,13 +2,13 @@ import React from "react"
 import styled from "styled-components"
 import theme from "../_theme"
 
-const Banner = styled.section`
+const Outer = styled.section`
     background: ${theme.focus};
     color: ${theme.darkText};
     padding: 10px 20px;
 `
 
-const BannerInner = styled.div`
+const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
@@ -39,11 +39,11 @@ const StyledLink = styled.a`
 `
 
 const PhaseBanner = () =>
-    <Banner>
-        <BannerInner>
+    <Outer>
+        <Inner>
             <Tag>Beta</Tag>
             <p>This is a new website - <StyledLink href="/feedback">your feedback</StyledLink> will help us improve it.</p>
-        </BannerInner>
-    </Banner>
+        </Inner>
+    </Outer>
 
 export default PhaseBanner

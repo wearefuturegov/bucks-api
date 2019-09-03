@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import theme from "../_theme"
 
-const SiteFooter = styled.footer`
+const Outer = styled.footer`
     background: ${theme.shadow};
     padding: 40px 20px;
     font-size: 0.9em;
@@ -23,7 +23,7 @@ const SiteFooter = styled.footer`
     }
 `
 
-const FooterInner = styled.div`
+const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
@@ -41,8 +41,8 @@ const MenuItem = styled.li`
 `
 
 const Footer = () =>
-    <SiteFooter>
-        <FooterInner>
+    <Outer>
+        <Inner>
             <Menu>
                 <MenuItem><a href="/">Contact us</a></MenuItem>
                 <MenuItem><a href="/">Cookies</a></MenuItem>
@@ -51,8 +51,8 @@ const Footer = () =>
                 <MenuItem><a href="/">Modern slavery statement</a></MenuItem>
             </Menu>
             <p>Built and maintained by <a href="http://buckscc.gov.uk">Buckinghamshire County Council</a></p>
-        </FooterInner>
+        </Inner>
 
-    </SiteFooter>
+    </Outer>
 
 export default Footer

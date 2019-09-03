@@ -38,7 +38,7 @@ const Headline = styled.h1`
 const Deck = styled.p`
     margin-bottom: 10px;
     line-height: 1.6;
-    color: ${theme.darkText};
+    color: ${theme.lightText};
     @media screen and (min-width: ${theme.tablet}){
         font-size: 1.15em;
     }
