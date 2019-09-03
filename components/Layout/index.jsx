@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react"
+import React from "react"
 import PhaseBanner from "../PhaseBanner"
 import Header from "../Header"
 import Footer from "../Footer"
@@ -12,32 +12,13 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 `
-
-const Div = styled.div`
-    outline: 0 !important;
-    &:focus{
-        outline: 0 !important;
-    }
-`
-
-// TODO: this isn't working
-const FocusOnMount = ({children}) => {
-    const ref = useRef(null)
-    useEffect(()=>{ref.current.focus()})
-    return(
-        <Div ref={ref} tabIndex="-1">
-            {children}
-        </Div>
-    )
-}
-
 const Layout = ({ children }) =>
-    <FocusOnMount>
+    <>
         <GlobalStyle/>
         <PhaseBanner/>
         <Header/>
         {children}
         <Footer/>
-    </FocusOnMount>
+    </>
 
 export default Layout
