@@ -1,81 +1,7 @@
-import {useState, useEffect} from "react"
-import Head from "next/head"
-import Layout from "../components/Layout"
-import PageHeader from "../components/PageHeader"
-import Recommendations from "../components/Recommendations"
-import CentredText from "../components/CentredText"
-import fetch from "isomorphic-unfetch"
-import queryString from "query-string"
-import Link from "next/link"
-import {logEvent} from "../lib/analytics"
-
-const RecommendationsPage = ({snippets, services, query, totalPages, totalServices}) => {
-
-    const [page, changePage] = useState(1)
-    const [moreServices, changeMoreServices] = useState([])
-    const [loading, changeLoading] = useState(false)
-
-    // When URL query changes, start afresh
-    useEffect(()=>{
-        changePage(1)
-        changeMoreServices([])
-    }, [query])
-
-    const handleLoadMore = async () => {
-        logEvent("Recommendations", "Load more results")
-        changeLoading(true)
-        let loadMoreQuery = {
-            ...query,
-            page: page + 1
-        }
-        const res = await fetch(`/api/services?${queryString.stringify(loadMoreQuery)}`)
-        const newServices = await res.json()
-        // Update state
-        changeMoreServices(moreServices.concat(newServices.results))
-        changePage(page+1)
-        changeLoading(false)
-    }
-
-    return(
-        <Layout withHeader withFooter>
-            <Head>
-                <title>Recommendations | Care and support for adults | Buckinghamshire County Council</title>
-                <meta property="og:title" content="Your recommendations" />
-                <meta property="og:description" content="Answer a few questions and we'll suggest recommendations in your area." />
-            </Head>
-            <PageHeader 
-                reducedBottomPadding
-                breadcrumbs={[
-                    {
-                        title: "Care for adults",
-                        href: "/"
-                    },
-                    {
-                        title: "Services in your area"
-                    },
-                ]}
-                title="Your recommendations"
-            />
-            <Recommendations 
-                snippets={snippets}
-                services={services.concat(moreServices)} 
-                query={query}
-                totalServices={totalServices}
-                onLoadMore={handleLoadMore}
-                moreToLoad={page < totalPages}
-                loading={loading}
-            />
-            <CentredText
-                title="Is anything missing?"
-            >
-                If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=new"><a>request it be added</a></Link>.
-            </CentredText>
-
-        </Layout>
-    )
+const RecommendationsPage = ({}) => {
 }
 
-export const getInitialProps = async ({req, query}) => {
+RecommendationsPage.getInitialProps = async ({req, query}) => {
     const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : ""    
     const endpoints = [
         `${baseUrl}/api/services?${queryString.stringify(query)}`,
@@ -93,7 +19,5 @@ export const getInitialProps = async ({req, query}) => {
         totalPages: services.pages
     }
 }
-
-RecommendationsPage.getInitialProps = getInitialProps
 
 export default RecommendationsPage

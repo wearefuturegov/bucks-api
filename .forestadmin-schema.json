@@ -282,7 +282,7 @@
       "validations": []
     }, {
       "field": "cloCheckMeetings",
-      "type": "String",
+      "type": "Boolean",
       "defaultValue": null,
       "enums": null,
       "integration": null,

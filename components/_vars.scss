@@ -1,75 +1,25 @@
 
-// typography
-$darkText: #1E2428;
-$lightText: #555F66;
-// links
-$link: #20825F;
-// backgrounds
-$shadow: #D8DDE0;
-$background: #F0F3F2;
-$white: #ffffff;
-// psuedostates
-$focus: #ffb81C;
-$activeCard: #fafafa;
+// $darkText: #1E2428;
+// $lightText: #555F66;
+// $link: #20825F;
+// $shadow: #D8DDE0;
+// $background: #F0F3F2;
+// $white: #ffffff;
 
-// service colours
-$active: #98D9CA;
-$support: #F7ADB6;
-$learning: #BBEAFA;
-$cultural: #FAC9A3;
-$social: #A9BAE1;
+// $focus: #ffb81C;
+// $activeCard: #fafafa;
 
-$maxWidth: 1000px;
+// // service colours
+// $active: #98D9CA;
+// $support: #F7ADB6;
+// $learning: #BBEAFA;
+// $cultural: #FAC9A3;
+// $social: #A9BAE1;
 
-// breakpoints
-$smartphone: 250px;
-$tablet: 750px;
-$desktop: 1000px;
-$largeDesktop: 1500px;
+// $maxWidth: 1000px;
 
-
-// base font sizes
-$title: 2em;
-$subtitle: 1.5em;
-$lede: 1.3em;
-$paragraph: 1em;
-$small: 0.95em;
-
-// desktop font sizes
-$title-d: 2.813em;
-$subtitle-d: 1.875em;
-$lede-d: 1.5em;
-$paragraph-d: 1.188em;
-$small-d: 1.125em;
-
-// font-size mixins
-@mixin smallText {
-    font-size: $small;
-    @media screen and (min-width: $tablet){
-        font-size: $small-d;
-    }
-}
-@mixin paragraphText {
-    font-size: $paragraph;
-    @media screen and (min-width: $tablet){
-        font-size: $paragraph-d;
-    }
-}
-@mixin ledeText {
-    font-size: $lede;
-    @media screen and (min-width: $tablet){
-        font-size: $lede-d;
-    }
-}
-@mixin subtitleText {
-    font-size: $subtitle;
-    @media screen and (min-width: $tablet){
-        font-size: $subtitle-d;
-    }
-}
-@mixin titleText {
-    font-size: $title;
-    @media screen and (min-width: $tablet){
-        font-size: $title-d;
-    }
-}
+// // breakpoints
+// $smartphone: 250px;
+// $tablet: 750px;
+// $desktop: 1000px;
+// $largeDesktop: 1500px;
