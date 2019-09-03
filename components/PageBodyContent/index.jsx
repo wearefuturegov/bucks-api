@@ -49,9 +49,6 @@ const ContentArea = styled.article`
         color: ${theme.darkText};
         margin-bottom: 15px;
     }
-    *:first-child{
-        margin-top: 0px !important;
-    }
     a{
         color: ${theme.link};
         font-weight: bold;
@@ -63,6 +60,12 @@ const ContentArea = styled.article`
             background: ${theme.focus};               
         }
     }
+    *:first-child{
+        margin-top: 0px !important;
+    }
+    *:last-child{
+        margin-bottom: 0px !important;
+    }
 `
 
 const PageBodyContent = ({
@@ -72,7 +75,7 @@ const PageBodyContent = ({
     <Outer>
         <Columns>
             <ContentArea>{children}</ContentArea>
-            <Sidebar items={sidebarItems}/>
+            {sidebarItems && <Sidebar items={sidebarItems}/>}
         </Columns>
     </Outer>
 

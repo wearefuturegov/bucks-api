@@ -3,6 +3,7 @@ import HeroWithImage from "../components/HeroWithImage"
 import hero from "../images/hero.jpg"
 import CallToAction from "../components/CallToAction"
 import NarrowCallToAction from "../components/NarrowCallToAction"
+import PageBodyContent from "../components/PageBodyContent"
 
 const HomePage = () => 
     <Layout>
@@ -21,6 +22,13 @@ const HomePage = () =>
             deck="Answer a few questions to find activities and support groups in your area"
             image={hero}
             />
+
+
+        <PageBodyContent>
+            <p>Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists.</p>
+        </PageBodyContent>
+
+
 
         <NarrowCallToAction 
             headline="Come to an event"
