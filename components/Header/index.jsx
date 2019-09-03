@@ -37,11 +37,12 @@ const MastheadLink = styled.a`
 const Logo = styled.img`
     max-width: 80px;
     margin-right: 15px;
+    flex: 0 0 auto;
 `
 
 const ServiceName = styled.h1`
     font-size: 1.5em;
-    flex: 1;
+    flex: 0 0 auto;
 `
 
 const Nav = styled.nav`
@@ -89,6 +90,7 @@ const SearchInput = styled.input`
     font-size: 0.9em;
     margin-bottom: 15px;
     &:focus{
+        outline: none;
         box-shadow: 0px 0px 0px 3px ${theme.focus};
     }
 `

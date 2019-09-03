@@ -37,7 +37,7 @@ const TextBox = styled.div`
 const Headline = styled.h1`
     margin-bottom: 10px;
     color: ${theme.darkText};
-    font-size: 1.5em;
+    font-size: 1.6em;
     @media screen and (min-width: ${theme.tablet}){
         font-size: 1.9em;
     }

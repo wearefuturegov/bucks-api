@@ -20,6 +20,7 @@ const Div = styled.div`
     }
 `
 
+// TODO: this isn't working
 const FocusOnMount = ({children}) => {
     const ref = useRef(null)
     useEffect(()=>{ref.current.focus()})

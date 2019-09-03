@@ -39,7 +39,7 @@ const BreadcrumbLink = styled.a`
 const Breadcrumbs = ({breadcrumbs}) =>
     <BreadcrumbList>
         {breadcrumbs.map(breadcrumb => 
-            <BreadcrumbItem>
+            <BreadcrumbItem key={breadcrumb.label}>
                 {breadcrumb.href ? <Link href={breadcrumb.href}><BreadcrumbLink href={breadcrumb.href}>{breadcrumb.label}</BreadcrumbLink></Link> : breadcrumb.label}
             </BreadcrumbItem>
         )}

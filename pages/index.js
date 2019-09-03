@@ -1,6 +1,8 @@
 import Layout from "../components/Layout"
 import HeroWithImage from "../components/HeroWithImage"
 import hero from "../images/hero.jpg"
+import CallToAction from "../components/CallToAction"
+import NarrowCallToAction from "../components/NarrowCallToAction"
 
 const HomePage = () => 
     <Layout>
@@ -19,6 +21,18 @@ const HomePage = () =>
             deck="Answer a few questions to find activities and support groups in your area"
             image={hero}
             />
+
+        <NarrowCallToAction 
+            headline="Come to an event"
+            message="If you feel ready to take the next step, come along to hear from those who have adopted and meet our team."
+            label="See upcoming events"
+            href="/"
+            />
+
+        <CallToAction headline="Get in touch">
+            <p>If you have any questions about adoption, you can email us at <a href="#">info@bucksadoption.buckscc.gov.uk</a> or call <strong>0796 775 7294</strong>.</p>
+        </CallToAction>
+
     </Layout>
 
 

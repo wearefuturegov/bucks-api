@@ -39,7 +39,7 @@ const Sidebar = ({
         <SidebarHeadline>Related content</SidebarHeadline>
         <SidebarList>
             {items.map(item => 
-                <SidebarItem>
+                <SidebarItem key={item.label}>
                     {item.href ? <Link href={item.href}><SidebarLink href={item.href}>{item.label}</SidebarLink></Link> : item.label}
                 </SidebarItem>
             )}

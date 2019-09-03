@@ -15,19 +15,17 @@ const HeroInner = styled.div`
 `
 
 const TextBox = styled.div`
-    max-width: 80%;
     padding: 20px 0px;
     @media screen and (min-width: ${theme.tablet}){
         padding: 50px 0px;
         max-width: 55%;
     }
-
 `
 
 const Headline = styled.h1`
     margin-bottom: 10px;
     color: ${theme.darkText};
-    font-size: 1.5em;
+    font-size: 1.6em;
     @media screen and (min-width: ${theme.tablet}){
         font-size: 1.9em;
     }

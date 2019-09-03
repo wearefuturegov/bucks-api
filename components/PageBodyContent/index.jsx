@@ -63,7 +63,6 @@ const ContentArea = styled.article`
             background: ${theme.focus};               
         }
     }
-
 `
 
 const PageBodyContent = ({
