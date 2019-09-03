@@ -2,7 +2,7 @@ import React from "react"
 import PhaseBanner from "../PhaseBanner"
 import Header from "../Header"
 import Footer from "../Footer"
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
     *{
