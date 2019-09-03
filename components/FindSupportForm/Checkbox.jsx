@@ -71,7 +71,7 @@ const CheckboxItem = ({
         />
         <Label 
             htmlFor={`${name}-${value}`}
-            >
+        >
             {children}
         </Label>
     </Outer>

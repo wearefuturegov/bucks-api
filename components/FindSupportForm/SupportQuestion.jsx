@@ -1,7 +1,6 @@
 import React from "react"
 import Checkbox, { Checkboxes } from "./Checkbox"
 import styled from "styled-components"
-import theme from "../_theme"
 import { Fieldset, Hint, Question } from "./utils"
 
 const FadingFieldset = styled(Fieldset)`
