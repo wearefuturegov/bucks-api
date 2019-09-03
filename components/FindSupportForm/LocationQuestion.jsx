@@ -1,9 +1,11 @@
 import React from "react"
+import { Hint, Question } from "./utils"
 
 const LocationQuestion = () =>
     <>
 
-        <label>Where do you want to look?</label>
+        <label><Question>3. Where do you want to look?</Question></label>
+        <Hint>Give a town or postcode in Buckinghamshire</Hint>
         <input name="location"/>
 
     </>

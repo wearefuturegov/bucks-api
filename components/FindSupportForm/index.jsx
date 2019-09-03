@@ -1,18 +1,23 @@
-import React from "react"
+import React, {useState} from "react"
 import InterestsQuestion from "./InterestsQuestion"
 import SupportQuestion from "./SupportQuestion"
 import LocationQuestion from "./LocationQuestion"
 
-const Form = () =>
-    <form>
+const Form = () => {
+    const [support, setSupport] = useState(false)
 
-        <InterestsQuestion/>
-        <SupportQuestion/>
-        <LocationQuestion/>
+    return(
+        <form method="get" action="/recommendations">
+            <InterestsQuestion
+                support={support}
+                setSupport={setSupport}
+            />
+            {support && <SupportQuestion/>}
+            <LocationQuestion/>
+            <button type="submit">See recommendations</button>
+        </form>
+    )
+}
 
-        <button type="submit">See recommendations</button>
-
-
-    </form>
 
 export default Form

@@ -32,8 +32,20 @@ const ContentArea = styled.article`
             margin-bottom: 0px;
         }
     }
+`
 
-    /* Inner content styling */
+const PageBodyContent = ({
+    sidebarItems,
+    children
+}) =>
+    <Outer>
+        <Columns>
+            <ContentArea>{children}</ContentArea>
+            {sidebarItems && <Sidebar items={sidebarItems}/>}
+        </Columns>
+    </Outer>
+
+export const UserContent = styled.div`
     p{
         color: ${theme.darkText};
         margin-bottom: 20px;
@@ -59,24 +71,12 @@ const ContentArea = styled.article`
             background: ${theme.focus};               
         }
     }
-    /* TODO: fix these */
-    /* &:first-child{
+    &:first-child{
         margin-top: 0px !important;
     }
     &:last-child{
         margin-bottom: 0px !important;
-    } */
+    }
 `
-
-const PageBodyContent = ({
-    sidebarItems,
-    children
-}) =>
-    <Outer>
-        <Columns>
-            <ContentArea>{children}</ContentArea>
-            {sidebarItems && <Sidebar items={sidebarItems}/>}
-        </Columns>
-    </Outer>
 
 export default PageBodyContent
