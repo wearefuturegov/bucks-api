@@ -27,7 +27,7 @@ const TextBox = styled.div`
     padding: 20px;
     max-width: 80%;
     @media screen and (min-width: ${theme.tablet}){
-        max-width: 50%;
+        max-width: 55%;
     }
     @media screen and (min-width: ${theme.desktop}){
         padding: 25px;
@@ -42,19 +42,20 @@ const Headline = styled.h1`
         font-size: 1.9em;
     }
     @media screen and (min-width: ${theme.desktop}){
-        font-size: 2.3em;
+        font-size: 2.4em;
         margin-bottom: 15px;
     }
 `
 
 const Deck = styled.p`
     margin-bottom: 10px;
+    line-height: 1.6;
     color: ${theme.darkText};
     @media screen and (min-width: ${theme.tablet}){
-        font-size: 1.1em;
+        font-size: 1.15em;
     }
     @media screen and (min-width: ${theme.desktop}){
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
 `
 
