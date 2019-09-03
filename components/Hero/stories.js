@@ -14,7 +14,7 @@ storiesOf("Hero", module)
                 },
                 {
                     href: "#",
-                    text: "Find support near me"
+                    text: "Explore your needs"
                 },
                 {
                     href: "#",
@@ -27,7 +27,7 @@ storiesOf("Hero", module)
             ]}
             ctaTitle="Find services in your area"
             ctaDescription="Get an idea of what help is available by answering these questions."
-            ctaHref="/"
-            ctaLinkText="Find support near me"
+            ctaHref="/explore-your-needs"
+            ctaLinkText="Explore your needs"
         />
     ))

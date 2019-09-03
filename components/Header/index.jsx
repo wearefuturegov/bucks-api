@@ -15,7 +15,7 @@ const Header = ({inverted}) => {
             text: "Information and advice"
         },
         {
-            href: "/",
+            href: "/explore-your-needs",
             text: "Things to do"
         },
         {
