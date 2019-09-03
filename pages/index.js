@@ -1,7 +1,9 @@
-import Header from "../components/Header"
+import Layout from "../components/Layout"
 
 const HomePage = () => 
-    <Header/>
+    <Layout>
+        Testing
+    </Layout>
 
 
 export default HomePage
