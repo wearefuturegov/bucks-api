@@ -104,7 +104,7 @@ const SearchButton = styled.button`
     position: absolute;
     right: 0px;
     height: 39px;                   
-    padding: 8px 10px;
+    padding: 8px 12px;
     background: none;
     border: none;
     border-radius: 0px 100px 100px 0px;
@@ -116,8 +116,8 @@ const SearchButton = styled.button`
 `
 
 const SearchIcon = styled.img`
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
     transform: translateY(2px);
 `
 

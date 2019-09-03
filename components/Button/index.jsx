@@ -5,6 +5,7 @@ import arrow from "./arrow-right.svg"
 
 const Button = styled.button`
     display: block;
+    width: 100%;
     border-radius: 100px;
     padding: 12px 30px;
     font-size: 1em;
@@ -20,7 +21,7 @@ const Button = styled.button`
     &:after{
         background-image: url(${arrow});
         display: block;
-        width: 13px;
+        width: 10px;
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -44,7 +45,7 @@ const Button = styled.button`
         box-shadow: 0px 0px 0px 3px ${theme.focus};
     }
     @media screen and (min-width: ${theme.tablet}){
-        min-width: 300px;
+        max-width: 330px;
         padding: 14px 40px;
         font-size: 1.1em;
     }
