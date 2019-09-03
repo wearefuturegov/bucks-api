@@ -4,8 +4,22 @@ import styled from "styled-components"
 import theme from "../_theme"
 import { Fieldset, Hint, Question } from "./utils"
 
+const FadingFieldset = styled(Fieldset)`
+    @keyframes fadeIn{
+        from{
+            opacity: 0
+        }
+        to{
+            opacity: 1;
+        }
+    }
+    animation: 0.2s fadeIn ease-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+`
+
 const SupportQuestion = () =>
-    <Fieldset>
+    <FadingFieldset>
         <legend>
             <Question>2. What do you need support with?</Question>
             <Hint>Select as many as you like</Hint>
@@ -22,6 +36,6 @@ const SupportQuestion = () =>
         </Checkboxes>
 
 
-    </Fieldset>
+    </FadingFieldset>
 
 export default SupportQuestion

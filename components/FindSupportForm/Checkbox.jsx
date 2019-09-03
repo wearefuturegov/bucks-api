@@ -7,6 +7,7 @@ const Outer = styled.div`
     position: relative;
     padding: 5px 0px;
     margin-bottom: 15px;
+    padding-left: 45px;
 `
 
 const Input = styled.input`
@@ -37,7 +38,6 @@ const Input = styled.input`
 const Label = styled.label`
     color: ${theme.darkText};
     cursor: pointer;
-    padding-left: 45px;
     &:before{
         content: "";
         display: inline-block;
@@ -65,7 +65,7 @@ const CheckboxItem = ({
             name={name} 
             value={value}
             id={`${name}-${value}`}
-            
+
             onChange={onChange}
             checked={checked}
         />
