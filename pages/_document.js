@@ -8,9 +8,9 @@ export default class MyDocument extends Document {
         const originalRenderPage = ctx.renderPage
         try {
             ctx.renderPage = () =>
-            originalRenderPage({
-                enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
-            })
+                originalRenderPage({
+                    enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+                })
             const initialProps = await Document.getInitialProps(ctx)
             return {
                 ...initialProps,
@@ -32,6 +32,8 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
+                    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap" rel="stylesheet"/> 
                     <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
                     <meta name="twitter:card" content="summary"></meta>
                     <meta name="twitter:username" content="@buckscc"></meta>

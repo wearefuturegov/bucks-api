@@ -2,9 +2,11 @@ import React from "react"
 import Link from "next/link"
 import styled from "styled-components"
 import logo from "./logo.svg"
+import theme from "../_vars"
 
 const Header = styled.header`
-    background: black;
+    background: ${theme.darkText};
+    color: white;
     width: 100%;
 `
 

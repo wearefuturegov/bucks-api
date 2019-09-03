@@ -1,6 +1,16 @@
 import React, {useEffect, useRef} from "react"
 import Header from "../Header"
-import styled from "styled-components"
+import Footer from "../Footer"
+import styled, { createGlobalStyle } from "styled-components"
+
+const GlobalStyle = createGlobalStyle`
+    body{
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+`
 
 const Div = styled.div`
     outline: 0 !important;
@@ -21,8 +31,10 @@ const FocusOnMount = ({children}) => {
 
 const Layout = ({ children }) =>
     <FocusOnMount>
+        <GlobalStyle/>
         <Header/>
         {children}
+        <Footer/>
     </FocusOnMount>
 
 export default Layout
