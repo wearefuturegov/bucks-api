@@ -33,6 +33,7 @@ const RecommendationsPage = ({
         />
         <Filters/>
         <Results
+            query={query}
             services={services}
         />
 

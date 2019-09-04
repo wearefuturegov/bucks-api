@@ -29,10 +29,7 @@ const Grid = styled.ul`
 
 const Results = ({
     services,
-    snippets,
     query,
-    totalServices,
-    totalPages
 }) => {
 
     const [page, setPage ] = useState(1)
