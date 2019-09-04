@@ -9,12 +9,14 @@ const LocationFilter = () => {
         <>
             <button 
                 onClick={() => {toggleDialog(true)}}
+                className="test-1"
             >
                 Location
             </button>
 
             <Dialog
                 isOpen={dialogOpen}
+                className="test-2"
             >
                 blah
             </Dialog>

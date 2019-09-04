@@ -53,6 +53,7 @@ const Results = ({
                 <Grid>
                     {allServices.map(service =>
                         <ServiceCard
+                            key={service.assetId}
                             headline={service.name || service.parentOrganisation}
                             deck={service.description}
                             href={`/service/${service.assetId}`}

@@ -818,7 +818,7 @@
   "meta": {
     "database_type": "MongoDB",
     "liana": "forest-express-mongoose",
-    "liana_version": "3.1.1",
+    "liana_version": "3.2.4",
     "orm_version": "5.5.14"
   }
 }
