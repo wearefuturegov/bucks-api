@@ -33,17 +33,20 @@ const MastheadLink = styled.a`
     &:focus{
         outline: 3px solid ${theme.focus};
     }
+    @media screen and (min-width: ${theme.tablet}){
+        min-width: 275px;
+    }
 `
 
 const Logo = styled.img`
     max-width: 80px;
     margin-right: 15px;
-    flex: 0 0 auto;
+
 `
 
 const ServiceName = styled.h1`
     font-size: 1.5em;
-    flex: 0 0 auto;
+
 `
 
 const Nav = styled.nav`
