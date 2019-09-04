@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import theme from "../_theme"
-import Breadcrumbs from "../Breadcrumbs"
+import LocationFilter from "./LocationFilter"
 
 const Outer = styled.section`
     padding: 0px 20px;
@@ -16,7 +16,11 @@ const Inner = styled.div`
 const Filters = () =>
     <Outer>
         <Inner>
-            filters
+
+
+            <LocationFilter/>
+
+            
         </Inner>
     </Outer>
     
