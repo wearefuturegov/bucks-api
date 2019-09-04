@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from "react"
+import React, {useRef, useEffect, useState} from "react"
 import styled from "styled-components"
 import theme from "../_theme"
 
@@ -18,8 +18,9 @@ const Input = styled.input`
 
 const LocationQuestion = ({
     
-    setLatLng
 }) => {
+
+    const [latLng, setLatLng] = useState([0,0])
 
     const inputRef = useRef(false)
 
@@ -41,12 +42,16 @@ const LocationQuestion = ({
     }
 
     return(
+        <>
             <Input 
                 ref={inputRef}
                 id="autocomplete"
                 name="location" 
                 required
             />
+            <input type="text" name="lat" value={latLng[0]} readOnly/>
+            <input type="text" name="lng" value={latLng[1]} readOnly/>
+        </>
     )
 }
 

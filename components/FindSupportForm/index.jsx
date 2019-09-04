@@ -6,7 +6,6 @@ import Button from "../Button"
 
 const Form = () => {
     const [support, setSupport] = useState(false)
-    const [latLng, setLatLng] = useState([0,0])
 
     return(
         <form method="get" action="/recommendations">
@@ -17,13 +16,7 @@ const Form = () => {
 
             {support && <SupportQuestion/>}
 
-            <LocationQuestion
-                support={support}
-                setLatLng={setLatLng}
-            />
-
-            <input type="hidden" name="lat" value={latLng[0]} readOnly/>
-            <input type="hidden" name="lng" value={latLng[1]} readOnly/>
+            <LocationQuestion/>
 
             <Button type="submit">See recommendations</Button>
         </form>
