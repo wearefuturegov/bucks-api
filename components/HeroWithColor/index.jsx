@@ -3,12 +3,12 @@ import styled from "styled-components"
 import theme from "../_theme"
 import Breadcrumbs from "../Breadcrumbs"
 
-const Hero = styled.section`
-    background-color: ${theme.background};
+const Outer = styled.section`
+    background-color: ${(props) => props.backgroundColor};
     padding: 20px;
 `
 
-const HeroInner = styled.div`
+const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
@@ -17,7 +17,7 @@ const HeroInner = styled.div`
 const TextBox = styled.div`
     padding: 20px 0px;
     @media screen and (min-width: ${theme.tablet}){
-        padding: 50px 0px;
+        padding: 40px 0px;
         max-width: 55%;
     }
 `
@@ -51,15 +51,20 @@ const HeroWithColor = ({
     breadcrumbs,
     headline,
     deck,
+    backgroundColor
 }) =>
-    <Hero>
-        <HeroInner>
+    <Outer backgroundColor={backgroundColor}>
+        <Inner>
             <Breadcrumbs breadcrumbs={breadcrumbs}/>
             <TextBox>
                 <Headline>{headline}</Headline>
                 <Deck>{deck}</Deck>
             </TextBox>
-        </HeroInner>
-    </Hero>
+        </Inner>
+    </Outer>
     
 export default HeroWithColor
+
+HeroWithColor.defaultProps = {
+    backgroundColor: theme.background
+}

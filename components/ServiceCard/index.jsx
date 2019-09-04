@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import theme from "../_theme"
 import Link from "next/link"
+import { prettyDistance, truncate } from "../../lib/utils"
 
 const Outer = styled.li`
     background: white;
@@ -17,16 +18,12 @@ const Outer = styled.li`
     &:focus-within{
         box-shadow: 0 0 0 3px ${theme.focus};
     }
-    @media screen and (min-width: ${theme.desktop}){
-        padding: 35px;
-    }
 `
 
 const StyledLink = styled.a`
-    color: ${theme.link};
-    &:hover{
-        text-decoration: none;
-    }
+    color: ${theme.darkText};
+    text-decoration: none;
+
     &:after{
         content: "";
         display: block;
@@ -42,7 +39,7 @@ const StyledLink = styled.a`
 `
 
 const Headline = styled.h3`
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-size: 1.2em;
     @media screen and (min-width: ${theme.tablet}){
         font-size: 1.4em;
@@ -52,15 +49,29 @@ const Headline = styled.h3`
 const Deck = styled.p`
     color: ${theme.lightText};
     line-height: 1.6;
-    @media screen and (min-width: ${theme.desktop}){
-        font-size: 1.1em
-    }
+    margin-bottom: 20px;
 `
 
-const Card = ({
+const Tag = styled.strong`
+    display: inline-block;
+    font-size: 0.95em;
+    color: white;
+    background: ${(props)=> theme[props.category]};
+    padding: 3px 5px;
+    text-transform: capitalize;
+    margin-right: 15px;
+`
+
+const Meta = styled.footer`
+    color: ${theme.lightText};
+`
+
+const ServiceCard = ({
     headline,
     deck,
-    href
+    href,
+    category,
+    distance
 }) =>
     <Link href={href}>
         <Outer>
@@ -71,8 +82,13 @@ const Card = ({
                 </StyledLink>
             </Link>
 
-            <Deck>{deck}</Deck>
+            <Deck>{truncate(deck, 20)}</Deck>
+            <Meta>
+                <Tag category={category}>{category}</Tag>
+                <span>{prettyDistance(distance)}</span>
+            </Meta>
+
         </Outer>
     </Link>
 
-export default Card
+export default ServiceCard

@@ -3,8 +3,6 @@ import styled from "styled-components"
 import theme from "../_theme"
 import Card from "../Card"
 
-// TODO: add styled components
-
 const Outer = styled.section`
     background-color: ${theme.background};
     padding: 40px 20px;
