@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Dialog } from "@reach/dialog"
 import styled from "styled-components"
 import theme from "../_theme"
 import arrow from "./arrow-down.svg"
+import AutocompletePlacesInput from "../AutocompletePlacesInput"
 
 const OpenerButton = styled.button`
     background: none;
@@ -50,7 +51,10 @@ const LocationFilter = () => {
                 className="test-2"
                 onDismiss={()=>toggleDialog(false)}
             >
-                blah
+
+                <h3>Location</h3>
+                <AutocompletePlacesInput/>
+                <button>Apply</button>
             </StyledDialog>
             
         </>

@@ -6,22 +6,15 @@ import Button from "../Button"
 
 const Form = () => {
     const [support, setSupport] = useState(false)
-
+    
     return(
         <form method="get" action="/recommendations">
-            <InterestsQuestion
-                support={support}
-                setSupport={setSupport}
-            />
-
+            <InterestsQuestion support={support} setSupport={setSupport}/>
             {support && <SupportQuestion/>}
-
-            <LocationQuestion/>
-
+            <LocationQuestion support={support}/>
             <Button type="submit">See recommendations</Button>
         </form>
     )
 }
-
 
 export default Form

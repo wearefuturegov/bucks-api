@@ -46,7 +46,6 @@ const Results = ({
         setPage(page+1)
     }
 
-
     return(
         <Outer>
             <Inner>
