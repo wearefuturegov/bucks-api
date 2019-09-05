@@ -61,6 +61,8 @@ app
             return handle(req, res)
         })
 
+        server.use(Sentry.Handlers.errorHandler())
+
         server.listen(port, err => {
             if (err) throw err
             // eslint-disable-next-line no-console
