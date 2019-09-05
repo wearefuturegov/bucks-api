@@ -5,6 +5,7 @@ import Router from "next/router"
 
 const InterestsFilter = () => {
 
+    const [dialogOpen, toggleDialog] = useState(false)
     const [selection, changeSelection] = useState([]) 
 
     const handleChange = (e) => {
@@ -29,7 +30,7 @@ const InterestsFilter = () => {
                 category: selection
             }
         })
-
+        toggleDialog(false)
     }
 
     const options = [
@@ -56,7 +57,7 @@ const InterestsFilter = () => {
     ]
 
     return(
-        <Filter name="Interests">
+        <Filter dialogOpen={dialogOpen} toggleDialog={toggleDialog} name="Interests">
             <form onSubmit={handleSubmit}>
                 {options.map((option)=>
                     <Checkbox 

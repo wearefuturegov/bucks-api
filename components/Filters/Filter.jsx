@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Dialog } from "@reach/dialog"
 import styled from "styled-components"
 import theme from "../_theme"
@@ -37,7 +37,9 @@ const StyledDialog = styled(Dialog)`
 `
 
 const Headline = styled.h3`
-    margin-bottom: 15px;
+    color: ${theme.darkText};
+    font-size: 1.5em;
+    margin-bottom: 25px;
 `
 
 const CloseButton = styled.button`
@@ -54,30 +56,26 @@ const CloseButton = styled.button`
 `
 
 const Filter = ({
+    dialogOpen,
+    toggleDialog,
     name,
     children
-}) => {
-
-    const [dialogOpen, toggleDialog] = useState(false)
-
-    return (
-        <>
-            <OpenerButton onClick={() => {toggleDialog(true)}} className={`${name}-opener`}>
-                {name}
-            </OpenerButton>
-            <StyledDialog
-                isOpen={dialogOpen}
-                className={`${name}-dialog`}
-                onDismiss={()=>toggleDialog(false)}
-            >
-                <CloseButton onClick={()=>toggleDialog(false)}>
-                    <img src={cross} alt="Close without saving"/>
-                </CloseButton>
-                <Headline>{name}</Headline>
-                {children}
-            </StyledDialog>
-        </>
-    )
-}
+}) => 
+    <>
+        <OpenerButton onClick={() => {toggleDialog(true)}} className={`${name}-opener`}>
+            {name}
+        </OpenerButton>
+        <StyledDialog
+            isOpen={dialogOpen}
+            className={`${name}-dialog`}
+            onDismiss={()=>toggleDialog(false)}
+        >
+            <CloseButton onClick={()=>toggleDialog(false)}>
+                <img src={cross} alt="Close without saving"/>
+            </CloseButton>
+            <Headline>{name}</Headline>
+            {children}
+        </StyledDialog>
+    </>
 
 export default Filter

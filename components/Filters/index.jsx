@@ -17,11 +17,8 @@ const Inner = styled.div`
 const Filters = () =>
     <Outer>
         <Inner>
-
-
             <LocationFilter/>
             <InterestsFilter/>
-            
         </Inner>
     </Outer>
     
