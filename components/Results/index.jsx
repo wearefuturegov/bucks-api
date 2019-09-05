@@ -3,6 +3,7 @@ import styled from "styled-components"
 import theme from "../_theme"
 import ServiceCard from "../ServiceCard"
 import queryString from "query-string"
+import Button from "../Button"
 
 const Outer = styled.section`
     background: ${theme.background};
@@ -24,6 +25,17 @@ const Grid = styled.ul`
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 25px;
+    }
+`
+
+const StyledButton = styled(Button)`
+    background-color: ${theme.darkText};
+    margin: 0 auto;
+    &:after{
+        content: none;
+    }
+    &:hover{
+        filter: brightness(1.3)
     }
 `
 
@@ -61,12 +73,11 @@ const Results = ({
                             distance={service.distance}
                         />
                     )}
-                    {(page < totalPages) && <button onClick={loadMore}>Load more results</button>}
                 </Grid>
+                {(page < totalPages) && <StyledButton onClick={loadMore}>Load more results</StyledButton>}
             </Inner>
         </Outer>
     )
 }
-
 
 export default Results

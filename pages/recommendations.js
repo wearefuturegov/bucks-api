@@ -4,25 +4,14 @@ import HeroWithColor from "../components/HeroWithColor"
 import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
 import Filters from "../components/Filters"
-import Router from "next/router"
 
 const RecommendationsPage = ({
     services,
     snippets,
     query,
-    // TODO: hide the show more results button when results expended
-    totalServices,
     totalPages
 }) => 
     <Layout>
-        <button onClick={()=>{
-            Router.push({
-                pathname: "/recommendations",
-                query: {
-                    location: "derp"
-                }
-            })
-        }}>blurp</button>
         <HeroWithColor
             headline="Your recommendations"
             backgroundColor="white"
@@ -73,9 +62,8 @@ RecommendationsPage.getInitialProps = async ({ req, query }) =>{
     return {
         services: services.results,
         snippets: snippets.results,
+        totalPages: services.pages,
         query: query,
-        totalServices: services.count,
-        totalPages: services.pages
     }
 }
 
