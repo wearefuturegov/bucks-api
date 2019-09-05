@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import theme from "../_theme"
 import LocationFilter from "./LocationFilter"
+import InterestsFilter from "./InterestsFilter"
 
 const Outer = styled.section`
     padding: 0px 20px;
@@ -19,7 +20,7 @@ const Filters = () =>
 
 
             <LocationFilter/>
-
+            <InterestsFilter/>
             
         </Inner>
     </Outer>

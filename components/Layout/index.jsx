@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
         overflow: auto;
     }
     [data-reach-dialog-content] {
-        width: 50vw;
+        width: 80vw;
         margin: 10vh auto;
         background: white;
         padding: 2rem;

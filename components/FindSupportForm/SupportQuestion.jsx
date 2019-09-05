@@ -1,5 +1,5 @@
 import React from "react"
-import Checkbox, { Checkboxes } from "./Checkbox"
+import Checkbox, { Checkboxes } from "../Checkbox"
 import styled from "styled-components"
 import { Fieldset, Hint, Question } from "./utils"
 

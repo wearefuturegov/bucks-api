@@ -1,5 +1,5 @@
 import React from "react"
-import Checkbox, { Checkboxes } from "./Checkbox"
+import Checkbox, { Checkboxes } from "../Checkbox"
 import { Fieldset, Hint, Question } from "./utils"
 
 const InterestsQuestion = ({
