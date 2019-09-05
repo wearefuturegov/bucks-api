@@ -4,8 +4,11 @@ const mongoose = require("mongoose")
 const apiRouter = require("./routes/api")
 const sslRedirect = require("heroku-ssl-redirect")
 const basicAuth = require("express-basic-auth")
+const Sentry = require("@sentry/node")
 
 require("dotenv").config()
+
+Sentry.init({ dsn: process.env.SENTRY_DSN })
 
 const dev = process.env.NODE_ENV !== "production"
 const app = next({ dev })
@@ -23,6 +26,8 @@ app
     .prepare()
     .then(() => {
         const server = express()
+
+        server.use(Sentry.Handlers.requestHandler())
 
         server.set("trust proxy", 1)
 
