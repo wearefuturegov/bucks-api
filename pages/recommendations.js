@@ -15,6 +15,14 @@ const RecommendationsPage = ({
     totalPages
 }) => 
     <Layout>
+        <button onClick={()=>{
+            Router.push({
+                pathname: "/recommendations",
+                query: {
+                    location: "derp"
+                }
+            })
+        }}>blurp</button>
         <HeroWithColor
             headline="Your recommendations"
             backgroundColor="white"
@@ -37,13 +45,12 @@ const RecommendationsPage = ({
         <Results
             query={query}
             services={services}
-            
+            totalPages={totalPages}
         />
     </Layout>
 
 // TODO: error handling when (1) apis are down, (2) location not provided
 RecommendationsPage.getInitialProps = async ({ req, query }) =>{
-
     const baseUrl = req ? `${req.protocol}://${req.get("Host")}` : ""   
     // 1. Attempt to geocode location server-side if not explicitly provided
     if(!parseFloat(query.lat) || !parseFloat(query.lng)){

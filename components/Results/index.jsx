@@ -30,6 +30,7 @@ const Grid = styled.ul`
 const Results = ({
     services,
     query,
+    totalPages
 }) => {
 
     const [page, setPage ] = useState(1)
@@ -60,7 +61,7 @@ const Results = ({
                             distance={service.distance}
                         />
                     )}
-                    <button onClick={loadMore}>Load more results</button>
+                    {(page < totalPages) && <button onClick={loadMore}>Load more results</button>}
                 </Grid>
             </Inner>
         </Outer>
