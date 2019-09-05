@@ -51,13 +51,13 @@ app
         server.use("/api", apiRouter)
 
         // Service detail route
-        server.get("/service/:id", (req, res) => {
+        server.get("/service/:id", function mainHandler(req, res){
             const actualPage = "/detail"
             const queryParams = { id: req.params.id }
             app.render(req, res, actualPage, queryParams)
         })
 
-        server.get("*", (req, res) => {
+        server.get("*", function mainHandler(req, res){
             return handle(req, res)
         })
 
