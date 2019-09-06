@@ -1,7 +1,25 @@
 import React, {useState, useEffect} from "react"
-import Filter from "./Filter"
 import AutocompletePlacesInput from "../AutocompletePlacesInput"
 import Router from "next/router"
+import cross from "./cross.svg"
+import styled from "styled-components"
+import theme from "../_theme"
+import {
+    StyledDialog,
+    Inner,
+    Headline,
+    Grid,
+    Footer,
+    Button,
+    OpenButton,
+    CloseButton,
+    ClearButton
+} from "./utils"
+
+const Hint = styled.p`
+    font-size: 0.9em;
+    color: ${theme.lightText}
+`
 
 const LocationFilter = () => {
 
@@ -9,8 +27,21 @@ const LocationFilter = () => {
     const [selection, changeSelection] = useState("") 
 
     useEffect(()=>{
-        if(Router.query.location) changeSelection(Router.query.location)
+        setSelectionFromQuery()
     },[])
+
+    const setSelectionFromQuery = () =>{
+        if(Router.query.location){
+            changeSelection(Router.query.location)
+        } else {
+            changeSelection("") 
+        }
+    }
+
+    const closeWithoutSaving = () => {
+        setSelectionFromQuery()
+        toggleDialog(false)
+    }
 
     const handleChange = (e) => {
         changeSelection(e.target.value)
@@ -31,12 +62,34 @@ const LocationFilter = () => {
     }
     
     return(
-        <Filter active={true} name="Location" dialogOpen={dialogOpen} toggleDialog={toggleDialog}>
-            <form onSubmit={handleSubmit}>
-                <AutocompletePlacesInput value={selection} onChange={handleChange}/>
-                <button type="submit">Search again</button>
-            </form>
-        </Filter>
+        <>
+            <OpenButton 
+                active={selection.length > 0} 
+                onClick={()=> toggleDialog(true)}
+                className="location-opener"
+            >
+                Location
+            </OpenButton>
+            <StyledDialog
+                isOpen={dialogOpen}
+                className="location-dialog"
+                onDismiss={closeWithoutSaving}
+            >
+                <CloseButton onClick={closeWithoutSaving}>
+                    <img src={cross} alt="Close without saving"/>
+                </CloseButton>
+                <form onSubmit={handleSubmit}>
+                    <Inner>
+                        <Headline><legend>Change location</legend></Headline>
+                        <Hint>Enter a Buckinghamshire town or postcode.</Hint>
+                        <AutocompletePlacesInput value={selection} onChange={handleChange}/>
+                    </Inner>
+                    <Footer>
+                        <Button type="submit">Search again</Button>
+                    </Footer>
+                </form>
+            </StyledDialog>
+        </>
     )
 }
 

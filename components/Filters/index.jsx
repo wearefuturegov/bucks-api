@@ -137,8 +137,7 @@ const accessibilityOptions = [
 const Filters = () =>
     <Outer>
         <Inner>
-            {/* <LocationFilter/> */}
-
+            <LocationFilter/>
             <Filter
                 label="Interests"
                 name="category"
@@ -164,7 +163,6 @@ const Filters = () =>
                 name="accessibility"
                 options={accessibilityOptions}
             />
-
         </Inner>
     </Outer>
     

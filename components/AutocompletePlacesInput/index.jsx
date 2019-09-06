@@ -37,15 +37,17 @@ const LocationQuestion = ({
 
     const handlePlaceChanged = () => {
         const place = autocomplete.getPlace()
-        const lat = place.geometry.location.lat()
-        const lng = place.geometry.location.lng()
-        setLatLng([lat, lng])
-        // feed a synthetic event to the change handler if it exists
-        if(onChange) onChange({
-            target: {
-                value: place.formatted_address
-            }
-        })
+        if(place.geometry){
+            const lat = place.geometry.location.lat()
+            const lng = place.geometry.location.lng()
+            setLatLng([lat, lng])
+            // feed a synthetic event to the change handler if it exists
+            if(onChange) onChange({
+                target: {
+                    value: place.formatted_address
+                }
+            })
+        }
     }
 
     return(
