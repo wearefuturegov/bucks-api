@@ -116,7 +116,6 @@ const Filter = ({
     }
 
     const closeWithoutSaving = () => {
-        console.log("closing without saving")
         setSelectionFromQuery()
         toggleDialog(false)
     }
