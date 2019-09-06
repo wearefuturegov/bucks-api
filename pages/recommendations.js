@@ -4,6 +4,7 @@ import HeroWithColor from "../components/HeroWithColor"
 import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
 import Filters from "../components/Filters"
+import CallToAction from "../components/CallToAction"
 
 const RecommendationsPage = ({
     services,
@@ -15,7 +16,7 @@ const RecommendationsPage = ({
         <HeroWithColor
             headline="Your recommendations"
             backgroundColor="white"
-            deck="Based on your answers, we've found these matches."
+            deck="Based on your answers, we've found these matches which you might find useful."
             breadcrumbs={[
                 {
                     href: "/",
@@ -36,6 +37,9 @@ const RecommendationsPage = ({
             services={services}
             totalPages={totalPages}
         />
+        <CallToAction headline="Is anything missing?">
+            <p>If you’re the organiser, of a club, activity or group that isn’t on this list, you can request it be added.</p>
+        </CallToAction>
     </Layout>
 
 // TODO: error handling when (1) apis are down, (2) location not provided

@@ -17,7 +17,7 @@ const Input = styled.input`
 `
 
 const LocationQuestion = ({
-    
+    defaultValue
 }) => {
 
     const [latLng, setLatLng] = useState([0,0])
@@ -47,6 +47,7 @@ const LocationQuestion = ({
                 ref={inputRef}
                 id="autocomplete"
                 name="location" 
+                defaultValue={defaultValue}
                 required
             />
             <input type="text" name="lat" value={latLng[0]} readOnly/>
