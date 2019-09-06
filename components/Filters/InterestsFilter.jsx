@@ -1,4 +1,4 @@
-import React, { useState }  from "react"
+import React, { useState, useEffect }  from "react"
 import Filter from "./Filter"
 import Checkbox from "../Checkbox"
 import Router from "next/router"
@@ -7,6 +7,10 @@ const InterestsFilter = () => {
 
     const [dialogOpen, toggleDialog] = useState(false)
     const [selection, changeSelection] = useState([]) 
+
+    useEffect(()=>{
+        changeSelection(Router.query.category)
+    },[])
 
     const handleChange = (e) => {
         let {checked, value} = e.target
@@ -27,6 +31,7 @@ const InterestsFilter = () => {
         Router.push({
             pathname: "/recommendations",
             query: {
+                ...Router.query,
                 category: selection
             }
         })
