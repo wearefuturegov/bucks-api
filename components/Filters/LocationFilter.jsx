@@ -31,7 +31,7 @@ const LocationFilter = () => {
     }
     
     return(
-        <Filter name="Location" dialogOpen={dialogOpen} toggleDialog={toggleDialog}>
+        <Filter active={true} name="Location" dialogOpen={dialogOpen} toggleDialog={toggleDialog}>
             <form onSubmit={handleSubmit}>
                 <AutocompletePlacesInput value={selection} onChange={handleChange}/>
                 <button type="submit">Search again</button>
