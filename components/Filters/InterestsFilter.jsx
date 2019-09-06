@@ -9,7 +9,7 @@ const InterestsFilter = () => {
     const [selection, changeSelection] = useState([]) 
 
     useEffect(()=>{
-        changeSelection(Router.query.category)
+        if(Router.query.category) changeSelection([].concat(Router.query.category))
     },[])
 
     const handleChange = (e) => {
@@ -62,7 +62,12 @@ const InterestsFilter = () => {
     ]
 
     return(
-        <Filter dialogOpen={dialogOpen} toggleDialog={toggleDialog} name="Interests">
+        <Filter 
+            dialogOpen={dialogOpen} 
+            toggleDialog={toggleDialog} 
+            name="Interests"
+            active={selection.length > 0}
+        >
             <form onSubmit={handleSubmit}>
                 {options.map((option)=>
                     <Checkbox 
@@ -75,8 +80,8 @@ const InterestsFilter = () => {
                         {option.label}
                     </Checkbox>
                 )}
-                <button onClick={clearFilter}>Clear</button>
                 <button type="submit">Apply filters</button>
+                <button onClick={clearFilter}>Clear</button>
             </form>
         </Filter>
     )

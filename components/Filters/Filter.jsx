@@ -14,6 +14,7 @@ const OpenerButton = styled.button`
     color: ${theme.darkText};
     cursor: pointer;
     margin-right: 10px;
+    font-weight: ${(props) => props.active ? "bold" : "normal"};
     &:focus{
         outline: none;
         background: ${theme.focus};               
@@ -59,10 +60,11 @@ const Filter = ({
     dialogOpen,
     toggleDialog,
     name,
+    active,
     children
 }) => 
     <>
-        <OpenerButton onClick={() => {toggleDialog(true)}} className={`${name}-opener`}>
+        <OpenerButton active={active} onClick={() => {toggleDialog(true)}} className={`${name}-opener`}>
             {name}
         </OpenerButton>
         <StyledDialog
