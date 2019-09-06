@@ -17,7 +17,8 @@ const Input = styled.input`
 `
 
 const LocationQuestion = ({
-    defaultValue
+    value,
+    onChange
 }) => {
 
     const [latLng, setLatLng] = useState([0,0])
@@ -39,6 +40,12 @@ const LocationQuestion = ({
         const lat = place.geometry.location.lat()
         const lng = place.geometry.location.lng()
         setLatLng([lat, lng])
+        // feed a synthetic event to the change handler if it exists
+        if(onChange) onChange({
+            target: {
+                value: place.formatted_address
+            }
+        })
     }
 
     return(
@@ -47,11 +54,12 @@ const LocationQuestion = ({
                 ref={inputRef}
                 id="autocomplete"
                 name="location" 
-                defaultValue={defaultValue}
+                value={value}
+                onChange={onChange}
                 required
             />
-            <input type="text" name="lat" value={latLng[0]} readOnly/>
-            <input type="text" name="lng" value={latLng[1]} readOnly/>
+            <input type="hidden" name="lat" value={latLng[0]} readOnly/>
+            <input type="hidden" name="lng" value={latLng[1]} readOnly/>
         </>
     )
 }

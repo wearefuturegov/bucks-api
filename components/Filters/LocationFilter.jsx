@@ -6,15 +6,15 @@ import Router from "next/router"
 const LocationFilter = () => {
 
     const [dialogOpen, toggleDialog] = useState(false)
-    const [selection, changeSelection] = useState(false) 
-
-    // console.log(selection)
-
-
+    const [selection, changeSelection] = useState("") 
 
     useEffect(()=>{
         if(Router.query.location) changeSelection(Router.query.location)
     },[])
+
+    const handleChange = (e) => {
+        changeSelection(e.target.value)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -22,8 +22,8 @@ const LocationFilter = () => {
             pathname: "/recommendations",
             query: {
                 ...Router.query,
-                lat: false,
-                lng: false,
+                lat: null,
+                lng: null,
                 location: selection
             }
         })
@@ -33,7 +33,7 @@ const LocationFilter = () => {
     return(
         <Filter name="Location" dialogOpen={dialogOpen} toggleDialog={toggleDialog}>
             <form onSubmit={handleSubmit}>
-                <AutocompletePlacesInput defaultValue={selection}/>
+                <AutocompletePlacesInput value={selection} onChange={handleChange}/>
                 <button type="submit">Search again</button>
             </form>
         </Filter>
