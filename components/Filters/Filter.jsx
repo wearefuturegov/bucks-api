@@ -38,6 +38,7 @@ const StyledDialog = styled(Dialog)`
     max-width: 500px;
     position: relative;
     padding: 0px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2)
 `
 
 const Inner = styled.fieldset`
@@ -93,9 +94,13 @@ const Button = styled.button`
     &:focus{
         outline: 3px solid ${theme.focus};
     }
+    &:hover{
+        background: ${theme.shadow};
+    }
 `
 
 const ClearButton = styled(Button)`
+    font-weight: normal;
     order: -1;
 `
 
@@ -186,7 +191,7 @@ const Filter = ({
                         </Grid>
                     </Inner>
                     <Footer>
-                        <Button type="submit">Apply filters</Button>
+                        <Button type="submit">Apply</Button>
                         <ClearButton onClick={clearFilter}>Clear</ClearButton>
                     </Footer>
                 </form>
