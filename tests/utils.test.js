@@ -50,10 +50,10 @@ it("pretty features", ()=>{
     )).toBeFalsy()
 
     expect(prettyFeatures(
-        100,
+        null,
         [
             "building wheelchair access"
         ],
         allDays
-    )).toBe("About 100 miles away  <span aria-hidden='true'>·</span>  Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
+    )).toBe("Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
 })

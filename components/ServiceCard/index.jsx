@@ -78,6 +78,7 @@ const ServiceCard = ({
 }) =>
     <Link href={href}>
         <Outer>
+            {distance}
 
             <Link href={href}>
                 <StyledLink href={href}>
