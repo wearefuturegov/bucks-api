@@ -79,6 +79,7 @@ const Footer = styled.footer`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: ${theme.background}
 `
 
 const Button = styled.button`
@@ -88,7 +89,7 @@ const Button = styled.button`
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-    padding: 20px 30px 30px 30px;
+    padding: 25px 30px;
     &:focus{
         outline: 3px solid ${theme.focus};
     }
@@ -112,7 +113,11 @@ const Filter = ({
     },[])
 
     const setSelectionFromQuery = () =>{
-        if(Router.query[name]) changeSelection([].concat(Router.query[name]))
+        if(Router.query[name]){
+            changeSelection([].concat(Router.query[name])) 
+        } else {
+            changeSelection([]) 
+        }
     }
 
     const closeWithoutSaving = () => {
