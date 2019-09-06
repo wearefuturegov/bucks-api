@@ -104,7 +104,7 @@ const Filter = ({
     options
 }) => {
 
-    const [dialogOpen, toggleDialog] = useState(true)
+    const [dialogOpen, toggleDialog] = useState(false)
     const [selection, changeSelection] = useState([]) 
 
     useEffect(()=>{
