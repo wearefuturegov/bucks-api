@@ -36,26 +36,24 @@ it("pretty list", () => {
 })
 
 it("pretty features", ()=>{
-    expect(prettyFeatures({
-        distance: 100,
-        promoted: true,
-        accessibility: [
+    expect(prettyFeatures(
+        100,
+        [
             "building wheelchair access"
         ],
-        days: allDays
-    })).toBe("<strong>Recommended</strong>  <span aria-hidden='true'>·</span>  Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
+        allDays
+    )).toBe("About 100 miles away  <span aria-hidden='true'>·</span>  Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
     
-    expect(prettyFeatures({
-        promoted: false,
-        accessibility: null,
-        days: ["monday"]
-    })).toBeFalsy()
+    expect(prettyFeatures(
+        null,
+        ["monday"]
+    )).toBeFalsy()
 
-    expect(prettyFeatures({
-        promoted: true,
-        accessibility: [
+    expect(prettyFeatures(
+        100,
+        [
             "building wheelchair access"
         ],
-        days: allDays
-    })).toBe("<strong>Recommended</strong>  <span aria-hidden='true'>·</span>  Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
+        allDays
+    )).toBe("About 100 miles away  <span aria-hidden='true'>·</span>  Wheelchair accessible  <span aria-hidden='true'>·</span>  On every day")
 })

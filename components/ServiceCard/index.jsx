@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import theme from "../_theme"
 import Link from "next/link"
-import { prettyDistance, truncate } from "../../lib/utils"
+import { truncate, prettyFeatures } from "../../lib/utils"
 
 const Outer = styled.li`
     background: white;
@@ -57,13 +57,14 @@ const Tag = styled.strong`
     font-size: 0.95em;
     color: white;
     background: ${(props)=> theme[props.category]};
-    padding: 3px 5px;
+    padding: 0px 5px;
     text-transform: capitalize;
     margin-right: 15px;
 `
 
 const Meta = styled.footer`
     color: ${theme.lightText};
+    line-height: 1.7;
 `
 
 const ServiceCard = ({
@@ -71,7 +72,9 @@ const ServiceCard = ({
     deck,
     href,
     category,
-    distance
+    distance,
+    accessibility,
+    days
 }) =>
     <Link href={href}>
         <Outer>
@@ -85,7 +88,7 @@ const ServiceCard = ({
             <Deck>{truncate(deck, 20)}</Deck>
             <Meta>
                 <Tag category={category}>{category}</Tag>
-                <span>{prettyDistance(distance)}</span>
+                <span dangerouslySetInnerHTML={{__html: prettyFeatures(distance, accessibility, days)}}></span>
             </Meta>
 
         </Outer>

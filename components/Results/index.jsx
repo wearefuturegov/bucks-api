@@ -71,6 +71,8 @@ const Results = ({
                             href={`/service/${service.assetId}`}
                             category={service.category}
                             distance={service.distance}
+                            days={service.days}
+                            accessibility={service.accessibility}
                         />
                     )}
                 </Grid>
