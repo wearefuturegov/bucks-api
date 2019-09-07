@@ -44,11 +44,11 @@ const Footer = () =>
     <Outer>
         <Inner>
             <Menu>
-                <MenuItem><a href="/">Contact us</a></MenuItem>
+                <MenuItem><a href="https://www.buckscc.gov.uk/services/contact-and-complaints/contact-us/">Contact us</a></MenuItem>
                 <MenuItem><a href="/">Cookies</a></MenuItem>
-                <MenuItem><a href="/">Privacy statement</a></MenuItem>
+                <MenuItem><a href="https://www.buckscc.gov.uk/services/council-and-democracy/privacy-policy/">Privacy statement</a></MenuItem>
                 <MenuItem><a href="/">Accessibility statement</a></MenuItem>
-                <MenuItem><a href="/">Modern slavery statement</a></MenuItem>
+                <MenuItem><a href="https://www.buckscc.gov.uk/services/community/community-safety/modern-slavery/bcc-modern-slavery-statement/">Modern slavery statement</a></MenuItem>
             </Menu>
             <p>Built and maintained by <a href="http://buckscc.gov.uk">Buckinghamshire County Council</a></p>
         </Inner>
