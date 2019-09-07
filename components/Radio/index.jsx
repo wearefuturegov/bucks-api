@@ -55,7 +55,8 @@ const RadioItem = ({
     name,
     children,
     onChange,
-    checked
+    checked,
+    required
 }) =>
     <Outer>
         <Input 
@@ -65,6 +66,7 @@ const RadioItem = ({
             id={`${name}-${value}`}
             onChange={onChange}
             checked={checked}
+            required={required}
         />
         <Label 
             htmlFor={`${name}-${value}`}

@@ -5,6 +5,7 @@ import fetch from "isomorphic-unfetch"
 import queryString from "query-string"
 import Filters from "../components/Filters"
 import CallToAction from "../components/CallToAction"
+import Link from "next/link"
 
 const RecommendationsPage = ({
     services,
@@ -38,7 +39,7 @@ const RecommendationsPage = ({
             totalPages={totalPages}
         />
         <CallToAction headline="Is anything missing?">
-            <p>If you’re the organiser, of a club, activity or group that isn’t on this list, you can request it be added.</p>
+            <p>If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=new"><a>request it be added.</a></Link></p>
         </CallToAction>
     </Layout>
 

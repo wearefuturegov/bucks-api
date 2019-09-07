@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import Button from "../Button"
 import Radio from "../Radio"
 import styled from "styled-components"
 import theme from "../_theme"
+import fetch from "isomorphic-unfetch"
+import { useRouter } from "next/router"
 
 const Textarea = styled.textarea`
     margin-top: 20px;
@@ -29,19 +31,75 @@ const Fieldset = styled.fieldset`
     margin-bottom: 55px;
 `
 
-const FeedbackForm = () =>
-    <form>
-        <Fieldset>
-            <Question><legend>Were you able to do what you needed today?</legend></Question>
-            <Radio name="satisfied" value="yes">Yes</Radio>
-            <Radio name="satisfied" value="somewhat">Somewhat</Radio>
-            <Radio name="satisfied" value="no">No</Radio>
-        </Fieldset>
+const Message = styled.p`
+    display: block;
+    background: ${theme.shadow};
+    color: ${theme.darkText};
+    padding: 15px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+`
 
-        <label htmlFor="message"><Question>How can we improve this website?</Question></label>
-        <Textarea name="message" rows="5"></Textarea>
+const FeedbackForm = () => {
 
-        <Button>Send feedback</Button>
-    </form>
+    const router = useRouter()
+    const {category, serviceId} = router.query
+
+    const [submitted, setSubmitted] = useState(false)
+    const [satisfied, setSatisfied] = useState("")
+    const [message, setMessage] = useState("")
+
+    let messageLabel = "How can we improve this website"
+    if((category === "amend") && serviceId) messageLabel = "Describe what should be changed about this service"
+    if(category === "new") messageLabel = "Describe the service you would like us to add"
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try{
+            const res = await fetch("/api/feedback", {
+                method: "post",    
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ 
+                    message: message,
+                    satisfied: satisfied,
+                    category: category,
+                    serviceId: serviceId
+                })
+            })
+            if(res.status === 200){
+                setSatisfied("")
+                setMessage("")
+                setSubmitted(true)
+            }
+        } catch(e){
+            console.log(e)
+        }
+    }
+
+    return(
+        <form onSubmit={handleSubmit}>
+            <Fieldset>
+                <Question><legend>Were you able to do what you needed today?</legend></Question>
+                <Radio required name="satisfied" onChange={e => setSatisfied(e.target.value)} checked={"yes" === satisfied} value="yes">Yes</Radio>
+                <Radio required name="satisfied" onChange={e => setSatisfied(e.target.value)} checked={"somewhat" === satisfied} value="somewhat">Somewhat</Radio>
+                <Radio required name="satisfied" onChange={e => setSatisfied(e.target.value)} checked={"no" === satisfied} value="no">No</Radio>
+            </Fieldset>
+
+            <label htmlFor="message"><Question>{messageLabel}</Question></label>
+            <Textarea 
+                required 
+                name="message" 
+                rows="5"
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+            ></Textarea>
+            <div aria-live="polite">
+                {submitted && <Message>Your feedback has been submitted. Thank you for taking the time.</Message>}
+            </div>
+            <Button>Send feedback</Button>
+        </form>
+    )
+}
+
 
 export default FeedbackForm

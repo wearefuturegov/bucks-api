@@ -1,5 +1,7 @@
 import Layout from "../components/Layout"
 import HeroWithColor from "../components/HeroWithColor"
+import CallToAction from "../components/CallToAction"
+import Link from "next/link"
 import fetch from "isomorphic-unfetch"
 
 const DetailPage = ({
@@ -27,6 +29,9 @@ const DetailPage = ({
 
         Blah
 
+        <CallToAction headline="Is anything missing?">
+            <p>If there’s anything out of date or missing from this service, you can <Link href={`/feedback?category=amend&serviceId=${service.assetId}`}><a>request it be updated.</a></Link></p>
+        </CallToAction>
     </Layout>
 
 DetailPage.getInitialProps = async ({req, query}) => {
