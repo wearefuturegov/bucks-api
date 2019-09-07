@@ -40,6 +40,13 @@ const Message = styled.p`
     margin-bottom: 20px;
 `
 
+const StyledButton = styled(Button)`
+    &:disabled{
+        background: ${theme.shadow};
+        pointer-events: none;
+    }
+`
+
 const FeedbackForm = () => {
 
     const router = useRouter()
@@ -92,11 +99,11 @@ const FeedbackForm = () => {
                 rows="5"
                 value={message}
                 onChange={e => setMessage(e.target.value)}
-            ></Textarea>
+            />
             <div aria-live="polite">
-                {submitted && <Message>Your feedback has been submitted. Thank you for taking the time.</Message>}
+                {submitted && <Message>Your feedback has been submitted successfully.</Message>}
             </div>
-            <Button>Send feedback</Button>
+            <StyledButton disabled={submitted}>Send feedback</StyledButton>
         </form>
     )
 }
