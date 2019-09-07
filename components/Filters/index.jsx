@@ -3,6 +3,7 @@ import styled from "styled-components"
 import theme from "../_theme"
 import LocationFilter from "./LocationFilter"
 import Filter from "./Filter"
+import ShareDialog from "../ShareDialog"
 
 const Outer = styled.section`
     padding: 0px 20px;
@@ -12,6 +13,11 @@ const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
+    @media screen and (min-width: ${theme.desktop}){
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    })
 `
 
 const interestsOptions = [
@@ -163,6 +169,7 @@ const Filters = () =>
                 name="accessibility"
                 options={accessibilityOptions}
             />
+            <ShareDialog/>
         </Inner>
     </Outer>
     
