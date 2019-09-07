@@ -132,7 +132,7 @@ const SiteHeader = () =>
         <Inner>
 
             <Link href="/">
-                <MastheadLink href="/">
+                <MastheadLink href="https://www.careadvicebuckinghamshire.org/">
                     <Logo src={logo} alt="Buckinghamshire County Council"/>
                     <ServiceName>Care for adults</ServiceName>
                 </MastheadLink>
@@ -144,10 +144,10 @@ const SiteHeader = () =>
                     <SearchButton><SearchIcon src={eyeglass} alt="search"/></SearchButton>
                 </SearchForm>
                 <Menu>
-                    <MenuItem href="/recommendations">Find services</MenuItem>
-                    <MenuItem href="/">Information and advice</MenuItem>     
-                    <MenuItem href="/">Log in</MenuItem>
-                    <MenuItem href="/">Sign up</MenuItem>
+                    <MenuItem href="/">Find services</MenuItem>
+                    <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=2239">Information and advice</MenuItem>     
+                    <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/Auth">Log in</MenuItem>
+                    <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/SignUp/PersonalDetails">Sign up</MenuItem>
                 </Menu>
             </Nav>
 
