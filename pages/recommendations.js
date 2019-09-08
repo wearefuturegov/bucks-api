@@ -7,47 +7,60 @@ import Filters from "../components/Filters"
 import CallToAction from "../components/CallToAction"
 import Link from "next/link"
 import Head from "next/head"
+import CardGrid from "../components/CardGrid"
 
 const RecommendationsPage = ({
     services,
     snippets,
     query,
     totalPages
-}) => 
-    <Layout>
-        <Head>
-            <title>Recommendations | Care and support for adults | Buckinghamshire County Council</title>
-            <meta property="og:title" content="Your recommendations" />
-            <meta property="og:description" content="Answer a few questions and we'll suggest recommendations in your area." />
-        </Head>
-        <HeroWithColor
-            headline="Your recommendations"
-            backgroundColor="white"
-            deck="Based on your answers, we've found these matches which you might find useful."
-            breadcrumbs={[
-                {
-                    href: "/",
-                    label: "Home",
-                },
-                {
-                    href: "/",
-                    label: "Support near you"
-                },
-                {
-                    label: "Recommendations"
-                }
-            ]}
-        />
-        <Filters/>
-        <Results
-            query={query}
-            services={services}
-            totalPages={totalPages}
-        />
-        <CallToAction headline="Is anything missing?">
-            <p>If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=new"><a>request it be added.</a></Link></p>
-        </CallToAction>
-    </Layout>
+}) => {
+    let snippetCards = snippets.map(snippet => {
+        return {
+            headline: snippet.title,
+            deck: snippet.description,
+            href: snippet.href
+        }
+    })
+    return(
+
+        <Layout>
+            <Head>
+                <title>Recommendations | Care and support for adults | Buckinghamshire County Council</title>
+                <meta property="og:title" content="Your recommendations" />
+                <meta property="og:description" content="Answer a few questions and we'll suggest recommendations in your area." />
+            </Head>
+            <HeroWithColor
+                headline="Your recommendations"
+                backgroundColor="white"
+                deck="Based on your answers, we've found these matches which you might find useful."
+                breadcrumbs={[
+                    {
+                        href: "/",
+                        label: "Home",
+                    },
+                    {
+                        href: "/",
+                        label: "Support near you"
+                    },
+                    {
+                        label: "Recommendations"
+                    }
+                ]}
+            />
+            <Filters/>
+            <Results
+                query={query}
+                services={services}
+                totalPages={totalPages}
+            />
+            {(snippets.length > 0) && <CardGrid headline="Advice you might find useful" cards={snippetCards}/>}
+            <CallToAction headline="Is anything missing?">
+                <p>If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=new"><a>request it be added.</a></Link></p>
+            </CallToAction>
+        </Layout>
+    )
+}
 
 // TODO: error handling when (1) apis are down, (2) location not provided
 RecommendationsPage.getInitialProps = async ({ req, query }) =>{
