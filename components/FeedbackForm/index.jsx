@@ -56,7 +56,7 @@ const FeedbackForm = () => {
     const [satisfied, setSatisfied] = useState("")
     const [message, setMessage] = useState("")
 
-    let messageLabel = "How can we improve this website"
+    let messageLabel = "How can we improve this website?"
     if((category === "amend") && serviceId) messageLabel = "Describe what should be changed about this service"
     if(category === "new") messageLabel = "Describe the service you would like us to add"
 
