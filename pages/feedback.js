@@ -3,6 +3,7 @@ import HeroWithColor from "../components/HeroWithColor"
 import PageBodyContent from "../components/PageBodyContent"
 import FeedbackForm from "../components/FeedbackForm"
 import { useRouter } from "next/router"
+import Head from "next/head"
 
 const FeedbackPage = () => {
 
@@ -39,6 +40,11 @@ const FeedbackPage = () => {
 
     return(
         <Layout>
+            <Head>
+                <title>Feedback | Care and support for adults | Buckinghamshire County Council</title>
+                <meta property="og:title" content="Give feedback" />
+                <meta property="og:description" content="This is a new website, feedback helps us to improve it." />
+            </Head>
             <HeroWithColor
                 breadcrumbs={breadcrumbs}
                 headline={title}

@@ -6,6 +6,7 @@ import queryString from "query-string"
 import Filters from "../components/Filters"
 import CallToAction from "../components/CallToAction"
 import Link from "next/link"
+import Head from "next/head"
 
 const RecommendationsPage = ({
     services,
@@ -14,6 +15,11 @@ const RecommendationsPage = ({
     totalPages
 }) => 
     <Layout>
+        <Head>
+            <title>Recommendations | Care and support for adults | Buckinghamshire County Council</title>
+            <meta property="og:title" content="Your recommendations" />
+            <meta property="og:description" content="Answer a few questions and we'll suggest recommendations in your area." />
+        </Head>
         <HeroWithColor
             headline="Your recommendations"
             backgroundColor="white"

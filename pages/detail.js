@@ -9,6 +9,7 @@ import PageBodyContent from "../components/PageBodyContent"
 import TickList from "../components/TickList"
 import { ButtonLink } from "../components/Button"
 import { prettyDays } from "../lib/utils"
+import Head from "next/head"
 
 
 const StyledButtonLink = styled(ButtonLink)`
@@ -66,6 +67,11 @@ const DetailPage = ({
 
     return(
         <Layout>
+            <Head>
+                <title>{(name || parentOrganisation)} | Care and support for adults | Buckinghamshire County Council</title>
+                <meta property="og:title" content={(name || parentOrganisation)} />
+                <meta property="og:description" content="See more information about clubs, activities and support in your area." />
+            </Head>
             <HeroWithColor
                 headline={name || parentOrganisation}
                 deck={description}
