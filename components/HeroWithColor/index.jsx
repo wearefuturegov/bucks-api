@@ -47,16 +47,29 @@ const Deck = styled.p`
     }
 `
 
+const Tag = styled.strong`
+    display: inline-block;
+    font-size: 1em;
+    color: white;
+    margin-bottom: 5px;
+    background: ${(props)=> theme[props.category]};
+    padding: 0px 5px;
+    text-transform: capitalize;
+    margin-right: 15px;
+`
+
 const HeroWithColor = ({
     breadcrumbs,
     headline,
     deck,
-    backgroundColor
+    backgroundColor,
+    category
 }) =>
     <Outer backgroundColor={backgroundColor}>
         <Inner>
             <Breadcrumbs breadcrumbs={breadcrumbs}/>
             <TextBox>
+                {category && <Tag category={category}>{category}</Tag>}
                 <Headline>{headline}</Headline>
                 <Deck>{deck}</Deck>
             </TextBox>

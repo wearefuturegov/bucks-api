@@ -12,6 +12,7 @@ const DetailPage = ({
             headline={service.name || service.parentOrganisation}
             backgroundColor="white"
             deck={service.description}
+            category={service.category}
             breadcrumbs={[
                 {
                     href: "/",
