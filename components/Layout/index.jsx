@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
         --reach-dialog: 1;
     }
     [data-reach-dialog-overlay] {
-        background: hsla(0, 0%, 0%, 0.33);
+        background: hsla(0, 0%, 0%, 0.5);
         position: fixed;
         top: 0;
         right: 0;
@@ -29,13 +29,13 @@ const GlobalStyle = createGlobalStyle`
         width: 80vw;
         margin: 10vh auto;
         background: white;
-        padding: 2rem;
         outline: none;
     }
 
     /* Map styles */
     .detail-map{
         height: 450px;
+        margin-top: 15px;
     }
 `
 const Layout = ({ children }) =>
