@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document"
-import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheet } from "styled-components"
 
 export default class MyDocument extends Document {
 
@@ -45,8 +45,6 @@ export default class MyDocument extends Document {
                 </Head>
                 <body>
                     <Main />
-                    
-                    {/* <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&libraries=places`}></script> */}
                     <NextScript />
                 </body>
             </Html>
