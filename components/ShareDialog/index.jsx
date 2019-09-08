@@ -63,7 +63,14 @@ const Fieldset = styled.fieldset`
     margin-bottom: 20px;
 `
 
-const Alert = styled.span``
+const Alert = styled.span`
+    padding: 10px;
+    background: ${theme.focus
+    };
+    display: block;
+    border-radius: 2px;
+    margin-bottom: 20px;
+`
 
 const Filter = ({
     shareableUrl,
@@ -76,7 +83,16 @@ const Filter = ({
     const [recipient, changeRecipient] = useState("")
     const [medium, changeMedium] = useState("email")
 
-    console.log(medium)
+    const reset = e => {
+        console.log(e)
+        if(e.target.value){
+            changeMedium(e.target.value)
+        } else {
+            changeMedium("email")
+        }
+        changeRecipient("")
+        setResponse(false)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -93,6 +109,7 @@ const Filter = ({
             setResponse(res.status)
         } catch(e){
             setResponse("fail")
+
         }
     }
 
@@ -107,42 +124,55 @@ const Filter = ({
             <StyledDialog
                 isOpen={dialogOpen}
                 onDismiss={() => toggleDialog(false)}
+                aria-live="polite"
             >
                 <CloseButton onClick={() => toggleDialog(false)}>
                     <img src={cross} alt="Close without saving"/>
                 </CloseButton>
+                {response === 200 ?
+                    <>
+                        <Inner>
+                            <Headline>Shared successfully</Headline>    
+                            <p>{(medium === "sms")? "A text message" : "An emaik"} has been sent to <strong>{recipient}</strong>. Would you like to share again?</p>            
+                        </Inner>
+                        <Footer>
+                            <Button onClick={reset}>Send another</Button>
+                        </Footer>
+                    </>
+                    :
+                    <form method="post" action={`/share/${medium}`} onSubmit={handleSubmit} aria-live="polite">
+                        <Inner>
+                            <Headline>{(singleService)? "Share this service" : "Share these recommendations"}</Headline>
+                            {(response === 500 || response === "fail") && <Alert>There was a problem sharing. If this continues, please try again later</Alert>}
+                            {(response === 404) && <Alert>We couldn't share to that {(medium === "sms")? "phone number" : "email"}. Please check it and try again.</Alert>}
+
+                            <Fieldset>
+                                <legend>Share by:</legend>
+                                <Radio required name="medium" onChange={reset} checked={"email" === medium} value="email">Email</Radio>
+                                <Radio required name="medium" onChange={reset} checked={"sms" === medium} value="sms">Text message</Radio>
+                            </Fieldset>
+
+                            <label htmlFor="recipient">{(medium === "sms")? "Phone number" : "Email address"} </label>
+                            <TextInput 
+                                type={(medium === "sms")? "tel" : "email"} 
+                                name="recipient"
+                                id="recipient"
+                                required
+                                value={recipient}
+                                onChange={(e)=>{
+                                    changeRecipient(e.target.value)
+                                }}
+                            />
+
+                        </Inner>
+                        <Footer>
+                            <Button type="submit">Send {(medium === "sms")? "message" : "email"}</Button>
+                        </Footer>
+                    </form>
+                }
                     
-
-                <form method="post" action={`/share/${medium}`} onSubmit={handleSubmit} aria-live="polite">
-                    <Inner>
-                        <Headline>{(singleService)? "Share this service" : "Share these recommendations"}</Headline>
                 
-                        {(response === 500 || response === "fail") && <Alert>There was a problem sharing. If this continues, please try again later</Alert>}
-                        {(response === 404) && <Alert>We couldn't share to that {(medium === "sms")? "phone number" : "email"}. Please check it and try again.</Alert>}
 
-                        <Fieldset>
-                            <legend>Share by:</legend>
-                            <Radio required name="medium" onChange={e => changeMedium(e.target.value)} checked={"email" === medium} value="email">Email</Radio>
-                            <Radio required name="medium" onChange={e => changeMedium(e.target.value)} checked={"sms" === medium} value="sms">Text message</Radio>
-                        </Fieldset>
-
-                        <label htmlFor="recipient">{(medium === "sms")? "Phone number" : "Email address"} </label>
-                        <TextInput 
-                            type={(medium === "sms")? "tel" : "email"} 
-                            name="recipient"
-                            id="recipient"
-                            required
-                            value={recipient}
-                            onChange={(e)=>{
-                                changeRecipient(e.target.value)
-                            }}
-                        />
-
-                    </Inner>
-                    <Footer>
-                        <Button type="submit">Send {(medium === "sms")? "message" : "email"}</Button>
-                    </Footer>
-                </form>
 
             </StyledDialog>
         </>
