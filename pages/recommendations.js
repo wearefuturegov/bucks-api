@@ -54,7 +54,7 @@ const RecommendationsPage = ({
                 services={services}
                 totalPages={totalPages}
             />
-            {(snippets.length > 0) && <CardGrid headline="Advice you might find useful" cards={snippetCards}/>}
+            {(snippets.length > 0) && <CardGrid headline="Related information and advice" cards={snippetCards}/>}
             <CallToAction headline="Is anything missing?">
                 <p>If you’re the organiser, of a club, activity or group that isn’t on this list, you can <Link href="/feedback?category=new"><a>request it be added.</a></Link></p>
             </CallToAction>

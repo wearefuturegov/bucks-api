@@ -10,7 +10,28 @@ import TickList from "../components/TickList"
 import { ButtonLink } from "../components/Button"
 import { prettyDays } from "../lib/utils"
 import Head from "next/head"
+import ShareDialog from "../components/ShareDialog"
 
+const Outer = styled.div`
+    padding: 40px 20px;
+    @media screen and (min-width: ${theme.tablet}){
+        padding: 60px 20px;
+    }
+    @media screen and (min-width: ${theme.desktop}){
+        padding: 70px 20px;
+    }
+`
+
+const Columns = styled.div`
+    max-width: ${theme.maxWidth};
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: ${theme.tablet}){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 80px;
+    }
+`
 
 const StyledButtonLink = styled(ButtonLink)`
     margin-bottom: 20px;
@@ -90,34 +111,41 @@ const DetailPage = ({
                     }
                 ]}
             />
-            <PageBodyContent equalColumns>
-                {url && <StyledButtonLink href={service.url} target="blank">Visit website</StyledButtonLink>}
-                <Disclosure><em>You may need a referral for some activities and groups. Contact the organiser if unsure.</em></Disclosure>
-                {(venue || area || postcode) &&
-                    <DetailItem>
-                        <h3>Where</h3>
-                        {venue && <p>{venue}</p>}
-                        {area && <p>{area}</p>}
-                        {postcode && <p>{postcode}</p>}
-                        <a href={`https://www.google.com/maps/place/${service.postcode}/@${service.geo.coordinates[1]},${service.geo.coordinates[0]},15z`}>Get directions</a>
-                    </DetailItem>
-                }
-                {(days.length > 0 || frequency) &&
-                    <DetailItem>
-                        <h3>When</h3>
-                        {days.length > 0 && prettyDays(days)}
-                        {frequency && <p>{frequency}</p>}
-                    </DetailItem>
-                }
-                {(contactName || phone || email) &&
-                    <DetailItem>
-                        <h3>Contact</h3>
-                        {contactName && <p>{contactName}</p>}
-                        {phone && <p>{phone}</p>}
-                        {email && <a href={`mailto:${email}`}>{email}</a>}
-                    </DetailItem>                    
-                }
-            </PageBodyContent>
+            <Outer>
+                <Columns>
+                    <article>
+                        {url && <StyledButtonLink href={service.url} target="blank">Visit website</StyledButtonLink>}
+                        <Disclosure><em>You may need a referral for some activities and groups. Contact the organiser if unsure.</em></Disclosure>
+                        {(venue || area || postcode) &&
+                            <DetailItem>
+                                <h3>Where</h3>
+                                {venue && <p>{venue}</p>}
+                                {area && <p>{area}</p>}
+                                {postcode && <p>{postcode}</p>}
+                                <a href={`https://www.google.com/maps/place/${service.postcode}/@${service.geo.coordinates[1]},${service.geo.coordinates[0]},15z`}>Get directions</a>
+                            </DetailItem>
+                        }
+                        {(days.length > 0 || frequency) &&
+                            <DetailItem>
+                                <h3>When</h3>
+                                {days.length > 0 && prettyDays(days)}
+                                {frequency && <p>{frequency}</p>}
+                            </DetailItem>
+                        }
+                        {(contactName || phone || email) &&
+                            <DetailItem>
+                                <h3>Contact</h3>
+                                {contactName && <p>{contactName}</p>}
+                                {phone && <p>{phone}</p>}
+                                {email && <a href={`mailto:${email}`}>{email}</a>}
+                            </DetailItem>                    
+                        }
+                    </article>
+                    <aside>
+                        <ShareDialog singleService/>
+                    </aside>
+                </Columns>
+            </Outer>
             <TickList
                 accessibility={accessibility}
                 ages={ageGroups}

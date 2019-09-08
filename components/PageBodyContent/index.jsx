@@ -19,7 +19,7 @@ const Columns = styled.div`
     margin-right: auto;
     @media screen and (min-width: ${theme.tablet}){
         display: grid;
-        grid-template-columns: ${props => props.equalColumns ? "1fr 1fr" : "3fr 1fr"};
+        grid-template-columns: 3fr 1fr;
         grid-column-gap: 80px;
     }
 `
@@ -36,13 +36,14 @@ const ContentArea = styled.article`
 
 const PageBodyContent = ({
     sidebarItems,
-    children,
-    equalColumns
+    sidebarContent,
+    children
 }) =>
     <Outer>
-        <Columns equalColumns={equalColumns}>
+        <Columns>
             <ContentArea>{children}</ContentArea>
             {sidebarItems && <Sidebar items={sidebarItems}/>}
+            {sidebarContent}
         </Columns>
     </Outer>
 

@@ -65,8 +65,7 @@ const Fieldset = styled.fieldset`
 
 const Alert = styled.span`
     padding: 10px;
-    background: ${theme.focus
-    };
+    background: ${theme.focus};
     display: block;
     border-radius: 2px;
     margin-bottom: 20px;
