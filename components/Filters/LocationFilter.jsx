@@ -8,12 +8,10 @@ import {
     StyledDialog,
     Inner,
     Headline,
-    Grid,
     Footer,
     Button,
     OpenButton,
     CloseButton,
-    ClearButton
 } from "./utils"
 
 const Hint = styled.p`

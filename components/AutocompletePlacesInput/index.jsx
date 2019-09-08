@@ -1,6 +1,9 @@
 import React, {useRef, useEffect, useState} from "react"
 import styled from "styled-components"
 import theme from "../_theme"
+import { useLoadScript } from "@react-google-maps/api"
+
+const libs = ["places"]
 
 const Input = styled.input`
     margin-top: 20px;
@@ -21,6 +24,11 @@ const LocationQuestion = ({
     onChange
 }) => {
 
+    const {isLoaded, loadError} = useLoadScript({
+        googleMapsApiKey: process.env.GOOGLE_CLIENT_KEY,
+        libraries: libs
+    })
+
     const [latLng, setLatLng] = useState([0,0])
 
     const inputRef = useRef(false)
@@ -28,12 +36,15 @@ const LocationQuestion = ({
     let autocomplete = null
 
     useEffect(() => {
-        autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, { 
-            types: ["geocode"]
-        })
-        autocomplete.setComponentRestrictions({"country": ["gb"]})
-        autocomplete.addListener("place_changed", handlePlaceChanged)
-    }, [])
+        if(isLoaded){
+            // console.log(window.google.maps.places)
+            autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, { 
+                types: ["geocode"]
+            })
+            autocomplete.setComponentRestrictions({"country": ["gb"]})
+            autocomplete.addListener("place_changed", handlePlaceChanged)
+        }
+    }, [isLoaded])
 
     const handlePlaceChanged = () => {
         const place = autocomplete.getPlace()

@@ -11,6 +11,7 @@ import { ButtonLink } from "../components/Button"
 import { prettyDays } from "../lib/utils"
 import Head from "next/head"
 import ShareDialog from "../components/ShareDialog"
+import DetailMap from "../components/Maps/DetailMap"
 
 const Outer = styled.div`
     padding: 40px 20px;
@@ -77,7 +78,7 @@ const DetailPage = ({
         phone, 
         contactName, 
         email, 
-        // geo, 
+        geo, 
         days, 
         frequency,
         suitability,
@@ -143,7 +144,12 @@ const DetailPage = ({
                     </article>
                     <aside>
                         <ShareDialog singleService/>
+                        <DetailMap
+                            // category={category}
+                            coordinates={geo.coordinates}
+                        />
                     </aside>
+
                 </Columns>
             </Outer>
             <TickList

@@ -32,6 +32,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 2rem;
         outline: none;
     }
+
+    /* Map styles */
+    .detail-map{
+        height: 450px;
+    }
 `
 const Layout = ({ children }) =>
     <>
