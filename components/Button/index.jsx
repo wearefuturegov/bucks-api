@@ -3,7 +3,7 @@ import styled from "styled-components"
 import theme from "../_theme"
 import arrow from "./arrow-right.svg"
 
-const Button = styled.button`
+const styles = `
     display: block;
     width: 100%;
     border-radius: 100px;
@@ -50,5 +50,8 @@ const Button = styled.button`
         font-size: 1.1em;
     }
 `
+
+const Button = styled.button`${styles}`
+export const ButtonLink = styled.a`${styles}`
 
 export default Button
