@@ -26,7 +26,7 @@ const RecommendationsPage = ({
 
         <Layout>
             <Head>
-                <title>Recommendations | Care and support for adults | Buckinghamshire County Council</title>
+                <title>Recommendations | Find support near you | Care and support for adults | Buckinghamshire County Council</title>
                 <meta property="og:title" content="Your recommendations" />
                 <meta property="og:description" content="Answer a few questions and we'll suggest recommendations in your area." />
             </Head>

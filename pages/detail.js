@@ -90,7 +90,7 @@ const DetailPage = ({
     return(
         <Layout>
             <Head>
-                <title>{(name || parentOrganisation)} | Care and support for adults | Buckinghamshire County Council</title>
+                <title>{(name || parentOrganisation)} | Find support near you | Care and support for adults | Buckinghamshire County Council</title>
                 <meta property="og:title" content={(name || parentOrganisation)} />
                 <meta property="og:description" content="See more information about clubs, activities and support in your area." />
             </Head>
