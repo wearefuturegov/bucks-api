@@ -39,7 +39,7 @@ const StyledLink = styled.a`
 `
 
 const PhaseBanner = () => {
-    if(process.env.STAGING_BANNER) return(
+    if(process.env.STAGING_BANNER === true) return(
         <Outer staging>
             <Inner>
                 <Tag staging>Staging</Tag>
