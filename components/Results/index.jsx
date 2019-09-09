@@ -76,7 +76,7 @@ const Results = ({
                 {mapOpen && <ListMap
                     lat={parseFloat(query.lat)}
                     lng={parseFloat(query.lng)}
-                    services={services}
+                    services={allServices}
                 />}
 
                 <Grid>
