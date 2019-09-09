@@ -36,8 +36,7 @@ const OpenButton = styled.button`
     border: none;
     font-size: 1em;
     cursor: pointer;
-    margin-bottom: 10px;
-    margin-left: auto;
+    margin-left: ${props => props.alignRight ? "auto" : "0px"};
     &:focus{
         outline: none;
         box-shadow: 0px 0px 0px 3px ${theme.focus};
@@ -115,6 +114,7 @@ const Filter = ({
     return(
         <>
             <OpenButton 
+                alignRight={!singleService}
                 onClick={() => {toggleDialog(true)}} 
                 className="share-opener"
             >

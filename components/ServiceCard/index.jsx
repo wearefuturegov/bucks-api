@@ -3,6 +3,7 @@ import styled from "styled-components"
 import theme from "../_theme"
 import Link from "next/link"
 import { truncate, prettyFeatures } from "../../lib/utils"
+import Favouriter from "../Favouriter"
 
 const Outer = styled.li`
     background: white;
@@ -74,7 +75,8 @@ const ServiceCard = ({
     category,
     distance,
     accessibility,
-    days
+    days,
+    service
 }) =>
     <Link href={href}>
         <Outer>
@@ -90,6 +92,8 @@ const ServiceCard = ({
                 <Tag category={category}>{category}</Tag>
                 <span dangerouslySetInnerHTML={{__html: prettyFeatures(distance, accessibility, days)}}></span>
             </Meta>
+
+            <Favouriter service={service}/>
 
         </Outer>
     </Link>

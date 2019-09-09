@@ -7,6 +7,7 @@ import ShareDialog from "../ShareDialog"
 
 const Outer = styled.section`
     padding: 0px 20px;
+    margin-bottom: 10px;
 `
 
 const Inner = styled.div`

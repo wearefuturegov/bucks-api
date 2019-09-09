@@ -5,13 +5,13 @@ import HeroWithColor from "../components/HeroWithColor"
 import CallToAction from "../components/CallToAction"
 import Link from "next/link"
 import fetch from "isomorphic-unfetch"
-import PageBodyContent from "../components/PageBodyContent"
 import TickList from "../components/TickList"
 import { ButtonLink } from "../components/Button"
 import { prettyDays } from "../lib/utils"
 import Head from "next/head"
 import ShareDialog from "../components/ShareDialog"
 import DetailMap from "../components/Maps/DetailMap"
+import Favouriter from "../components/Favouriter"
 
 const Outer = styled.div`
     padding: 40px 20px;
@@ -39,7 +39,7 @@ const StyledButtonLink = styled(ButtonLink)`
 `
 
 const Article = styled.article`
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     @media screen and (min-width: ${theme.tablet}){
         margin-bottom: 0px;
     }
@@ -70,10 +70,19 @@ const DetailItem = styled.div`
     }
 `
 
+const Actions = styled.div`
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+`
+
 const DetailPage = ({
     service
 }) => {
     let {
+        assetId,
         name, 
         parentOrganisation, 
         venue, 
@@ -150,13 +159,15 @@ const DetailPage = ({
                         }
                     </Article>
                     <aside>
-                        <ShareDialog singleService/>
+                        <Actions>
+                            <ShareDialog singleService/>
+                            <Favouriter service={service} labelled/>
+                        </Actions>
                         <DetailMap
                             // category={category}
                             coordinates={geo.coordinates}
                         />
                     </aside>
-
                 </Columns>
             </Outer>
             <TickList

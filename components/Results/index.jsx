@@ -90,6 +90,7 @@ const Results = ({
                             distance={service.distance}
                             days={service.days}
                             accessibility={service.accessibility}
+                            service={service}
                         />
                     )}
                 </Grid>

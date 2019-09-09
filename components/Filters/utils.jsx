@@ -7,7 +7,6 @@ export const OpenButton = styled.button`
     background: none;
     border: none;
     padding: 5px;
-    margin-bottom: 10px;
     font-size: 1em;
     color: ${theme.darkText};
     cursor: pointer;
