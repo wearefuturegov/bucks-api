@@ -7,6 +7,7 @@ import Button from "../Button"
 import Switch from "../Switch"
 import ListMap from "../Maps/ListMap"
 import { listFavourites, removeFavourite, addFavourite, isFavourited } from "../../lib/localStorage"
+import {logEvent} from "../../lib/analytics"
 
 const Outer = styled.section`
     background: ${theme.background};
@@ -76,16 +77,19 @@ const Results = ({
         const newServices = await res.json()
         setServices(extraServices.concat(newServices.results))
         setPage(page+1)
+        logEvent("Recommendations", "Load more results")
     }
 
     const fave = (service) => {
         addFavourite(service)
         setFavourites(listFavourites())
+        logEvent("Recommendations", "Save a service")
     }
 
     const unfave = (assetId) => {
         removeFavourite(assetId)
         setFavourites(listFavourites())
+        logEvent("Recommendations", "Unsave a service")
     }
 
     return(
@@ -109,7 +113,10 @@ const Results = ({
                 }
                 <Switch 
                     value={mapOpen}
-                    onChange={() => toggleMap(!mapOpen)}
+                    onChange={() => {
+                        toggleMap(!mapOpen)
+                        logEvent("Recommendations", "Toggle map view")
+                    }}
                     name="test"
                     label="Show on a map?"
                 />

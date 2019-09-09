@@ -4,6 +4,7 @@ import styled from "styled-components"
 import theme from "../_theme"
 import filledHeart from "./heart-filled.svg"
 import unfilledHeart from "./heart-unfilled.svg"
+import { logEvent } from "../../lib/analytics"
 
 const Button = styled.button`
     position: relative;
@@ -63,7 +64,15 @@ const Favouriter = ({
 export const withHoistedState = OriginalComponent => {
     const NewComponent = (props) => {
         let { favourited, unfave, fave, service } = props
-        const handleChange = () => favourited ? unfave(service.assetId) : fave(service)
+        const handleChange = () => {
+            if(favourited){
+                unfave(service.assetId)
+                logEvent("Service detail", "Unsave a service")
+            } else {
+                fave(service)
+                logEvent("Service detail", "Save a service")
+            }
+        }
         return <OriginalComponent {...props} favourited={favourited} onChange={handleChange}  />
     }
     return NewComponent
