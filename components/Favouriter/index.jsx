@@ -7,7 +7,6 @@ import unfilledHeart from "./heart-unfilled.svg"
 
 const Button = styled.button`
     position: relative;
-    z-index: 1;
     border: none;
     background: none;
     cursor: pointer;
@@ -16,20 +15,36 @@ const Button = styled.button`
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    margin-left: ${props => props.labelled ? "25px" : "0px"}
+    margin-left: ${props => props.labelled ? "25px" : "0px"};
     .favourite-button__icon{
         margin-right: 5px;
     }
     &:hover{
-        .favourite-button__icon{
-            background: $background;
+        img{
+            background: ${theme.background};
+        }
+    }
+    &:focus{
+        outline: none;
+        img{
+            box-shadow: 0px 0px 0px 3px ${theme.focus};
         }
     }
 `
 
 const Label = styled.span`
     margin-left: 10px;
-    color: ${theme.lightText}
+    color: ${theme.lightText};
+`
+
+const Img = styled.img`
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
 `
 
 const Favouriter = ({
@@ -59,7 +74,7 @@ const Favouriter = ({
                 addFavourite(service)
             }
         }}>
-            {favourited ? <img src={filledHeart} alt="Unsave"/> : <img src={unfilledHeart} alt="Save for later"/>}
+            {favourited ? <Img src={filledHeart} alt="Unsave"/> : <Img src={unfilledHeart} alt="Save for later"/>}
             {labelled && 
                 <Label>{favourited ? "Unsave" : "Save for later"}</Label>
             }

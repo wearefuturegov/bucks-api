@@ -7,24 +7,28 @@ import Favouriter from "../Favouriter"
 
 const Outer = styled.li`
     background: white;
-    padding: 30px;
+    padding: 25px;
     display: block;
     margin-bottom: 25px;
     box-shadow: 0 4px 0 ${theme.shadow};
     position: relative;
+    @media screen and (min-width: ${theme.tablet}){
+        padding: 30px;
+    }
     &:active{
         transform: translateY(4px);
         background: ${theme.activeCard};
-    }
-    &:focus-within{
-        box-shadow: 0 0 0 3px ${theme.focus};
     }
 `
 
 const StyledLink = styled.a`
     color: ${theme.darkText};
     text-decoration: none;
-
+    &:focus{
+        &:after{
+            box-shadow: 0 0 0 3px ${theme.focus};
+        }
+    }
     &:after{
         content: "";
         display: block;
@@ -33,6 +37,8 @@ const StyledLink = styled.a`
         left: 0px;
         width: 100%;
         height: 100%;
+        /* z-index: 1; */
+        /* background: green; */
     }
     &:focus{
         outline: none !important
@@ -66,6 +72,20 @@ const Tag = styled.strong`
 const Meta = styled.footer`
     color: ${theme.lightText};
     line-height: 1.7;
+    @media screen and (min-width: ${theme.tablet}){
+        padding-right: 30px;
+    }
+`
+
+const FavouriterHolder = styled.div`
+    display: none;
+    @media screen and (min-width: ${theme.tablet}){
+        display: block;
+        z-index: 2;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
 `
 
 const ServiceCard = ({
@@ -78,7 +98,6 @@ const ServiceCard = ({
     days,
     service
 }) =>
-    <Link href={href}>
         <Outer>
 
             <Link href={href}>
@@ -93,9 +112,10 @@ const ServiceCard = ({
                 <span dangerouslySetInnerHTML={{__html: prettyFeatures(distance, accessibility, days)}}></span>
             </Meta>
 
-            <Favouriter service={service}/>
+            <FavouriterHolder>
+                <Favouriter service={service}/>
+            </FavouriterHolder>
 
         </Outer>
-    </Link>
 
 export default ServiceCard
