@@ -82,7 +82,6 @@ const Filter = ({
     const [medium, changeMedium] = useState("email")
 
     const reset = e => {
-        console.log(e)
         if(e.target.value){
             changeMedium(e.target.value)
         } else {

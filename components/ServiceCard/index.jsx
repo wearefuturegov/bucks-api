@@ -3,7 +3,7 @@ import styled from "styled-components"
 import theme from "../_theme"
 import Link from "next/link"
 import { truncate, prettyFeatures } from "../../lib/utils"
-import Favouriter from "../Favouriter"
+import Favouriter, { withHoistedState } from "../Favouriter"
 
 const Outer = styled.li`
     background: white;
@@ -88,9 +88,12 @@ const FavouriterHolder = styled.div`
     }
 `
 
+const HoistedStateFavouriter = withHoistedState(Favouriter)
+
 const ServiceCard = ({
     service,
-    onChange,
+    fave,
+    unfave,
     favourited
 }) => {
     let {
@@ -119,7 +122,7 @@ const ServiceCard = ({
                 <span dangerouslySetInnerHTML={{__html: prettyFeatures(distance, accessibility, days)}}></span>
             </Meta>
             <FavouriterHolder>
-                <Favouriter onChange={onChange} favourited={favourited} service={service}/>
+                <HoistedStateFavouriter fave={fave} unfave={unfave} favourited={favourited} service={service}/>
             </FavouriterHolder>
         </Outer>
     )

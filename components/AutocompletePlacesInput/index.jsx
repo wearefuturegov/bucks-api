@@ -37,7 +37,6 @@ const LocationQuestion = ({
 
     useEffect(() => {
         if(isLoaded){
-            // console.log(window.google.maps.places)
             autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, { 
                 types: ["geocode"]
             })

@@ -78,6 +78,16 @@ const Results = ({
         setPage(page+1)
     }
 
+    const fave = (service) => {
+        addFavourite(service)
+        setFavourites(listFavourites())
+    }
+
+    const unfave = (assetId) => {
+        removeFavourite(assetId)
+        setFavourites(listFavourites())
+    }
+
     return(
         <Outer>
             <Inner>
@@ -85,13 +95,13 @@ const Results = ({
                     <FavouritesContainer>
                         <Headline>Saved from your last visit</Headline>
                         <Grid>
-                            {console.log(favourites)}
                             {favourites.map(service =>
                                 <ServiceCard
                                     key={service.assetId}
                                     service={service}
+                                    fave={fave}
+                                    unfave={unfave}
                                     favourited={favourites.find(el => {if(el.assetId === service.assetId) return el})}
-
                                 />
                             )}
                         </Grid>
@@ -113,6 +123,8 @@ const Results = ({
                         <ServiceCard
                             key={service.assetId}
                             service={service}
+                            fave={fave}
+                            unfave={unfave}
                             favourited={favourites.find(el => {if(el.assetId === service.assetId) return el})}
                         />
                     )}

@@ -49,9 +49,8 @@ const Img = styled.img`
 
 const Favouriter = ({
     labelled,
-    onChange,
     favourited,
-    service
+    onChange
 }) => 
     <Button labelled={labelled} onClick={onChange}>
         {favourited ? <Img src={filledHeart} alt="Unsave"/> : <Img src={unfilledHeart} alt="Save for later"/>}
@@ -60,6 +59,15 @@ const Favouriter = ({
         }
     </Button>
 
+
+export const withHoistedState = OriginalComponent => {
+    const NewComponent = (props) => {
+        let { favourited, unfave, fave, service } = props
+        const handleChange = () => favourited ? unfave(service.assetId) : fave(service)
+        return <OriginalComponent {...props} favourited={favourited} onChange={handleChange}  />
+    }
+    return NewComponent
+}
 
 export const withState = OriginalComponent => {
     const NewComponent = (props) => {
@@ -85,8 +93,7 @@ export const withState = OriginalComponent => {
                 addFavourite(props.service)
             }
         }
-
-        return <OriginalComponent {...props} favourited={favourited} onChange={handleChange}  />
+        return <OriginalComponent {...props} favourited={favourited} onChange={handleChange}/>
     }
     return NewComponent
 }
