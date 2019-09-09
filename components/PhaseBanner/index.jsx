@@ -39,23 +39,25 @@ const StyledLink = styled.a`
 `
 
 const PhaseBanner = () => {
-    if(process.env.STAGING_BANNER == "true") return(
-        <Outer staging>
-            <Inner>
-                <Tag staging>Staging</Tag>
-                <p>This is the staging site. You might be looking for <StyledLink staging href="http://bucks-care.herokuapp.com">production</StyledLink>.</p>
-            </Inner>
-        </Outer>
-    )
-
-    return(
-        <Outer>
-            <Inner>
-                <Tag>Beta</Tag>
-                <p>This is a new website - <StyledLink href="/feedback">your feedback</StyledLink> will help us improve it.</p>
-            </Inner>
-        </Outer>
-    )
+    if(process.env.STAGING_BANNER == "true"){ 
+        return(
+            <Outer staging>
+                <Inner>
+                    <Tag staging>Staging</Tag>
+                    <p>This is the staging site. You might be looking for <StyledLink staging href="http://bucks-care.herokuapp.com">production</StyledLink>.</p>
+                </Inner>
+            </Outer>
+        )
+    } else {
+        return(
+            <Outer>
+                <Inner>
+                    <Tag>Beta</Tag>
+                    <p>This is a new website - <StyledLink href="/feedback">your feedback</StyledLink> will help us improve it.</p>
+                </Inner>
+            </Outer>
+        )
+    }
 }
 
 export default PhaseBanner
