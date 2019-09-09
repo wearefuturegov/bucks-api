@@ -89,33 +89,40 @@ const FavouriterHolder = styled.div`
 `
 
 const ServiceCard = ({
-    headline,
-    deck,
-    href,
-    category,
-    distance,
-    accessibility,
-    days,
-    service
-}) =>
-        <Outer>
+    service,
+    onChange,
+    favourited
+}) => {
+    let {
+        name,
+        parentOrganisation,
+        description,
+        assetId,
+        category,
+        distance,
+        accessibility,
+        days,
+    } = service
 
+    let href = `/service/${assetId}`
+
+    return(
+        <Outer>
             <Link href={href}>
                 <StyledLink href={href}>
-                    <Headline>{headline}</Headline>
+                    <Headline>{name || parentOrganisation}</Headline>
                 </StyledLink>
             </Link>
-
-            <Deck>{truncate(deck, 20)}</Deck>
+            <Deck>{truncate(description, 20)}</Deck>
             <Meta>
                 <Tag category={category}>{category}</Tag>
                 <span dangerouslySetInnerHTML={{__html: prettyFeatures(distance, accessibility, days)}}></span>
             </Meta>
-
             <FavouriterHolder>
-                <Favouriter service={service}/>
+                <Favouriter onChange={onChange} favourited={favourited} service={service}/>
             </FavouriterHolder>
-
         </Outer>
+    )
+}
 
 export default ServiceCard

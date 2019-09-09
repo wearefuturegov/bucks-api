@@ -49,37 +49,46 @@ const Img = styled.img`
 
 const Favouriter = ({
     labelled,
+    onChange,
+    favourited,
     service
-}) => {
-
-    useEffect(()=>{
-        if(isFavourited(service.assetId)) {
-            setFavourited(true)
-        } else {
-            setFavourited(false)
+}) => 
+    <Button labelled={labelled} onClick={onChange}>
+        {favourited ? <Img src={filledHeart} alt="Unsave"/> : <Img src={unfilledHeart} alt="Save for later"/>}
+        {labelled && 
+            <Label>{favourited ? "Unsave" : "Save for later"}</Label>
         }
-    }, [])
+    </Button>
 
-    const [favourited, setFavourited] = useState(false)
 
-    return(
-        <Button labelled={labelled} onClick={() => {
+export const withState = OriginalComponent => {
+    const NewComponent = (props) => {
+
+        const [favourited, setFavourited] = useState(false)
+
+        useEffect(()=>{
+            if(isFavourited(props.service.assetId)) {
+                setFavourited(true)
+            } else {
+                setFavourited(false)
+            }
+        }, [])
+
+        const handleChange = () => {
             if(favourited) {
                 setFavourited(false)
-                removeFavourite(service.assetId)
+                removeFavourite(props.service.assetId)
             } else {
                 setFavourited(true)
-                let serviceToSave = service
+                let serviceToSave = props.service
                 delete serviceToSave.distance
-                addFavourite(service)
+                addFavourite(props.service)
             }
-        }}>
-            {favourited ? <Img src={filledHeart} alt="Unsave"/> : <Img src={unfilledHeart} alt="Save for later"/>}
-            {labelled && 
-                <Label>{favourited ? "Unsave" : "Save for later"}</Label>
-            }
-        </Button>
-    )
+        }
+
+        return <OriginalComponent {...props} favourited={favourited} onChange={handleChange}  />
+    }
+    return NewComponent
 }
 
 export default Favouriter

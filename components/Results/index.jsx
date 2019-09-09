@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import theme from "../_theme"
 import ServiceCard from "../ServiceCard"
@@ -6,6 +6,7 @@ import queryString from "query-string"
 import Button from "../Button"
 import Switch from "../Switch"
 import ListMap from "../Maps/ListMap"
+import { listFavourites, removeFavourite, addFavourite, isFavourited } from "../../lib/localStorage"
 
 const Outer = styled.section`
     background: ${theme.background};
@@ -19,6 +20,10 @@ const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
+`
+
+const FavouritesContainer = styled.div`
+    margin-bottom: 20px;
 `
 
 const Grid = styled.ul`
@@ -41,6 +46,12 @@ const StyledButton = styled(Button)`
     }
 `
 
+const Headline = styled.h2`
+    color: ${theme.darkText};
+    margin-bottom: 15px;
+    font-size: 1.3em;
+`
+
 const Results = ({
     services,
     query,
@@ -51,6 +62,11 @@ const Results = ({
     const [mapOpen, toggleMap] = useState(false)
     const [extraServices, setServices ] = useState([])
     const allServices = services.concat(extraServices)
+    const [favourites, setFavourites] = useState([])
+
+    useEffect(()=>{
+        setFavourites(listFavourites())
+    }, [])
 
     const loadMore = async () => {
         const res = await fetch(`/api/services?${queryString.stringify({
@@ -64,33 +80,40 @@ const Results = ({
 
     return(
         <Outer>
-            {mapOpen}
             <Inner>
+                {favourites.length > 0 &&
+                    <FavouritesContainer>
+                        <Headline>Saved from your last visit</Headline>
+                        <Grid>
+                            {console.log(favourites)}
+                            {favourites.map(service =>
+                                <ServiceCard
+                                    key={service.assetId}
+                                    service={service}
+                                    favourited={favourites.find(el => {if(el.assetId === service.assetId) return el})}
+
+                                />
+                            )}
+                        </Grid>
+                    </FavouritesContainer>
+                }
                 <Switch 
                     value={mapOpen}
                     onChange={() => toggleMap(!mapOpen)}
                     name="test"
                     label="Show on a map?"
                 />
-                
                 {mapOpen && <ListMap
                     lat={parseFloat(query.lat)}
                     lng={parseFloat(query.lng)}
                     services={allServices}
                 />}
-
                 <Grid>
                     {allServices.map(service =>
                         <ServiceCard
                             key={service.assetId}
-                            headline={service.name || service.parentOrganisation}
-                            deck={service.description}
-                            href={`/service/${service.assetId}`}
-                            category={service.category}
-                            distance={service.distance}
-                            days={service.days}
-                            accessibility={service.accessibility}
                             service={service}
+                            favourited={favourites.find(el => {if(el.assetId === service.assetId) return el})}
                         />
                     )}
                 </Grid>

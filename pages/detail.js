@@ -11,7 +11,7 @@ import { prettyDays } from "../lib/utils"
 import Head from "next/head"
 import ShareDialog from "../components/ShareDialog"
 import DetailMap from "../components/Maps/DetailMap"
-import Favouriter from "../components/Favouriter"
+import Favouriter, { withState } from "../components/Favouriter"
 
 const Outer = styled.div`
     padding: 40px 20px;
@@ -77,6 +77,8 @@ const Actions = styled.div`
     justify-content: flex-start;
     align-items: center;
 `
+
+const StatefulFavouriter = withState(Favouriter)
 
 const DetailPage = ({
     service
@@ -161,12 +163,9 @@ const DetailPage = ({
                     <aside>
                         <Actions>
                             <ShareDialog singleService/>
-                            <Favouriter service={service} labelled/>
+                            <StatefulFavouriter service={service} labelled/>
                         </Actions>
-                        <DetailMap
-                            // category={category}
-                            coordinates={geo.coordinates}
-                        />
+                        <DetailMap coordinates={geo.coordinates}/>
                     </aside>
                 </Columns>
             </Outer>
