@@ -17,11 +17,6 @@ const Outer = styled.div`
 const Input = styled.input`
     position: absolute;
     opacity: 0;
-    // &:focus{
-    //     outline: none;
-    //     box-shadow: none;
-    //     border: none;
-    // }
     &:checked+label{
         &:before{
             right: 3px;

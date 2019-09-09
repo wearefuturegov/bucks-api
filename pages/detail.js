@@ -38,6 +38,13 @@ const StyledButtonLink = styled(ButtonLink)`
     margin-bottom: 20px;
 `
 
+const Article = styled.article`
+    margin-bottom: 30px;
+    @media screen and (min-width: ${theme.tablet}){
+        margin-bottom: 0px;
+    }
+`
+
 const Disclosure = styled.p`
     font-size: 1.1em;
     line-height: 1.6;
@@ -114,7 +121,7 @@ const DetailPage = ({
             />
             <Outer>
                 <Columns>
-                    <article>
+                    <Article>
                         {url && <StyledButtonLink href={service.url} target="blank">Visit website</StyledButtonLink>}
                         <Disclosure><em>You may need a referral for some activities and groups. Contact the organiser if unsure.</em></Disclosure>
                         {(venue || area || postcode) &&
@@ -141,7 +148,7 @@ const DetailPage = ({
                                 {email && <a href={`mailto:${email}`}>{email}</a>}
                             </DetailItem>                    
                         }
-                    </article>
+                    </Article>
                     <aside>
                         <ShareDialog singleService/>
                         <DetailMap

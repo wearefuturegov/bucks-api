@@ -3,6 +3,7 @@ import PhaseBanner from "../PhaseBanner"
 import Header from "../Header"
 import Footer from "../Footer"
 import { createGlobalStyle } from "styled-components"
+import theme from "../_theme"
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -34,9 +35,12 @@ const GlobalStyle = createGlobalStyle`
 
     /* Map styles */
     .detail-map, .list-map{
-        height: 450px;
+        height: 350px;
         margin-top: 20px;
         margin-bottom: 20px;
+        @media screen and (min-width: ${theme.tablet}){
+            height: 450px;
+        }
     }
 `
 const Layout = ({ children }) =>
