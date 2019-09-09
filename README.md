@@ -23,7 +23,11 @@ It consists of:
     * `FOREST_ENV_SECRET`
     * `FOREST_AUTH_SECRET`
     * `GOOGLE_API_KEY` with the geocoding API enabled
-    * `GOOGLE_CLIENT_KEY` with the Maps Javascript API enabled, and scoped to the production URL and browsers only. This credential will be exposed client-side.
+    * `GOOGLE_CLIENT_KEY` with the Maps Javascript API 
+    enabled, and scoped to the production URL and browsers only. This credential will be exposed client-side.
+    * `GOOGLE_TRACKING_ID` for Google Analytics tracking
+    * `NOTIFY_API_KEY` for GOV.UK Notify
+    * `SENTRY_DSN` for Sentry error tracking
 3. `npm install`
 4. `npm run dev`
 5. Optionally, [seed the database](#database-seeds)
@@ -44,16 +48,6 @@ The app has a seed script to populate the database of services from a CSV data f
 
 1. Put a `data.csv` in the /lib folder
 2. Run `npm run seed`
-
-## Style guide
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e0800365-0ae7-46de-8f36-88ce085da6f4/deploy-status)](https://app.netlify.com/sites/bucks-care-style-guide/deploys)
-
-The app has a living style guide of React components built with Storybook.
-
-To spin it up in dev mode, run `npm run storybook`.
-
-Pushes to master are built to [this static HTML site](http://bucks-care-style-guide.netlify.com/).
 
 ## API endpoints
 

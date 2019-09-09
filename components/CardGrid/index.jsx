@@ -1,30 +1,54 @@
 import React from "react"
-import PropTypes from "prop-types"
+import styled from "styled-components"
+import theme from "../_theme"
 import Card from "../Card"
-import "./style.scss"
 
-const CardGrid = ({title, cards, afterHero}) =>
-    <section className={(afterHero)? "card-grid card-grid--extra-top-padding card-grid--with-bottom-overlap": "card-grid"}>
-        <div className="container">
-            {title && <h2 className="section-title">{title}</h2>}
-            <div className="card-grid__cards">
-                {cards.map((card, i)=>
+const Outer = styled.section`
+    background-color: ${theme.background};
+    padding: 40px 20px;
+    @media screen and (min-width: ${theme.tablet}){
+        padding: 50px 20px;
+    }
+`
+
+const Inner = styled.section`
+    max-width: ${theme.maxWidth};
+    margin-left: auto;
+    margin-right: auto;
+`
+
+const Grid = styled.ul`
+    list-style: none;
+    @media screen and (min-width: ${theme.tablet}){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 25px;
+    }
+`
+
+const Headline = styled.h2`
+    margin-bottom: 25px;
+    color: ${theme.darkText};
+`
+
+const CardGrid = ({
+    headline,
+    cards
+}) =>
+    <Outer>
+        <Inner>
+            {headline && <Headline>{headline}</Headline>}
+            <Grid>
+                {cards.map(card => 
                     <Card
-                        title={card.title}
-                        description={card.description}
-                        image={card.image}
+                        key={card.headline}
+                        headline={card.headline}
+                        deck={card.deck}
                         href={card.href}
-                        key={i}
-                    />    
+                    />
                 )}
-            </div>
-        </div>
-    </section>
-
-CardGrid.propTypes = {
-    title: PropTypes.string,
-    cards: PropTypes.array.isRequired,
-    afterHero: PropTypes.bool
-}
+            </Grid>
+        </Inner>
+    </Outer>
 
 export default CardGrid

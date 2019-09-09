@@ -1,31 +1,58 @@
 import React from "react"
-import Link from "next/link"
-import "./style.scss"
+import styled from "styled-components"
+import theme from "../_theme"
+
+const Outer = styled.footer`
+    background: ${theme.shadow};
+    padding: 40px 20px;
+    font-size: 0.9em;
+    color: ${theme.lightText};
+    @media screen and (min-width: ${theme.tablet}){
+        padding: 60px 20px;
+        font-size: 0.95em;
+    }
+    a{
+        color: ${theme.lightText};
+        &:hover{
+            text-decoration: none;
+        }
+        &:focus{
+            outline: 3px solid ${theme.focus};
+            background: ${theme.focus};               
+        }
+    }
+`
+
+const Inner = styled.div`
+    max-width: ${theme.maxWidth};
+    margin-left: auto;
+    margin-right: auto;
+`
+
+const Menu = styled.ul`
+    list-style: none;
+    margin-bottom: 15px;
+`
+
+const MenuItem = styled.li`
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+`
 
 const Footer = () =>
-    <footer className="site-footer">
-        <div className="container">
-            <ul className="site-footer__menu">
+    <Outer>
+        <Inner>
+            <Menu>
+                <MenuItem><a href="https://www.buckscc.gov.uk/services/contact-and-complaints/contact-us/">Contact us</a></MenuItem>
+                <MenuItem><a href="/">Cookies</a></MenuItem>
+                <MenuItem><a href="https://www.buckscc.gov.uk/services/council-and-democracy/privacy-policy/">Privacy statement</a></MenuItem>
+                <MenuItem><a href="/">Accessibility statement</a></MenuItem>
+                <MenuItem><a href="https://www.buckscc.gov.uk/services/community/community-safety/modern-slavery/bcc-modern-slavery-statement/">Modern slavery statement</a></MenuItem>
+            </Menu>
+            <p>Built and maintained by <a href="http://buckscc.gov.uk">Buckinghamshire County Council</a></p>
+        </Inner>
 
-                <li className="site-footer__menu-item">
-                    <Link href="https://www.buckscc.gov.uk/services/council-and-democracy/privacy-policy/">
-                        <a className="site-footer__menu-link">Privacy policy</a>
-                    </Link>
-                </li>
-                <li className="site-footer__menu-item">
-                    <Link href="https://www.buckscc.gov.uk/services/contact-and-complaints/contact-us/">
-                        <a className="site-footer__menu-link">Contact us</a>
-                    </Link>
-                </li>
-                <li className="site-footer__menu-item">
-                    <Link href="/cookies">
-                        <a className="site-footer__menu-link">Cookies</a>
-                    </Link>
-                </li>
-
-            </ul>
-            <p className="site-footer__text">Built and maintained by <a href="http://buckscc.gov.uk">Buckinghamshire County Council</a></p>
-        </div>
-    </footer>
+    </Outer>
 
 export default Footer

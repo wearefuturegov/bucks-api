@@ -18,7 +18,8 @@ router.use(rateLimit({
     }
 }))
 
-router.post("/geocode", geocode)
+router.get("/geocode", geocode)
+
 router.post("/feedback", feedback)
 
 router.post("/share/email", notify.email)

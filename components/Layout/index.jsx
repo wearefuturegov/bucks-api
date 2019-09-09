@@ -1,54 +1,57 @@
 import React from "react"
-import PropTypes from "prop-types"
-import Head from "next/head"
-import Header from "../Header"
 import PhaseBanner from "../PhaseBanner"
-import IsPageUseful from "../IsPageUseful"
-import FullWidthSearch from "../FullWidthSearchPanel"
+import Header from "../Header"
 import Footer from "../Footer"
-import Cookies from "../Cookies"
-import "./style.scss"
+import { createGlobalStyle } from "styled-components"
+import theme from "../_theme"
 
-const Layout = ({children, withHeader, withUseful, withFooter, fullHeight})=>
-    <div className={fullHeight ? "layout--full-height" : undefined}>
-        <Head>
-            <title>Care and support for adults | Buckinghamshire County Council</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap" rel="stylesheet"/> 
-        </Head>
-        <PhaseBanner href="#"/>
-        <Cookies/>
-        {withHeader && <Header /> }
-        {children}
-        {withUseful && <IsPageUseful />}
-        {withFooter &&
-        <>
-            <FullWidthSearch
-                popularPages={[
-                    {
-                        title: "Getting equipment",
-                        href: "#"
-                    },
-                    {
-                        title: "Keeping yourself safe",
-                        href: "#"
-                    },
-                    {
-                        title: "Getting help at home",
-                        href: "#"
-                    },
-                ]}
-            />
-            <Footer/>
-        </>
+const GlobalStyle = createGlobalStyle`
+    *{
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Dialog styles */
+    :root {
+        --reach-dialog: 1;
+    }
+    [data-reach-dialog-overlay] {
+        background: hsla(0, 0%, 0%, 0.5);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: auto;
+        z-index: 2;
+    }
+    [data-reach-dialog-content] {
+        width: 80vw;
+        margin: 10vh auto;
+        background: white;
+        outline: none;
+        z-index: 3;
+    }
+
+    /* Map styles */
+    .detail-map, .list-map{
+        height: 350px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        @media screen and (min-width: ${theme.tablet}){
+            height: 450px;
         }
-    </div>
-
-Layout.propTypes = {
-    children: PropTypes.node,
-    withHeader: PropTypes.bool,
-    withUseful: PropTypes.bool,
-    withFooter: PropTypes.bool
-}
+    }
+`
+const Layout = ({ children }) =>
+    <>
+        <GlobalStyle/>
+        <PhaseBanner/>
+        <Header/>
+        {children}
+        <Footer/>
+    </>
 
 export default Layout

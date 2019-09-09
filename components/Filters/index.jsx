@@ -1,54 +1,57 @@
-import React, { useState } from "react"
-import CategoryFilter from "../Filter/CategoryFilter"
-import LocationFilter from "../Filter/LocationFilter"
-import KeywordsFilter from "../Filter/KeywordsFilter"
-import AgesFilter from "../Filter/AgesFilter"
-import DaysFilter from "../Filter/DaysFilter"
-import AccessibilityFilter from "../Filter/AccessibilityFilter"
-import "./style.scss"
-import filterIcon from "./filter.svg"
-import crossIcon from "./cross.svg"
+import React from "react"
+import styled from "styled-components"
+import theme from "../_theme"
+import LocationFilter from "./LocationFilter"
+import Filter from "./Filter"
 import ShareDialog from "../ShareDialog"
+import config from "../../_config"
 
+const Outer = styled.section`
+    padding: 0px 20px;
+    margin-bottom: 10px;
+`
 
-const Filters = ({
-    locationFilterIsOpen, 
-    toggleLocationFilterDialog
-}) => {
+const Inner = styled.div`
+    max-width: ${theme.maxWidth};
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: ${theme.desktop}){
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+`
+const Filters = () =>
+    <Outer>
+        <Inner>
+            <LocationFilter/>
+            <Filter
+                label="Interests"
+                name="category"
+                options={config.interestsOptions}
+            />
+            <Filter
+                label="Kinds of support"
+                name="keywords"
+                options={config.supportOptions}
+            />
+            <Filter
+                label="When you're free"
+                name="days"
+                options={config.daysOptions}
+            />
+            <Filter
+                label="Ages"
+                name="age"
+                options={config.ageOptions}
+            />
+            <Filter
+                label="Accessibility"
+                name="accessibility"
+                options={config.accessibilityOptions}
+            />
+            <ShareDialog/>
+        </Inner>
+    </Outer>
     
-    const [filtersOpen, toggleFilters] = useState(false)
-    const [shareDialogOpen, toggleShareDialog] = useState(false)
-
-    return(
-        <>
-            <button 
-                onClick={()=>{toggleFilters(!filtersOpen)}}
-                aria-expanded={filtersOpen}
-                aria-controls="recommendation-filters"
-                className="recommendation-toggle"
-            >
-                {filtersOpen ? 
-                    <><img className="recommendation-toggle__icon" alt="" aria-hidden="true" src={crossIcon}/> Close filters</> 
-                    : 
-                    <><img className="recommendation-toggle__icon" alt="" aria-hidden="true" src={filterIcon}/> Filters</> 
-                }
-            </button>
-            <section className={filtersOpen ? "recommendation-filters container recommendation-filters--open" : "recommendation-filters container"}>
-                <div>
-                    <CategoryFilter />
-                    <KeywordsFilter/>
-                    <LocationFilter dialogIsOpen={locationFilterIsOpen} toggleDialog={toggleLocationFilterDialog}/>
-                    <AgesFilter/>
-                    <DaysFilter/>
-                    <AccessibilityFilter/>
-                </div>
-                <button className="share-button--for-list" onClick={()=>{
-                    toggleShareDialog(true)
-                }}>Share</button>
-            </section>
-            <ShareDialog dialogIsOpen={shareDialogOpen} toggleDialog={toggleShareDialog}/>
-        </>
-    )
-}
-
 export default Filters
