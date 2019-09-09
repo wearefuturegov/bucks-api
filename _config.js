@@ -1,3 +1,5 @@
+// Non-secret config goes here...
+
 export default {
     // Templates for GOV.UK Notify
     notifyEmailTemplate: "1dbf18a5-4080-4ce4-a210-8e67dd75d47a",

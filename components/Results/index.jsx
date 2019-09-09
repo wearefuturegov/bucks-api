@@ -6,7 +6,7 @@ import queryString from "query-string"
 import Button from "../Button"
 import Switch from "../Switch"
 import ListMap from "../Maps/ListMap"
-import { listFavourites, removeFavourite, addFavourite, isFavourited } from "../../lib/localStorage"
+import { listFavourites, removeFavourite, addFavourite } from "../../lib/localStorage"
 import {logEvent} from "../../lib/analytics"
 
 const Outer = styled.section`

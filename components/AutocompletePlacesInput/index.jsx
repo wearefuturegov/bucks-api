@@ -24,7 +24,7 @@ const LocationQuestion = ({
     onChange
 }) => {
 
-    const {isLoaded, loadError} = useLoadScript({
+    const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.GOOGLE_CLIENT_KEY,
         libraries: libs
     })
