@@ -8,7 +8,6 @@ import CallToAction from "../components/CallToAction"
 import Link from "next/link"
 import Head from "next/head"
 import CardGrid from "../components/CardGrid"
-import ListMap from "../components/Maps/ListMap"
 
 const RecommendationsPage = ({
     services,
@@ -50,11 +49,6 @@ const RecommendationsPage = ({
                 ]}
             />
             <Filters/>
-            <ListMap
-                lat={parseFloat(query.lat)}
-                lng={parseFloat(query.lng)}
-                services={services}
-            />
             <Results
                 query={query}
                 services={services}

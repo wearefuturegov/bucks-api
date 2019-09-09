@@ -4,6 +4,8 @@ import theme from "../_theme"
 import ServiceCard from "../ServiceCard"
 import queryString from "query-string"
 import Button from "../Button"
+import Switch from "../Switch"
+import ListMap from "../Maps/ListMap"
 
 const Outer = styled.section`
     background: ${theme.background};
@@ -46,6 +48,7 @@ const Results = ({
 }) => {
 
     const [page, setPage ] = useState(1)
+    const [mapOpen, toggleMap] = useState(false)
     const [extraServices, setServices ] = useState([])
     const allServices = services.concat(extraServices)
 
@@ -61,7 +64,21 @@ const Results = ({
 
     return(
         <Outer>
+            {mapOpen}
             <Inner>
+                <Switch 
+                    value={mapOpen}
+                    onChange={() => toggleMap(!mapOpen)}
+                    name="test"
+                    label="Show on a map?"
+                />
+                
+                {mapOpen && <ListMap
+                    lat={parseFloat(query.lat)}
+                    lng={parseFloat(query.lng)}
+                    services={services}
+                />}
+
                 <Grid>
                     {allServices.map(service =>
                         <ServiceCard
