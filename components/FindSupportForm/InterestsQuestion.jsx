@@ -1,6 +1,7 @@
 import React from "react"
 import Checkbox, { Checkboxes } from "../Checkbox"
 import { Fieldset, Hint, Question } from "./utils"
+import config from "../../_config"
 
 const InterestsQuestion = ({
     support,
@@ -11,6 +12,7 @@ const InterestsQuestion = ({
         setSupport(e.target.checked)
     }
 
+
     return(
         <Fieldset>
             <legend>
@@ -18,20 +20,23 @@ const InterestsQuestion = ({
                 <Hint>Select as many as you like</Hint>
             </legend>
             <Checkboxes>
-                <Checkbox name="category" value="active">Staying active</Checkbox>
-                <Checkbox name="category" value="social">Socialising</Checkbox>
-
-                <Checkbox 
-                    name="category" 
-                    value="support"
-                    checked={support}
-                    onChange={handleSupportChange}
-                >
-                    Support with daily tasks
-                </Checkbox>
-
-                <Checkbox name="category" value="learning">Learning new skills</Checkbox>
-                <Checkbox name="category" value="cultural">Culture and visiting new places</Checkbox>
+                {config.interestsOptions.map(option => {
+                    if(option.value === "support"){
+                        return(
+                            <Checkbox 
+                                name="category" 
+                                value={option.value}
+                                checked={support}
+                                onChange={handleSupportChange}
+                                key={option.value}
+                            >
+                                {option.label}
+                            </Checkbox>
+                        )
+                    } else {
+                        return <Checkbox name="category" value={option.value} key={option.value}>{option.label}</Checkbox>
+                    }
+                })}
             </Checkboxes>
         </Fieldset>
     )
