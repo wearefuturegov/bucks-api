@@ -35,7 +35,8 @@ const GlobalStyle = createGlobalStyle`
     /* Map styles */
     .detail-map, .list-map{
         height: 450px;
-        margin-top: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 `
 const Layout = ({ children }) =>

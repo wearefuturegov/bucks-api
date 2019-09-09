@@ -1,8 +1,10 @@
 import React, { useState} from "react"
-import { GoogleMap, LoadScriptNext, Marker, InfoWindow, MarkerClusterer } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, Marker, InfoWindow, MarkerClusterer } from "@react-google-maps/api"
 import { truncate } from "../../lib/utils"
 import Link from "next/link"
 import marker from "./marker.svg"
+
+const libs = ["places"]
 
 const ServiceMarker = ({service, clusterer, activeMarker, changeActiveMarker}) => {
     let position = {
@@ -62,43 +64,48 @@ const ServiceClusterer = ({services, activeMarker, changeActiveMarker}) => {
     )
 }
 
-const WrappedMap = ({lat, lng, services}) => {
+const ListMap = ({lat, lng, services}) => {
+
+    const {isLoaded, loadError} = useLoadScript({
+        googleMapsApiKey: process.env.GOOGLE_CLIENT_KEY,
+        libraries: libs
+    })
 
     const [activeMarker, changeActiveMarker] = useState(0)
-    return(
-        <>
-            <LoadScriptNext
-                id="script-loader"
-                googleMapsApiKey={process.env.GOOGLE_CLIENT_KEY}
-            >
-                <GoogleMap 
-                    options={{
-                        mapTypeControl: false,
-                        streetViewControl: false
-                    }}
-                    key={services}
-                    zoom={12} 
-                    center={{
-                        lat: lat, 
-                        lng: lng
-                    }}
-                    mapContainerClassName="list-map"
-                    onLoad={map => {
-                        const bounds = new window.google.maps.LatLngBounds()
-                        services.map(service => {
-                            bounds.extend(new window.google.maps.LatLng(
-                                service.geo.coordinates[1],
-                                service.geo.coordinates[0]
-                            ))
-                        })
-                        map.fitBounds(bounds)
-                    }}
-                >
-                    <ServiceClusterer activeMarker={activeMarker} changeActiveMarker={changeActiveMarker} services={services}/>
-                </GoogleMap>
-            </LoadScriptNext>
-        </>
-    )
+
+    const renderMap = () => 
+        <GoogleMap 
+            options={{
+                mapTypeControl: false,
+                streetViewControl: false
+            }}
+            key={services}
+            zoom={12} 
+            center={{
+                lat: lat, 
+                lng: lng
+            }}
+            mapContainerClassName="list-map"
+            onLoad={map => {
+                const bounds = new window.google.maps.LatLngBounds()
+                services.map(service => {
+                    bounds.extend(new window.google.maps.LatLng(
+                        service.geo.coordinates[1],
+                        service.geo.coordinates[0]
+                    ))
+                })
+                map.fitBounds(bounds)
+            }}
+        >
+            <ServiceClusterer activeMarker={activeMarker} changeActiveMarker={changeActiveMarker} services={services}/>
+        </GoogleMap>
+
+    if (loadError) {
+        return <div>There was a problem loading the map.</div>
+    }
+
+    return isLoaded ? renderMap() : <p>Loading...</p>
+
 }
 
-export default WrappedMap
+export default ListMap

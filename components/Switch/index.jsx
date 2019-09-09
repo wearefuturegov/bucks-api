@@ -5,6 +5,7 @@ import tick from "./tick.svg"
 
 const Outer = styled.div`
     margin-bottom: 15px;
+    display: flex;
     &:focus-within{
         label{
             outline: none;
@@ -30,6 +31,7 @@ const Input = styled.input`
 `
 
 const Label = styled.label`
+    margin-left: auto;
     display: inline-flex;
     flex-direction: row;
     align-items: center;
