@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* Map styles */
-    .detail-map{
+    .detail-map, .list-map{
         height: 450px;
         margin-top: 15px;
     }
