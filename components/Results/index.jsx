@@ -53,6 +53,18 @@ const Headline = styled.h2`
     font-size: 1.3em;
 `
 
+const NoResults = styled.div`
+    text-align: center;
+    color: ${theme.lightText};
+    margin: 40px 0px;
+    @media screen and (min-width: ${theme.desktop}){
+        font-size: 1.1em;
+    }
+    h3{
+        margin-bottom: 10px;
+    }
+`
+
 const Results = ({
     services,
     query,
@@ -111,32 +123,41 @@ const Results = ({
                         </Grid>
                     </FavouritesContainer>
                 }
-                <Switch 
-                    value={mapOpen}
-                    onChange={() => {
-                        toggleMap(!mapOpen)
-                        logEvent("Recommendations", "Toggle map view")
-                    }}
-                    name="test"
-                    label="Show on a map?"
-                />
-                {mapOpen && <ListMap
-                    lat={parseFloat(query.lat)}
-                    lng={parseFloat(query.lng)}
-                    services={allServices}
-                />}
-                <Grid>
-                    {allServices.map(service =>
-                        <ServiceCard
-                            key={service.assetId}
-                            service={service}
-                            fave={fave}
-                            unfave={unfave}
-                            favourited={favourites.find(el => {if(el.assetId === service.assetId) return el})}
+                {allServices.length ?
+                    <>
+                        <Switch 
+                            value={mapOpen}
+                            onChange={() => {
+                                toggleMap(!mapOpen)
+                                logEvent("Recommendations", "Toggle map view")
+                            }}
+                            name="test"
+                            label="Show on a map?"
                         />
-                    )}
-                </Grid>
-                {(page < totalPages) && <StyledButton onClick={loadMore}>Load more results</StyledButton>}
+                        {mapOpen && <ListMap
+                            lat={parseFloat(query.lat)}
+                            lng={parseFloat(query.lng)}
+                            services={allServices}
+                        />}
+                        <Grid>
+                            {allServices.map(service =>
+                                <ServiceCard
+                                    key={service.assetId}
+                                    service={service}
+                                    fave={fave}
+                                    unfave={unfave}
+                                    favourited={favourites.find(el => {if(el.assetId === service.assetId) return el})}
+                                />
+                            )}
+                        </Grid>
+                        {(page < totalPages) && <StyledButton onClick={loadMore}>Load more results</StyledButton>}
+                    </>
+                    :
+                    <NoResults>
+                        <h3>No results to show</h3>
+                        <p>Try removing some filters.</p> 
+                    </NoResults>
+                }
             </Inner>
         </Outer>
     )
