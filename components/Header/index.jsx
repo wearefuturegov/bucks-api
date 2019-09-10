@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import styled from "styled-components"
 import logo from "./logo.svg"
 import eyeglass from "./eyeglass.svg"
 import theme from "../_theme"
+import { Container, Button } from "./MobileMenu"
 
 const Outer = styled.header`
     background: ${theme.darkText};
@@ -16,12 +17,12 @@ const Inner = styled.div`
     max-width: ${theme.maxWidth};
     margin-left: auto;
     margin-right: auto;
-    @media screen and (min-width: ${theme.tablet}){
+
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-    }
+
 `
 
 const MastheadLink = styled.a`
@@ -127,31 +128,43 @@ const SearchIcon = styled.img`
 const MenuItem = ({href, children}) =>
     <MenuListItem><Link href={href}><MenuLink href={href}>{children}</MenuLink></Link></MenuListItem>
 
-const SiteHeader = () =>
-    <Outer>
-        <Inner>
+const MenuItems = () =>
+    <>
+        <MenuItem href="/">Find support</MenuItem>
+        <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=2239">Information and advice</MenuItem>     
+        <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/Auth">Log in</MenuItem>
+        <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/SignUp/PersonalDetails">Sign up</MenuItem>
+    </>
 
-            <Link href="https://www.careadvicebuckinghamshire.org/">
-                <MastheadLink href="https://www.careadvicebuckinghamshire.org/">
-                    <Logo src={logo} alt="Buckinghamshire County Council"/>
-                    <ServiceName>Care for adults</ServiceName>
-                </MastheadLink>
-            </Link>
+const SiteHeader = () => {
+    const [menuOpen, toggleMenu] = useState(false)
 
-            <Nav>
-                <SearchForm>
-                    <SearchInput type="text" placeholder="Search"></SearchInput>
-                    <SearchButton><SearchIcon src={eyeglass} alt="search"/></SearchButton>
-                </SearchForm>
-                <Menu>
-                    <MenuItem href="/">Find support</MenuItem>
-                    <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=2239">Information and advice</MenuItem>     
-                    <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/Auth">Log in</MenuItem>
-                    <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/SignUp/PersonalDetails">Sign up</MenuItem>
-                </Menu>
-            </Nav>
-
-        </Inner>
-    </Outer>
-
+    return(
+        <Outer>
+            <Inner>
+                <Link href="https://www.careadvicebuckinghamshire.org/">
+                    <MastheadLink href="https://www.careadvicebuckinghamshire.org/">
+                        <Logo src={logo} alt="Buckinghamshire County Council"/>
+                        <ServiceName>Care for adults</ServiceName>
+                    </MastheadLink>
+                </Link>
+                <Nav>
+                    <SearchForm method="get" action="https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council">
+                        <input type="hidden" name="pageId" value="2239"/>
+                        <SearchInput type="text" name="Search" placeholder="Search"></SearchInput>
+                        <SearchButton><SearchIcon src={eyeglass} alt="search"/></SearchButton>
+                    </SearchForm>
+                    <Menu>
+                        <MenuItems/>
+                    </Menu>
+                </Nav>
+                <Button onClick={()=> toggleMenu(!menuOpen)}>{menuOpen ? "Close" : "Menu"}</Button>
+            </Inner>
+            <div aria-live="polite">
+                {menuOpen && <Container><MenuItems/></Container>}
+            </div>
+        </Outer>
+    )
+}
+ 
 export default SiteHeader
