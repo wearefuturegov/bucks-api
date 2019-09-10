@@ -73,6 +73,19 @@ export const UserContent = styled.div`
             background: ${theme.focus};               
         }
     }
+    ol,ul{
+        margin-left: 30px;
+        margin-bottom: 20px;
+    }
+    li{
+        margin-bottom: 5px;
+        padding-left: 15px;
+        line-height: 1.6;
+        font-size: 1em;
+        @media screen and (min-width: ${theme.desktop}){
+            font-size: 1.1em
+        }
+    }
     &:first-child{
         margin-top: 0px !important;
     }

@@ -2,6 +2,7 @@ import React from "react"
 import PhaseBanner from "../PhaseBanner"
 import Header from "../Header"
 import Footer from "../Footer"
+import Cookies from "../Cookies"
 import { createGlobalStyle } from "styled-components"
 import theme from "../_theme"
 
@@ -49,6 +50,7 @@ const Layout = ({ children }) =>
     <>
         <GlobalStyle/>
         <PhaseBanner/>
+        <Cookies/>
         <Header/>
         {children}
         <Footer/>
