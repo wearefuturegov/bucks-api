@@ -81,6 +81,7 @@ export const UserContent = styled.div`
         margin-bottom: 5px;
         padding-left: 15px;
         line-height: 1.6;
+        color: ${theme.darkText};
         font-size: 1em;
         @media screen and (min-width: ${theme.desktop}){
             font-size: 1.1em
