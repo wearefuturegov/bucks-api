@@ -1,8 +1,8 @@
-# Buckinghamshire adult social care
+# Find support near me
 
 [![CircleCI](https://circleci.com/gh/wearefuturegov/bucks/tree/master.svg?style=svg)](https://circleci.com/gh/wearefuturegov/bucks/tree/master)
 
-An app for the Buckinghamshire adult social care project. It provides a needs explorer interface leading to a personalised list of advice articles and local community services.
+An app for the Buckinghamshire adult social care project. It provides the find support near me tool, leading to a personalised list of advice articles and local community services.
 
 
 It consists of:
