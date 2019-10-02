@@ -10,7 +10,7 @@ const Outer = styled.footer`
     width: 100%;
     background: ${theme.white};
     z-index: 999;
-    padding: 20px 0px;
+    padding: 20px 20px;
     color: ${theme.lightText};
     border-top: 1px solid ${theme.shadow};
     font-size: 1em;
