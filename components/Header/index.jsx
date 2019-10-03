@@ -130,10 +130,10 @@ const MenuItem = ({href, children}) =>
 
 const MenuItems = () =>
     <>
-        <MenuItem href="/">Find support</MenuItem>
-        <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/WhereILive/Council?pageId=2239">Information and advice</MenuItem>     
-        <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/Auth">Log in</MenuItem>
-        <MenuItem href="https://www.careadvicebuckinghamshire.org/s4s/SignUp/PersonalDetails">Sign up</MenuItem>
+        <MenuItem href="http://www.careadvicebuckinghamshire.org/your-care-and-support-options/">Care and support</MenuItem>
+        <MenuItem href="/">Things to do</MenuItem>     
+        <MenuItem href="http://www.careadvicebuckinghamshire.org/health-and-wellbeing/">Health and wellbeing</MenuItem>
+        <MenuItem href="http://www.careadvicebuckinghamshire.org/emergencies/">Emergencies</MenuItem>
     </>
 
 const SiteHeader = () => {
