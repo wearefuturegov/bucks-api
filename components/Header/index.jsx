@@ -145,7 +145,7 @@ const SiteHeader = () => {
                 <Link href="https://www.careadvicebuckinghamshire.org/">
                     <MastheadLink href="https://www.careadvicebuckinghamshire.org/">
                         <Logo src={logo} alt="Buckinghamshire County Council"/>
-                        <ServiceName>Care for adults</ServiceName>
+                        <ServiceName>Activities and support</ServiceName>
                     </MastheadLink>
                 </Link>
                 <Nav>
