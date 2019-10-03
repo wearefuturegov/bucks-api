@@ -15,17 +15,17 @@ module.exports = {
             label: "Socialising"
         },
         {
-            value: "support",
-            label: "Support with daily tasks"
-        },
-        {
             value: "learning",
             label: "Learning new things"
         },
         {
             value: "cultural",
             label: "Culture and visiting new places"
-        }
+        },
+        {
+            value: "support",
+            label: "Support"
+        },
     ],
     supportOptions: [
         {
