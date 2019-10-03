@@ -22,8 +22,8 @@ const HomePage = () =>
                     label: "Support near you"
                 }
             ]}
-            headline="Find support near you"
-            deck="Answer a few questions to find activities and support groups in your area"
+            headline="Find activities, groups and services near you"
+            deck="Answer a few questions to find clubs, activities and support groups in your area."
             image={hero}
         />
         <PageBodyContent
