@@ -3,7 +3,6 @@ const router = require("express").Router()
 // const cors = require("cors")
 const rateLimit = require("express-rate-limit")
 const services = require("../controllers/services")
-const snippets = require("../controllers/snippets")
 const geocode = require("../controllers/geocode")
 const notify = require("../controllers/notify")
 const feedback = require("../controllers/feedback")
@@ -29,7 +28,6 @@ router.post("/share/sms", notify.text)
 
 router.get("/services", services.list)
 router.get("/services/:id", services.getServiceById)
-router.get("/snippets", snippets.list)
 
 // Error handler
 router.use((err, req, res, next)=>{
