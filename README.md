@@ -1,14 +1,12 @@
 # Find support near me
 
-[![CircleCI](https://circleci.com/gh/wearefuturegov/bucks/tree/master.svg?style=svg)](https://circleci.com/gh/wearefuturegov/bucks/tree/master)
+A data back-end for the Buckinghamshire community assets catalogue, driven by a mongodb database. It has:
 
-An app for the Buckinghamshire adult social care project. It provides the find support near me tool, leading to a personalised list of advice articles and local community services.
+- database models for storing community assets
+- routes for a RESTful API of community services at `/api/services`
+- config to edit the catalogue in Forest Admin.
 
-
-It consists of:
-
-* an isomorphic front-end [next.js](https://nextjs.org/) app
-* an API driven by a mongodb database
+It is front-end agnostic, but is intended to work with the 
 
 ## Prerequisites
 
@@ -23,16 +21,13 @@ It consists of:
     * `FOREST_ENV_SECRET`
     * `FOREST_AUTH_SECRET`
     * `GOOGLE_API_KEY` with the geocoding API enabled
-    * `GOOGLE_CLIENT_KEY` with the Maps Javascript API 
-    enabled, and scoped to the production URL and browsers only. This credential will be exposed client-side.
-    * `GOOGLE_TRACKING_ID` for Google Analytics tracking
     * `NOTIFY_API_KEY` for GOV.UK Notify
     * `SENTRY_DSN` for Sentry error tracking
 3. `npm install`
 4. `npm run dev`
 5. Optionally, [seed the database](#database-seeds)
 
-The app will be available on port 3000.
+The app will be available on port 3000. Remember, there's no front-end, so you'll have to go to `/api/services` to see anything.
 
 ## Deploying to the web
 
@@ -59,12 +54,10 @@ The services API at `/api/services` can be filtered and sorted:
 * `ages=`, plus either `Young people`, `Young adults` or `Older adults` will filter to services matching *only* the given value
 * `lat=` and `lng=` will order results by distance from that point, nearest first, and add an extra field "distance" to the response.
 
+* `radius=` overrides paging parameters and shows all results within the specified radius (in meters)
+
 * `accessibility=`... will provide services that match only *all* of the supplied values
 * `days=`... will provide services that match *any* of the supplied days
 * `evening=true` will restrict results to those happening at evenings and weekends only
 
 To pass arrays of values, include the parameter multiple times, like: `?category=active&category=support`.
-
-## Linting
-
-`eslint` is used to enforce code style. Use a code editor with eslint support, or the `npm test` command, to run a lint.
