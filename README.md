@@ -1,4 +1,4 @@
-# Find support near me
+# Buckinghamshire community assets API
 
 A data back-end for the Buckinghamshire community assets catalogue, driven by a mongodb database. It has:
 
