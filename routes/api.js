@@ -17,14 +17,14 @@ router.use(rateLimit({
     }
 }))
 
+router.use(cors())
+
 router.get("/geocode", geocode)
 
 router.post("/feedback", feedback)
 
 router.post("/share/email", notify.email)
 router.post("/share/sms", notify.text)
-
-router.use(cors())
 
 router.get("/services", services.list)
 router.get("/services/:id", services.getServiceById)
