@@ -55,7 +55,7 @@ module.exports = {
             if(req.query.radius) findQuery.geo.$nearSphere.$maxDistance = parseFloat(req.query.radius)
         } 
   
-        let perPage = req.query.radius ? 0 : 10
+        let perPage = 20
 
         Promise.all([
             Service.countDocuments(query),
@@ -75,7 +75,9 @@ module.exports = {
                 results: services.map((service) =>{
                     if(findQuery.geo){
                         return {
-                            ...service,
+                            name: service.name,
+                            parentOrganisation: service.parentOrganisation,
+                            // ...service,
                             // Add an extra field for computed distance
                             distance: haversine({
                                 latitude: req.query.lat,
