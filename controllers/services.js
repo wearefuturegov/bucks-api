@@ -75,9 +75,7 @@ module.exports = {
                 results: services.map((service) =>{
                     if(findQuery.geo){
                         return {
-                            name: service.name,
-                            parentOrganisation: service.parentOrganisation,
-                            // ...service,
+                            ...service,
                             // Add an extra field for computed distance
                             distance: haversine({
                                 latitude: req.query.lat,
