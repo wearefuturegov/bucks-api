@@ -71,7 +71,7 @@ module.exports = {
                 .select(backOfficeFields)
                 .limit(perPage)
                 .skip((req.query.page - 1) * perPage)
-        ]).then(([count, countywideServices,services])=>{
+        ]).then(([count, countywideServices, services])=>{
             res.json({
                 status: "OK",
                 count: count,
@@ -79,10 +79,11 @@ module.exports = {
                 countywideResults : countywideServices,
                 results: services.map((service) =>{
                     if(findQuery.geo){
-                        return {
-                            ...service,
-                            // Add an extra field for computed distance
-                            distance: haversine({
+                        let result = {
+                            ...service
+                        }
+                        if(service.geo){
+                            result.distance = haversine({
                                 latitude: req.query.lat,
                                 longitude: req.query.lng
                             },{
@@ -93,6 +94,7 @@ module.exports = {
                                 unit: "mile"
                             })
                         }
+                        return result
                     } else {
                         return service
                     }
