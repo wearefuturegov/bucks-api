@@ -62,8 +62,10 @@ module.exports = {
 
         Promise.all([
             Service.countDocuments(query),
-            CountywideService.find(findQuery).select(backOfficeFields),
-            Service.find(findQuery)
+            CountywideService.find({
+                category: [].concat(req.query.category)
+            }).select(backOfficeFields),
+            Service.find({})
                 .lean()
                 // Only return public fields
                 .select(backOfficeFields)
