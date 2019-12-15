@@ -1,4 +1,5 @@
 const Service = require("../models/Service")
+const CountywideService = require("../models/CountywideService")
 const haversine = require("haversine")
 
 const backOfficeFields = {
@@ -15,11 +16,13 @@ const backOfficeFields = {
     safeguarding: 0,
     healthSafety: 0,
     insurance: 0,
-    legacyCategories: 0
+    legacyCategories: 0,
+    __v: 0
 }
 
 module.exports = {
     list: async (req, res, next)=>{
+
         let query = {}
 
         // Only show published results
@@ -59,19 +62,19 @@ module.exports = {
 
         Promise.all([
             Service.countDocuments(query),
+            CountywideService.find(findQuery).select(backOfficeFields),
             Service.find(findQuery)
                 .lean()
                 // Only return public fields
                 .select(backOfficeFields)
-                // This is broken
-                // .sort({promoted: -1})
                 .limit(perPage)
                 .skip((req.query.page - 1) * perPage)
-        ]).then(([count, services])=>{
+        ]).then(([count, countywideServices,services])=>{
             res.json({
                 status: "OK",
                 count: count,
                 pages: Math.floor(count / perPage),
+                countywideResults : countywideServices,
                 results: services.map((service) =>{
                     if(findQuery.geo){
                         return {

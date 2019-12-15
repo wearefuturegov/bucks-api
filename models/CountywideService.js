@@ -10,12 +10,11 @@ const arrayToLower = v =>{
     })
 }
 
-const Snippet = new mongoose.Schema({
-    title: String,
+const CountywideService = new mongoose.Schema({
+    name: String,
     description: String,
     href: {type: String, set: strToLower},
-    keywords: {type: [String], set: arrayToLower},
-    imageUrl: {type: String}
+    category: {type: String, set: strToLower}
 })
 
-module.exports = mongoose.model("Snippet", Snippet)
+module.exports = mongoose.model("CountywideService", CountywideService)
