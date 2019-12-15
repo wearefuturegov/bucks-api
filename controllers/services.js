@@ -26,9 +26,9 @@ module.exports = {
         let query = {}
 
         // Only show published results
-        query.reviewStatus = {
-            $ne: "Unpublish"
-        }
+        query.reviewStatus = { $ne: "Unpublish" }
+        // Only show results where geo isn't null
+        query.geo = { $ne: null }
 
         if(req.query.category && req.query.keywords){
             query.$or = [
@@ -65,7 +65,7 @@ module.exports = {
             CountywideService.find({
                 category: req.query.category
             }).select(backOfficeFields),
-            Service.find({})
+            Service.find(findQuery)
                 .lean()
                 // Only return public fields
                 .select(backOfficeFields)
@@ -79,11 +79,9 @@ module.exports = {
                 countywideResults : countywideServices,
                 results: services.map((service) =>{
                     if(findQuery.geo){
-                        let result = {
-                            ...service
-                        }
-                        if(service.geo){
-                            result.distance = haversine({
+                        return {
+                            ...service,
+                            distance: haversine({
                                 latitude: req.query.lat,
                                 longitude: req.query.lng
                             },{
@@ -94,7 +92,6 @@ module.exports = {
                                 unit: "mile"
                             })
                         }
-                        return result
                     } else {
                         return service
                     }
