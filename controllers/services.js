@@ -63,7 +63,7 @@ module.exports = {
         Promise.all([
             Service.countDocuments(query),
             CountywideService.find({
-                category: { $in: [].concat(req.query.category) }
+                category: req.query.category
             }).select(backOfficeFields),
             Service.find({})
                 .lean()
