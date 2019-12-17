@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const router = require("express").Router()
-const cors = require("cors")
 const rateLimit = require("express-rate-limit")
 const services = require("../controllers/services")
 const geocode = require("../controllers/geocode")
@@ -16,8 +15,6 @@ router.use(rateLimit({
         message: "You made too many requests. Try again later."
     }
 }))
-
-router.use(cors())
 
 router.get("/geocode", geocode)
 

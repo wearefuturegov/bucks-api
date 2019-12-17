@@ -4,6 +4,7 @@ const apiRouter = require("./routes/api")
 const sslRedirect = require("heroku-ssl-redirect")
 const basicAuth = require("express-basic-auth")
 const Sentry = require("@sentry/node")
+const cors = require("cors")
 
 require("dotenv").config()
 
@@ -19,6 +20,8 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, (err)=>{
 })
 
 const server = express()
+
+server.use(cors())
 
 server.use(Sentry.Handlers.requestHandler())
 
