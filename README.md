@@ -5,8 +5,9 @@ A data back-end for the Buckinghamshire community assets catalogue, driven by a 
 - database models for storing community assets
 - routes for a RESTful API of community services at `/api/services`
 - config to edit the catalogue in Forest Admin.
+- helper API routes for certain functionality on the front-end that needs a server
 
-It is front-end agnostic, but is intended to work with the 
+It is front-end agnostic, but is intended to work with the `bucks-service-directory` repo.
 
 ## Prerequisites
 
