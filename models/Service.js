@@ -56,7 +56,10 @@ const Service = new mongoose.Schema({
 
     // PRIVATE/BACK OFFICE FIELDS
 
-    reviewDate: Date,
+    reviewDate: {
+        type: Date,
+        default: Date.now
+    },
 
     reviewStatus: String,
     reviewNotes: String,
