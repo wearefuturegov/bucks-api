@@ -462,6 +462,20 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "createdAt",
+      "type": "Date",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "days",
       "type": ["String"],
       "defaultValue": null,
@@ -798,6 +812,20 @@
       "inverseOf": null,
       "validations": []
     }, {
+      "field": "updatedAt",
+      "type": "Date",
+      "defaultValue": null,
+      "enums": null,
+      "integration": null,
+      "isFilterable": true,
+      "isReadOnly": false,
+      "isRequired": false,
+      "isSortable": true,
+      "isVirtual": false,
+      "reference": null,
+      "inverseOf": null,
+      "validations": []
+    }, {
       "field": "url",
       "type": "String",
       "defaultValue": null,
@@ -846,7 +874,11 @@
   "meta": {
     "database_type": "MongoDB",
     "liana": "forest-express-mongoose",
-    "liana_version": "3.2.4",
+    "liana_version": "5.6.0",
+    "engine": "nodejs",
+    "engine_version": "13.5.0",
+    "framework": "express",
+    "framework_version": "^4.17.1",
     "orm_version": "5.5.14"
   }
 }
