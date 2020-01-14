@@ -1,6 +1,6 @@
 // Non-secret config goes here...
 
-export default {
+module.exports = {
     // Templates for GOV.UK Notify
     notifyEmailTemplate: "1dbf18a5-4080-4ce4-a210-8e67dd75d47a",
     notifySmsTemplate: "d8a965d4-efc1-451c-a9b1-2101ab67efbd",
