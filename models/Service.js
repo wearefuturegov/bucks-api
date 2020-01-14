@@ -77,7 +77,11 @@ const Service = new mongoose.Schema({
     confidDataProtect: String,
     equalityDiversity: String,
 
-    legacyCategories: [String]
+    legacyCategories: [String],
+
+    comment1: String,
+    comment2: String,
+    comment3: String,
 
 })
 
