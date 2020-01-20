@@ -4,7 +4,7 @@ const apiRouter = require("./routes/api")
 const sslRedirect = require("heroku-ssl-redirect")
 const basicAuth = require("express-basic-auth")
 const Sentry = require("@sentry/node")
-// const cors = require("cors")
+const cors = require("cors")
 
 require("dotenv").config()
 
