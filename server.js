@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, (err)=>{
 
 const server = express()
 
-server.use(cors())
+// server.use(cors())
 
 server.use(Sentry.Handlers.requestHandler())
 
