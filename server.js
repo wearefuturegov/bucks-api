@@ -21,8 +21,6 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, (err)=>{
 
 const server = express()
 
-// server.use(cors())
-
 server.use(Sentry.Handlers.requestHandler())
 
 server.set("trust proxy", 1)
@@ -42,6 +40,8 @@ if(process.env.USER && process.env.PASSWORD) {
 
 server.use(sslRedirect())
 server.use(express.json())
+
+server.use(cors())
 
 // API routes
 server.use("/api", apiRouter)
