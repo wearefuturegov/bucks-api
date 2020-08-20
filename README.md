@@ -27,6 +27,7 @@ It is front-end agnostic, but is intended to work with the `bucks-service-direct
 3. `npm install`
 4. `npm run dev`
 5. Optionally, [seed the database](#database-seeds)
+6. Create the [right database index](https://docs.mongodb.com/manual/core/2dsphere/) to allow geographic searching.
 
 The app will be available on port 3000. Remember, there's no front-end, so you'll have to go to `/api/services` to see anything.
 
@@ -37,6 +38,7 @@ The app is intended to run on Heroku.
 1. Push master to a new Heroku app
 2. Provision a mongodb database add-on. [mLab](https://elements.heroku.com/addons/mongolab) works well
 3. Optionally, [seed the database](#database-seeds)
+4. Create database indices
 
 ## Database seeds
 
