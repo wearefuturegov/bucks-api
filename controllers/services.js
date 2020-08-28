@@ -158,7 +158,7 @@ module.exports = {
                                 created_at: new Date(row[2]),
                                 updated_at: new Date(),
                                 phone: row[3],
-                                longlat: `${parseFloat(longitude)},${parseFloat(latitude)}`,
+                                longlat: `${parseFloat(latitude)},${parseFloat(longitude)}`,
                                 postcode: row[6],
                                 email: row[7],
                                 venue: row[8],
