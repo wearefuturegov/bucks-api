@@ -216,7 +216,7 @@ module.exports = {
 
                                 geo: (latitude && longitude)? {
                                     type: "Point",
-                                    coordinates: [parseFloat(latitude), parseFloat(longitude)]
+                                    coordinates: [parseFloat(longitude), parseFloat(latitude)]
                                 } : null,
 
                                 frequency: frequency,
@@ -260,7 +260,7 @@ module.exports = {
                                 genericField4: genericField4,
                                 genericField5: genericField5,
                             })
-                            console.log(`✨ Creating ${row[0]}`)
+                            console.log(`✨ Creating ${name} ${longitude} ${latitude}`)
                             newAssetId++;
                         })
 
