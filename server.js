@@ -26,6 +26,11 @@ server.use(Sentry.Handlers.requestHandler())
 
 server.set("trust proxy", 1)
 
+
+server.use(express.json({ limit: '50mb', extended: true }))
+server.use(express.urlencoded({ limit: '50mb', extended: true, }));
+
+
 server.use(require("forest-express-mongoose").init({
     modelsDir: __dirname + "/models",
     envSecret: process.env.FOREST_ENV_SECRET,
@@ -40,9 +45,10 @@ if(process.env.USER && process.env.PASSWORD) {
 }
 
 server.use(sslRedirect())
-server.use(express.json())
-
 server.use(cors())
+
+
+
 
 // API routes
 server.use("/api", apiRouter)
