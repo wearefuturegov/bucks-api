@@ -158,7 +158,10 @@ module.exports = {
                                 created_at: new Date(row[2]),
                                 updated_at: new Date(),
                                 phone: row[3],
-                                longlat: `${parseFloat(latitude)},${parseFloat(longitude)}`,
+                                geo: (latitude && longitude)? {
+                                    type: "Point",
+                                    coordinates: [parseFloat(longitude), parseFloat(latitude)]
+                                } : null,
                                 postcode: row[6],
                                 email: row[7],
                                 venue: row[8],
