@@ -1,6 +1,8 @@
 const Service = require("../models/Service")
 const CountywideService = require("../models/CountywideService")
 const haversine = require("haversine")
+const parseDataUri = require('parse-data-uri')
+const csv = require('csv');
 
 const backOfficeFields = {
     _id: 0,
@@ -18,6 +20,14 @@ const backOfficeFields = {
     insurance: 0,
     legacyCategories: 0,
     __v: 0
+}
+
+// Turn semicolon-delimited strings into arrays, make every element lowercase and remove empty string elements
+const to_array_from_comma = string => {
+    return string.toLowerCase()
+        .replace(' ', '')
+        .split(",")
+        .filter(Boolean)
 }
 
 module.exports = {
@@ -115,5 +125,71 @@ module.exports = {
         } catch(err){
             return next(err)
         }
+    },
+
+    importFromCsv: async (req, res, next) => { 
+
+        try {
+
+            let highestAssetService = await Service.findOne({ }).sort('-assetId').exec();
+            if (!highestAssetService) { return next(new Error("NOT_FOUND")) } else {
+
+
+                let highestAssetId = highestAssetService.assetId;
+                let parsed = parseDataUri(req.body.data.attributes.values['CSV file']);
+                let newServices = []
+                let newAssetId = highestAssetId + 1;
+
+                csv.parse(parsed.data, { delimiter: ',' }, function (err, rows) {
+                    if (err) {
+                        res.status(400).send({
+                        error: `Cannot import data: ${err.message}` });
+                    } else {
+                        rows.shift(); // shoo headers
+                        rows.map(row => {
+                            // CSV structure: 'name','url','created_at','updated_at','phone','latitude','longitude','postcode','email','venue','area','description','keywords','categories','reviewStatus','reviewNotes'
+                            let latitude = row[5];
+                            let longitude = row[6];
+                            let keywords = row[12];
+                            newServices.push({
+                                assetId: newAssetId,
+                                name: row[0],
+                                url: row[1],
+                                created_at: new Date(row[2]),
+                                updated_at: new Date(),
+                                phone: row[4],
+                                longlat: `${parseFloat(longitude)},${parseFloat(latitude)}`,
+                                postcode: row[7],
+                                email: row[8],
+                                venue: row[9],
+                                area: row[10],
+                                description: row[11],
+                                reviewStatus: row[14],
+                                reviewNotes: row[15],
+                                category: row[13].toLowerCase(),
+                                keywords: to_array_from_comma(keywords),
+                                parentOrganisation: null,
+                            })
+                            console.log(`✨ Creating ${row[0]}`)
+                            newAssetId++;
+                        })
+
+
+                        Service.collection.insertMany(newServices, (err, documents)=>{
+                            if(err) return console.log(err) 
+                            console.log(`✨  Data successfully imported! ✨`)
+                            res.send({ success: 'Data successfuly imported! 🐹' });
+                        })
+                    }
+                });
+
+             
+            }
+
+            
+        } catch(err){
+            return next(err)
+        }
+
     }
-} 
+}

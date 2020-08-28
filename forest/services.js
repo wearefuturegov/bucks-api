@@ -16,5 +16,16 @@ Liana.collection('Service', {
             }
             return service
         }
-    }]
+    }],
+    actions: [{
+        name: 'Import services',
+        endpoint: '/forest/service/actions/import-services',
+        type: 'global',
+        fields: [{
+          field: 'CSV file',
+          description: 'A semicolon separated values file stores tabular data (numbers and text) in plain text',
+          type: 'File',
+          isRequired: true
+        }]
+      }],
   })

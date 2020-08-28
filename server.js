@@ -5,6 +5,7 @@ const sslRedirect = require("heroku-ssl-redirect")
 const basicAuth = require("express-basic-auth")
 const Sentry = require("@sentry/node")
 const cors = require("cors")
+const services = require("./controllers/services")
 
 require("dotenv").config()
 
@@ -45,6 +46,9 @@ server.use(cors())
 
 // API routes
 server.use("/api", apiRouter)
+
+// Forest routes
+server.post('/forest/service/actions/import-services', services.importFromCsv)
 
 server.use(Sentry.Handlers.errorHandler())
 
