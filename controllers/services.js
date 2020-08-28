@@ -147,26 +147,26 @@ module.exports = {
                     } else {
                         rows.shift(); // shoo headers
                         rows.map(row => {
-                            // CSV structure: 'name','url','created_at','updated_at','phone','latitude','longitude','postcode','email','venue','area','description','keywords','categories','reviewStatus','reviewNotes'
-                            let latitude = row[5];
-                            let longitude = row[6];
-                            let keywords = row[12];
+                            // CSV structure: 'name','url','created_at','phone','latitude','longitude','postcode','email','venue','area','description','keywords','categories','reviewStatus','reviewNotes'
+                            let latitude = row[4];
+                            let longitude = row[5];
+                            let keywords = row[11];
                             newServices.push({
                                 assetId: newAssetId,
                                 name: row[0],
                                 url: row[1],
                                 created_at: new Date(row[2]),
                                 updated_at: new Date(),
-                                phone: row[4],
+                                phone: row[3],
                                 longlat: `${parseFloat(longitude)},${parseFloat(latitude)}`,
-                                postcode: row[7],
-                                email: row[8],
-                                venue: row[9],
-                                area: row[10],
-                                description: row[11],
-                                reviewStatus: row[14],
-                                reviewNotes: row[15],
-                                category: row[13].toLowerCase(),
+                                postcode: row[6],
+                                email: row[7],
+                                venue: row[8],
+                                area: row[9],
+                                description: row[10],
+                                reviewStatus: row[13],
+                                reviewNotes: row[14],
+                                category: row[12].toLowerCase(),
                                 keywords: to_array_from_comma(keywords),
                                 parentOrganisation: null,
                             })
@@ -178,7 +178,7 @@ module.exports = {
                         Service.collection.insertMany(newServices, (err, documents)=>{
                             if(err) return console.log(err) 
                             console.log(`✨  Data successfully imported! ✨`)
-                            res.send({ success: 'Data successfuly imported! 🐹' });
+                            res.send({ success: '✨ Data successfuly imported! ✨' });
                         })
                     }
                 });
