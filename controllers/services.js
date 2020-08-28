@@ -160,7 +160,7 @@ module.exports = {
                                 phone: row[3],
                                 geo: (latitude && longitude)? {
                                     type: "Point",
-                                    coordinates: [parseFloat(longitude), parseFloat(latitude)]
+                                    coordinates: [parseFloat(latitude), parseFloat(longitude)]
                                 } : null,
                                 postcode: row[6],
                                 email: row[7],
