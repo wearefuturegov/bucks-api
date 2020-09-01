@@ -24,10 +24,15 @@ const backOfficeFields = {
 
 // Turn semicolon-delimited strings into arrays, make every element lowercase and remove empty string elements
 const to_array_from_comma = string => {
-    return string.toLowerCase()
-        .replace(' ', '')
-        .split(",")
-        .filter(Boolean)
+    let toArray = string.toLowerCase()
+    .trim()
+    .split(",")
+    .filter(Boolean);
+
+
+    return toArray.map(item => {
+        return item.trim();
+    });
 }
 
 module.exports = {
