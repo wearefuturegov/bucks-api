@@ -86,6 +86,12 @@ const Service = new mongoose.Schema({
     comment2: String,
     comment3: String,
 
+    genericField1: String,
+    genericField2: String,
+    genericField3: String,
+    genericField4: String,
+    genericField5: String
+
 },{
     timestamps: true 
 })
