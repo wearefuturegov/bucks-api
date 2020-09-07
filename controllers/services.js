@@ -153,7 +153,9 @@ module.exports = {
                         rows.shift(); // shoo headers
                         rows.map(row => {
                             // CSV structure follows order of vars below;
-                   
+                            if(row[0] === '') {
+                                next(new Error("BLANK_NAME_IN_CSV"))
+                            }
 
                             let name = row[0];
                             let parentOrganisation = row[1];
