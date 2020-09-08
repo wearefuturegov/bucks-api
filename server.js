@@ -13,7 +13,7 @@ Sentry.init({ dsn: process.env.SENTRY_DSN })
 
 const port = process.env.PORT || 3000
 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, (err)=>{
+mongoose.connect(process.env.DB_URI, {useNewUrlParser: true}, (err)=>{
     // eslint-disable-next-line no-console
     if(err) return console.error(err)
     // eslint-disable-next-line no-console
