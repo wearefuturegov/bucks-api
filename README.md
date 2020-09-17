@@ -18,7 +18,7 @@ It is front-end agnostic, but is intended to work with the `bucks-service-direct
 
 1. Clone the repo
 2. Create a `.env` file in the root of the repository and fill in the variables:
-    * `MONGODB_URI`
+    * `DB_URI`
     * `FOREST_ENV_SECRET`
     * `FOREST_AUTH_SECRET`
     * `GOOGLE_API_KEY` with the geocoding API enabled
